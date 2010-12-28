@@ -15,7 +15,7 @@ public class BlockSapling extends BlockFlower {
 
     public void a(World world, int i, int j, int k, Random random) {
         super.a(world, i, j, k, random);
-        if (world.i(i, j + 1, k) >= 9 && random.nextInt(5) == 0) {
+        if (world.h(i, j + 1, k) >= 9 && random.nextInt(5) == 0) {
             int l = world.b(i, j, k);
 
             if (l < 15) {
@@ -28,7 +28,7 @@ public class BlockSapling extends BlockFlower {
                     obj = new WorldGenBigTree();
                 }
                 if (!((WorldGenerator) (obj)).a(world, random, i, j, k)) {
-                    world.a(i, j, k, bh);
+                    world.a(i, j, k, bi);
                 }
             }
         }

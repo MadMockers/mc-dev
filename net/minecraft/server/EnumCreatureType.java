@@ -24,8 +24,8 @@ public final class EnumCreatureType extends Enum {
     }
 
     static {
-        a = new EnumCreatureType("monster", 0, net.minecraft.server.IMobs.class, 100);
-        b = new EnumCreatureType("creature", 1, net.minecraft.server.EntityAnimals.class, 20);
+        a = new EnumCreatureType("monster", 0, net.minecraft.server.IMobs.class, 200);
+        b = new EnumCreatureType("creature", 1, net.minecraft.server.EntityAnimals.class, 50);
         e = (new EnumCreatureType[] {
             a, b
         });

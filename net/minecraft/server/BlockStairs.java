@@ -10,19 +10,11 @@ public class BlockStairs extends Block {
     private Block a;
 
     protected BlockStairs(int i, Block block) {
-        super(i, block.bg, block.bs);
+        super(i, block.bh, block.bt);
         a = block;
-        c(block.bi);
-        b(block.bj / 3F);
-        a(block.bq);
-    }
-
-    public void a(IBlockAccess iblockaccess, int i, int j, int k) {
-        a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
-    }
-
-    public AxisAlignedBB d(World world, int i, int j, int k) {
-        return super.d(world, i, j, k);
+        c(block.bj);
+        b(block.bk / 3F);
+        a(block.br);
     }
 
     public boolean a() {

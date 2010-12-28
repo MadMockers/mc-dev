@@ -25,8 +25,8 @@ public class MobSpawnerBase {
     private static MobSpawnerBase t[] = new MobSpawnerBase[4096];
 
     public MobSpawnerBase() {
-        o = (byte) Block.u.bh;
-        p = (byte) Block.v.bh;
+        o = (byte) Block.v.bi;
+        p = (byte) Block.w.bi;
         q = 0x4ee031;
         r = (new Class[] {
             net.minecraft.server.EntitySpider.class, net.minecraft.server.EntityZombie.class, net.minecraft.server.EntitySkeleton.class, net.minecraft.server.EntityCreeper.class
@@ -44,8 +44,8 @@ public class MobSpawnerBase {
 
         }
 
-        h.o = h.p = (byte) Block.E.bh;
-        j.o = j.p = (byte) Block.E.bh;
+        h.o = h.p = (byte) Block.F.bi;
+        j.o = j.p = (byte) Block.F.bi;
     }
 
     protected MobSpawnerBase b() {

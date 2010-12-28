@@ -8,7 +8,7 @@ public class EntityPig extends EntityAnimals {
     public EntityPig(World world) {
         super(world);
         a = false;
-        aQ = "/mob/pig.png";
+        aF = "/mob/pig.png";
         a(0.9F, 0.9F);
         a = false;
     }
@@ -33,15 +33,6 @@ public class EntityPig extends EntityAnimals {
 
     protected String f() {
         return "mob.pigdeath";
-    }
-
-    public boolean a(EntityPlayer entityplayer) {
-        if (a) {
-            entityplayer.e(this);
-            return true;
-        } else {
-            return false;
-        }
     }
 
     protected int g() {

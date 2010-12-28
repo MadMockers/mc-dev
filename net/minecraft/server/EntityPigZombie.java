@@ -7,24 +7,24 @@ import java.util.Random;
 
 public class EntityPigZombie extends EntityZombie {
 
-    private int a;
+    private boolean a;
     private int b;
     private static final ItemStack c;
 
     public EntityPigZombie(World world) {
         super(world);
-        a = 0;
+        a = false;
         b = 0;
-        aQ = "/mob/pigzombie.png";
-        bD = 0.5F;
-        f = 5;
-        ae = true;
+        aF = "/mob/pigzombie.png";
+        bl = 0.5F;
+        e = 5;
+        ad = true;
     }
 
     public void b_() {
-        bD = aj == null ? 0.5F : 0.95F;
+        bl = f == null ? 0.5F : 0.95F;
         if (b > 0 && --b == 0) {
-            l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) * 1.8F);
+            l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F) * 1.8F);
         }
         super.b_();
     }
@@ -35,24 +35,24 @@ public class EntityPigZombie extends EntityZombie {
 
     public void a(NBTTagCompound nbttagcompound) {
         super.a(nbttagcompound);
-        nbttagcompound.a("Anger", (short) a);
+        nbttagcompound.a("Angry", a);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
         super.b(nbttagcompound);
-        a = nbttagcompound.c("Anger");
+        a = nbttagcompound.l("Angry");
     }
 
     protected Entity k() {
-        if (a == 0) {
+        if (!a) {
             return null;
         } else {
             return super.k();
         }
     }
 
-    public void G() {
-        super.G();
+    public void D() {
+        super.D();
     }
 
     public boolean a(Entity entity, int i) {
@@ -65,19 +65,19 @@ public class EntityPigZombie extends EntityZombie {
                 if (entity1 instanceof EntityPigZombie) {
                     EntityPigZombie entitypigzombie = (EntityPigZombie) entity1;
 
-                    entitypigzombie.g(entity);
+                    entitypigzombie.h(entity);
                 }
             }
 
-            g(entity);
+            h(entity);
         }
         return super.a(entity, i);
     }
 
-    private void g(Entity entity) {
-        aj = entity;
-        a = 400 + W.nextInt(400);
-        b = W.nextInt(40);
+    private void h(Entity entity) {
+        f = entity;
+        a = true;
+        b = V.nextInt(40);
     }
 
     protected String d() {

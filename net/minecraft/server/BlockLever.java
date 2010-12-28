@@ -133,9 +133,6 @@ public class BlockLever extends Block {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        if (world.z) {
-            return true;
-        }
         int l = world.b(i, j, k);
         int i1 = l & 7;
         int j1 = 8 - (l & 8);
@@ -143,17 +140,17 @@ public class BlockLever extends Block {
         world.b(i, j, k, i1 + j1);
         world.b(i, j, k, i, j, k);
         world.a((double) i + 0.5D, (double) j + 0.5D, (double) k + 0.5D, "random.click", 0.3F, j1 <= 0 ? 0.5F : 0.6F);
-        world.g(i, j, k, bh);
+        world.g(i, j, k, bi);
         if (i1 == 1) {
-            world.g(i - 1, j, k, bh);
+            world.g(i - 1, j, k, bi);
         } else if (i1 == 2) {
-            world.g(i + 1, j, k, bh);
+            world.g(i + 1, j, k, bi);
         } else if (i1 == 3) {
-            world.g(i, j, k - 1, bh);
+            world.g(i, j, k - 1, bi);
         } else if (i1 == 4) {
-            world.g(i, j, k + 1, bh);
+            world.g(i, j, k + 1, bi);
         } else {
-            world.g(i, j - 1, k, bh);
+            world.g(i, j - 1, k, bi);
         }
         return true;
     }
@@ -162,19 +159,19 @@ public class BlockLever extends Block {
         int l = world.b(i, j, k);
 
         if ((l & 8) > 0) {
-            world.g(i, j, k, bh);
+            world.g(i, j, k, bi);
             int i1 = l & 7;
 
             if (i1 == 1) {
-                world.g(i - 1, j, k, bh);
+                world.g(i - 1, j, k, bi);
             } else if (i1 == 2) {
-                world.g(i + 1, j, k, bh);
+                world.g(i + 1, j, k, bi);
             } else if (i1 == 3) {
-                world.g(i, j, k - 1, bh);
+                world.g(i, j, k - 1, bi);
             } else if (i1 == 4) {
-                world.g(i, j, k + 1, bh);
+                world.g(i, j, k + 1, bi);
             } else {
-                world.g(i, j - 1, k, bh);
+                world.g(i, j - 1, k, bi);
             }
         }
         super.b(world, i, j, k);

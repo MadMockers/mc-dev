@@ -110,7 +110,7 @@ public class MapGenCavesHell extends MapGenBase {
                         if (l3 < 0 || l3 >= 128) {
                             continue;
                         }
-                        if (abyte0[i4] == Block.C.bh || abyte0[i4] == Block.D.bh) {
+                        if (abyte0[i4] == Block.D.bi || abyte0[i4] == Block.E.bi) {
                             flag2 = true;
                         }
                         if (l3 != i2 - 1 && i3 != k1 && i3 != l1 - 1 && k3 != k2 && k3 != l2 - 1) {
@@ -138,7 +138,7 @@ public class MapGenCavesHell extends MapGenBase {
                         if (d14 > -0.69999999999999996D && d12 * d12 + d14 * d14 + d13 * d13 < 1.0D) {
                             byte byte0 = abyte0[k4];
 
-                            if (byte0 == Block.bb.bh || byte0 == Block.v.bh || byte0 == Block.u.bh) {
+                            if (byte0 == Block.bc.bi || byte0 == Block.w.bi || byte0 == Block.v.bi) {
                                 abyte0[k4] = 0;
                             }
                         }

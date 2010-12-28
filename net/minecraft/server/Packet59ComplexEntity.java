@@ -1,17 +1,8 @@
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) deadcode fieldsfirst nonlb 
-// Source File Name:   SourceFile
-
 package net.minecraft.server;
 
 
 import java.io.*;
 
-
-// Referenced classes of package net.minecraft.server:
-// Packet, NBTTagCompound, TileEntity, CompressedStreamTools, 
-// NetHandler
 
 public class Packet59ComplexEntity extends Packet {
 
@@ -66,3 +57,4 @@ public class Packet59ComplexEntity extends Packet {
         return d.length + 2 + 10;
     }
 }
+

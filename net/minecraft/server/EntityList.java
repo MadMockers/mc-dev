@@ -91,8 +91,8 @@ public class EntityList {
         a(net.minecraft.server.EntityPigZombie.class, "PigZombie", 57);
         a(net.minecraft.server.EntityPig.class, "Pig", 90);
         a(net.minecraft.server.EntitySheep.class, "Sheep", 91);
-        a(net.minecraft.server.EntityCow.class, "Cow", 92);
-        a(net.minecraft.server.EntityChicken.class, "Chicken", 93);
+        a(net.minecraft.server.EntityCow.class, "Cow", 91);
+        a(net.minecraft.server.EntityChicken.class, "Chicken", 91);
         a(net.minecraft.server.EntityTNTPrimed.class, "PrimedTnt", 20);
         a(net.minecraft.server.EntityFallingSand.class, "FallingSand", 21);
         a(net.minecraft.server.EntityMinecart.class, "Minecart", 40);

@@ -17,11 +17,11 @@ public class Packet51MapChunk extends Packet {
     private int h;
 
     public Packet51MapChunk() {
-        k = true;
+        j = true;
     }
 
     public Packet51MapChunk(int i, int j, int k, int l, int i1, int j1, World world) {
-        this.k = true;
+        this.j = true;
         a = i;
         b = j;
         c = k;

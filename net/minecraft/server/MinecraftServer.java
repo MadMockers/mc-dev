@@ -24,24 +24,22 @@ public class MinecraftServer
     public PropertyManager d;
     public WorldServer e;
     public ServerConfigurationManager f;
-    private boolean o;
+    private boolean m;
     public boolean g;
     int h;
     public String i;
     public int j;
-    private List p;
-    private List q;
+    private List n;
+    private List o;
     public EntityTracker k;
     public boolean l;
-    public boolean m;
-    public boolean n;
 
     public MinecraftServer() {
-        o = true;
+        m = true;
         g = false;
         h = 0;
-        p = new ArrayList();
-        q = Collections.synchronizedList(new ArrayList());
+        n = new ArrayList();
+        o = Collections.synchronizedList(new ArrayList());
         new ThreadSleepForever(this);
     }
 
@@ -51,7 +49,7 @@ public class MinecraftServer
         threadcommandreader.setDaemon(true);
         threadcommandreader.start();
         ConsoleLogManager.a();
-        a.info("Starting minecraft server version Beta 1.1_02");
+        a.info("Starting minecraft server version 0.2.2");
         if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
             a.warning("**** NOT ENOUGH RAM!");
             a.warning("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
@@ -61,8 +59,6 @@ public class MinecraftServer
         String s = d.a("server-ip", "");
 
         l = d.a("online-mode", true);
-        m = d.a("spawn-animals", true);
-        n = d.a("pvp", true);
         InetAddress inetaddress = null;
 
         if (s.length() > 0) {
@@ -97,16 +93,16 @@ public class MinecraftServer
 
     private void c(String s) {
         a.info("Preparing start region");
-        e = new WorldServer(this, new File("."), s, d.a("hellworld", false) ? -1 : 0);
+        e = new WorldServer(new File("."), s, d.a("hellworld", false) ? -1 : 0);
         e.a(new WorldManager(this));
-        e.k = d.a("spawn-monsters", true) ? 1 : 0;
+        e.k = d.a("monsters", false) ? 1 : 0;
         f.a(e);
         byte byte0 = 10;
 
         for (int i1 = -byte0; i1 <= byte0; i1++) {
             a("Preparing spawn area", ((i1 + byte0) * 100) / (byte0 + byte0 + 1));
             for (int j1 = -byte0; j1 <= byte0; j1++) {
-                if (!o) {
+                if (!m) {
                     return;
                 }
                 e.A.d((e.m >> 4) + i1, (e.o >> 4) + j1);
@@ -144,7 +140,7 @@ public class MinecraftServer
     }
 
     public void a() {
-        o = false;
+        m = false;
     }
 
     public void run() {
@@ -153,7 +149,7 @@ public class MinecraftServer
                 long l1 = System.currentTimeMillis();
                 long l2 = 0L;
 
-                while (o) {
+                while (m) {
                     long l3 = System.currentTimeMillis();
                     long l4 = l3 - l1;
 
@@ -174,7 +170,7 @@ public class MinecraftServer
                     Thread.sleep(1L);
                 }
             } else {
-                while (o) {
+                while (m) {
                     b();
                     try {
                         Thread.sleep(10L);
@@ -186,7 +182,7 @@ public class MinecraftServer
         } catch (Exception exception) {
             exception.printStackTrace();
             a.log(Level.SEVERE, "Unexpected exception", exception);
-            while (o) {
+            while (m) {
                 b();
                 try {
                     Thread.sleep(10L);
@@ -233,8 +229,8 @@ public class MinecraftServer
         c.a();
         f.b();
         k.a();
-        for (int j1 = 0; j1 < p.size(); j1++) {
-            ((IUpdatePlayerListBox) p.get(j1)).a();
+        for (int j1 = 0; j1 < n.size(); j1++) {
+            ((IUpdatePlayerListBox) n.get(j1)).a();
         }
 
         try {
@@ -245,15 +241,15 @@ public class MinecraftServer
     }
 
     public void a(String s, ICommandListener icommandlistener) {
-        q.add(new ServerCommand(s, icommandlistener));
+        o.add(new ServerCommand(s, icommandlistener));
     }
 
     public void b() {
         do {
-            if (q.size() <= 0) {
+            if (o.size() <= 0) {
                 break;
             }
-            ServerCommand servercommand = (ServerCommand) q.remove(0);
+            ServerCommand servercommand = (ServerCommand) o.remove(0);
             String s = servercommand.a;
             ICommandListener icommandlistener = servercommand.b;
             String s1 = icommandlistener.c();
@@ -283,7 +279,7 @@ public class MinecraftServer
                 icommandlistener.b((new StringBuilder()).append("Connected players: ").append(f.c()).toString());
             } else if (s.toLowerCase().startsWith("stop")) {
                 a(s1, "Stopping the server..");
-                o = false;
+                m = false;
             } else if (s.toLowerCase().startsWith("save-all")) {
                 a(s1, "Forcing save..");
                 e.a(true, null);
@@ -324,7 +320,7 @@ public class MinecraftServer
                 EntityPlayerMP entityplayermp = f.h(s6);
 
                 if (entityplayermp != null) {
-                    entityplayermp.a.a("Banned by admin");
+                    entityplayermp.a.c("Banned by admin");
                 }
             } else if (s.toLowerCase().startsWith("pardon ")) {
                 String s7 = s.substring(s.indexOf(" ")).trim();
@@ -338,14 +334,14 @@ public class MinecraftServer
                 for (int i1 = 0; i1 < f.b.size(); i1++) {
                     EntityPlayerMP entityplayermp5 = (EntityPlayerMP) f.b.get(i1);
 
-                    if (entityplayermp5.aw.equalsIgnoreCase(s8)) {
+                    if (entityplayermp5.ar.equalsIgnoreCase(s8)) {
                         entityplayermp1 = entityplayermp5;
                     }
                 }
 
                 if (entityplayermp1 != null) {
-                    entityplayermp1.a.a("Kicked by admin");
-                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.aw).toString());
+                    entityplayermp1.a.c("Kicked by admin");
+                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.ar).toString());
                 } else {
                     icommandlistener.b((new StringBuilder()).append("Can't find user ").append(s8).append(". No kick.").toString());
                 }
@@ -381,7 +377,7 @@ public class MinecraftServer
                         int j1 = Integer.parseInt(as1[2]);
 
                         if (Item.c[j1] != null) {
-                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.aw).append(" some ").append(j1).toString());
+                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.ar).append(" some ").append(j1).toString());
                             int k1 = 1;
 
                             if (as1.length > 3) {
@@ -393,7 +389,7 @@ public class MinecraftServer
                             if (k1 > 64) {
                                 k1 = 64;
                             }
-                            entityplayermp4.b(new ItemStack(j1, k1));
+                            entityplayermp4.a(new ItemStack(j1, k1));
                         } else {
                             icommandlistener.b((new StringBuilder()).append("There's no item with id ").append(j1).toString());
                         }
@@ -442,7 +438,7 @@ public class MinecraftServer
     }
 
     public void a(IUpdatePlayerListBox iupdateplayerlistbox) {
-        p.add(iupdateplayerlistbox);
+        n.add(iupdateplayerlistbox);
     }
 
     public static void main(String args[]) {
@@ -471,7 +467,7 @@ public class MinecraftServer
     }
 
     public static boolean a(MinecraftServer minecraftserver) {
-        return minecraftserver.o;
+        return minecraftserver.m;
     }
 
 }

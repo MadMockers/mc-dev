@@ -37,9 +37,9 @@ public class ChunkProviderServer
     public void c(int i, int j) {
         int k = (i * 16 + 8) - g.m;
         int l = (j * 16 + 8) - g.o;
-        char c1 = '\200';
+        byte byte0 = 20;
 
-        if (k < -c1 || k > c1 || l < -c1 || l > c1) {
+        if (k < -byte0 || k > byte0 || l < -byte0 || l > byte0) {
             a.add(new ChunkCoordinates(i, j));
         }
     }
@@ -162,7 +162,7 @@ public class ChunkProviderServer
             }
             b(chunk);
             chunk.o = false;
-            if (++i == 24 && !flag) {
+            if (++i == 2 && !flag) {
                 return false;
             }
         }
@@ -178,7 +178,7 @@ public class ChunkProviderServer
 
     public boolean a() {
         if (!g.C) {
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 16; i++) {
                 if (!a.isEmpty()) {
                     ChunkCoordinates chunkcoordinates = (ChunkCoordinates) a.iterator().next();
                     Chunk chunk = b(chunkcoordinates.a, chunkcoordinates.b);

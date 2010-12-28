@@ -157,7 +157,7 @@ public class World
     public int a(int i1, int j1) {
         int k1;
 
-        for (k1 = 63; !e(i1, k1 + 1, j1); k1++) {
+        for (k1 = 63; a(i1, k1 + 1, j1) != 0; k1++) {
             ;
         }
         return a(i1, k1, j1);
@@ -239,10 +239,6 @@ public class World
     }
 
     public boolean e(int i1, int j1, int k1) {
-        return a(i1, j1, k1) == 0;
-    }
-
-    public boolean f(int i1, int j1, int k1) {
         if (j1 < 0 || j1 >= 128) {
             return false;
         } else {
@@ -322,7 +318,7 @@ public class World
         if (l1 == 0) {
             return Material.a;
         } else {
-            return Block.m[l1].bs;
+            return Block.n[l1].bt;
         }
     }
 
@@ -387,7 +383,7 @@ public class World
         }
     }
 
-    public void g(int i1, int j1, int k1) {
+    public void f(int i1, int j1, int k1) {
         for (int l1 = 0; l1 < r.size(); l1++) {
             ((IWorldAccess) r.get(l1)).a(i1, j1, k1);
         }
@@ -395,7 +391,7 @@ public class World
     }
 
     protected void e(int i1, int j1, int k1, int l1) {
-        g(i1, j1, k1);
+        f(i1, j1, k1);
         g(i1, j1, k1, l1);
     }
 
@@ -429,18 +425,18 @@ public class World
         if (i || z) {
             return;
         }
-        Block block = Block.m[a(i1, j1, k1)];
+        Block block = Block.n[a(i1, j1, k1)];
 
         if (block != null) {
             block.b(this, i1, j1, k1, l1);
         }
     }
 
-    public boolean h(int i1, int j1, int k1) {
+    public boolean g(int i1, int j1, int k1) {
         return c(i1 >> 4, k1 >> 4).c(i1 & 0xf, j1, k1 & 0xf);
     }
 
-    public int i(int i1, int j1, int k1) {
+    public int h(int i1, int j1, int k1) {
         return a(i1, j1, k1, true);
     }
 
@@ -451,7 +447,7 @@ public class World
         if (flag) {
             int l1 = a(i1, j1, k1);
 
-            if (l1 == Block.ak.bh || l1 == Block.aA.bh) {
+            if (l1 == Block.al.bi || l1 == Block.aB.bi) {
                 int j2 = a(i1, j1 + 1, k1, false);
                 int k2 = a(i1 + 1, j1, k1, false);
                 int l2 = a(i1 - 1, j1, k1, false);
@@ -492,7 +488,7 @@ public class World
         }
     }
 
-    public boolean j(int i1, int j1, int k1) {
+    public boolean i(int i1, int j1, int k1) {
         if (i1 < 0xfe17b800 || k1 < 0xfe17b800 || i1 >= 0x1e84800 || k1 > 0x1e84800) {
             return false;
         }
@@ -527,21 +523,21 @@ public class World
     }
 
     public void a(EnumSkyBlock enumskyblock, int i1, int j1, int k1, int l1) {
-        if (q.e && enumskyblock == EnumSkyBlock.a) {
+        if (q.c && enumskyblock == EnumSkyBlock.a) {
             return;
         }
-        if (!f(i1, j1, k1)) {
+        if (!e(i1, j1, k1)) {
             return;
         }
         if (enumskyblock == EnumSkyBlock.a) {
-            if (j(i1, j1, k1)) {
+            if (i(i1, j1, k1)) {
                 l1 = 15;
             }
         } else if (enumskyblock == EnumSkyBlock.b) {
             int i2 = a(i1, j1, k1);
 
-            if (Block.s[i2] > l1) {
-                l1 = Block.s[i2];
+            if (Block.t[i2] > l1) {
+                l1 = Block.t[i2];
             }
         }
         if (a(enumskyblock, i1, j1, k1) != l1) {
@@ -587,8 +583,8 @@ public class World
 
     }
 
-    public float k(int i1, int j1, int k1) {
-        return q.f[i(i1, j1, k1)];
+    public float j(int i1, int j1, int k1) {
+        return q.d[h(i1, j1, k1)];
     }
 
     public boolean b() {
@@ -707,7 +703,7 @@ public class World
             }
             int l2 = a(l1, i2, j2);
             int i3 = b(l1, i2, j2);
-            Block block = Block.m[l2];
+            Block block = Block.n[l2];
 
             if (l2 > 0 && block.a(i3, flag)) {
                 MovingObjectPosition movingobjectposition = block.a(this, l1, i2, j2, vec3d, vec3d1);
@@ -723,7 +719,7 @@ public class World
 
     public void a(Entity entity, String s1, float f1, float f2) {
         for (int i1 = 0; i1 < r.size(); i1++) {
-            ((IWorldAccess) r.get(i1)).a(s1, entity.p, entity.q - (double) entity.H, entity.r, f1, f2);
+            ((IWorldAccess) r.get(i1)).a(s1, entity.p, entity.q - (double) entity.G, entity.r, f1, f2);
         }
 
     }
@@ -791,22 +787,8 @@ public class World
         entity.l();
         if (entity instanceof EntityPlayer) {
             d.remove((EntityPlayer) entity);
+            System.out.println((new StringBuilder()).append("Player count: ").append(d.size()).toString());
         }
-    }
-
-    public void e(Entity entity) {
-        entity.l();
-        if (entity instanceof EntityPlayer) {
-            d.remove((EntityPlayer) entity);
-        }
-        int i1 = entity.ag;
-        int j1 = entity.ai;
-
-        if (entity.af && f(i1, j1)) {
-            c(i1, j1).b(entity);
-        }
-        b.remove(entity);
-        c(entity);
     }
 
     public void a(IWorldAccess iworldaccess) {
@@ -824,11 +806,11 @@ public class World
 
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = i2; l2 < j2; l2++) {
-                if (!f(k2, 64, l2)) {
+                if (!e(k2, 64, l2)) {
                     continue;
                 }
                 for (int i3 = k1 - 1; i3 < l1; i3++) {
-                    Block block = Block.m[a(k2, i3, l2)];
+                    Block block = Block.n[a(k2, i3, l2)];
 
                     if (block != null) {
                         block.a(this, k2, i3, l2, axisalignedbb, I);
@@ -886,7 +868,7 @@ public class World
         while (k1 > 0) {
             int l1 = chunk.a(i1, k1, j1);
 
-            if (l1 == 0 || !Block.m[l1].bs.c() && !Block.m[l1].bs.d()) {
+            if (l1 == 0 || !Block.n[l1].bt.c() && !Block.n[l1].bt.d()) {
                 k1--;
             } else {
                 return k1 + 1;
@@ -904,14 +886,14 @@ public class World
                 int i2 = a(nextticklistentry.a, nextticklistentry.b, nextticklistentry.c);
 
                 if (i2 == nextticklistentry.d && i2 > 0) {
-                    Block.m[i2].a(this, nextticklistentry.a, nextticklistentry.b, nextticklistentry.c, l);
+                    Block.n[i2].a(this, nextticklistentry.a, nextticklistentry.b, nextticklistentry.c, l);
                 }
             }
             return;
         }
         if (a(i1 - byte0, j1 - byte0, k1 - byte0, i1 + byte0, j1 + byte0, k1 + byte0)) {
             if (l1 > 0) {
-                nextticklistentry.a((long) Block.m[l1].b() + e);
+                nextticklistentry.a((long) Block.n[l1].b() + e);
             }
             if (!D.contains(nextticklistentry)) {
                 D.add(nextticklistentry);
@@ -924,10 +906,10 @@ public class World
         b.removeAll(B);
         for (int i1 = 0; i1 < B.size(); i1++) {
             Entity entity = (Entity) B.get(i1);
-            int i2 = entity.ag;
-            int k2 = entity.ai;
+            int i2 = entity.af;
+            int k2 = entity.ah;
 
-            if (entity.af && f(i2, k2)) {
+            if (entity.ae && f(i2, k2)) {
                 c(i2, k2).b(entity);
             }
         }
@@ -941,22 +923,22 @@ public class World
             Entity entity1 = (Entity) b.get(k1);
 
             if (entity1.k != null) {
-                if (!entity1.k.G && entity1.k.j == entity1) {
+                if (!entity1.k.F && entity1.k.j == entity1) {
                     continue;
                 }
                 entity1.k.j = null;
                 entity1.k = null;
             }
-            if (!entity1.G) {
-                f(entity1);
+            if (!entity1.F) {
+                e(entity1);
             }
-            if (!entity1.G) {
+            if (!entity1.F) {
                 continue;
             }
-            int j2 = entity1.ag;
-            int l2 = entity1.ai;
+            int j2 = entity1.af;
+            int l2 = entity1.ah;
 
-            if (entity1.af && f(j2, l2)) {
+            if (entity1.ae && f(j2, l2)) {
                 c(j2, l2).b(entity1);
             }
             b.remove(k1--);
@@ -966,12 +948,12 @@ public class World
         for (int l1 = 0; l1 < c.size(); l1++) {
             TileEntity tileentity = (TileEntity) c.get(l1);
 
-            tileentity.e();
+            tileentity.b();
         }
 
     }
 
-    public void f(Entity entity) {
+    public void e(Entity entity) {
         a(entity, true);
     }
 
@@ -983,55 +965,55 @@ public class World
         if (!flag && !a(i1 - byte0, 0, j1 - byte0, i1 + byte0, 128, j1 + byte0)) {
             return;
         }
-        entity.O = entity.p;
-        entity.P = entity.q;
-        entity.Q = entity.r;
+        entity.N = entity.p;
+        entity.O = entity.q;
+        entity.P = entity.r;
         entity.x = entity.v;
         entity.y = entity.w;
-        if (flag && entity.af) {
+        if (flag && entity.ae) {
             if (entity.k != null) {
-                entity.z();
+                entity.y();
             } else {
                 entity.b_();
             }
         }
+        int k1 = MathHelper.b(entity.p / 16D);
+        int l1 = MathHelper.b(entity.q / 16D);
+        int i2 = MathHelper.b(entity.r / 16D);
+
+        if (!entity.ae || entity.af != k1 || entity.ag != l1 || entity.ah != i2) {
+            if (entity.ae && f(entity.af, entity.ah)) {
+                c(entity.af, entity.ah).a(entity, entity.ag);
+            }
+            if (f(k1, i2)) {
+                entity.ae = true;
+                c(k1, i2).a(entity);
+            } else {
+                entity.ae = false;
+            }
+        }
+        if (flag && entity.ae && entity.j != null) {
+            if (entity.j.F || entity.j.k != entity) {
+                entity.j.k = null;
+                entity.j = null;
+            } else {
+                e(entity.j);
+            }
+        }
         if (Double.isNaN(entity.p) || Double.isInfinite(entity.p)) {
-            entity.p = entity.O;
+            entity.p = entity.N;
         }
         if (Double.isNaN(entity.q) || Double.isInfinite(entity.q)) {
-            entity.q = entity.P;
+            entity.q = entity.O;
         }
         if (Double.isNaN(entity.r) || Double.isInfinite(entity.r)) {
-            entity.r = entity.Q;
+            entity.r = entity.P;
         }
         if (Double.isNaN(entity.w) || Double.isInfinite(entity.w)) {
             entity.w = entity.y;
         }
         if (Double.isNaN(entity.v) || Double.isInfinite(entity.v)) {
             entity.v = entity.x;
-        }
-        int k1 = MathHelper.b(entity.p / 16D);
-        int l1 = MathHelper.b(entity.q / 16D);
-        int i2 = MathHelper.b(entity.r / 16D);
-
-        if (!entity.af || entity.ag != k1 || entity.ah != l1 || entity.ai != i2) {
-            if (entity.af && f(entity.ag, entity.ai)) {
-                c(entity.ag, entity.ai).a(entity, entity.ah);
-            }
-            if (f(k1, i2)) {
-                entity.af = true;
-                c(k1, i2).a(entity);
-            } else {
-                entity.af = false;
-            }
-        }
-        if (flag && entity.af && entity.j != null) {
-            if (entity.j.G || entity.j.k != entity) {
-                entity.j.k = null;
-                entity.j = null;
-            } else {
-                f(entity.j);
-            }
         }
     }
 
@@ -1041,7 +1023,7 @@ public class World
         for (int i1 = 0; i1 < list.size(); i1++) {
             Entity entity = (Entity) list.get(i1);
 
-            if (!entity.G && entity.i) {
+            if (!entity.F && entity.i) {
                 return false;
             }
         }
@@ -1069,9 +1051,9 @@ public class World
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = k1; l2 < l1; l2++) {
                 for (int i3 = i2; i3 < j2; i3++) {
-                    Block block = Block.m[a(k2, l2, i3)];
+                    Block block = Block.n[a(k2, l2, i3)];
 
-                    if (block != null && block.bs.d()) {
+                    if (block != null && block.bt.d()) {
                         return true;
                     }
                 }
@@ -1096,7 +1078,7 @@ public class World
                 for (int i3 = i2; i3 < j2; i3++) {
                     int j3 = a(k2, l2, i3);
 
-                    if (j3 == Block.ar.bh || j3 == Block.C.bh || j3 == Block.D.bh) {
+                    if (j3 == Block.as.bi || j3 == Block.D.bi || j3 == Block.E.bi) {
                         return true;
                     }
                 }
@@ -1121,9 +1103,9 @@ public class World
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = k1; l2 < l1; l2++) {
                 for (int i3 = i2; i3 < j2; i3++) {
-                    Block block = Block.m[a(k2, l2, i3)];
+                    Block block = Block.n[a(k2, l2, i3)];
 
-                    if (block == null || block.bs != material) {
+                    if (block == null || block.bt != material) {
                         continue;
                     }
                     double d1 = (float) (l2 + 1) - BlockFluids.b(b(k2, l2, i3));
@@ -1160,9 +1142,9 @@ public class World
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = k1; l2 < l1; l2++) {
                 for (int i3 = i2; i3 < j2; i3++) {
-                    Block block = Block.m[a(k2, l2, i3)];
+                    Block block = Block.n[a(k2, l2, i3)];
 
-                    if (block != null && block.bs == material) {
+                    if (block != null && block.bt == material) {
                         return true;
                     }
                 }
@@ -1185,9 +1167,9 @@ public class World
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = k1; l2 < l1; l2++) {
                 for (int i3 = i2; i3 < j2; i3++) {
-                    Block block = Block.m[a(k2, l2, i3)];
+                    Block block = Block.n[a(k2, l2, i3)];
 
-                    if (block == null || block.bs != material) {
+                    if (block == null || block.bt != material) {
                         continue;
                     }
                     int j3 = b(k2, l2, i3);
@@ -1208,19 +1190,9 @@ public class World
         return false;
     }
 
-    public Explosion a(Entity entity, double d1, double d2, double d3, 
+    public void a(Entity entity, double d1, double d2, double d3, 
             float f1) {
-        return a(entity, d1, d2, d3, f1, false);
-    }
-
-    public Explosion a(Entity entity, double d1, double d2, double d3, 
-            float f1, boolean flag) {
-        Explosion explosion = new Explosion(this, entity, d1, d2, d3, f1);
-
-        explosion.a = flag;
-        explosion.a();
-        explosion.b();
-        return explosion;
+        (new Explosion()).a(this, entity, d1, d2, d3, f1);
     }
 
     public float a(Vec3D vec3d, AxisAlignedBB axisalignedbb) {
@@ -1250,7 +1222,7 @@ public class World
         return (float) i1 / (float) j1;
     }
 
-    public TileEntity l(int i1, int j1, int k1) {
+    public TileEntity k(int i1, int j1, int k1) {
         Chunk chunk = c(i1 >> 4, k1 >> 4);
 
         if (chunk != null) {
@@ -1268,7 +1240,7 @@ public class World
         }
     }
 
-    public void m(int i1, int j1, int k1) {
+    public void l(int i1, int j1, int k1) {
         Chunk chunk = c(i1 >> 4, k1 >> 4);
 
         if (chunk != null) {
@@ -1277,7 +1249,7 @@ public class World
     }
 
     public boolean d(int i1, int j1, int k1) {
-        Block block = Block.m[a(i1, j1, k1)];
+        Block block = Block.n[a(i1, j1, k1)];
 
         if (block == null) {
             return false;
@@ -1287,12 +1259,12 @@ public class World
     }
 
     public boolean d() {
-        if (J >= 50) {
+        if (J >= 10) {
             return false;
         }
         J++;
         try {
-            int i1 = 5000;
+            int i1 = 1000;
 
             for (; A.size() > 0; ((MetadataChunkBlock) A.remove(A.size() - 1)).a(this)) {
                 if (--i1 <= 0) {
@@ -1316,7 +1288,7 @@ public class World
 
     public void a(EnumSkyBlock enumskyblock, int i1, int j1, int k1, int l1, int i2, int j2, 
             boolean flag) {
-        if (q.e && enumskyblock == EnumSkyBlock.a) {
+        if (q.c && enumskyblock == EnumSkyBlock.a) {
             return;
         }
         y++;
@@ -1327,7 +1299,7 @@ public class World
         int k2 = (l1 + i1) / 2;
         int l2 = (j2 + k1) / 2;
 
-        if (!f(k2, 64, l2)) {
+        if (!e(k2, 64, l2)) {
             y--;
             return;
         }
@@ -1351,7 +1323,9 @@ public class World
         }
         A.add(new MetadataChunkBlock(enumskyblock, i1, j1, k1, l1, i2, j2));
         if (A.size() > 0x186a0) {
-            A.clear();
+            for (; A.size() > 50000; d()) {
+                ;
+            }
         }
         y--;
     }
@@ -1420,7 +1394,7 @@ public class World
 
                 j3 += k1;
                 l3 += i2;
-                if (l4 == 0 && i(j3, j4, l3) <= l.nextInt(8) && a(EnumSkyBlock.a, j3, j4, l3) <= 0) {
+                if (l4 == 0 && h(j3, j4, l3) <= l.nextInt(8) && a(EnumSkyBlock.a, j3, j4, l3) <= 0) {
                     EntityPlayer entityplayer1 = a((double) j3 + 0.5D, (double) j4 + 0.5D, (double) l3 + 0.5D, 8D);
 
                     if (entityplayer1 != null && entityplayer1.d((double) j3 + 0.5D, (double) j4 + 0.5D, (double) l3 + 0.5D) > 4D) {
@@ -1439,8 +1413,8 @@ public class World
                 int i5 = k3 >> 16 & 0x7f;
                 byte byte1 = chunk.b[i4 << 11 | k4 << 7 | i5];
 
-                if (Block.n[byte1]) {
-                    Block.m[byte1].a(this, i4 + k1, i5, k4 + i2, l);
+                if (Block.o[byte1]) {
+                    Block.n[byte1].a(this, i4 + k1, i5, k4 + i2, l);
                 }
                 l2++;
             }
@@ -1473,7 +1447,7 @@ public class World
             int k1 = a(nextticklistentry.a, nextticklistentry.b, nextticklistentry.c);
 
             if (k1 == nextticklistentry.d && k1 > 0) {
-                Block.m[k1].a(this, nextticklistentry.a, nextticklistentry.b, nextticklistentry.c, l);
+                Block.n[k1].a(this, nextticklistentry.a, nextticklistentry.b, nextticklistentry.c, l);
             }
         }
 
@@ -1519,7 +1493,7 @@ public class World
     }
 
     public void b(int i1, int j1, int k1, TileEntity tileentity) {
-        if (f(i1, j1, k1)) {
+        if (e(i1, j1, k1)) {
             b(i1, k1).f();
         }
         for (int l1 = 0; l1 < r.size(); l1++) {
@@ -1556,8 +1530,8 @@ public class World
 
     public boolean a(int i1, int j1, int k1, int l1, boolean flag) {
         int i2 = a(j1, k1, l1);
-        Block block = Block.m[i2];
-        Block block1 = Block.m[i1];
+        Block block = Block.n[i2];
+        Block block1 = Block.n[i1];
         AxisAlignedBB axisalignedbb = block1.d(this, j1, k1, l1);
 
         if (flag) {
@@ -1566,7 +1540,7 @@ public class World
         if (axisalignedbb != null && !a(axisalignedbb)) {
             return false;
         }
-        if (block == Block.A || block == Block.B || block == Block.C || block == Block.D || block == Block.ar || block == Block.aS) {
+        if (block == Block.B || block == Block.C || block == Block.D || block == Block.E || block == Block.as || block == Block.aT) {
             return true;
         }
         return i1 > 0 && block == null && block1.a(this, j1, k1, l1);
@@ -1610,11 +1584,11 @@ public class World
         if (i2 == 0) {
             return false;
         } else {
-            return Block.m[i2].d(this, i1, j1, k1, l1);
+            return Block.n[i2].d(this, i1, j1, k1, l1);
         }
     }
 
-    public boolean n(int i1, int j1, int k1) {
+    public boolean m(int i1, int j1, int k1) {
         if (i(i1, j1 - 1, k1, 0)) {
             return true;
         }
@@ -1635,18 +1609,18 @@ public class World
 
     public boolean j(int i1, int j1, int k1, int l1) {
         if (d(i1, j1, k1)) {
-            return n(i1, j1, k1);
+            return m(i1, j1, k1);
         }
         int i2 = a(i1, j1, k1);
 
         if (i2 == 0) {
             return false;
         } else {
-            return Block.m[i2].b(this, i1, j1, k1, l1);
+            return Block.n[i2].b(this, i1, j1, k1, l1);
         }
     }
 
-    public boolean o(int i1, int j1, int k1) {
+    public boolean n(int i1, int j1, int k1) {
         if (j(i1, j1 - 1, k1, 0)) {
             return true;
         }
@@ -1746,12 +1720,6 @@ public class World
             throw new MinecraftException("Failed to check session lock, aborting");
         }
     }
-
-    public boolean a(EntityPlayer entityplayer, int i1, int j1, int k1) {
-        return true;
-    }
-
-    public void a(Entity entity, byte byte0) {}
 
 }
 

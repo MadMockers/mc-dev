@@ -9,19 +9,15 @@ public class WorldProvider {
     public World a;
     public WorldChunkManager b;
     public boolean c;
-    public boolean d;
-    public boolean e;
-    public float f[];
-    public int g;
-    private float h[];
+    public float d[];
+    public int e;
+    private float f[];
 
     public WorldProvider() {
         c = false;
-        d = false;
-        e = false;
-        f = new float[16];
-        g = 0;
-        h = new float[4];
+        d = new float[16];
+        e = 0;
+        f = new float[4];
     }
 
     public final void a(World world) {
@@ -36,7 +32,7 @@ public class WorldProvider {
         for (int i = 0; i <= 15; i++) {
             float f2 = 1.0F - (float) i / 15F;
 
-            f[i] = ((1.0F - f2) / (f2 * 3F + 1.0F)) * (1.0F - f1) + f1;
+            d[i] = ((1.0F - f2) / (f2 * 3F + 1.0F)) * (1.0F - f1) + f1;
         }
 
     }
@@ -56,7 +52,7 @@ public class WorldProvider {
     public boolean a(int i, int j) {
         int k = a.a(i, j);
 
-        return k == Block.E.bh;
+        return k == Block.F.bi;
     }
 
     public float a(long l, float f1) {

@@ -19,16 +19,8 @@ public class ItemSword extends Item {
         return 1.5F;
     }
 
-    public void a(ItemStack itemstack, EntityLiving entityliving) {
-        itemstack.b(1);
-    }
-
     public void a(ItemStack itemstack, int i, int j, int k, int l) {
-        itemstack.b(2);
-    }
-
-    public int a(Entity entity) {
-        return a;
+        itemstack.a(2);
     }
 }
 

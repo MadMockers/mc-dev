@@ -32,7 +32,7 @@ public class MetadataChunkBlock {
         }
         for (int i1 = b; i1 <= e; i1++) {
             for (int j1 = d; j1 <= g; j1++) {
-                if (!world.f(i1, 0, j1)) {
+                if (!world.e(i1, 0, j1)) {
                     continue;
                 }
                 for (int k1 = c; k1 <= f; k1++) {
@@ -42,7 +42,7 @@ public class MetadataChunkBlock {
                     int l1 = world.a(a, i1, k1, j1);
                     int i2 = 0;
                     int j2 = world.a(i1, k1, j1);
-                    int k2 = Block.q[j2];
+                    int k2 = Block.r[j2];
 
                     if (k2 == 0) {
                         k2 = 1;
@@ -50,11 +50,11 @@ public class MetadataChunkBlock {
                     int l2 = 0;
 
                     if (a == EnumSkyBlock.a) {
-                        if (world.j(i1, k1, j1)) {
+                        if (world.i(i1, k1, j1)) {
                             l2 = 15;
                         }
                     } else if (a == EnumSkyBlock.b) {
-                        l2 = Block.s[j2];
+                        l2 = Block.t[j2];
                     }
                     if (k2 >= 15 && l2 == 0) {
                         i2 = 0;

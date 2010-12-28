@@ -13,7 +13,7 @@ public final class ItemStack {
     }
 
     public ItemStack(Block block, int i) {
-        this(block.bh, i);
+        this(block.bi, i);
     }
 
     public ItemStack(Item item) {
@@ -46,11 +46,6 @@ public final class ItemStack {
         b(nbttagcompound);
     }
 
-    public ItemStack a(int i) {
-        a -= i;
-        return new ItemStack(c, i, d);
-    }
-
     public Item a() {
         return Item.c[c];
     }
@@ -61,10 +56,6 @@ public final class ItemStack {
 
     public float a(Block block) {
         return a().a(this, block);
-    }
-
-    public ItemStack a(World world, EntityPlayer entityplayer) {
-        return a().a(this, world, entityplayer);
     }
 
     public NBTTagCompound a(NBTTagCompound nbttagcompound) {
@@ -81,14 +72,14 @@ public final class ItemStack {
     }
 
     public int b() {
-        return a().b();
+        return a().a();
     }
 
     public int c() {
-        return Item.c[c].c();
+        return Item.c[c].b();
     }
 
-    public void b(int i) {
+    public void a(int i) {
         d += i;
         if (d > c()) {
             a--;
@@ -99,16 +90,8 @@ public final class ItemStack {
         }
     }
 
-    public void a(EntityLiving entityliving) {
-        Item.c[c].a(this, entityliving);
-    }
-
     public void a(int i, int j, int k, int l) {
         Item.c[c].a(this, i, j, k, l);
-    }
-
-    public int a(Entity entity) {
-        return Item.c[c].a(entity);
     }
 
     public boolean b(Block block) {
@@ -119,35 +102,6 @@ public final class ItemStack {
 
     public ItemStack d() {
         return new ItemStack(c, a, d);
-    }
-
-    public static boolean a(ItemStack itemstack, ItemStack itemstack1) {
-        if (itemstack == null && itemstack1 == null) {
-            return true;
-        }
-        if (itemstack == null || itemstack1 == null) {
-            return false;
-        } else {
-            return itemstack.b(itemstack1);
-        }
-    }
-
-    private boolean b(ItemStack itemstack) {
-        if (a != itemstack.a) {
-            return false;
-        }
-        if (c != itemstack.c) {
-            return false;
-        }
-        return d == itemstack.d;
-    }
-
-    public static ItemStack a(ItemStack itemstack) {
-        return itemstack != null ? itemstack.d() : null;
-    }
-
-    public String toString() {
-        return (new StringBuilder()).append(a).append("x").append(Item.c[c].a()).append("@").append(d).toString();
     }
 }
 

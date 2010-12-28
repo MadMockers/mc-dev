@@ -38,6 +38,16 @@ public class PlayerManager {
         return playerinstance;
     }
 
+    public void a(Packet packet, int i, int j, int k) {
+        int l = i >> 4;
+        int i1 = k >> 4;
+        PlayerInstance playerinstance = a(l, i1, false);
+
+        if (playerinstance != null) {
+            playerinstance.a(packet);
+        }
+    }
+
     public void a(int i, int j, int k) {
         int l = i >> 4;
         int i1 = k >> 4;
@@ -49,6 +59,7 @@ public class PlayerManager {
     }
 
     public void a(EntityPlayerMP entityplayermp) {
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(entityplayermp.ar).append(" joined the game.").toString()));
         int i = (int) entityplayermp.p >> 4;
         int j = (int) entityplayermp.r >> 4;
 
@@ -65,8 +76,9 @@ public class PlayerManager {
     }
 
     public void b(EntityPlayerMP entityplayermp) {
-        int i = (int) entityplayermp.d >> 4;
-        int j = (int) entityplayermp.e >> 4;
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(entityplayermp.ar).append(" left the game.").toString()));
+        int i = (int) entityplayermp.p >> 4;
+        int j = (int) entityplayermp.r >> 4;
 
         for (int k = i - 10; k <= i + 10; k++) {
             for (int l = j - 10; l <= j + 10; l++) {

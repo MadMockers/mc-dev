@@ -8,9 +8,9 @@ public class BlockDoor extends Block {
 
     protected BlockDoor(int i, Material material) {
         super(i, material);
-        bg = 97;
+        bh = 97;
         if (material == Material.e) {
-            bg++;
+            bh++;
         }
         float f = 0.5F;
         float f1 = 1.0F;
@@ -54,18 +54,18 @@ public class BlockDoor extends Block {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        if (bs == Material.e) {
+        if (bt == Material.e) {
             return true;
         }
         int l = world.b(i, j, k);
 
         if ((l & 8) != 0) {
-            if (world.a(i, j - 1, k) == bh) {
+            if (world.a(i, j - 1, k) == bi) {
                 a(world, i, j - 1, k, entityplayer);
             }
             return true;
         }
-        if (world.a(i, j + 1, k) == bh) {
+        if (world.a(i, j + 1, k) == bi) {
             world.b(i, j + 1, k, (l ^ 4) + 8);
         }
         world.b(i, j, k, l ^ 4);
@@ -82,7 +82,7 @@ public class BlockDoor extends Block {
         int l = world.b(i, j, k);
 
         if ((l & 8) != 0) {
-            if (world.a(i, j - 1, k) == bh) {
+            if (world.a(i, j - 1, k) == bi) {
                 a(world, i, j - 1, k, flag);
             }
             return;
@@ -92,7 +92,7 @@ public class BlockDoor extends Block {
         if (flag1 == flag) {
             return;
         }
-        if (world.a(i, j + 1, k) == bh) {
+        if (world.a(i, j + 1, k) == bi) {
             world.b(i, j + 1, k, (l ^ 4) + 8);
         }
         world.b(i, j, k, l ^ 4);
@@ -108,30 +108,30 @@ public class BlockDoor extends Block {
         int i1 = world.b(i, j, k);
 
         if ((i1 & 8) != 0) {
-            if (world.a(i, j - 1, k) != bh) {
+            if (world.a(i, j - 1, k) != bi) {
                 world.d(i, j, k, 0);
             }
-            if (l > 0 && Block.m[l].c()) {
+            if (l > 0 && Block.n[l].c()) {
                 b(world, i, j - 1, k, l);
             }
         } else {
             boolean flag = false;
 
-            if (world.a(i, j + 1, k) != bh) {
+            if (world.a(i, j + 1, k) != bi) {
                 world.d(i, j, k, 0);
                 flag = true;
             }
             if (!world.d(i, j - 1, k)) {
                 world.d(i, j, k, 0);
                 flag = true;
-                if (world.a(i, j + 1, k) == bh) {
+                if (world.a(i, j + 1, k) == bi) {
                     world.d(i, j + 1, k, 0);
                 }
             }
             if (flag) {
                 a_(world, i, j, k, i1);
-            } else if (l > 0 && Block.m[l].c()) {
-                boolean flag1 = world.o(i, j, k) || world.o(i, j + 1, k);
+            } else if (l > 0 && Block.n[l].c()) {
+                boolean flag1 = world.n(i, j, k) || world.n(i, j + 1, k);
 
                 a(world, i, j, k, flag1);
             }
@@ -142,7 +142,7 @@ public class BlockDoor extends Block {
         if ((i & 8) != 0) {
             return 0;
         }
-        if (bs == Material.e) {
+        if (bt == Material.e) {
             return Item.az.aW;
         } else {
             return Item.at.aW;

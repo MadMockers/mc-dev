@@ -7,112 +7,110 @@ import java.util.Random;
 
 public class EntityLiving extends Entity {
 
-    public int aF;
-    public float aG;
-    public float aH;
-    public float aI;
-    public float aJ;
-    public float aK;
+    public int au;
+    public float av;
+    public float aw;
+    public float ax;
+    public float ay;
+    public float az;
+    protected float aA;
+    protected float aB;
+    protected float aC;
+    protected float aD;
+    protected boolean aE;
+    protected String aF;
+    protected boolean aG;
+    protected float aH;
+    protected String aI;
+    protected float aJ;
+    protected int aK;
     protected float aL;
-    protected float aM;
-    protected float aN;
-    protected float aO;
-    protected boolean aP;
-    protected String aQ;
-    protected boolean aR;
-    protected float aS;
-    protected String aT;
-    protected float aU;
-    protected int aV;
-    protected float aW;
-    public boolean aX;
-    public float aY;
-    public float aZ;
-    public int ba;
-    public int bb;
+    public boolean aM;
+    public float aN;
+    public float aO;
+    public int aP;
+    public int aQ;
     private int a;
-    public int bc;
-    public int bd;
-    public float be;
-    public int bf;
-    public int bg;
-    public float bh;
-    public float bi;
+    public int aR;
+    public int aS;
+    public float aT;
+    public int aU;
+    public int aV;
+    public float aW;
+    public float aX;
+    protected boolean aY;
+    public int aZ;
+    public float ba;
+    public float bb;
+    public float bc;
+    public float bd;
+    private int b;
+    private double c;
+    private double d;
+    private double e;
+    private double f;
+    private double ai;
+    float be;
+    protected int bf;
+    protected float bg;
+    protected float bh;
+    protected float bi;
     protected boolean bj;
-    public int bk;
-    public float bl;
-    public float bm;
-    public float bn;
-    public float bo;
-    protected int bp;
-    protected double bq;
-    protected double br;
-    protected double bs;
-    protected double bt;
-    protected double bu;
-    float bv;
-    protected int bw;
-    protected int bx;
-    protected float by;
-    protected float bz;
-    protected float bA;
-    protected boolean bB;
-    protected float bC;
-    protected float bD;
-    private Entity b;
-    private int c;
+    protected float bk;
+    protected float bl;
+    private Entity aj;
+    private int ak;
 
     public EntityLiving(World world) {
         super(world);
-        aF = 20;
-        aJ = 0.0F;
-        aK = 0.0F;
-        aP = true;
-        aQ = "/mob/char.png";
-        aR = true;
-        aS = 0.0F;
-        aT = null;
-        aU = 1.0F;
+        au = 20;
+        ay = 0.0F;
+        az = 0.0F;
+        aE = true;
+        aF = "/char.png";
+        aG = true;
+        aH = 0.0F;
+        aI = null;
+        aJ = 1.0F;
+        aK = 0;
+        aL = 0.0F;
+        aM = false;
+        aT = 0.0F;
+        aU = 0;
         aV = 0;
-        aW = 0.0F;
-        aX = false;
+        aY = false;
+        aZ = -1;
+        ba = (float) (Math.random() * 0.89999997615814209D + 0.10000000149011612D);
         be = 0.0F;
         bf = 0;
-        bg = 0;
         bj = false;
-        bk = -1;
-        bl = (float) (Math.random() * 0.89999997615814209D + 0.10000000149011612D);
-        bv = 0.0F;
-        bw = 0;
-        bx = 0;
-        bB = false;
-        bC = 0.0F;
-        bD = 0.7F;
-        c = 0;
-        ba = 10;
+        bk = 0.0F;
+        bl = 0.7F;
+        ak = 0;
+        aP = 10;
         i = true;
-        aI = (float) (Math.random() + 1.0D) * 0.01F;
+        ax = (float) (Math.random() + 1.0D) * 0.01F;
         a(p, q, r);
-        aG = (float) Math.random() * 12398F;
+        av = (float) Math.random() * 12398F;
         v = (float) (Math.random() * 3.1415927410125732D * 2D);
-        aH = 1.0F;
-        S = 0.5F;
+        aw = 1.0F;
+        R = 0.5F;
     }
 
-    public boolean i(Entity entity) {
+    protected boolean g(Entity entity) {
         return l.a(Vec3D.b(p, q + (double) s(), r), Vec3D.b(entity.p, entity.q + (double) entity.s(), entity.r)) == null;
     }
 
     public boolean c_() {
-        return !G;
+        return !F;
     }
 
-    public boolean v() {
-        return !G;
+    public boolean u() {
+        return !F;
     }
 
-    public float s() {
-        return J * 0.85F;
+    protected float s() {
+        return I * 0.85F;
     }
 
     public int b() {
@@ -120,100 +118,97 @@ public class EntityLiving extends Entity {
     }
 
     public void m() {
-        aY = aZ;
+        aN = aO;
         super.m();
-        if (W.nextInt(1000) < a++) {
+        if (V.nextInt(1000) < a++) {
             a = -b();
             String s1 = d();
 
             if (s1 != null) {
-                l.a(this, s1, h(), (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
+                l.a(this, s1, h(), (V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F);
             }
         }
-        if (x() && y()) {
+        if (w() && x()) {
             a(((Entity) (null)), 1);
         }
-        if (ae || l.z) {
-            Z = 0;
-        }
-        if (x() && a(Material.f)) {
-            ad--;
-            if (ad == -20) {
-                ad = 0;
+        if (w() && a(Material.f)) {
+            ac--;
+            if (ac == -20) {
+                ac = 0;
                 for (int j = 0; j < 8; j++) {
-                    float f1 = W.nextFloat() - W.nextFloat();
-                    float f2 = W.nextFloat() - W.nextFloat();
-                    float f3 = W.nextFloat() - W.nextFloat();
+                    float f1 = V.nextFloat() - V.nextFloat();
+                    float f2 = V.nextFloat() - V.nextFloat();
+                    float f3 = V.nextFloat() - V.nextFloat();
 
                     l.a("bubble", p + (double) f1, q + (double) f2, r + (double) f3, s, t, u);
                 }
 
                 a(((Entity) (null)), 2);
             }
-            Z = 0;
+            Y = 0;
         } else {
-            ad = aa;
+            ac = Z;
         }
-        bh = bi;
-        if (bg > 0) {
-            bg--;
+        aW = aX;
+        if (aV > 0) {
+            aV--;
         }
-        if (bc > 0) {
-            bc--;
+        if (aR > 0) {
+            aR--;
         }
-        if (ac > 0) {
-            ac--;
+        if (ab > 0) {
+            ab--;
         }
-        if (ba <= 0) {
-            bf++;
-            if (bf > 20) {
-                Q();
+        if (aP <= 0) {
+            aU++;
+            if (aU > 20) {
+                K();
                 l();
                 for (int k = 0; k < 20; k++) {
-                    double d1 = W.nextGaussian() * 0.02D;
-                    double d2 = W.nextGaussian() * 0.02D;
-                    double d3 = W.nextGaussian() * 0.02D;
+                    double d1 = V.nextGaussian() * 0.02D;
+                    double d2 = V.nextGaussian() * 0.02D;
+                    double d3 = V.nextGaussian() * 0.02D;
 
-                    l.a("explode", (p + (double) (W.nextFloat() * I * 2.0F)) - (double) I, q + (double) (W.nextFloat() * J), (r + (double) (W.nextFloat() * I * 2.0F)) - (double) I, d1, d2, d3);
+                    l.a("explode", (p + (double) (V.nextFloat() * H * 2.0F)) - (double) H, q + (double) (V.nextFloat() * I), (r + (double) (V.nextFloat() * H * 2.0F)) - (double) H, d1, d2, d3);
                 }
 
             }
         }
-        aO = aN;
-        aK = aJ;
+        aD = aC;
+        az = ay;
         x = v;
         y = w;
     }
 
-    public void O() {
+    public void I() {
         for (int j = 0; j < 20; j++) {
-            double d1 = W.nextGaussian() * 0.02D;
-            double d2 = W.nextGaussian() * 0.02D;
-            double d3 = W.nextGaussian() * 0.02D;
+            double d1 = V.nextGaussian() * 0.02D;
+            double d2 = V.nextGaussian() * 0.02D;
+            double d3 = V.nextGaussian() * 0.02D;
             double d4 = 10D;
 
-            l.a("explode", (p + (double) (W.nextFloat() * I * 2.0F)) - (double) I - d1 * d4, (q + (double) (W.nextFloat() * J)) - d2 * d4,
-                    (r + (double) (W.nextFloat() * I * 2.0F)) - (double) I - d3 * d4, d1, d2, d3);
+            l.a("explode", (p + (double) (V.nextFloat() * H * 2.0F)) - (double) H - d1 * d4, (q + (double) (V.nextFloat() * I)) - d2 * d4,
+                    (r + (double) (V.nextFloat() * H * 2.0F)) - (double) H - d3 * d4, d1, d2, d3);
         }
 
     }
 
-    public void z() {
-        super.z();
-        aL = aM;
-        aM = 0.0F;
+    public void y() {
+        super.y();
+        aA = aB;
+        aB = 0.0F;
     }
 
     public void b_() {
         super.b_();
-        G();
+        D();
         double d1 = p - m;
         double d2 = r - o;
         float f1 = MathHelper.a(d1 * d1 + d2 * d2);
-        float f2 = aJ;
+        float f2 = ay;
         float f3 = 0.0F;
 
-        aL = aM;
+        aA = aB;
         float f4 = 0.0F;
 
         if (f1 > 0.05F) {
@@ -221,25 +216,25 @@ public class EntityLiving extends Entity {
             f3 = f1 * 3F;
             f2 = ((float) Math.atan2(d2, d1) * 180F) / 3.141593F - 90F;
         }
-        if (aZ > 0.0F) {
+        if (aO > 0.0F) {
             f2 = v;
         }
         if (!A) {
             f4 = 0.0F;
         }
-        aM = aM + (f4 - aM) * 0.3F;
+        aB = aB + (f4 - aB) * 0.3F;
         float f5;
 
-        for (f5 = f2 - aJ; f5 < -180F; f5 += 360F) {
+        for (f5 = f2 - ay; f5 < -180F; f5 += 360F) {
             ;
         }
         for (; f5 >= 180F; f5 -= 360F) {
             ;
         }
-        aJ += f5 * 0.3F;
+        ay += f5 * 0.3F;
         float f6;
 
-        for (f6 = v - aJ; f6 < -180F; f6 += 360F) {
+        for (f6 = v - ay; f6 < -180F; f6 += 360F) {
             ;
         }
         for (; f6 >= 180F; f6 -= 360F) {
@@ -253,9 +248,9 @@ public class EntityLiving extends Entity {
         if (f6 >= 75F) {
             f6 = 75F;
         }
-        aJ = v - f6;
+        ay = v - f6;
         if (f6 * f6 > 2500F) {
-            aJ += f6 * 0.2F;
+            ay += f6 * 0.2F;
         }
         if (flag) {
             f3 *= -1F;
@@ -266,10 +261,10 @@ public class EntityLiving extends Entity {
         for (; v - x >= 180F; x += 360F) {
             ;
         }
-        for (; aJ - aK < -180F; aK -= 360F) {
+        for (; ay - az < -180F; az -= 360F) {
             ;
         }
-        for (; aJ - aK >= 180F; aK += 360F) {
+        for (; ay - az >= 180F; az += 360F) {
             ;
         }
         for (; w - y < -180F; y -= 360F) {
@@ -278,80 +273,65 @@ public class EntityLiving extends Entity {
         for (; w - y >= 180F; y += 360F) {
             ;
         }
-        aN += f3;
+        aC += f3;
     }
 
     protected void a(float f1, float f2) {
         super.a(f1, f2);
     }
 
-    public void c(int j) {
-        if (ba <= 0) {
+    public void a(int j) {
+        if (aP <= 0) {
             return;
         }
-        ba += j;
-        if (ba > 20) {
-            ba = 20;
+        aP += j;
+        if (aP > 20) {
+            aP = 20;
         }
-        ac = aF / 2;
+        ab = au / 2;
     }
 
     public boolean a(Entity entity, int j) {
         if (l.z) {
+            j = 0;
+        }
+        bf = 0;
+        if (aP <= 0) {
             return false;
         }
-        bx = 0;
-        if (ba <= 0) {
-            return false;
-        }
-        bn = 1.5F;
-        boolean flag = true;
-
-        if ((float) ac > (float) aF / 2.0F) {
-            if (j <= bw) {
+        bc = 1.5F;
+        if ((float) ab > (float) au / 2.0F) {
+            if (aQ - j >= aP) {
                 return false;
             }
-            d(j - bw);
-            bw = j;
-            flag = false;
+            aP = aQ - j;
         } else {
-            bw = j;
-            bb = ba;
-            ac = aF;
-            d(j);
-            bc = bd = 10;
+            aQ = aP;
+            ab = au;
+            aP -= j;
+            aR = aS = 10;
         }
-        be = 0.0F;
-        if (flag) {
-            l.a(this, (byte) 2);
-            u();
-            if (entity != null) {
-                double d1 = entity.p - p;
-                double d2;
+        aT = 0.0F;
+        if (entity != null) {
+            double d1 = entity.p - p;
+            double d2;
 
-                for (d2 = entity.r - r; d1 * d1 + d2 * d2 < 0.0001D; d2 = (Math.random() - Math.random()) * 0.01D) {
-                    d1 = (Math.random() - Math.random()) * 0.01D;
-                }
-
-                be = (float) ((Math.atan2(d2, d1) * 180D) / 3.1415927410125732D) - v;
-                a(entity, j, d1, d2);
-            } else {
-                be = (int) (Math.random() * 2D) * 180;
+            for (d2 = entity.r - r; d1 * d1 + d2 * d2 < 0.0001D; d2 = (Math.random() - Math.random()) * 0.01D) {
+                d1 = (Math.random() - Math.random()) * 0.01D;
             }
+
+            aT = (float) ((Math.atan2(d2, d1) * 180D) / 3.1415927410125732D) - v;
+            a(entity, j, d1, d2);
+        } else {
+            aT = (int) (Math.random() * 2D) * 180;
         }
-        if (ba <= 0) {
-            if (flag) {
-                l.a(this, f(), h(), (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
-            }
+        if (aP <= 0) {
+            l.a(this, f(), h(), (V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F);
             f(entity);
-        } else if (flag) {
-            l.a(this, e(), h(), (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
+        } else {
+            l.a(this, e(), h(), (V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F);
         }
         return true;
-    }
-
-    protected void d(int j) {
-        ba -= j;
     }
 
     protected float h() {
@@ -386,23 +366,20 @@ public class EntityLiving extends Entity {
     }
 
     public void f(Entity entity) {
-        if (aV > 0 && entity != null) {
-            entity.b(this, aV);
+        if (aK > 0 && entity != null) {
+            entity.b(this, aK);
         }
-        bj = true;
-        if (!this.l.z) {
-            int j = g();
+        aY = true;
+        int j = g();
 
-            if (j > 0) {
-                int k = W.nextInt(3);
+        if (j > 0) {
+            int k = V.nextInt(3);
 
-                for (int l = 0; l < k; l++) {
-                    b(j, 1);
-                }
-
+            for (int l = 0; l < k; l++) {
+                a(j, 1);
             }
+
         }
-        this.l.a(this, (byte) 3);
     }
 
     protected int g() {
@@ -414,10 +391,10 @@ public class EntityLiving extends Entity {
 
         if (j > 0) {
             a(((Entity) (null)), j);
-            int k = l.a(MathHelper.b(p), MathHelper.b(q - 0.20000000298023224D - (double) H), MathHelper.b(r));
+            int k = l.a(MathHelper.b(p), MathHelper.b(q - 0.20000000298023224D - (double) G), MathHelper.b(r));
 
             if (k > 0) {
-                StepSound stepsound = Block.m[k].bq;
+                StepSound stepsound = Block.n[k].br;
 
                 l.a(this, stepsound.c(), stepsound.a() * 0.5F, stepsound.b() * 0.75F);
             }
@@ -457,7 +434,7 @@ public class EntityLiving extends Entity {
                 int j = l.a(MathHelper.b(p), MathHelper.b(z.b) - 1, MathHelper.b(r));
 
                 if (j > 0) {
-                    f3 = Block.m[j].bt * 0.91F;
+                    f3 = Block.n[j].bu * 0.91F;
                 }
             }
             float f4 = 0.1627714F / (f3 * f3 * f3);
@@ -469,11 +446,11 @@ public class EntityLiving extends Entity {
                 int k = l.a(MathHelper.b(p), MathHelper.b(z.b) - 1, MathHelper.b(r));
 
                 if (k > 0) {
-                    f3 = Block.m[k].bt * 0.91F;
+                    f3 = Block.n[k].bu * 0.91F;
                 }
             }
             if (d_()) {
-                N = 0.0F;
+                M = 0.0F;
                 if (t < -0.14999999999999999D) {
                     t = -0.14999999999999999D;
                 }
@@ -487,7 +464,7 @@ public class EntityLiving extends Entity {
             s *= f3;
             u *= f3;
         }
-        bm = bn;
+        bb = bc;
         double d3 = p - m;
         double d4 = r - o;
         float f5 = MathHelper.a(d3 * d3 + d4 * d4) * 4F;
@@ -495,8 +472,8 @@ public class EntityLiving extends Entity {
         if (f5 > 1.0F) {
             f5 = 1.0F;
         }
-        bn += (f5 - bn) * 0.4F;
-        bo += bn;
+        bc += (f5 - bc) * 0.4F;
+        bd += bc;
     }
 
     public boolean d_() {
@@ -504,80 +481,80 @@ public class EntityLiving extends Entity {
         int k = MathHelper.b(z.b);
         int l = MathHelper.b(r);
 
-        return this.l.a(j, k, l) == Block.aF.bh || this.l.a(j, k + 1, l) == Block.aF.bh;
+        return this.l.a(j, k, l) == Block.aG.bi || this.l.a(j, k + 1, l) == Block.aG.bi;
     }
 
     public void a(NBTTagCompound nbttagcompound) {
-        nbttagcompound.a("Health", (short) ba);
-        nbttagcompound.a("HurtTime", (short) bc);
-        nbttagcompound.a("DeathTime", (short) bf);
-        nbttagcompound.a("AttackTime", (short) bg);
+        nbttagcompound.a("Health", (short) aP);
+        nbttagcompound.a("HurtTime", (short) aR);
+        nbttagcompound.a("DeathTime", (short) aU);
+        nbttagcompound.a("AttackTime", (short) aV);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
-        ba = nbttagcompound.c("Health");
+        aP = nbttagcompound.c("Health");
         if (!nbttagcompound.a("Health")) {
-            ba = 10;
+            aP = 10;
         }
-        bc = nbttagcompound.c("HurtTime");
-        bf = nbttagcompound.c("DeathTime");
-        bg = nbttagcompound.c("AttackTime");
+        aR = nbttagcompound.c("HurtTime");
+        aU = nbttagcompound.c("DeathTime");
+        aV = nbttagcompound.c("AttackTime");
     }
 
-    public boolean x() {
-        return !G && ba > 0;
+    public boolean w() {
+        return !F && aP > 0;
     }
 
-    public void G() {
-        if (bp > 0) {
-            double d1 = p + (bq - p) / (double) bp;
-            double d2 = q + (br - q) / (double) bp;
-            double d3 = r + (bs - r) / (double) bp;
+    public void D() {
+        if (b > 0) {
+            double d1 = p + (c - p) / (double) b;
+            double d2 = q + (d - q) / (double) b;
+            double d3 = r + (e - r) / (double) b;
             double d4;
 
-            for (d4 = bt - (double) v; d4 < -180D; d4 += 360D) {
+            for (d4 = f - (double) v; d4 < -180D; d4 += 360D) {
                 ;
             }
             for (; d4 >= 180D; d4 -= 360D) {
                 ;
             }
-            v += d4 / (double) bp;
-            w += (bu - (double) w) / (double) bp;
-            bp--;
+            v += d4 / (double) b;
+            w += (ai - (double) w) / (double) b;
+            b--;
             a(d1, d2, d3);
             b(v, w);
         }
-        if (ba <= 0) {
-            bB = false;
-            by = 0.0F;
-            bz = 0.0F;
-            bA = 0.0F;
-        } else if (!aX) {
+        if (aP <= 0) {
+            bj = false;
+            bg = 0.0F;
+            bh = 0.0F;
+            bi = 0.0F;
+        } else if (!aM) {
             c();
         }
         boolean flag = r();
         boolean flag1 = t();
 
-        if (bB) {
+        if (bj) {
             if (flag) {
                 t += 0.039999999105930328D;
             } else if (flag1) {
                 t += 0.039999999105930328D;
             } else if (A) {
-                P();
+                J();
             }
         }
-        by *= 0.98F;
-        bz *= 0.98F;
-        bA *= 0.9F;
-        c(by, bz);
+        bg *= 0.98F;
+        bh *= 0.98F;
+        bi *= 0.9F;
+        c(bg, bh);
         List list = l.b(this, z.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 
         if (list != null && list.size() > 0) {
             for (int j = 0; j < list.size(); j++) {
                 Entity entity = (Entity) list.get(j);
 
-                if (entity.v()) {
+                if (entity.u()) {
                     entity.c(this);
                 }
             }
@@ -585,12 +562,12 @@ public class EntityLiving extends Entity {
         }
     }
 
-    protected void P() {
+    protected void J() {
         t = 0.41999998688697815D;
     }
 
     protected void c() {
-        bx++;
+        bf++;
         EntityPlayer entityplayer = l.a(this, -1D);
 
         if (entityplayer != null) {
@@ -602,45 +579,45 @@ public class EntityLiving extends Entity {
             if (d4 > 16384D) {
                 l();
             }
-            if (bx > 600 && W.nextInt(800) == 0) {
+            if (bf > 600 && V.nextInt(800) == 0) {
                 if (d4 < 1024D) {
-                    bx = 0;
+                    bf = 0;
                 } else {
                     l();
                 }
             }
         }
-        by = 0.0F;
-        bz = 0.0F;
+        bg = 0.0F;
+        bh = 0.0F;
         float f1 = 8F;
 
-        if (W.nextFloat() < 0.02F) {
+        if (V.nextFloat() < 0.02F) {
             EntityPlayer entityplayer1 = l.a(this, f1);
 
             if (entityplayer1 != null) {
-                b = entityplayer1;
-                c = 10 + W.nextInt(20);
+                aj = entityplayer1;
+                ak = 10 + V.nextInt(20);
             } else {
-                bA = (W.nextFloat() - 0.5F) * 20F;
+                bi = (V.nextFloat() - 0.5F) * 20F;
             }
         }
-        if (b != null) {
-            b(b, 10F);
-            if (c-- <= 0 || b.G || b.b(this) > (double) (f1 * f1)) {
-                b = null;
+        if (aj != null) {
+            b(aj, 10F);
+            if (ak-- <= 0 || aj.F || aj.b(this) > (double) (f1 * f1)) {
+                aj = null;
             }
         } else {
-            if (W.nextFloat() < 0.05F) {
-                bA = (W.nextFloat() - 0.5F) * 20F;
+            if (V.nextFloat() < 0.05F) {
+                bi = (V.nextFloat() - 0.5F) * 20F;
             }
-            v += bA;
-            w = bC;
+            v += bi;
+            w = bk;
         }
         boolean flag = r();
         boolean flag1 = t();
 
         if (flag || flag1) {
-            bB = W.nextFloat() < 0.8F;
+            bj = V.nextFloat() < 0.8F;
         }
     }
 
@@ -660,7 +637,7 @@ public class EntityLiving extends Entity {
         float f2 = (float) ((Math.atan2(d2, d1) * 180D) / 3.1415927410125732D) - 90F;
         float f3 = (float) ((Math.atan2(d3, d4) * 180D) / 3.1415927410125732D);
 
-        w = -b(w, f3, f1);
+        w = b(w, f3, f1);
         v = b(v, f2, f1);
     }
 
@@ -682,7 +659,7 @@ public class EntityLiving extends Entity {
         return f1 + f4;
     }
 
-    public void Q() {}
+    public void K() {}
 
     public boolean a() {
         return l.a(z) && l.a(this, z).size() == 0 && !l.b(z);
@@ -692,11 +669,23 @@ public class EntityLiving extends Entity {
         a(((Entity) (null)), 4);
     }
 
-    public Vec3D C() {
-        return c(1.0F);
+    public Vec3D c(float f1) {
+        if (f1 == 1.0F) {
+            return Vec3D.b(p, q, r);
+        } else {
+            double d1 = m + (p - m) * (double) f1;
+            double d2 = n + (q - n) * (double) f1;
+            double d3 = o + (r - o) * (double) f1;
+
+            return Vec3D.b(d1, d2, d3);
+        }
     }
 
-    public Vec3D c(float f1) {
+    public Vec3D B() {
+        return d(1.0F);
+    }
+
+    public Vec3D d(float f1) {
         if (f1 == 1.0F) {
             float f2 = MathHelper.b(-v * 0.01745329F - 3.141593F);
             float f4 = MathHelper.a(-v * 0.01745329F - 3.141593F);
@@ -714,6 +703,14 @@ public class EntityLiving extends Entity {
 
             return Vec3D.b(f9 * f10, f11, f7 * f10);
         }
+    }
+
+    public MovingObjectPosition a(double d1, float f1) {
+        Vec3D vec3d = c(f1);
+        Vec3D vec3d1 = d(f1);
+        Vec3D vec3d2 = vec3d.c(vec3d1.a * d1, vec3d1.b * d1, vec3d1.c * d1);
+
+        return l.a(vec3d, vec3d2);
     }
 
     public int i() {

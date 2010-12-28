@@ -20,9 +20,9 @@ public class ItemDoor extends Item {
         Block block;
 
         if (a == Material.c) {
-            block = Block.aE;
+            block = Block.aF;
         } else {
-            block = Block.aL;
+            block = Block.aM;
         }
         if (!block.a(world, i, j, k)) {
             return false;
@@ -45,8 +45,8 @@ public class ItemDoor extends Item {
         }
         int j1 = (world.d(i - byte0, j, k - byte1) ? 1 : 0) + (world.d(i - byte0, j + 1, k - byte1) ? 1 : 0);
         int k1 = (world.d(i + byte0, j, k + byte1) ? 1 : 0) + (world.d(i + byte0, j + 1, k + byte1) ? 1 : 0);
-        boolean flag = world.a(i - byte0, j, k - byte1) == block.bh || world.a(i - byte0, j + 1, k - byte1) == block.bh;
-        boolean flag1 = world.a(i + byte0, j, k + byte1) == block.bh || world.a(i + byte0, j + 1, k + byte1) == block.bh;
+        boolean flag = world.a(i - byte0, j, k - byte1) == block.bi || world.a(i - byte0, j + 1, k - byte1) == block.bi;
+        boolean flag1 = world.a(i + byte0, j, k + byte1) == block.bi || world.a(i + byte0, j + 1, k + byte1) == block.bi;
         boolean flag2 = false;
 
         if (flag && !flag1) {
@@ -58,9 +58,9 @@ public class ItemDoor extends Item {
             i1 = i1 - 1 & 3;
             i1 += 4;
         }
-        world.d(i, j, k, block.bh);
+        world.d(i, j, k, block.bi);
         world.b(i, j, k, i1);
-        world.d(i, j + 1, k, block.bh);
+        world.d(i, j + 1, k, block.bi);
         world.b(i, j + 1, k, i1 + 8);
         itemstack.a--;
         return true;

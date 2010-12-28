@@ -6,184 +6,152 @@ public class InventoryPlayer
 
     public ItemStack a[];
     public ItemStack b[];
-    public int c;
-    private EntityPlayer e;
-    private ItemStack f;
-    public boolean d;
+    public ItemStack c[];
+    public int d;
+    private EntityPlayer f;
+    public boolean e;
 
     public InventoryPlayer(EntityPlayer entityplayer) {
-        a = new ItemStack[36];
+        a = new ItemStack[37];
         b = new ItemStack[4];
-        c = 0;
-        d = false;
-        e = entityplayer;
+        c = new ItemStack[4];
+        d = 0;
+        e = false;
+        f = entityplayer;
     }
 
-    public ItemStack e() {
-        return a[c];
+    public ItemStack b() {
+        return a[d];
     }
 
-    private int d(int k) {
-        for (int l = 0; l < a.length; l++) {
-            if (a[l] != null && a[l].c == k) {
-                return l;
+    private int c(int i) {
+        for (int j = 0; j < a.length; j++) {
+            if (a[j] != null && a[j].c == i && a[j].a < a[j].b() && a[j].a < d()) {
+                return j;
             }
         }
 
         return -1;
     }
 
-    private int e(int k) {
-        for (int l = 0; l < a.length; l++) {
-            if (a[l] != null && a[l].c == k && a[l].a < a[l].b() && a[l].a < c()) {
-                return l;
+    private int g() {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] == null) {
+                return i;
             }
         }
 
         return -1;
     }
 
-    private int j() {
-        for (int k = 0; k < a.length; k++) {
-            if (a[k] == null) {
-                return k;
-            }
-        }
+    private int a(int i, int j) {
+        int k = c(i);
 
-        return -1;
-    }
+        if (k < 0) {
+            k = g();
+        }
+        if (k < 0) {
+            return j;
+        }
+        if (a[k] == null) {
+            a[k] = new ItemStack(i, 0);
+        }
+        int l = j;
 
-    private int b(int k, int l) {
-        int i1 = e(k);
-
-        if (i1 < 0) {
-            i1 = j();
+        if (l > a[k].b() - a[k].a) {
+            l = a[k].b() - a[k].a;
         }
-        if (i1 < 0) {
-            return l;
+        if (l > d() - a[k].a) {
+            l = d() - a[k].a;
         }
-        if (a[i1] == null) {
-            a[i1] = new ItemStack(k, 0);
-        }
-        int j1 = l;
-
-        if (j1 > a[i1].b() - a[i1].a) {
-            j1 = a[i1].b() - a[i1].a;
-        }
-        if (j1 > c() - a[i1].a) {
-            j1 = c() - a[i1].a;
-        }
-        if (j1 == 0) {
-            return l;
+        if (l == 0) {
+            return j;
         } else {
-            l -= j1;
-            a[i1].a += j1;
-            a[i1].b = 5;
-            return l;
+            j -= l;
+            a[k].a += l;
+            a[k].b = 5;
+            return j;
         }
     }
 
-    public void f() {
-        for (int k = 0; k < a.length; k++) {
-            if (a[k] != null && a[k].b > 0) {
-                a[k].b--;
+    public void c() {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != null && a[i].b > 0) {
+                a[i].b--;
             }
         }
 
-    }
-
-    public boolean b(int k) {
-        int l = d(k);
-
-        if (l < 0) {
-            return false;
-        }
-        if (--a[l].a <= 0) {
-            a[l] = null;
-        }
-        return true;
     }
 
     public boolean a(ItemStack itemstack) {
         if (itemstack.d == 0) {
-            itemstack.a = b(itemstack.c, itemstack.a);
+            itemstack.a = a(itemstack.c, itemstack.a);
             if (itemstack.a == 0) {
                 return true;
             }
         }
-        int k = j();
+        int i = g();
 
-        if (k >= 0) {
-            a[k] = itemstack;
-            a[k].b = 5;
+        if (i >= 0) {
+            a[i] = itemstack;
+            a[i].b = 5;
             return true;
         } else {
             return false;
         }
     }
 
-    public ItemStack a(int k, int l) {
+    public void a(int i, ItemStack itemstack) {
         ItemStack aitemstack[] = a;
 
-        if (k >= a.length) {
-            aitemstack = b;
-            k -= a.length;
-        }
-        if (aitemstack[k] != null) {
-            if (aitemstack[k].a <= l) {
-                ItemStack itemstack = aitemstack[k];
-
-                aitemstack[k] = null;
-                return itemstack;
-            }
-            ItemStack itemstack1 = aitemstack[k].a(l);
-
-            if (aitemstack[k].a == 0) {
-                aitemstack[k] = null;
-            }
-            return itemstack1;
-        } else {
-            return null;
-        }
-    }
-
-    public void a(int k, ItemStack itemstack) {
-        ItemStack aitemstack[] = a;
-
-        if (k >= aitemstack.length) {
-            k -= aitemstack.length;
+        if (i >= aitemstack.length) {
+            i -= aitemstack.length;
             aitemstack = b;
         }
-        aitemstack[k] = itemstack;
+        if (i >= aitemstack.length) {
+            i -= aitemstack.length;
+            aitemstack = c;
+        }
+        aitemstack[i] = itemstack;
     }
 
     public float a(Block block) {
         float f1 = 1.0F;
 
-        if (a[c] != null) {
-            f1 *= a[c].a(block);
+        if (a[d] != null) {
+            f1 *= a[d].a(block);
         }
         return f1;
     }
 
     public NBTTagList a(NBTTagList nbttaglist) {
-        for (int k = 0; k < a.length; k++) {
-            if (a[k] != null) {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != null) {
                 NBTTagCompound nbttagcompound = new NBTTagCompound();
 
-                nbttagcompound.a("Slot", (byte) k);
-                a[k].a(nbttagcompound);
+                nbttagcompound.a("Slot", (byte) i);
+                a[i].a(nbttagcompound);
                 nbttaglist.a(nbttagcompound);
             }
         }
 
-        for (int l = 0; l < b.length; l++) {
-            if (b[l] != null) {
+        for (int j = 0; j < b.length; j++) {
+            if (b[j] != null) {
                 NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 
-                nbttagcompound1.a("Slot", (byte) (l + 100));
-                b[l].a(nbttagcompound1);
+                nbttagcompound1.a("Slot", (byte) (j + 100));
+                b[j].a(nbttagcompound1);
                 nbttaglist.a(nbttagcompound1);
+            }
+        }
+
+        for (int k = 0; k < c.length; k++) {
+            if (c[k] != null) {
+                NBTTagCompound nbttagcompound2 = new NBTTagCompound();
+
+                nbttagcompound2.a("Slot", (byte) (k + 80));
+                c[k].a(nbttagcompound2);
+                nbttaglist.a(nbttagcompound2);
             }
         }
 
@@ -193,19 +161,19 @@ public class InventoryPlayer
     public void b(NBTTagList nbttaglist) {
         a = new ItemStack[36];
         b = new ItemStack[4];
-        for (int k = 0; k < nbttaglist.b(); k++) {
-            NBTTagCompound nbttagcompound = (NBTTagCompound) nbttaglist.a(k);
-            int l = nbttagcompound.b("Slot") & 0xff;
-            ItemStack itemstack = new ItemStack(nbttagcompound);
+        c = new ItemStack[4];
+        for (int i = 0; i < nbttaglist.b(); i++) {
+            NBTTagCompound nbttagcompound = (NBTTagCompound) nbttaglist.a(i);
+            int j = nbttagcompound.b("Slot") & 0xff;
 
-            if (itemstack.a() == null) {
-                continue;
+            if (j >= 0 && j < a.length) {
+                a[j] = new ItemStack(nbttagcompound);
             }
-            if (l >= 0 && l < a.length) {
-                a[l] = itemstack;
+            if (j >= 80 && j < c.length + 80) {
+                c[j - 80] = new ItemStack(nbttagcompound);
             }
-            if (l >= 100 && l < b.length + 100) {
-                b[l - 100] = itemstack;
+            if (j >= 100 && j < b.length + 100) {
+                b[j - 100] = new ItemStack(nbttagcompound);
             }
         }
 
@@ -215,39 +183,29 @@ public class InventoryPlayer
         return a.length + 4;
     }
 
-    public ItemStack a(int k) {
+    public ItemStack a(int i) {
         ItemStack aitemstack[] = a;
 
-        if (k >= aitemstack.length) {
-            k -= aitemstack.length;
+        if (i >= aitemstack.length) {
+            i -= aitemstack.length;
             aitemstack = b;
         }
-        return aitemstack[k];
+        if (i >= aitemstack.length) {
+            i -= aitemstack.length;
+            aitemstack = c;
+        }
+        return aitemstack[i];
     }
 
-    public String b() {
-        return "Inventory";
-    }
-
-    public int c() {
+    public int d() {
         return 64;
     }
 
-    public int a(Entity entity) {
-        ItemStack itemstack = a(c);
-
-        if (itemstack != null) {
-            return itemstack.a(entity);
-        } else {
-            return 1;
-        }
-    }
-
     public boolean b(Block block) {
-        if (block.bs != Material.d && block.bs != Material.e && block.bs != Material.t && block.bs != Material.s) {
+        if (block.bt != Material.d && block.bt != Material.e && block.bt != Material.t && block.bt != Material.s) {
             return true;
         }
-        ItemStack itemstack = a(c);
+        ItemStack itemstack = a(d);
 
         if (itemstack != null) {
             return itemstack.b(block);
@@ -256,81 +214,61 @@ public class InventoryPlayer
         }
     }
 
-    public int g() {
+    public int e() {
+        int i = 0;
+        int j = 0;
         int k = 0;
-        int l = 0;
-        int i1 = 0;
 
-        for (int j1 = 0; j1 < b.length; j1++) {
-            if (b[j1] != null && (b[j1].a() instanceof ItemArmor)) {
-                int k1 = b[j1].c();
-                int l1 = b[j1].d;
-                int i2 = k1 - l1;
+        for (int l = 0; l < b.length; l++) {
+            if (b[l] != null && (b[l].a() instanceof ItemArmor)) {
+                int i1 = b[l].c();
+                int j1 = b[l].d;
+                int k1 = i1 - j1;
 
-                l += i2;
-                i1 += k1;
-                int j2 = ((ItemArmor) b[j1].a()).bc;
+                j += k1;
+                k += i1;
+                int l1 = ((ItemArmor) b[l].a()).bc;
 
-                k += j2;
+                i += l1;
             }
         }
 
-        if (i1 == 0) {
+        if (k == 0) {
             return 0;
         } else {
-            return ((k - 1) * l) / i1 + 1;
+            return ((i - 1) * j) / k + 1;
         }
     }
 
-    public void c(int k) {
-        for (int l = 0; l < b.length; l++) {
-            if (b[l] == null || !(b[l].a() instanceof ItemArmor)) {
+    public void b(int i) {
+        for (int j = 0; j < b.length; j++) {
+            if (b[j] == null || !(b[j].a() instanceof ItemArmor)) {
                 continue;
             }
-            b[l].b(k);
-            if (b[l].a == 0) {
-                b[l].a(e);
-                b[l] = null;
+            b[j].a(i);
+            if (b[j].a == 0) {
+                b[j].a(f);
+                b[j] = null;
             }
         }
 
     }
 
-    public void h() {
-        for (int k = 0; k < a.length; k++) {
-            if (a[k] != null) {
-                e.a(a[k], true);
-                a[k] = null;
+    public void f() {
+        for (int i = 0; i < a.length; i++) {
+            if (a[i] != null) {
+                f.a(a[i], true);
+                a[i] = null;
             }
         }
 
-        for (int l = 0; l < b.length; l++) {
-            if (b[l] != null) {
-                e.a(b[l], true);
-                b[l] = null;
+        for (int j = 0; j < b.length; j++) {
+            if (b[j] != null) {
+                f.a(b[j], true);
+                b[j] = null;
             }
         }
 
-    }
-
-    public void d() {
-        d = true;
-    }
-
-    public void b(ItemStack itemstack) {
-        f = itemstack;
-        e.a(itemstack);
-    }
-
-    public ItemStack i() {
-        return f;
-    }
-
-    public boolean a_(EntityPlayer entityplayer) {
-        if (e.G) {
-            return false;
-        }
-        return entityplayer.b(e) <= 64D;
     }
 }
 

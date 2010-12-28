@@ -14,7 +14,7 @@ public class BlockGravel extends BlockSand {
         if (random.nextInt(10) == 0) {
             return Item.an.aW;
         } else {
-            return bh;
+            return bi;
         }
     }
 }

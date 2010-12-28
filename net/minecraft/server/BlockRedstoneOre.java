@@ -37,14 +37,14 @@ public class BlockRedstoneOre extends Block {
 
     private void g(World world, int i, int j, int k) {
         h(world, i, j, k);
-        if (bh == Block.aN.bh) {
-            world.d(i, j, k, Block.aO.bh);
+        if (bi == Block.aO.bi) {
+            world.d(i, j, k, Block.aP.bi);
         }
     }
 
     public void a(World world, int i, int j, int k, Random random) {
-        if (bh == Block.aO.bh) {
-            world.d(i, j, k, Block.aN.bh);
+        if (bi == Block.aP.bi) {
+            world.d(i, j, k, Block.aO.bi);
         }
     }
 

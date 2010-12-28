@@ -8,16 +8,16 @@ import java.util.Random;
 public class EntityMinecart extends Entity
         implements IInventory {
 
-    private ItemStack ak[];
+    private ItemStack aj[];
     public int a;
     public int b;
     public int c;
-    private boolean al;
+    private boolean ak;
     public int d;
     public int e;
     public double f;
-    public double aj;
-    private static final int am[][][] = {
+    public double ai;
+    private static final int al[][][] = {
         {
             {
                 0, 0, -1
@@ -80,24 +80,24 @@ public class EntityMinecart extends Entity
             }
         }
     };
-    private int an;
+    private int am;
+    private double an;
     private double ao;
     private double ap;
     private double aq;
     private double ar;
-    private double as;
 
     public EntityMinecart(World world) {
         super(world);
-        ak = new ItemStack[36];
+        aj = new ItemStack[36];
         a = 0;
         b = 0;
         c = 1;
-        al = false;
+        ak = false;
         i = true;
         a(0.98F, 0.7F);
-        H = J / 2.0F;
-        M = false;
+        G = I / 2.0F;
+        L = false;
     }
 
     public AxisAlignedBB d(Entity entity) {
@@ -105,17 +105,17 @@ public class EntityMinecart extends Entity
     }
 
     public AxisAlignedBB q() {
-        return null;
+        return z;
     }
 
-    public boolean v() {
+    public boolean u() {
         return true;
     }
 
     public EntityMinecart(World world, double d1, double d2, double d3, 
             int i) {
         this(world);
-        a(d1, d2 + (double) H, d3);
+        a(d1, d2 + (double) G, d3);
         s = 0.0D;
         t = 0.0D;
         u = 0.0D;
@@ -126,23 +126,19 @@ public class EntityMinecart extends Entity
     }
 
     public double j() {
-        return (double) J * 0.0D - 0.30000001192092896D;
+        return (double) I * 0.0D - 0.30000001192092896D;
     }
 
     public boolean a(Entity entity, int i) {
-        if (l.z || G) {
-            return true;
-        }
         c = -c;
         b = 10;
-        u();
         a += i * 10;
         if (a > 40) {
             a(Item.ax.aW, 1, 0.0F);
             if (d == 1) {
-                a(Block.au.bh, 1, 0.0F);
+                a(Block.av.bi, 1, 0.0F);
             } else if (d == 2) {
-                a(Block.aB.bh, 1, 0.0F);
+                a(Block.aC.bi, 1, 0.0F);
             }
             l();
         }
@@ -150,7 +146,7 @@ public class EntityMinecart extends Entity
     }
 
     public boolean c_() {
-        return !G;
+        return !F;
     }
 
     public void l() {
@@ -161,15 +157,15 @@ public class EntityMinecart extends Entity
             if (itemstack == null) {
                 continue;
             }
-            float f1 = W.nextFloat() * 0.8F + 0.1F;
-            float f2 = W.nextFloat() * 0.8F + 0.1F;
-            float f3 = W.nextFloat() * 0.8F + 0.1F;
+            float f1 = V.nextFloat() * 0.8F + 0.1F;
+            float f2 = V.nextFloat() * 0.8F + 0.1F;
+            float f3 = V.nextFloat() * 0.8F + 0.1F;
 
             do {
                 if (itemstack.a <= 0) {
                     continue label0;
                 }
-                int k = W.nextInt(21) + 10;
+                int k = V.nextInt(21) + 10;
 
                 if (k > itemstack.a) {
                     k = itemstack.a;
@@ -178,9 +174,9 @@ public class EntityMinecart extends Entity
                 EntityItem entityitem = new EntityItem(l, p + (double) f1, q + (double) f2, r + (double) f3, new ItemStack(itemstack.c, k, itemstack.d));
                 float f4 = 0.05F;
 
-                entityitem.s = (float) W.nextGaussian() * f4;
-                entityitem.t = (float) W.nextGaussian() * f4 + 0.2F;
-                entityitem.u = (float) W.nextGaussian() * f4;
+                entityitem.s = (float) V.nextGaussian() * f4;
+                entityitem.t = (float) V.nextGaussian() * f4 + 0.2F;
+                entityitem.u = (float) V.nextGaussian() * f4;
                 l.a(entityitem);
             } while (true);
         }
@@ -189,28 +185,22 @@ public class EntityMinecart extends Entity
     }
 
     public void b_() {
-        if (b > 0) {
-            b--;
-        }
-        if (a > 0) {
-            a--;
-        }
-        if (l.z && an > 0) {
-            if (an > 0) {
-                double d1 = p + (ao - p) / (double) an;
-                double d2 = q + (ap - q) / (double) an;
-                double d3 = r + (aq - r) / (double) an;
+        if (l.z) {
+            if (am > 0) {
+                double d1 = p + (an - p) / (double) am;
+                double d2 = q + (ao - q) / (double) am;
+                double d3 = r + (ap - r) / (double) am;
                 double d4;
 
-                for (d4 = ar - (double) v; d4 < -180D; d4 += 360D) {
+                for (d4 = aq - (double) v; d4 < -180D; d4 += 360D) {
                     ;
                 }
                 for (; d4 >= 180D; d4 -= 360D) {
                     ;
                 }
-                v += d4 / (double) an;
-                w += (as - (double) w) / (double) an;
-                an--;
+                v += d4 / (double) am;
+                w += (ar - (double) w) / (double) am;
+                am--;
                 a(d1, d2, d3);
                 b(v, w);
             } else {
@@ -218,6 +208,12 @@ public class EntityMinecart extends Entity
                 b(v, w);
             }
             return;
+        }
+        if (b > 0) {
+            b--;
+        }
+        if (a > 0) {
+            a--;
         }
         m = p;
         n = q;
@@ -227,14 +223,14 @@ public class EntityMinecart extends Entity
         int k = MathHelper.b(q);
         int i1 = MathHelper.b(r);
 
-        if (l.a(i, k - 1, i1) == Block.aG.bh) {
+        if (l.a(i, k - 1, i1) == Block.aH.bi) {
             k--;
         }
         double d6 = 0.40000000000000002D;
         boolean flag = false;
         double d5 = 0.0078125D;
 
-        if (l.a(i, k, i1) == Block.aG.bh) {
+        if (l.a(i, k, i1) == Block.aH.bi) {
             Vec3D vec3d = g(p, q, r);
             int j1 = l.b(i, k, i1);
 
@@ -254,9 +250,9 @@ public class EntityMinecart extends Entity
             if (j1 == 5) {
                 u -= d5;
             }
-            int ai[][] = am[j1];
-            double d7 = ai[1][0] - ai[0][0];
-            double d8 = ai[1][2] - ai[0][2];
+            int ai1[][] = al[j1];
+            double d7 = ai1[1][0] - ai1[0][0];
+            double d8 = ai1[1][2] - ai1[0][2];
             double d9 = Math.sqrt(d7 * d7 + d8 * d8);
             double d10 = s * d7 + u * d8;
 
@@ -269,10 +265,10 @@ public class EntityMinecart extends Entity
             s = (d11 * d7) / d9;
             u = (d11 * d8) / d9;
             double d14 = 0.0D;
-            double d15 = (double) i + 0.5D + (double) ai[0][0] * 0.5D;
-            double d16 = (double) i1 + 0.5D + (double) ai[0][2] * 0.5D;
-            double d17 = (double) i + 0.5D + (double) ai[1][0] * 0.5D;
-            double d18 = (double) i1 + 0.5D + (double) ai[1][2] * 0.5D;
+            double d15 = (double) i + 0.5D + (double) ai1[0][0] * 0.5D;
+            double d16 = (double) i1 + 0.5D + (double) ai1[0][2] * 0.5D;
+            double d17 = (double) i + 0.5D + (double) ai1[1][0] * 0.5D;
+            double d18 = (double) i1 + 0.5D + (double) ai1[1][2] * 0.5D;
 
             d7 = d17 - d15;
             d8 = d18 - d16;
@@ -291,7 +287,7 @@ public class EntityMinecart extends Entity
             }
             p = d15 + d7 * d14;
             r = d16 + d8 * d14;
-            a(p, q + (double) H, r);
+            a(p, q + (double) G, r);
             double d20 = s;
             double d22 = u;
 
@@ -312,10 +308,10 @@ public class EntityMinecart extends Entity
                 d22 = d6;
             }
             c(d20, 0.0D, d22);
-            if (ai[0][1] != 0 && MathHelper.b(p) - i == ai[0][0] && MathHelper.b(r) - i1 == ai[0][2]) {
-                a(p, q + (double) ai[0][1], r);
-            } else if (ai[1][1] != 0 && MathHelper.b(p) - i == ai[1][0] && MathHelper.b(r) - i1 == ai[1][2]) {
-                a(p, q + (double) ai[1][1], r);
+            if (ai1[0][1] != 0 && MathHelper.b(p) - i == ai1[0][0] && MathHelper.b(r) - i1 == ai1[0][2]) {
+                a(p, q + (double) ai1[0][1], r);
+            } else if (ai1[1][1] != 0 && MathHelper.b(p) - i == ai1[1][0] && MathHelper.b(r) - i1 == ai1[1][2]) {
+                a(p, q + (double) ai1[1][1], r);
             }
             if (j != null) {
                 s *= 0.99699997901916504D;
@@ -323,19 +319,19 @@ public class EntityMinecart extends Entity
                 u *= 0.99699997901916504D;
             } else {
                 if (d == 2) {
-                    double d24 = MathHelper.a(f * f + aj * aj);
+                    double d24 = MathHelper.a(f * f + ai * ai);
 
                     if (d24 > 0.01D) {
                         flag = true;
                         f /= d24;
-                        aj /= d24;
+                        ai /= d24;
                         double d25 = 0.040000000000000001D;
 
                         s *= 0.80000001192092896D;
                         t *= 0.0D;
                         u *= 0.80000001192092896D;
                         s += f * d25;
-                        u += aj * d25;
+                        u += ai * d25;
                     } else {
                         s *= 0.89999997615814209D;
                         t *= 0.0D;
@@ -368,17 +364,17 @@ public class EntityMinecart extends Entity
                 u = d13 * (double) (l1 - i1);
             }
             if (d == 2) {
-                double d27 = MathHelper.a(f * f + aj * aj);
+                double d27 = MathHelper.a(f * f + ai * ai);
 
                 if (d27 > 0.01D && s * s + u * u > 0.001D) {
                     f /= d27;
-                    aj /= d27;
-                    if (f * s + aj * u < 0.0D) {
+                    ai /= d27;
+                    if (f * s + ai * u < 0.0D) {
                         f = 0.0D;
-                        aj = 0.0D;
+                        ai = 0.0D;
                     } else {
                         f = s;
-                        aj = u;
+                        ai = u;
                     }
                 }
             }
@@ -413,7 +409,7 @@ public class EntityMinecart extends Entity
 
         if (d28 * d28 + d29 * d29 > 0.001D) {
             v = (float) ((Math.atan2(d29, d28) * 180D) / 3.1415926535897931D);
-            if (al) {
+            if (ak) {
                 v += 180F;
             }
         }
@@ -427,7 +423,7 @@ public class EntityMinecart extends Entity
         }
         if (d30 < -170D || d30 >= 170D) {
             v += 180F;
-            al = !al;
+            ak = !ak;
         }
         b(v, w);
         List list = l.b(this, z.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
@@ -436,19 +432,19 @@ public class EntityMinecart extends Entity
             for (int i2 = 0; i2 < list.size(); i2++) {
                 Entity entity = (Entity) list.get(i2);
 
-                if (entity != j && entity.v() && (entity instanceof EntityMinecart)) {
+                if (entity != j && entity.u() && (entity instanceof EntityMinecart)) {
                     entity.c(this);
                 }
             }
 
         }
-        if (j != null && j.G) {
+        if (j != null && j.F) {
             j = null;
         }
-        if (flag && W.nextInt(4) == 0) {
+        if (flag && V.nextInt(4) == 0) {
             e--;
             if (e < 0) {
-                f = aj = 0.0D;
+                f = ai = 0.0D;
             }
             l.a("largesmoke", p, q + 0.80000000000000004D, r, 0.0D, 0.0D, 0.0D);
         }
@@ -459,24 +455,24 @@ public class EntityMinecart extends Entity
         int k = MathHelper.b(d2);
         int i1 = MathHelper.b(d3);
 
-        if (l.a(i, k - 1, i1) == Block.aG.bh) {
+        if (l.a(i, k - 1, i1) == Block.aH.bi) {
             k--;
         }
-        if (l.a(i, k, i1) == Block.aG.bh) {
+        if (l.a(i, k, i1) == Block.aH.bi) {
             int j1 = l.b(i, k, i1);
 
             d2 = k;
             if (j1 >= 2 && j1 <= 5) {
                 d2 = k + 1;
             }
-            int ai[][] = am[j1];
+            int ai1[][] = al[j1];
             double d4 = 0.0D;
-            double d5 = (double) i + 0.5D + (double) ai[0][0] * 0.5D;
-            double d6 = (double) k + 0.5D + (double) ai[0][1] * 0.5D;
-            double d7 = (double) i1 + 0.5D + (double) ai[0][2] * 0.5D;
-            double d8 = (double) i + 0.5D + (double) ai[1][0] * 0.5D;
-            double d9 = (double) k + 0.5D + (double) ai[1][1] * 0.5D;
-            double d10 = (double) i1 + 0.5D + (double) ai[1][2] * 0.5D;
+            double d5 = (double) i + 0.5D + (double) ai1[0][0] * 0.5D;
+            double d6 = (double) k + 0.5D + (double) ai1[0][1] * 0.5D;
+            double d7 = (double) i1 + 0.5D + (double) ai1[0][2] * 0.5D;
+            double d8 = (double) i + 0.5D + (double) ai1[1][0] * 0.5D;
+            double d9 = (double) k + 0.5D + (double) ai1[1][1] * 0.5D;
+            double d10 = (double) i1 + 0.5D + (double) ai1[1][2] * 0.5D;
             double d11 = d8 - d5;
             double d12 = (d9 - d6) * 2D;
             double d13 = d10 - d7;
@@ -513,17 +509,17 @@ public class EntityMinecart extends Entity
         nbttagcompound.a("Type", d);
         if (d == 2) {
             nbttagcompound.a("PushX", f);
-            nbttagcompound.a("PushZ", aj);
+            nbttagcompound.a("PushZ", ai);
             nbttagcompound.a("Fuel", (short) e);
         } else if (d == 1) {
             NBTTagList nbttaglist = new NBTTagList();
 
-            for (int i = 0; i < ak.length; i++) {
-                if (ak[i] != null) {
+            for (int i = 0; i < aj.length; i++) {
+                if (aj[i] != null) {
                     NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 
                     nbttagcompound1.a("Slot", (byte) i);
-                    ak[i].a(nbttagcompound1);
+                    aj[i].a(nbttagcompound1);
                     nbttaglist.a(nbttagcompound1);
                 }
             }
@@ -536,18 +532,18 @@ public class EntityMinecart extends Entity
         d = nbttagcompound.d("Type");
         if (d == 2) {
             f = nbttagcompound.g("PushX");
-            aj = nbttagcompound.g("PushZ");
+            ai = nbttagcompound.g("PushZ");
             e = nbttagcompound.c("Fuel");
         } else if (d == 1) {
             NBTTagList nbttaglist = nbttagcompound.k("Items");
 
-            ak = new ItemStack[a()];
+            aj = new ItemStack[a()];
             for (int i = 0; i < nbttaglist.b(); i++) {
                 NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.a(i);
                 int k = nbttagcompound1.b("Slot") & 0xff;
 
-                if (k >= 0 && k < ak.length) {
-                    ak[k] = new ItemStack(nbttagcompound1);
+                if (k >= 0 && k < aj.length) {
+                    aj[k] = new ItemStack(nbttagcompound1);
                 }
             }
 
@@ -555,9 +551,6 @@ public class EntityMinecart extends Entity
     }
 
     public void c(Entity entity) {
-        if (l.z) {
-            return;
-        }
         if (entity == j) {
             return;
         }
@@ -581,8 +574,8 @@ public class EntityMinecart extends Entity
             d2 *= d4;
             d1 *= 0.10000000149011612D;
             d2 *= 0.10000000149011612D;
-            d1 *= 1.0F - U;
-            d2 *= 1.0F - U;
+            d1 *= 1.0F - T;
+            d2 *= 1.0F - T;
             d1 *= 0.5D;
             d2 *= 0.5D;
             if (entity instanceof EntityMinecart) {
@@ -623,77 +616,7 @@ public class EntityMinecart extends Entity
     }
 
     public ItemStack a(int i) {
-        return ak[i];
-    }
-
-    public ItemStack a(int i, int k) {
-        if (ak[i] != null) {
-            if (ak[i].a <= k) {
-                ItemStack itemstack = ak[i];
-
-                ak[i] = null;
-                return itemstack;
-            }
-            ItemStack itemstack1 = ak[i].a(k);
-
-            if (ak[i].a == 0) {
-                ak[i] = null;
-            }
-            return itemstack1;
-        } else {
-            return null;
-        }
-    }
-
-    public void a(int i, ItemStack itemstack) {
-        ak[i] = itemstack;
-        if (itemstack != null && itemstack.a > c()) {
-            itemstack.a = c();
-        }
-    }
-
-    public String b() {
-        return "Minecart";
-    }
-
-    public int c() {
-        return 64;
-    }
-
-    public void d() {}
-
-    public boolean a(EntityPlayer entityplayer) {
-        if (d == 0) {
-            if (j != null && (j instanceof EntityPlayer) && j != entityplayer) {
-                return true;
-            }
-            if (!l.z) {
-                entityplayer.e(this);
-            }
-        } else if (d == 1) {
-            if (!l.z) {
-                entityplayer.a(this);
-            }
-        } else if (d == 2) {
-            ItemStack itemstack = entityplayer.an.e();
-
-            if (itemstack != null && itemstack.c == Item.k.aW) {
-                if (--itemstack.a == 0) {
-                    entityplayer.an.a(entityplayer.an.c, null);
-                }
-                e += 1200;
-            }
-            f = p - entityplayer.p;
-            aj = r - entityplayer.r;
-        }
-        return true;
-    }
-
-    public boolean a_(EntityPlayer entityplayer) {
-        if (G) {
-            return false;
-        }
-        return entityplayer.b(this) <= 64D;
+        return aj[i];
     }
 
 }

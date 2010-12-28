@@ -8,7 +8,7 @@ public class EntityCow extends EntityAnimals {
     public EntityCow(World world) {
         super(world);
         a = false;
-        aQ = "/mob/cow.png";
+        aF = "/mob/cow.png";
         a(0.9F, 1.3F);
     }
 
@@ -38,17 +38,6 @@ public class EntityCow extends EntityAnimals {
 
     protected int g() {
         return Item.aD.aW;
-    }
-
-    public boolean a(EntityPlayer entityplayer) {
-        ItemStack itemstack = entityplayer.an.e();
-
-        if (itemstack != null && itemstack.c == Item.au.aW) {
-            entityplayer.an.a(entityplayer.an.c, new ItemStack(Item.aE));
-            return true;
-        } else {
-            return false;
-        }
     }
 }
 

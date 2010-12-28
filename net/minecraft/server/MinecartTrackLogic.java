@@ -76,23 +76,23 @@ class MinecartTrackLogic {
     }
 
     private boolean a(int i, int j, int k) {
-        if (b.a(i, j, k) == a.bh) {
+        if (b.a(i, j, k) == a.bi) {
             return true;
         }
-        if (b.a(i, j + 1, k) == a.bh) {
+        if (b.a(i, j + 1, k) == a.bi) {
             return true;
         }
-        return b.a(i, j - 1, k) == a.bh;
+        return b.a(i, j - 1, k) == a.bi;
     }
 
     private MinecartTrackLogic a(ChunkPosition chunkposition) {
-        if (b.a(chunkposition.a, chunkposition.b, chunkposition.c) == a.bh) {
+        if (b.a(chunkposition.a, chunkposition.b, chunkposition.c) == a.bi) {
             return new MinecartTrackLogic(a, b, chunkposition.a, chunkposition.b, chunkposition.c);
         }
-        if (b.a(chunkposition.a, chunkposition.b + 1, chunkposition.c) == a.bh) {
+        if (b.a(chunkposition.a, chunkposition.b + 1, chunkposition.c) == a.bi) {
             return new MinecartTrackLogic(a, b, chunkposition.a, chunkposition.b + 1, chunkposition.c);
         }
-        if (b.a(chunkposition.a, chunkposition.b - 1, chunkposition.c) == a.bh) {
+        if (b.a(chunkposition.a, chunkposition.b - 1, chunkposition.c) == a.bi) {
             return new MinecartTrackLogic(a, b, chunkposition.a, chunkposition.b - 1, chunkposition.c);
         } else {
             return null;
@@ -183,18 +183,18 @@ class MinecartTrackLogic {
             byte0 = 9;
         }
         if (byte0 == 0) {
-            if (b.a(c, d + 1, e - 1) == a.bh) {
+            if (b.a(c, d + 1, e - 1) == a.bi) {
                 byte0 = 4;
             }
-            if (b.a(c, d + 1, e + 1) == a.bh) {
+            if (b.a(c, d + 1, e + 1) == a.bi) {
                 byte0 = 5;
             }
         }
         if (byte0 == 1) {
-            if (b.a(c + 1, d + 1, e) == a.bh) {
+            if (b.a(c + 1, d + 1, e) == a.bi) {
                 byte0 = 2;
             }
-            if (b.a(c - 1, d + 1, e) == a.bh) {
+            if (b.a(c - 1, d + 1, e) == a.bi) {
                 byte0 = 3;
             }
         }
@@ -276,18 +276,18 @@ class MinecartTrackLogic {
             }
         }
         if (i == 0) {
-            if (b.a(c, d + 1, e - 1) == a.bh) {
+            if (b.a(c, d + 1, e - 1) == a.bi) {
                 i = 4;
             }
-            if (b.a(c, d + 1, e + 1) == a.bh) {
+            if (b.a(c, d + 1, e + 1) == a.bi) {
                 i = 5;
             }
         }
         if (i == 1) {
-            if (b.a(c + 1, d + 1, e) == a.bh) {
+            if (b.a(c + 1, d + 1, e) == a.bi) {
                 i = 2;
             }
-            if (b.a(c - 1, d + 1, e) == a.bh) {
+            if (b.a(c - 1, d + 1, e) == a.bi) {
                 i = 3;
             }
         }

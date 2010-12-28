@@ -8,13 +8,13 @@ public class EntitySpider extends EntityMobs {
 
     public EntitySpider(World world) {
         super(world);
-        aQ = "/mob/spider.png";
+        aF = "/mob/spider.png";
         a(1.4F, 0.9F);
-        bD = 0.8F;
+        bl = 0.8F;
     }
 
     public double j() {
-        return (double) J * 0.75D - 0.5D;
+        return (double) I * 0.75D - 0.5D;
     }
 
     protected Entity k() {
@@ -44,11 +44,11 @@ public class EntitySpider extends EntityMobs {
     protected void a(Entity entity, float f1) {
         float f2 = b(1.0F);
 
-        if (f2 > 0.5F && W.nextInt(100) == 0) {
-            aj = null;
+        if (f2 > 0.5F && V.nextInt(100) == 0) {
+            f = null;
             return;
         }
-        if (f1 > 2.0F && f1 < 6F && W.nextInt(10) == 0) {
+        if (f1 > 2.0F && f1 < 6F && V.nextInt(10) == 0) {
             if (A) {
                 double d1 = entity.p - p;
                 double d2 = entity.r - r;

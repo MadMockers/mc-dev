@@ -30,15 +30,5 @@ public class TileEntitySign extends TileEntity {
         }
 
     }
-
-    public Packet f() {
-        String as[] = new String[4];
-
-        for (int i = 0; i < 4; i++) {
-            as[i] = e[i];
-        }
-
-        return new Packet130(b, c, d, as);
-    }
 }
 

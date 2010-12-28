@@ -12,7 +12,7 @@ public class BlockSign extends BlockContainer {
     protected BlockSign(int i, Class class1, boolean flag) {
         super(i, Material.c);
         b = flag;
-        bg = 4;
+        bh = 4;
         a = class1;
         float f = 0.25F;
         float f1 = 1.0F;

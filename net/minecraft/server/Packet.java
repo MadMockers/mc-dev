@@ -10,11 +10,10 @@ public abstract class Packet {
 
     private static Map a = new HashMap();
     private static Map b = new HashMap();
-    public final long j = System.currentTimeMillis();
-    public boolean k;
+    public boolean j;
 
     public Packet() {
-        k = false;
+        j = false;
     }
 
     static void a(int i, Class class1) {
@@ -95,9 +94,6 @@ public abstract class Packet {
         a(4, net.minecraft.server.Packet4UpdateTime.class);
         a(5, net.minecraft.server.Packet5PlayerInventory.class);
         a(6, net.minecraft.server.Packet6SpawnPosition.class);
-        a(7, net.minecraft.server.Packet7.class);
-        a(8, net.minecraft.server.Packet8.class);
-        a(9, net.minecraft.server.Packet9.class);
         a(10, net.minecraft.server.Packet10Flying.class);
         a(11, net.minecraft.server.Packet11PlayerPosition.class);
         a(12, net.minecraft.server.Packet12PlayerLook.class);
@@ -105,34 +101,24 @@ public abstract class Packet {
         a(14, net.minecraft.server.Packet14BlockDig.class);
         a(15, net.minecraft.server.Packet15Place.class);
         a(16, net.minecraft.server.Packet16BlockItemSwitch.class);
+        a(17, net.minecraft.server.Packet17AddToInventory.class);
         a(18, net.minecraft.server.Packet18ArmAnimation.class);
         a(20, net.minecraft.server.Packet20NamedEntitySpawn.class);
         a(21, net.minecraft.server.Packet21PickupSpawn.class);
         a(22, net.minecraft.server.Packet22Collect.class);
         a(23, net.minecraft.server.Packet23VehicleSpawn.class);
         a(24, net.minecraft.server.Packet24MobSpawn.class);
-        a(28, net.minecraft.server.Packet28.class);
         a(29, net.minecraft.server.Packet29DestroyEntity.class);
         a(30, net.minecraft.server.Packet30Entity.class);
         a(31, net.minecraft.server.Packet31RelEntityMove.class);
         a(32, net.minecraft.server.Packet32EntityLook.class);
         a(33, net.minecraft.server.Packet33RelEntityMoveLook.class);
         a(34, net.minecraft.server.Packet34EntityTeleport.class);
-        a(38, net.minecraft.server.Packet38.class);
-        a(39, net.minecraft.server.Packet39.class);
         a(50, net.minecraft.server.Packet50PreChunk.class);
         a(51, net.minecraft.server.Packet51MapChunk.class);
         a(52, net.minecraft.server.Packet52MultiBlockChange.class);
         a(53, net.minecraft.server.Packet53BlockChange.class);
-        a(60, net.minecraft.server.Packet60.class);
-        a(100, net.minecraft.server.Packet100.class);
-        a(101, net.minecraft.server.Packet101.class);
-        a(102, net.minecraft.server.Packet102.class);
-        a(103, net.minecraft.server.Packet103.class);
-        a(104, net.minecraft.server.Packet104.class);
-        a(105, net.minecraft.server.Packet105.class);
-        a(106, net.minecraft.server.Packet106.class);
-        a(130, net.minecraft.server.Packet130.class);
+        a(59, net.minecraft.server.Packet59ComplexEntity.class);
         a(255, net.minecraft.server.Packet255KickDisconnect.class);
     }
 }

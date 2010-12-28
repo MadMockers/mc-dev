@@ -11,26 +11,25 @@ public class EntityFallingSand extends Entity {
         b = 0;
     }
 
-    public EntityFallingSand(World world, double d, double d1, double d2, 
-            int i) {
+    public EntityFallingSand(World world, float f, float f1, float f2, int i) {
         super(world);
         b = 0;
         a = i;
         this.i = true;
         a(0.98F, 0.98F);
-        H = J / 2.0F;
-        a(d, d1, d2);
+        G = I / 2.0F;
+        a(f, f1, f2);
         s = 0.0D;
         t = 0.0D;
         u = 0.0D;
-        M = false;
-        m = d;
-        n = d1;
-        o = d2;
+        L = false;
+        m = f;
+        n = f1;
+        o = f2;
     }
 
     public boolean c_() {
-        return !G;
+        return !F;
     }
 
     public void b_() {
@@ -60,10 +59,10 @@ public class EntityFallingSand extends Entity {
             t *= -0.5D;
             l();
             if (!l.a(a, i, j, k, true) || !l.d(i, j, k, a)) {
-                b(a, 1);
+                a(a, 1);
             }
         } else if (b > 100) {
-            b(a, 1);
+            a(a, 1);
             l();
         }
     }

@@ -11,7 +11,7 @@ public class ItemAxe extends ItemTool {
 
     static {
         bb = (new Block[] {
-            Block.x, Block.an, Block.J, Block.au
+            Block.y, Block.ao, Block.K, Block.av
         });
     }
 }

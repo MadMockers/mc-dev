@@ -32,16 +32,8 @@ public class ItemTool extends Item {
         return 1.0F;
     }
 
-    public void a(ItemStack itemstack, EntityLiving entityliving) {
-        itemstack.b(2);
-    }
-
     public void a(ItemStack itemstack, int i, int j, int k, int l) {
-        itemstack.b(1);
-    }
-
-    public int a(Entity entity) {
-        return bd;
+        itemstack.a(1);
     }
 }
 

@@ -10,7 +10,7 @@ public class WorldGenClay extends WorldGenerator {
     private int b;
 
     public WorldGenClay(int i) {
-        a = Block.aW.bh;
+        a = Block.aX.bi;
         b = i;
     }
 
@@ -46,7 +46,7 @@ public class WorldGenClay extends WorldGenerator {
                         }
                         int l1 = world.a(i1, j1, k1);
 
-                        if (l1 == Block.E.bh) {
+                        if (l1 == Block.F.bi) {
                             world.a(i1, j1, k1, a);
                         }
                     }

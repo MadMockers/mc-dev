@@ -11,21 +11,21 @@ public class EntitySheep extends EntityAnimals {
     public EntitySheep(World world) {
         super(world);
         a = false;
-        aQ = "/mob/sheep.png";
+        aF = "/mob/sheep.png";
         a(0.9F, 1.3F);
     }
 
     public boolean a(Entity entity, int i) {
-        if (!l.z && !a && (entity instanceof EntityLiving)) {
+        if (!a && (entity instanceof EntityLiving)) {
             a = true;
-            int j = 1 + W.nextInt(3);
+            int j = 1 + V.nextInt(3);
 
             for (int k = 0; k < j; k++) {
-                EntityItem entityitem = a(Block.ab.bh, 1, 1.0F);
+                EntityItem entityitem = a(Block.ac.bi, 1, 1.0F);
 
-                entityitem.t += W.nextFloat() * 0.05F;
-                entityitem.s += (W.nextFloat() - W.nextFloat()) * 0.1F;
-                entityitem.u += (W.nextFloat() - W.nextFloat()) * 0.1F;
+                entityitem.t += V.nextFloat() * 0.05F;
+                entityitem.s += (V.nextFloat() - V.nextFloat()) * 0.1F;
+                entityitem.u += (V.nextFloat() - V.nextFloat()) * 0.1F;
             }
 
         }

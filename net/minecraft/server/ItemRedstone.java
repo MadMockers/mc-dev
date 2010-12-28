@@ -26,12 +26,12 @@ public class ItemRedstone extends Item {
         if (l == 5) {
             i++;
         }
-        if (!world.e(i, j, k)) {
+        if (world.a(i, j, k) != 0) {
             return false;
         }
-        if (Block.av.a(world, i, j, k)) {
+        if (Block.aw.a(world, i, j, k)) {
             itemstack.a--;
-            world.d(i, j, k, Block.av.bh);
+            world.d(i, j, k, Block.aw.bi);
         }
         return true;
     }

@@ -13,11 +13,11 @@ public class BlockSand extends Block {
     }
 
     public void e(World world, int i, int j, int k) {
-        world.h(i, j, k, bh);
+        world.h(i, j, k, bi);
     }
 
     public void b(World world, int i, int j, int k, int l) {
-        world.h(i, j, k, bh);
+        world.h(i, j, k, bi);
     }
 
     public void a(World world, int i, int j, int k, Random random) {
@@ -30,10 +30,10 @@ public class BlockSand extends Block {
         int j1 = k;
 
         if (g(world, l, i1 - 1, j1) && i1 >= 0) {
-            EntityFallingSand entityfallingsand = new EntityFallingSand(world, (float) i + 0.5F, (float) j + 0.5F, (float) k + 0.5F, bh);
+            EntityFallingSand entityfallingsand = new EntityFallingSand(world, (float) i + 0.5F, (float) j + 0.5F, (float) k + 0.5F, bi);
 
             if (a) {
-                while (!entityfallingsand.G) { 
+                while (!entityfallingsand.F) { 
                     entityfallingsand.b_();
                 }
             } else {
@@ -52,10 +52,10 @@ public class BlockSand extends Block {
         if (l == 0) {
             return true;
         }
-        if (l == Block.ar.bh) {
+        if (l == Block.as.bi) {
             return true;
         }
-        Material material = Block.m[l].bs;
+        Material material = Block.n[l].bt;
 
         if (material == Material.f) {
             return true;

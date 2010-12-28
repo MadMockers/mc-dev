@@ -42,23 +42,23 @@ public class BlockRedstoneTorch extends BlockTorch {
             super.e(world, i, j, k);
         }
         if (a) {
-            world.g(i, j - 1, k, bh);
-            world.g(i, j + 1, k, bh);
-            world.g(i - 1, j, k, bh);
-            world.g(i + 1, j, k, bh);
-            world.g(i, j, k - 1, bh);
-            world.g(i, j, k + 1, bh);
+            world.g(i, j - 1, k, bi);
+            world.g(i, j + 1, k, bi);
+            world.g(i - 1, j, k, bi);
+            world.g(i + 1, j, k, bi);
+            world.g(i, j, k - 1, bi);
+            world.g(i, j, k + 1, bi);
         }
     }
 
     public void b(World world, int i, int j, int k) {
         if (a) {
-            world.g(i, j - 1, k, bh);
-            world.g(i, j + 1, k, bh);
-            world.g(i - 1, j, k, bh);
-            world.g(i + 1, j, k, bh);
-            world.g(i, j, k - 1, bh);
-            world.g(i, j, k + 1, bh);
+            world.g(i, j - 1, k, bi);
+            world.g(i, j + 1, k, bi);
+            world.g(i - 1, j, k, bi);
+            world.g(i + 1, j, k, bi);
+            world.g(i, j, k - 1, bi);
+            world.g(i, j, k + 1, bi);
         }
     }
 
@@ -109,7 +109,7 @@ public class BlockRedstoneTorch extends BlockTorch {
         }
         if (a) {
             if (flag) {
-                world.b(i, j, k, Block.aP.bh, world.b(i, j, k));
+                world.b(i, j, k, Block.aQ.bi, world.b(i, j, k));
                 if (a(world, i, j, k, true)) {
                     world.a((float) i + 0.5F, (float) j + 0.5F, (float) k + 0.5F, "random.fizz", 0.5F, 2.6F + (world.l.nextFloat() - world.l.nextFloat()) * 0.8F);
                     for (int l = 0; l < 5; l++) {
@@ -123,13 +123,13 @@ public class BlockRedstoneTorch extends BlockTorch {
                 }
             }
         } else if (!flag && !a(world, i, j, k, false)) {
-            world.b(i, j, k, Block.aQ.bh, world.b(i, j, k));
+            world.b(i, j, k, Block.aR.bi, world.b(i, j, k));
         }
     }
 
     public void b(World world, int i, int j, int k, int l) {
         super.b(world, i, j, k, l);
-        world.h(i, j, k, bh);
+        world.h(i, j, k, bi);
     }
 
     public boolean d(World world, int i, int j, int k, int l) {
@@ -141,7 +141,7 @@ public class BlockRedstoneTorch extends BlockTorch {
     }
 
     public int a(int i, Random random) {
-        return Block.aQ.bh;
+        return Block.aR.bi;
     }
 
     public boolean c() {

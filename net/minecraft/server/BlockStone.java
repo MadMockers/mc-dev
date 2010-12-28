@@ -11,7 +11,7 @@ public class BlockStone extends Block {
     }
 
     public int a(int i, Random random) {
-        return Block.w.bh;
+        return Block.x.bi;
     }
 }
 

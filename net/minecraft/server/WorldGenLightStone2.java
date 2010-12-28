@@ -9,13 +9,13 @@ public class WorldGenLightStone2 extends WorldGenerator {
     public WorldGenLightStone2() {}
 
     public boolean a(World world, Random random, int i, int j, int k) {
-        if (!world.e(i, j, k)) {
+        if (world.a(i, j, k) != 0) {
             return false;
         }
-        if (world.a(i, j + 1, k) != Block.bb.bh) {
+        if (world.a(i, j + 1, k) != Block.bc.bi) {
             return false;
         }
-        world.d(i, j, k, Block.bd.bh);
+        world.d(i, j, k, Block.be.bi);
         for (int l = 0; l < 1500; l++) {
             int i1 = (i + random.nextInt(8)) - random.nextInt(8);
             int j1 = j - random.nextInt(12);
@@ -47,13 +47,13 @@ public class WorldGenLightStone2 extends WorldGenerator {
                 if (i2 == 5) {
                     j2 = world.a(i1, j1, k1 + 1);
                 }
-                if (j2 == Block.bd.bh) {
+                if (j2 == Block.be.bi) {
                     l1++;
                 }
             }
 
             if (l1 == 1) {
-                world.d(i1, j1, k1, Block.bd.bh);
+                world.d(i1, j1, k1, Block.be.bi);
             }
         }
 

@@ -64,15 +64,15 @@ public class ServerConfigurationManager {
     }
 
     public void c(EntityPlayerMP entityplayermp) {
+        d.b(entityplayermp);
         l.a(entityplayermp);
         c.e.d(entityplayermp);
         b.remove(entityplayermp);
-        d.b(entityplayermp);
     }
 
     public EntityPlayerMP a(NetLoginHandler netloginhandler, String s, String s1) {
         if (f.contains(s.trim().toLowerCase())) {
-            netloginhandler.a("You are banned from this server!");
+            netloginhandler.b("You are banned from this server!");
             return null;
         }
         String s2 = netloginhandler.b.b().toString();
@@ -80,45 +80,22 @@ public class ServerConfigurationManager {
         s2 = s2.substring(s2.indexOf("/") + 1);
         s2 = s2.substring(0, s2.indexOf(":"));
         if (g.contains(s2)) {
-            netloginhandler.a("Your IP address is banned from this server!");
+            netloginhandler.b("Your IP address is banned from this server!");
             return null;
         }
         if (b.size() >= e) {
-            netloginhandler.a("The server is full!");
+            netloginhandler.b("The server is full!");
             return null;
         }
         for (int i1 = 0; i1 < b.size(); i1++) {
             EntityPlayerMP entityplayermp = (EntityPlayerMP) b.get(i1);
 
-            if (entityplayermp.aw.equalsIgnoreCase(s)) {
-                entityplayermp.a.a("You logged in from another location");
+            if (entityplayermp.ar.equalsIgnoreCase(s)) {
+                entityplayermp.a.c("You logged in from another location");
             }
         }
 
         return new EntityPlayerMP(c, c.e, s, new ItemInWorldManager(c.e));
-    }
-
-    public EntityPlayerMP d(EntityPlayerMP entityplayermp) {
-        c.k.a(entityplayermp);
-        c.k.b(entityplayermp);
-        d.b(entityplayermp);
-        b.remove(entityplayermp);
-        c.e.e(entityplayermp);
-        EntityPlayerMP entityplayermp1 = new EntityPlayerMP(c, c.e, entityplayermp.aw, new ItemInWorldManager(c.e));
-
-        entityplayermp1.g = entityplayermp.g;
-        entityplayermp1.a = entityplayermp.a;
-        c.e.A.d((int) entityplayermp1.p >> 4, (int) entityplayermp1.r >> 4);
-        for (; c.e.a(entityplayermp1, entityplayermp1.z).size() != 0; entityplayermp1.a(entityplayermp1.p, entityplayermp1.q + 1.0D, entityplayermp1.r)) {
-            ;
-        }
-        entityplayermp1.a.b(new Packet9());
-        entityplayermp1.a.a(entityplayermp1.p, entityplayermp1.q, entityplayermp1.r, entityplayermp1.v, entityplayermp1.w);
-        d.a(entityplayermp1);
-        c.e.a(entityplayermp1);
-        b.add(entityplayermp1);
-        entityplayermp1.k();
-        return entityplayermp1;
     }
 
     public void b() {
@@ -145,7 +122,7 @@ public class ServerConfigurationManager {
             if (i1 > 0) {
                 s = (new StringBuilder()).append(s).append(", ").toString();
             }
-            s = (new StringBuilder()).append(s).append(((EntityPlayerMP) b.get(i1)).aw).toString();
+            s = (new StringBuilder()).append(s).append(((EntityPlayerMP) b.get(i1)).ar).toString();
         }
 
         return s;
@@ -279,7 +256,7 @@ public class ServerConfigurationManager {
         for (int i1 = 0; i1 < b.size(); i1++) {
             EntityPlayerMP entityplayermp = (EntityPlayerMP) b.get(i1);
 
-            if (entityplayermp.aw.equalsIgnoreCase(s)) {
+            if (entityplayermp.ar.equalsIgnoreCase(s)) {
                 return entityplayermp;
             }
         }
@@ -295,27 +272,13 @@ public class ServerConfigurationManager {
         }
     }
 
-    public void a(double d1, double d2, double d3, double d4, Packet packet) {
-        for (int i1 = 0; i1 < b.size(); i1++) {
-            EntityPlayerMP entityplayermp = (EntityPlayerMP) b.get(i1);
-            double d5 = d1 - entityplayermp.p;
-            double d6 = d2 - entityplayermp.q;
-            double d7 = d3 - entityplayermp.r;
-
-            if (d5 * d5 + d6 * d6 + d7 * d7 < d4 * d4) {
-                entityplayermp.a.b(packet);
-            }
-        }
-
-    }
-
     public void i(String s) {
         Packet3Chat packet3chat = new Packet3Chat(s);
 
         for (int i1 = 0; i1 < b.size(); i1++) {
             EntityPlayerMP entityplayermp = (EntityPlayerMP) b.get(i1);
 
-            if (g(entityplayermp.aw)) {
+            if (g(entityplayermp.ar)) {
                 entityplayermp.a.b(packet3chat);
             }
         }
@@ -333,14 +296,16 @@ public class ServerConfigurationManager {
         }
     }
 
+    public void a(int i1, int j1, int k1, TileEntity tileentity) {
+        d.a(new Packet59ComplexEntity(i1, j1, k1, tileentity), i1, j1, k1);
+    }
+
     public void d() {
         for (int i1 = 0; i1 < b.size(); i1++) {
             l.a((EntityPlayerMP) b.get(i1));
         }
 
     }
-
-    public void a(int i1, int j1, int k1, TileEntity tileentity) {}
 
 }
 

@@ -16,7 +16,7 @@ public class BlockPortal extends BlockBreakable {
     }
 
     public void a(IBlockAccess iblockaccess, int i, int j, int k) {
-        if (iblockaccess.a(i - 1, j, k) == bh || iblockaccess.a(i + 1, j, k) == bh) {
+        if (iblockaccess.a(i - 1, j, k) == bi || iblockaccess.a(i + 1, j, k) == bi) {
             float f = 0.5F;
             float f2 = 0.125F;
 
@@ -37,10 +37,10 @@ public class BlockPortal extends BlockBreakable {
         int l = 0;
         int i1 = 0;
 
-        if (world.a(i - 1, j, k) == Block.ap.bh || world.a(i + 1, j, k) == Block.ap.bh) {
+        if (world.a(i - 1, j, k) == Block.aq.bi || world.a(i + 1, j, k) == Block.aq.bi) {
             l = 1;
         }
-        if (world.a(i, j, k - 1) == Block.ap.bh || world.a(i, j, k + 1) == Block.ap.bh) {
+        if (world.a(i, j, k - 1) == Block.aq.bi || world.a(i, j, k + 1) == Block.aq.bi) {
             i1 = 1;
         }
         System.out.println((new StringBuilder()).append(l).append(", ").append(i1).toString());
@@ -61,12 +61,12 @@ public class BlockPortal extends BlockBreakable {
                 int j2 = world.a(i + l * j1, j + l1, k + i1 * j1);
 
                 if (flag) {
-                    if (j2 != Block.ap.bh) {
+                    if (j2 != Block.aq.bi) {
                         return false;
                     }
                     continue;
                 }
-                if (j2 != 0 && j2 != Block.ar.bh) {
+                if (j2 != 0 && j2 != Block.as.bi) {
                     return false;
                 }
             }
@@ -76,7 +76,7 @@ public class BlockPortal extends BlockBreakable {
         world.i = true;
         for (int k1 = 0; k1 < 2; k1++) {
             for (int i2 = 0; i2 < 3; i2++) {
-                world.d(i + l * k1, j + i2, k + i1 * k1, Block.be.bh);
+                world.d(i + l * k1, j + i2, k + i1 * k1, Block.bf.bi);
             }
 
         }
@@ -89,36 +89,36 @@ public class BlockPortal extends BlockBreakable {
         int i1 = 0;
         int j1 = 1;
 
-        if (world.a(i - 1, j, k) == bh || world.a(i + 1, j, k) == bh) {
+        if (world.a(i - 1, j, k) == bi || world.a(i + 1, j, k) == bi) {
             i1 = 1;
             j1 = 0;
         }
         int k1;
 
-        for (k1 = j; world.a(i, k1 - 1, k) == bh; k1--) {
+        for (k1 = j; world.a(i, k1 - 1, k) == bi; k1--) {
             ;
         }
-        if (world.a(i, k1 - 1, k) != Block.ap.bh) {
+        if (world.a(i, k1 - 1, k) != Block.aq.bi) {
             world.d(i, j, k, 0);
             return;
         }
         int l1;
 
-        for (l1 = 1; l1 < 4 && world.a(i, k1 + l1, k) == bh; l1++) {
+        for (l1 = 1; l1 < 4 && world.a(i, k1 + l1, k) == bi; l1++) {
             ;
         }
-        if (l1 != 3 || world.a(i, k1 + l1, k) != Block.ap.bh) {
+        if (l1 != 3 || world.a(i, k1 + l1, k) != Block.aq.bi) {
             world.d(i, j, k, 0);
             return;
         }
-        boolean flag = world.a(i - 1, j, k) == bh || world.a(i + 1, j, k) == bh;
-        boolean flag1 = world.a(i, j, k - 1) == bh || world.a(i, j, k + 1) == bh;
+        boolean flag = world.a(i - 1, j, k) == bi || world.a(i + 1, j, k) == bi;
+        boolean flag1 = world.a(i, j, k - 1) == bi || world.a(i, j, k + 1) == bi;
 
         if (flag && flag1) {
             world.d(i, j, k, 0);
             return;
         }
-        if ((world.a(i + i1, j, k + j1) != Block.ap.bh || world.a(i - i1, j, k - j1) != bh) && (world.a(i - i1, j, k - j1) != Block.ap.bh || world.a(i + i1, j, k + j1) != bh)) {
+        if ((world.a(i + i1, j, k + j1) != Block.aq.bi || world.a(i - i1, j, k - j1) != bi) && (world.a(i - i1, j, k - j1) != Block.aq.bi || world.a(i + i1, j, k + j1) != bi)) {
             world.d(i, j, k, 0);
             return;
         } else {
@@ -138,7 +138,7 @@ public class BlockPortal extends BlockBreakable {
         if (world.z) {
             return;
         } else {
-            entity.D();
+            entity.C();
             return;
         }
     }

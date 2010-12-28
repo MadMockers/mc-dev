@@ -11,36 +11,36 @@ public class BlockChest extends BlockContainer {
     protected BlockChest(int i) {
         super(i, Material.c);
         a = new Random();
-        bg = 26;
+        bh = 26;
     }
 
     public int a(int i) {
         if (i == 1) {
-            return bg - 1;
+            return bh - 1;
         }
         if (i == 0) {
-            return bg - 1;
+            return bh - 1;
         }
         if (i == 3) {
-            return bg + 1;
+            return bh + 1;
         } else {
-            return bg;
+            return bh;
         }
     }
 
     public boolean a(World world, int i, int j, int k) {
         int l = 0;
 
-        if (world.a(i - 1, j, k) == bh) {
+        if (world.a(i - 1, j, k) == bi) {
             l++;
         }
-        if (world.a(i + 1, j, k) == bh) {
+        if (world.a(i + 1, j, k) == bi) {
             l++;
         }
-        if (world.a(i, j, k - 1) == bh) {
+        if (world.a(i, j, k - 1) == bi) {
             l++;
         }
-        if (world.a(i, j, k + 1) == bh) {
+        if (world.a(i, j, k + 1) == bi) {
             l++;
         }
         if (l > 1) {
@@ -59,23 +59,23 @@ public class BlockChest extends BlockContainer {
     }
 
     private boolean g(World world, int i, int j, int k) {
-        if (world.a(i, j, k) != bh) {
+        if (world.a(i, j, k) != bi) {
             return false;
         }
-        if (world.a(i - 1, j, k) == bh) {
+        if (world.a(i - 1, j, k) == bi) {
             return true;
         }
-        if (world.a(i + 1, j, k) == bh) {
+        if (world.a(i + 1, j, k) == bi) {
             return true;
         }
-        if (world.a(i, j, k - 1) == bh) {
+        if (world.a(i, j, k - 1) == bi) {
             return true;
         }
-        return world.a(i, j, k + 1) == bh;
+        return world.a(i, j, k + 1) == bi;
     }
 
     public void b(World world, int i, int j, int k) {
-        TileEntityChest tileentitychest = (TileEntityChest) world.l(i, j, k);
+        TileEntityChest tileentitychest = (TileEntityChest) world.k(i, j, k);
 
         label0:
         for (int l = 0; l < tileentitychest.a(); l++) {
@@ -112,41 +112,37 @@ public class BlockChest extends BlockContainer {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        Object obj = (TileEntityChest) world.l(i, j, k);
+        Object obj = (TileEntityChest) world.k(i, j, k);
 
         if (world.d(i, j + 1, k)) {
             return true;
         }
-        if (world.a(i - 1, j, k) == bh && world.d(i - 1, j + 1, k)) {
+        if (world.a(i - 1, j, k) == bi && world.d(i - 1, j + 1, k)) {
             return true;
         }
-        if (world.a(i + 1, j, k) == bh && world.d(i + 1, j + 1, k)) {
+        if (world.a(i + 1, j, k) == bi && world.d(i + 1, j + 1, k)) {
             return true;
         }
-        if (world.a(i, j, k - 1) == bh && world.d(i, j + 1, k - 1)) {
+        if (world.a(i, j, k - 1) == bi && world.d(i, j + 1, k - 1)) {
             return true;
         }
-        if (world.a(i, j, k + 1) == bh && world.d(i, j + 1, k + 1)) {
+        if (world.a(i, j, k + 1) == bi && world.d(i, j + 1, k + 1)) {
             return true;
         }
-        if (world.a(i - 1, j, k) == bh) {
-            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.l(i - 1, j, k), ((IInventory) (obj)));
+        if (world.a(i - 1, j, k) == bi) {
+            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.k(i - 1, j, k), ((IInventory) (obj)));
         }
-        if (world.a(i + 1, j, k) == bh) {
-            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.l(i + 1, j, k));
+        if (world.a(i + 1, j, k) == bi) {
+            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.k(i + 1, j, k));
         }
-        if (world.a(i, j, k - 1) == bh) {
-            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.l(i, j, k - 1), ((IInventory) (obj)));
+        if (world.a(i, j, k - 1) == bi) {
+            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.k(i, j, k - 1), ((IInventory) (obj)));
         }
-        if (world.a(i, j, k + 1) == bh) {
-            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.l(i, j, k + 1));
+        if (world.a(i, j, k + 1) == bi) {
+            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.k(i, j, k + 1));
         }
-        if (world.z) {
-            return true;
-        } else {
-            entityplayer.a(((IInventory) (obj)));
-            return true;
-        }
+        entityplayer.a(((IInventory) (obj)));
+        return true;
     }
 
     protected TileEntity a_() {

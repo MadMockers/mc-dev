@@ -24,9 +24,9 @@ public class ItemInWorldManager {
         int i1 = b.a(j, k, l);
 
         if (i1 > 0 && d == 0.0F) {
-            Block.m[i1].b(b, j, k, l, a);
+            Block.n[i1].b(b, j, k, l, a);
         }
-        if (i1 > 0 && Block.m[i1].a(a) >= 1.0F) {
+        if (i1 > 0 && Block.n[i1].a(a) >= 1.0F) {
             c(j, k, l);
         }
     }
@@ -47,7 +47,7 @@ public class ItemInWorldManager {
             if (j1 == 0) {
                 return;
             }
-            Block block = Block.m[j1];
+            Block block = Block.n[j1];
 
             d += block.a(a);
             f++;
@@ -69,7 +69,7 @@ public class ItemInWorldManager {
     }
 
     public boolean b(int j, int k, int l) {
-        Block block = Block.m[b.a(j, k, l)];
+        Block block = Block.n[b.a(j, k, l)];
         int i1 = b.b(j, k, l);
         boolean flag = b.d(j, k, l, 0);
 
@@ -83,40 +83,25 @@ public class ItemInWorldManager {
         int i1 = b.a(j, k, l);
         int j1 = b.b(j, k, l);
         boolean flag = b(j, k, l);
-        ItemStack itemstack = a.M();
+        ItemStack itemstack = a.G();
 
         if (itemstack != null) {
             itemstack.a(i1, j, k, l);
             if (itemstack.a == 0) {
                 itemstack.a(a);
-                a.N();
+                a.H();
             }
         }
-        if (flag && a.b(Block.m[i1])) {
-            Block.m[i1].g(b, j, k, l, j1);
+        if (flag && a.b(Block.n[i1])) {
+            Block.n[i1].a_(b, j, k, l, j1);
         }
         return flag;
-    }
-
-    public boolean a(EntityPlayer entityplayer, World world, ItemStack itemstack) {
-        int j = itemstack.a;
-        ItemStack itemstack1 = itemstack.a(world, entityplayer);
-
-        if (itemstack1 != itemstack || itemstack1 != null && itemstack1.a != j) {
-            entityplayer.an.a[entityplayer.an.c] = itemstack1;
-            if (itemstack1.a == 0) {
-                entityplayer.an.a[entityplayer.an.c] = null;
-            }
-            return true;
-        } else {
-            return false;
-        }
     }
 
     public boolean a(EntityPlayer entityplayer, World world, ItemStack itemstack, int j, int k, int l, int i1) {
         int j1 = world.a(j, k, l);
 
-        if (j1 > 0 && Block.m[j1].a(world, j, k, l, entityplayer)) {
+        if (j1 > 0 && Block.n[j1].a(world, j, k, l, entityplayer)) {
             return true;
         }
         if (itemstack == null) {

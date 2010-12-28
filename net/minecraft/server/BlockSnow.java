@@ -23,7 +23,7 @@ public class BlockSnow extends Block {
     public boolean a(World world, int i, int j, int k) {
         int l = world.a(i, j - 1, k);
 
-        if (l == 0 || !Block.m[l].a()) {
+        if (l == 0 || !Block.n[l].a()) {
             return false;
         } else {
             return world.c(i, j - 1, k).c();
@@ -42,19 +42,6 @@ public class BlockSnow extends Block {
         } else {
             return true;
         }
-    }
-
-    public void g(World world, int i, int j, int k, int l) {
-        int i1 = Item.aB.aW;
-        float f = 0.7F;
-        double d1 = (double) (world.l.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-        double d2 = (double) (world.l.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-        double d3 = (double) (world.l.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
-        EntityItem entityitem = new EntityItem(world, (double) i + d1, (double) j + d2, (double) k + d3, new ItemStack(i1));
-
-        entityitem.c = 10;
-        world.a(entityitem);
-        world.d(i, j, k, 0);
     }
 
     public int a(int i, Random random) {
@@ -78,7 +65,7 @@ public class BlockSnow extends Block {
         if (l == 1) {
             return true;
         }
-        if (material == bs) {
+        if (material == bt) {
             return false;
         } else {
             return super.a(iblockaccess, i, j, k, l);
