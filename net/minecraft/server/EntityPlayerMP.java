@@ -16,6 +16,7 @@ public class EntityPlayerMP extends EntityPlayer {
     public double ak;
     public boolean al;
     private int bv;
+    private int bw;
 
     public EntityPlayerMP(MinecraftServer minecraftserver, World world, String s1, ItemInWorldManager iteminworldmanager) {
         super(world);
@@ -23,6 +24,7 @@ public class EntityPlayerMP extends EntityPlayer {
         aj = new HashSet();
         al = false;
         bv = 0xfa0a1f01;
+        bw = 60;
         int i = world.m;
         int j = world.o;
         int l = world.n;
@@ -41,13 +43,18 @@ public class EntityPlayerMP extends EntityPlayer {
         H = 0.0F;
     }
 
-    public void b_() {}
+    public void b_() {
+        bw--;
+    }
 
     public void f(Entity entity) {
         am.f();
     }
 
     public boolean a(Entity entity, int i) {
+        if (bw > 0) {
+            return false;
+        }
         if (!b.n) {
             if (entity instanceof EntityPlayer) {
                 return false;
