@@ -157,7 +157,7 @@ public class World
     public int a(int i1, int j1) {
         int k1;
 
-        for (k1 = 63; a(i1, k1 + 1, j1) != 0; k1++) {
+        for (k1 = 63; !e(i1, k1 + 1, j1); k1++) {
             ;
         }
         return a(i1, k1, j1);
@@ -239,6 +239,10 @@ public class World
     }
 
     public boolean e(int i1, int j1, int k1) {
+        return a(i1, j1, k1) == 0;
+    }
+
+    public boolean f(int i1, int j1, int k1) {
         if (j1 < 0 || j1 >= 128) {
             return false;
         } else {
@@ -383,7 +387,7 @@ public class World
         }
     }
 
-    public void f(int i1, int j1, int k1) {
+    public void g(int i1, int j1, int k1) {
         for (int l1 = 0; l1 < r.size(); l1++) {
             ((IWorldAccess) r.get(l1)).a(i1, j1, k1);
         }
@@ -391,7 +395,7 @@ public class World
     }
 
     protected void e(int i1, int j1, int k1, int l1) {
-        f(i1, j1, k1);
+        g(i1, j1, k1);
         g(i1, j1, k1, l1);
     }
 
@@ -432,11 +436,11 @@ public class World
         }
     }
 
-    public boolean g(int i1, int j1, int k1) {
+    public boolean h(int i1, int j1, int k1) {
         return c(i1 >> 4, k1 >> 4).c(i1 & 0xf, j1, k1 & 0xf);
     }
 
-    public int h(int i1, int j1, int k1) {
+    public int i(int i1, int j1, int k1) {
         return a(i1, j1, k1, true);
     }
 
@@ -488,7 +492,7 @@ public class World
         }
     }
 
-    public boolean i(int i1, int j1, int k1) {
+    public boolean j(int i1, int j1, int k1) {
         if (i1 < 0xfe17b800 || k1 < 0xfe17b800 || i1 >= 0x1e84800 || k1 > 0x1e84800) {
             return false;
         }
@@ -526,11 +530,11 @@ public class World
         if (q.e && enumskyblock == EnumSkyBlock.a) {
             return;
         }
-        if (!e(i1, j1, k1)) {
+        if (!f(i1, j1, k1)) {
             return;
         }
         if (enumskyblock == EnumSkyBlock.a) {
-            if (i(i1, j1, k1)) {
+            if (j(i1, j1, k1)) {
                 l1 = 15;
             }
         } else if (enumskyblock == EnumSkyBlock.b) {
@@ -583,8 +587,8 @@ public class World
 
     }
 
-    public float j(int i1, int j1, int k1) {
-        return q.f[h(i1, j1, k1)];
+    public float k(int i1, int j1, int k1) {
+        return q.f[i(i1, j1, k1)];
     }
 
     public boolean b() {
@@ -820,7 +824,7 @@ public class World
 
         for (int k2 = i1; k2 < j1; k2++) {
             for (int l2 = i2; l2 < j2; l2++) {
-                if (!e(k2, 64, l2)) {
+                if (!f(k2, 64, l2)) {
                     continue;
                 }
                 for (int i3 = k1 - 1; i3 < l1; i3++) {
@@ -962,7 +966,7 @@ public class World
         for (int l1 = 0; l1 < c.size(); l1++) {
             TileEntity tileentity = (TileEntity) c.get(l1);
 
-            tileentity.b();
+            tileentity.e();
         }
 
     }
@@ -1246,7 +1250,7 @@ public class World
         return (float) i1 / (float) j1;
     }
 
-    public TileEntity k(int i1, int j1, int k1) {
+    public TileEntity l(int i1, int j1, int k1) {
         Chunk chunk = c(i1 >> 4, k1 >> 4);
 
         if (chunk != null) {
@@ -1264,7 +1268,7 @@ public class World
         }
     }
 
-    public void l(int i1, int j1, int k1) {
+    public void m(int i1, int j1, int k1) {
         Chunk chunk = c(i1 >> 4, k1 >> 4);
 
         if (chunk != null) {
@@ -1323,7 +1327,7 @@ public class World
         int k2 = (l1 + i1) / 2;
         int l2 = (j2 + k1) / 2;
 
-        if (!e(k2, 64, l2)) {
+        if (!f(k2, 64, l2)) {
             y--;
             return;
         }
@@ -1416,7 +1420,7 @@ public class World
 
                 j3 += k1;
                 l3 += i2;
-                if (l4 == 0 && h(j3, j4, l3) <= l.nextInt(8) && a(EnumSkyBlock.a, j3, j4, l3) <= 0) {
+                if (l4 == 0 && i(j3, j4, l3) <= l.nextInt(8) && a(EnumSkyBlock.a, j3, j4, l3) <= 0) {
                     EntityPlayer entityplayer1 = a((double) j3 + 0.5D, (double) j4 + 0.5D, (double) l3 + 0.5D, 8D);
 
                     if (entityplayer1 != null && entityplayer1.d((double) j3 + 0.5D, (double) j4 + 0.5D, (double) l3 + 0.5D) > 4D) {
@@ -1515,7 +1519,7 @@ public class World
     }
 
     public void b(int i1, int j1, int k1, TileEntity tileentity) {
-        if (e(i1, j1, k1)) {
+        if (f(i1, j1, k1)) {
             b(i1, k1).f();
         }
         for (int l1 = 0; l1 < r.size(); l1++) {
@@ -1610,7 +1614,7 @@ public class World
         }
     }
 
-    public boolean m(int i1, int j1, int k1) {
+    public boolean n(int i1, int j1, int k1) {
         if (i(i1, j1 - 1, k1, 0)) {
             return true;
         }
@@ -1631,7 +1635,7 @@ public class World
 
     public boolean j(int i1, int j1, int k1, int l1) {
         if (d(i1, j1, k1)) {
-            return m(i1, j1, k1);
+            return n(i1, j1, k1);
         }
         int i2 = a(i1, j1, k1);
 
@@ -1642,7 +1646,7 @@ public class World
         }
     }
 
-    public boolean n(int i1, int j1, int k1) {
+    public boolean o(int i1, int j1, int k1) {
         if (j(i1, j1 - 1, k1, 0)) {
             return true;
         }

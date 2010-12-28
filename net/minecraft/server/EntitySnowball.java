@@ -214,7 +214,7 @@ public class EntitySnowball extends Entity {
     }
 
     public void b(EntityPlayer entityplayer) {
-        if (f && aj == entityplayer && a <= 0 && entityplayer.am.a(new ItemStack(Item.j.aW, 1))) {
+        if (f && aj == entityplayer && a <= 0 && entityplayer.an.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);
             l();

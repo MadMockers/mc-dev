@@ -13,63 +13,66 @@ public class NetworkManager {
     public static final Object a = new Object();
     public static int b;
     public static int c;
-    private Object d;
-    private Socket e;
-    private final SocketAddress f;
-    private DataInputStream g;
-    private DataOutputStream h;
-    private boolean i;
-    private List j;
+    private Object e;
+    private Socket f;
+    private final SocketAddress g;
+    private DataInputStream h;
+    private DataOutputStream i;
+    private boolean j;
     private List k;
     private List l;
-    private NetHandler m;
-    private boolean n;
-    private Thread o;
+    private List m;
+    private NetHandler n;
+    private boolean o;
     private Thread p;
-    private boolean q;
-    private String r;
-    private int s;
-    private int t;
+    private Thread q;
+    private boolean r;
+    private String s;
+    private Object t[];
     private int u;
+    private int v;
+    public int d;
+    private int w;
 
     public NetworkManager(Socket socket, String s1, NetHandler nethandler) {
-        d = new Object();
-        i = true;
-        j = Collections.synchronizedList(new ArrayList());
+        e = new Object();
+        j = true;
         k = Collections.synchronizedList(new ArrayList());
         l = Collections.synchronizedList(new ArrayList());
-        n = false;
-        q = false;
-        r = "";
-        s = 0;
-        t = 0;
+        m = Collections.synchronizedList(new ArrayList());
+        o = false;
+        r = false;
+        s = "";
         u = 0;
-        e = socket;
-        f = socket.getRemoteSocketAddress();
-        m = nethandler;
+        v = 0;
+        d = 0;
+        w = 0;
+        f = socket;
+        g = socket.getRemoteSocketAddress();
+        n = nethandler;
         socket.setTrafficClass(24);
-        g = new DataInputStream(socket.getInputStream());
-        h = new DataOutputStream(socket.getOutputStream());
-        p = new NetworkReaderThread(this, (new StringBuilder()).append(s1).append(" read thread").toString());
-        o = new NetworkWriterThread(this, (new StringBuilder()).append(s1).append(" write thread").toString());
+        h = new DataInputStream(socket.getInputStream());
+        i = new DataOutputStream(socket.getOutputStream());
+        q = new NetworkReaderThread(this, (new StringBuilder()).append(s1).append(" read thread").toString());
+        p = new NetworkWriterThread(this, (new StringBuilder()).append(s1).append(" write thread").toString());
+        q.start();
         p.start();
-        o.start();
     }
 
     public void a(NetHandler nethandler) {
-        m = nethandler;
+        n = nethandler;
     }
 
     public void a(Packet packet) {
-        if (n) {
+        if (o) {
             return;
         }
-        synchronized (d) {
-            t += packet.a() + 1;
-            if (packet.j) {
-                l.add(packet);
+        synchronized (e) {
+            v += packet.a() + 1;
+            if (packet.k) {
+                m.add(packet);
             } else {
-                k.add(packet);
+                l.add(packet);
             }
         }
     }
@@ -78,32 +81,32 @@ public class NetworkManager {
         try {
             boolean flag = true;
 
-            if (!k.isEmpty()) {
+            if (!l.isEmpty() && (d == 0 || System.currentTimeMillis() - ((Packet) l.get(0)).j >= (long) d)) {
                 flag = false;
                 Packet packet;
 
-                synchronized (d) {
-                    packet = (Packet) k.remove(0);
-                    t -= packet.a() + 1;
+                synchronized (e) {
+                    packet = (Packet) l.remove(0);
+                    v -= packet.a() + 1;
                 }
-                Packet.a(packet, h);
+                Packet.a(packet, i);
             }
-            if ((flag || u-- <= 0) && !l.isEmpty()) {
+            if ((flag || w-- <= 0) && !m.isEmpty() && (d == 0 || System.currentTimeMillis() - ((Packet) m.get(0)).j >= (long) d)) {
                 flag = false;
                 Packet packet1;
 
-                synchronized (d) {
-                    packet1 = (Packet) l.remove(0);
-                    t -= packet1.a() + 1;
+                synchronized (e) {
+                    packet1 = (Packet) m.remove(0);
+                    v -= packet1.a() + 1;
                 }
-                Packet.a(packet1, h);
-                u = 50;
+                Packet.a(packet1, i);
+                w = 50;
             }
             if (flag) {
                 Thread.sleep(10L);
             }
         } catch (InterruptedException interruptedexception) {} catch (Exception exception) {
-            if (!q) {
+            if (!r) {
                 a(exception);
             }
         }
@@ -111,15 +114,15 @@ public class NetworkManager {
 
     private void f() {
         try {
-            Packet packet = Packet.b(g);
+            Packet packet = Packet.b(h);
 
             if (packet != null) {
-                j.add(packet);
+                k.add(packet);
             } else {
-                a("End of stream");
+                a("disconnect.endOfStream", new Object[0]);
             }
         } catch (Exception exception) {
-            if (!q) {
+            if (!r) {
                 a(exception);
             }
         }
@@ -127,73 +130,76 @@ public class NetworkManager {
 
     private void a(Exception exception) {
         exception.printStackTrace();
-        a((new StringBuilder()).append("Internal exception: ").append(exception.toString()).toString());
+        a("disconnect.genericReason", new Object[] {
+            (new StringBuilder()).append("Internal exception: ").append(exception.toString()).toString()
+        });
     }
 
-    public void a(String s1) {
-        if (!i) {
+    public void a(String s1, Object aobj[]) {
+        if (!j) {
             return;
         }
-        q = true;
-        r = s1;
+        r = true;
+        s = s1;
+        t = aobj;
         (new NetworkMasterThread(this)).start();
-        i = false;
-        try {
-            g.close();
-            g = null;
-        } catch (Throwable throwable) {}
+        j = false;
         try {
             h.close();
             h = null;
+        } catch (Throwable throwable) {}
+        try {
+            i.close();
+            i = null;
         } catch (Throwable throwable1) {}
         try {
-            e.close();
-            e = null;
+            f.close();
+            f = null;
         } catch (Throwable throwable2) {}
     }
 
     public void a() {
-        if (t > 0x100000) {
-            a("Send buffer overflow");
+        if (v > 0x100000) {
+            a("disconnect.overflow", new Object[0]);
         }
-        if (j.isEmpty()) {
-            if (s++ == 1200) {
-                a("Timed out");
+        if (k.isEmpty()) {
+            if (u++ == 1200) {
+                a("disconnect.timeout", new Object[0]);
             }
         } else {
-            s = 0;
+            u = 0;
         }
         Packet packet;
 
-        for (int i1 = 100; !j.isEmpty() && i1-- >= 0; packet.a(m)) {
-            packet = (Packet) j.remove(0);
+        for (int i1 = 100; !k.isEmpty() && i1-- >= 0; packet.a(n)) {
+            packet = (Packet) k.remove(0);
         }
 
-        if (q && j.isEmpty()) {
-            m.a(r);
+        if (r && k.isEmpty()) {
+            n.a(s, t);
         }
     }
 
     public SocketAddress b() {
-        return f;
+        return g;
     }
 
     public void c() {
-        n = true;
-        p.interrupt();
+        o = true;
+        q.interrupt();
         (new ThreadMonitorConnection(this)).start();
     }
 
     public int d() {
-        return l.size();
+        return m.size();
     }
 
     static boolean a(NetworkManager networkmanager) {
-        return networkmanager.i;
+        return networkmanager.j;
     }
 
     static boolean b(NetworkManager networkmanager) {
-        return networkmanager.n;
+        return networkmanager.o;
     }
 
     static void c(NetworkManager networkmanager) {
@@ -205,11 +211,11 @@ public class NetworkManager {
     }
 
     static Thread e(NetworkManager networkmanager) {
-        return networkmanager.p;
+        return networkmanager.q;
     }
 
     static Thread f(NetworkManager networkmanager) {
-        return networkmanager.o;
+        return networkmanager.p;
     }
 
 }

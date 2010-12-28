@@ -75,7 +75,7 @@ public class BlockChest extends BlockContainer {
     }
 
     public void b(World world, int i, int j, int k) {
-        TileEntityChest tileentitychest = (TileEntityChest) world.k(i, j, k);
+        TileEntityChest tileentitychest = (TileEntityChest) world.l(i, j, k);
 
         label0:
         for (int l = 0; l < tileentitychest.a(); l++) {
@@ -112,7 +112,7 @@ public class BlockChest extends BlockContainer {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        Object obj = (TileEntityChest) world.k(i, j, k);
+        Object obj = (TileEntityChest) world.l(i, j, k);
 
         if (world.d(i, j + 1, k)) {
             return true;
@@ -130,19 +130,23 @@ public class BlockChest extends BlockContainer {
             return true;
         }
         if (world.a(i - 1, j, k) == bh) {
-            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.k(i - 1, j, k), ((IInventory) (obj)));
+            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.l(i - 1, j, k), ((IInventory) (obj)));
         }
         if (world.a(i + 1, j, k) == bh) {
-            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.k(i + 1, j, k));
+            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.l(i + 1, j, k));
         }
         if (world.a(i, j, k - 1) == bh) {
-            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.k(i, j, k - 1), ((IInventory) (obj)));
+            obj = new InventoryLargeChest("Large chest", (TileEntityChest) world.l(i, j, k - 1), ((IInventory) (obj)));
         }
         if (world.a(i, j, k + 1) == bh) {
-            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.k(i, j, k + 1));
+            obj = new InventoryLargeChest("Large chest", ((IInventory) (obj)), (TileEntityChest) world.l(i, j, k + 1));
         }
-        entityplayer.a(((IInventory) (obj)));
-        return true;
+        if (world.z) {
+            return true;
+        } else {
+            entityplayer.a(((IInventory) (obj)));
+            return true;
+        }
     }
 
     protected TileEntity a_() {

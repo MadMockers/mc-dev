@@ -18,12 +18,45 @@ public class InventoryLargeChest
         return b.a() + c.a();
     }
 
+    public String b() {
+        return a;
+    }
+
     public ItemStack a(int i) {
         if (i >= b.a()) {
             return c.a(i - b.a());
         } else {
             return b.a(i);
         }
+    }
+
+    public ItemStack a(int i, int j) {
+        if (i >= b.a()) {
+            return c.a(i - b.a(), j);
+        } else {
+            return b.a(i, j);
+        }
+    }
+
+    public void a(int i, ItemStack itemstack) {
+        if (i >= b.a()) {
+            c.a(i - b.a(), itemstack);
+        } else {
+            b.a(i, itemstack);
+        }
+    }
+
+    public int c() {
+        return b.c();
+    }
+
+    public void d() {
+        b.d();
+        c.d();
+    }
+
+    public boolean a_(EntityPlayer entityplayer) {
+        return b.a_(entityplayer) && c.a_(entityplayer);
     }
 }
 

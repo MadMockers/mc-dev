@@ -49,5 +49,9 @@ public class ItemBlock extends Item {
         }
         return true;
     }
+
+    public String a() {
+        return Block.m[a].e();
+    }
 }
 

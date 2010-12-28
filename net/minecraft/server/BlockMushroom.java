@@ -15,7 +15,7 @@ public class BlockMushroom extends BlockFlower {
     }
 
     public boolean f(World world, int i, int j, int k) {
-        return world.h(i, j, k) <= 13 && b(world.a(i, j - 1, k));
+        return world.i(i, j, k) <= 13 && b(world.a(i, j - 1, k));
     }
 }
 

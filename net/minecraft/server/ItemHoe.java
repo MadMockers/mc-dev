@@ -24,7 +24,7 @@ public class ItemHoe extends Item {
                 return true;
             }
             world.d(i, j, k, block.bh);
-            itemstack.a(1);
+            itemstack.b(1);
             if (world.l.nextInt(8) == 0 && i1 == Block.u.bh) {
                 int j1 = 1;
 

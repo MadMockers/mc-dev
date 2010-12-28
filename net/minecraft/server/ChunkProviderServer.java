@@ -162,7 +162,7 @@ public class ChunkProviderServer
             }
             b(chunk);
             chunk.o = false;
-            if (++i == 32 && !flag) {
+            if (++i == 24 && !flag) {
                 return false;
             }
         }

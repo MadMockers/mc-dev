@@ -512,7 +512,7 @@ public abstract class Entity {
         int j1 = MathHelper.b((q - (double) H) + d1);
         int k1 = MathHelper.b(r);
 
-        return l.j(i1, j1, k1);
+        return l.k(i1, j1, k1);
     }
 
     public void b(double d1, double d2, double d3, float f1, 
@@ -719,7 +719,7 @@ public abstract class Entity {
         return nbttaglist;
     }
 
-    public EntityItem a(int i1, int j1) {
+    public EntityItem b(int i1, int j1) {
         return a(i1, j1, 0.0F);
     }
 
@@ -841,6 +841,10 @@ public abstract class Entity {
     }
 
     public void D() {}
+
+    public int[] E() {
+        return null;
+    }
 
 }
 

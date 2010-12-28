@@ -12,16 +12,16 @@ public class EntityMobs extends EntityCreature
     public EntityMobs(World world) {
         super(world);
         f = 2;
-        aR = 20;
+        ba = 20;
     }
 
-    public void E() {
+    public void G() {
         float f1 = b(1.0F);
 
         if (f1 > 0.5F) {
-            bo += 2;
+            bx += 2;
         }
-        super.E();
+        super.G();
     }
 
     public void b_() {
@@ -57,13 +57,13 @@ public class EntityMobs extends EntityCreature
 
     protected void a(Entity entity, float f1) {
         if ((double) f1 < 2.5D && entity.z.e > z.b && entity.z.b < z.e) {
-            aX = 20;
+            bg = 20;
             entity.a(this, f);
         }
     }
 
     protected float a(int i, int j, int l) {
-        return 0.5F - this.l.j(i, j, l);
+        return 0.5F - this.l.k(i, j, l);
     }
 
     public void a(NBTTagCompound nbttagcompound) {
@@ -82,7 +82,7 @@ public class EntityMobs extends EntityCreature
         if (this.l.a(EnumSkyBlock.a, i, j, l) > W.nextInt(32)) {
             return false;
         } else {
-            int i1 = this.l.h(i, j, l);
+            int i1 = this.l.i(i, j, l);
 
             return i1 <= W.nextInt(8) && super.a();
         }

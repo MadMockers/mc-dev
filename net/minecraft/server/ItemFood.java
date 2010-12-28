@@ -13,7 +13,7 @@ public class ItemFood extends Item {
 
     public ItemStack a(ItemStack itemstack, World world, EntityPlayer entityplayer) {
         itemstack.a--;
-        entityplayer.a(a);
+        entityplayer.c(a);
         return itemstack;
     }
 }

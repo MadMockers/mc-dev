@@ -24,7 +24,7 @@ public class EntityGhast extends EntityFlying
         ak = 0;
         e = 0;
         f = 0;
-        aH = "/mob/ghast.png";
+        aQ = "/mob/ghast.png";
         a(4F, 4F);
         ae = true;
     }
@@ -72,7 +72,7 @@ public class EntityGhast extends EntityFlying
             double d7 = (aj.z.b + (double) (aj.J / 2.0F)) - (q + (double) (J / 2.0F));
             double d8 = aj.r - r;
 
-            aA = v = (-(float) Math.atan2(d6, d8) * 180F) / 3.141593F;
+            aJ = v = (-(float) Math.atan2(d6, d8) * 180F) / 3.141593F;
             if (i(aj)) {
                 if (f == 10) {
                     l.a(this, "mob.ghast.charge", h(), (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
@@ -94,12 +94,12 @@ public class EntityGhast extends EntityFlying
                 f--;
             }
         } else {
-            aA = v = (-(float) Math.atan2(s, u) * 180F) / 3.141593F;
+            aJ = v = (-(float) Math.atan2(s, u) * 180F) / 3.141593F;
             if (f > 0) {
                 f--;
             }
         }
-        aH = f <= 10 ? "/mob/ghast.png" : "/mob/ghast_fire.png";
+        aQ = f <= 10 ? "/mob/ghast.png" : "/mob/ghast_fire.png";
     }
 
     private boolean a(double d1, double d2, double d3, double d4) {

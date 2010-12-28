@@ -26,6 +26,7 @@ public class NetLoginHandler extends NetHandler {
         i = "";
         e = minecraftserver;
         b = new NetworkManager(socket, s, this);
+        b.d = 0;
     }
 
     public void a() {
@@ -34,13 +35,13 @@ public class NetLoginHandler extends NetHandler {
             h = null;
         }
         if (f++ == 600) {
-            b("Took too long to log in");
+            a("Took too long to log in");
         } else {
             b.a();
         }
     }
 
-    public void b(String s) {
+    public void a(String s) {
         try {
             a.info((new StringBuilder()).append("Disconnecting ").append(b()).append(": ").append(s).toString());
             b.a(new Packet255KickDisconnect(s));
@@ -62,11 +63,11 @@ public class NetLoginHandler extends NetHandler {
 
     public void a(Packet1Login packet1login) {
         g = packet1login.b;
-        if (packet1login.a != 6) {
-            if (packet1login.a > 6) {
-                b("Outdated server!");
+        if (packet1login.a != 8) {
+            if (packet1login.a > 8) {
+                a("Outdated server!");
             } else {
-                b("Outdated client!");
+                a("Outdated client!");
             }
             return;
         }
@@ -86,23 +87,23 @@ public class NetLoginHandler extends NetHandler {
 
             netserverhandler.b(new Packet1Login("", "", entityplayermp.g, e.e.u, (byte) e.e.q.g));
             netserverhandler.b(new Packet6SpawnPosition(e.e.m, e.e.n, e.e.o));
-            e.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(entityplayermp.at).append(" joined the game.").toString()));
+            e.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(entityplayermp.aw).append(" joined the game.").toString()));
             e.f.a(entityplayermp);
             netserverhandler.a(entityplayermp.p, entityplayermp.q, entityplayermp.r, entityplayermp.v, entityplayermp.w);
-            netserverhandler.d();
             e.c.a(netserverhandler);
             netserverhandler.b(new Packet4UpdateTime(e.e.e));
+            entityplayermp.k();
         }
         c = true;
     }
 
-    public void a(String s) {
+    public void a(String s, Object aobj[]) {
         a.info((new StringBuilder()).append(b()).append(" lost connection").toString());
         c = true;
     }
 
     public void a(Packet packet) {
-        b("Protocol error");
+        a("Protocol error");
     }
 
     public String b() {

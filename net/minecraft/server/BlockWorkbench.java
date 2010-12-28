@@ -23,8 +23,12 @@ public class BlockWorkbench extends Block {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
-        entityplayer.G();
-        return true;
+        if (world.z) {
+            return true;
+        } else {
+            entityplayer.a(i, j, k);
+            return true;
+        }
     }
 }
 

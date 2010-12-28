@@ -5,84 +5,139 @@ import java.util.List;
 import java.util.Random;
 
 
-public class EntityPlayer extends EntityLiving {
+public abstract class EntityPlayer extends EntityLiving {
 
-    public InventoryPlayer am;
-    public byte an;
-    public int ao;
-    public float ap;
-    public float aq;
-    public boolean ar;
-    public int as;
-    public String at;
-    public int au;
+    public InventoryPlayer an;
+    public CraftingInventoryCB ao;
+    public CraftingInventoryCB ap;
+    public byte aq;
+    public int ar;
+    public float as;
+    public float at;
+    public boolean au;
+    public int av;
+    public String aw;
+    public int ax;
+    public double ay;
+    public double az;
+    public double aA;
+    public double aB;
+    public double aC;
+    public double aD;
     private int a;
-    public EntityFish av;
+    public EntityFish aE;
 
     public EntityPlayer(World world) {
         super(world);
-        am = new InventoryPlayer(this);
-        an = 0;
-        ao = 0;
-        ar = false;
-        as = 0;
+        an = new InventoryPlayer(this);
+        aq = 0;
+        ar = 0;
+        au = false;
+        av = 0;
         a = 0;
-        av = null;
+        aE = null;
+        ao = new CraftingInventoryPlayerCB(an, !world.z);
+        ap = ao;
         H = 1.62F;
         c((double) world.m + 0.5D, world.n + 1, (double) world.o + 0.5D, 0.0F, 0.0F);
-        aR = 20;
-        aK = "humanoid";
-        aJ = 180F;
+        ba = 20;
+        aT = "humanoid";
+        aS = 180F;
         Y = 20;
-        aH = "/mob/char.png";
+        aQ = "/mob/char.png";
+    }
+
+    public void b_() {
+        super.b_();
+        if (!l.z && ap != null && !ap.b(this)) {
+            I();
+            ap = ao;
+        }
+        ay = aB;
+        az = aC;
+        aA = aD;
+        double d1 = p - aB;
+        double d2 = q - aC;
+        double d3 = r - aD;
+        double d4 = 10D;
+
+        if (d1 > d4) {
+            ay = aB = p;
+        }
+        if (d3 > d4) {
+            aA = aD = r;
+        }
+        if (d2 > d4) {
+            az = aC = q;
+        }
+        if (d1 < -d4) {
+            ay = aB = p;
+        }
+        if (d3 < -d4) {
+            aA = aD = r;
+        }
+        if (d2 < -d4) {
+            az = aC = q;
+        }
+        aB += d1 * 0.25D;
+        aD += d3 * 0.25D;
+        aC += d2 * 0.25D;
+    }
+
+    protected void I() {
+        ap = ao;
     }
 
     public void z() {
         super.z();
-        ap = aq;
-        aq = 0.0F;
+        as = at;
+        at = 0.0F;
     }
 
     protected void c() {
-        if (ar) {
-            as++;
-            if (as == 8) {
-                as = 0;
-                ar = false;
+        if (au) {
+            av++;
+            if (av == 8) {
+                av = 0;
+                au = false;
             }
         } else {
-            as = 0;
+            av = 0;
         }
-        aQ = (float) as / 8F;
+        aZ = (float) av / 8F;
     }
 
-    public void E() {
-        if (l.k == 0 && aR < 20 && (X % 20) * 4 == 0) {
-            a(1);
+    public void G() {
+        if (l.k == 0 && ba < 20 && (X % 20) * 12 == 0) {
+            c(1);
         }
-        am.c();
-        ap = aq;
-        super.E();
+        an.f();
+        as = at;
+        super.G();
         float f1 = MathHelper.a(s * s + u * u);
         float f2 = (float) Math.atan(-t * 0.20000000298023224D) * 15F;
 
         if (f1 > 0.1F) {
             f1 = 0.1F;
         }
-        if (!A || aR <= 0) {
+        if (!A || ba <= 0) {
             f1 = 0.0F;
         }
-        if (A || aR <= 0) {
+        if (A || ba <= 0) {
             f2 = 0.0F;
         }
-        aq += (f1 - aq) * 0.4F;
-        aZ += (f2 - aZ) * 0.8F;
-        if (aR > 0) {
+        at += (f1 - at) * 0.4F;
+        bi += (f2 - bi) * 0.8F;
+        if (ba > 0) {
             List list = l.b(this, z.b(1.0D, 0.0D, 1.0D));
 
             if (list != null) {
                 for (int i = 0; i < list.size(); i++) {
-                    j((Entity) list.get(i));
+                    Entity entity = (Entity) list.get(i);
+
+                    if (!entity.G) {
+                        j(entity);
+                    }
                 }
 
             }
@@ -98,13 +153,13 @@ public class EntityPlayer extends EntityLiving {
         a(0.2F, 0.2F);
         a(p, q, r);
         t = 0.10000000149011612D;
-        if (at.equals("Notch")) {
+        if (aw.equals("Notch")) {
             a(new ItemStack(Item.h, 1), true);
         }
-        am.f();
+        an.h();
         if (entity != null) {
-            s = -MathHelper.b(((aV + v) * 3.141593F) / 180F) * 0.1F;
-            u = -MathHelper.a(((aV + v) * 3.141593F) / 180F) * 0.1F;
+            s = -MathHelper.b(((be + v) * 3.141593F) / 180F) * 0.1F;
+            u = -MathHelper.a(((be + v) * 3.141593F) / 180F) * 0.1F;
         } else {
             s = u = 0.0D;
         }
@@ -112,10 +167,14 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public void b(Entity entity, int i) {
-        ao += i;
+        ar += i;
     }
 
-    public void a(ItemStack itemstack) {
+    public void L() {
+        a(an.a(an.c, 1), false);
+    }
+
+    public void b(ItemStack itemstack) {
         a(itemstack, false);
     }
 
@@ -157,7 +216,7 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public float a(Block block) {
-        float f1 = am.a(block);
+        float f1 = an.a(block);
 
         if (a(Material.f)) {
             f1 /= 5F;
@@ -169,26 +228,26 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public boolean b(Block block) {
-        return am.b(block);
+        return an.b(block);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
         super.b(nbttagcompound);
         NBTTagList nbttaglist = nbttagcompound.k("Inventory");
 
-        am.b(nbttaglist);
-        au = nbttagcompound.d("Dimension");
+        an.b(nbttaglist);
+        ax = nbttagcompound.d("Dimension");
     }
 
     public void a(NBTTagCompound nbttagcompound) {
         super.a(nbttagcompound);
-        nbttagcompound.a("Inventory", am.a(new NBTTagList()));
-        nbttagcompound.a("Dimension", au);
+        nbttagcompound.a("Inventory", an.a(new NBTTagList()));
+        nbttagcompound.a("Dimension", ax);
     }
 
     public void a(IInventory iinventory) {}
 
-    public void G() {}
+    public void a(int i, int k, int i1) {}
 
     public void c(Entity entity, int i) {}
 
@@ -197,8 +256,8 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public boolean a(Entity entity, int i) {
-        bo = 0;
-        if (aR <= 0) {
+        bx = 0;
+        if (ba <= 0) {
             return false;
         }
         if ((entity instanceof EntityMobs) || (entity instanceof EntityArrow)) {
@@ -219,14 +278,14 @@ public class EntityPlayer extends EntityLiving {
         }
     }
 
-    protected void c(int i) {
-        int k = 25 - am.e();
-        int l = i * k + a;
+    protected void d(int i) {
+        int k = 25 - an.g();
+        int i1 = i * k + a;
 
-        am.c(i);
-        i = l / 25;
-        a = l % 25;
-        super.c(i);
+        an.c(i);
+        i = i1 / 25;
+        a = i1 % 25;
+        super.d(i);
     }
 
     public void a(TileEntityFurnace tileentityfurnace) {}
@@ -237,37 +296,47 @@ public class EntityPlayer extends EntityLiving {
         entity.a(this);
     }
 
-    public ItemStack H() {
-        return am.b();
+    public ItemStack M() {
+        return an.e();
     }
 
-    public void I() {
-        am.a(am.d, null);
+    public void N() {
+        an.a(an.c, null);
     }
 
     public double B() {
         return (double) (H - 0.5F);
     }
 
-    public void F() {
-        as = -1;
-        ar = true;
+    public void H() {
+        av = -1;
+        au = true;
     }
 
     public void h(Entity entity) {
-        int i = am.a(entity);
+        int i = an.a(entity);
 
         if (i > 0) {
             entity.a(this, i);
-            ItemStack itemstack = H();
+            ItemStack itemstack = M();
 
             if (itemstack != null && (entity instanceof EntityLiving)) {
                 itemstack.a((EntityLiving) entity);
                 if (itemstack.a <= 0) {
                     itemstack.a(this);
-                    I();
+                    N();
                 }
             }
+        }
+    }
+
+    public void a(ItemStack itemstack) {}
+
+    public void l() {
+        super.l();
+        ao.a(this);
+        if (ap != null) {
+            ap.a(this);
         }
     }
 }

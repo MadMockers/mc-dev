@@ -15,7 +15,7 @@ class ThreadMonitorConnection extends Thread {
             Thread.sleep(2000L);
             if (NetworkManager.a(a)) {
                 NetworkManager.f(a).interrupt();
-                a.a("Connection closed");
+                a.a("disconnect.closed", new Object[0]);
             }
         } catch (Exception exception) {
             exception.printStackTrace();

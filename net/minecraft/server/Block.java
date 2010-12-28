@@ -128,6 +128,7 @@ public class Block {
     public float br;
     public final Material bs;
     public float bt;
+    private String a;
 
     protected Block(int i1, Material material) {
         bq = d;
@@ -142,7 +143,7 @@ public class Block {
             a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
             o[i1] = a();
             q[i1] = a() ? 255 : 0;
-            r[i1] = e();
+            r[i1] = f();
             p[i1] = false;
             return;
         }
@@ -173,7 +174,7 @@ public class Block {
         return this;
     }
 
-    private boolean e() {
+    private boolean f() {
         return false;
     }
 
@@ -461,6 +462,15 @@ public class Block {
 
     public void a(World world, int i1, int j1, int k1, EntityLiving entityliving) {}
 
+    public Block a(String s1) {
+        a = (new StringBuilder()).append("tile.").append(s1).toString();
+        return this;
+    }
+
+    public String e() {
+        return a;
+    }
+
     static Class _mthclass$(String s1) {
         try {
             return Class.forName(s1);
@@ -480,82 +490,82 @@ public class Block {
         k = new StepSound("cloth", 1.0F, 1.0F);
         l = new StepSoundSand("sand", 1.0F, 1.0F);
         m = new Block[256];
-        t = (new BlockStone(1, 1)).c(1.5F).b(10F).a(h);
-        u = (BlockGrass) (new BlockGrass(2)).c(0.6F).a(g);
-        v = (new BlockDirt(3, 2)).c(0.5F).a(f);
-        w = (new Block(4, 16, Material.d)).c(2.0F).b(10F).a(h);
-        x = (new Block(5, 4, Material.c)).c(2.0F).b(5F).a(e);
-        y = (new BlockSapling(6, 15)).c(0.0F).a(g);
-        z = (new Block(7, 17, Material.d)).c(-1F).b(6000000F).a(h);
-        A = (new BlockFlowing(8, Material.f)).c(100F).c(3);
-        B = (new BlockStationary(9, Material.f)).c(100F).c(3);
-        C = (new BlockFlowing(10, Material.g)).c(0.0F).a(1.0F).c(255);
-        D = (new BlockStationary(11, Material.g)).c(100F).a(1.0F).c(255);
-        E = (new BlockSand(12, 18)).c(0.5F).a(l);
-        F = (new BlockGravel(13, 19)).c(0.6F).a(f);
-        G = (new BlockOre(14, 32)).c(3F).b(5F).a(h);
-        H = (new BlockOre(15, 33)).c(3F).b(5F).a(h);
-        I = (new BlockOre(16, 34)).c(3F).b(5F).a(h);
-        J = (new BlockLog(17)).c(2.0F).a(e);
-        K = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).c(1).a(g);
-        L = (new BlockSponge(19)).c(0.6F).a(g);
-        M = (new BlockGlass(20, 49, Material.o, false)).c(0.3F).a(j);
-        ab = (new Block(35, 64, Material.k)).c(0.8F).a(k);
-        ad = (BlockFlower) (new BlockFlower(37, 13)).c(0.0F).a(g);
-        ae = (BlockFlower) (new BlockFlower(38, 12)).c(0.0F).a(g);
-        af = (BlockFlower) (new BlockMushroom(39, 29)).c(0.0F).a(g).a(0.125F);
-        ag = (BlockFlower) (new BlockMushroom(40, 28)).c(0.0F).a(g);
-        ah = (new BlockOreBlock(41, 39)).c(3F).b(10F).a(i);
-        ai = (new BlockOreBlock(42, 38)).c(5F).b(10F).a(i);
-        aj = (new BlockStep(43, true)).c(2.0F).b(10F).a(h);
-        ak = (new BlockStep(44, false)).c(2.0F).b(10F).a(h);
-        al = (new Block(45, 7, Material.d)).c(2.0F).b(10F).a(h);
-        am = (new BlockTNT(46, 8)).c(0.0F).a(g);
-        an = (new BlockBookshelf(47, 35)).c(1.5F).a(e);
-        ao = (new Block(48, 36, Material.d)).c(2.0F).b(10F).a(h);
-        ap = (new BlockObsidian(49, 37)).c(10F).b(2000F).a(h);
-        aq = (new BlockTorch(50, 80)).c(0.0F).a(0.9375F).a(e);
-        ar = (BlockFire) (new BlockFire(51, 31)).c(0.0F).a(1.0F).a(e);
-        as = (new BlockMobSpawner(52, 65)).c(5F).a(i);
-        at = new BlockStairs(53, x);
-        au = (new BlockChest(54)).c(2.5F).a(e);
-        av = (new BlockRedstoneWire(55, 84)).c(0.0F).a(d);
-        aw = (new BlockOre(56, 50)).c(3F).b(5F).a(h);
-        ax = (new BlockOreBlock(57, 40)).c(5F).b(10F).a(i);
-        ay = (new BlockWorkbench(58)).c(2.5F).a(e);
-        az = (new BlockCrops(59, 88)).c(0.0F).a(g);
-        aA = (new BlockSoil(60)).c(0.6F).a(f);
-        aB = (new BlockFurnace(61, false)).c(3.5F).a(h);
-        aC = (new BlockFurnace(62, true)).c(3.5F).a(h).a(0.875F);
-        aD = (new BlockSign(63, net.minecraft.server.TileEntitySign.class, true)).c(1.0F).a(e);
-        aE = (new BlockDoor(64, Material.c)).c(3F).a(e);
-        aF = (new BlockLadder(65, 83)).c(0.4F).a(e);
-        aG = (new BlockMinecartTrack(66, 128)).c(0.7F).a(i);
-        aH = new BlockStairs(67, w);
-        aI = (new BlockSign(68, net.minecraft.server.TileEntitySign.class, false)).c(1.0F).a(e);
-        aJ = (new BlockLever(69, 96)).c(0.5F).a(e);
-        aK = (new BlockPressurePlate(70, t.bg, EnumMobType.b)).c(0.5F).a(h);
-        aL = (new BlockDoor(71, Material.e)).c(5F).a(i);
-        aM = (new BlockPressurePlate(72, x.bg, EnumMobType.a)).c(0.5F).a(e);
-        aN = (new BlockRedstoneOre(73, 51, false)).c(3F).b(5F).a(h);
-        aO = (new BlockRedstoneOre(74, 51, true)).a(0.625F).c(3F).b(5F).a(h);
-        aP = (new BlockRedstoneTorch(75, 115, false)).c(0.0F).a(e);
-        aQ = (new BlockRedstoneTorch(76, 99, true)).c(0.0F).a(0.5F).a(e);
-        aR = (new BlockButton(77, t.bg)).c(0.5F).a(h);
-        aS = (new BlockSnow(78, 66)).c(0.1F).a(k);
-        aT = (new BlockIce(79, 67)).c(0.5F).c(3).a(j);
-        aU = (new BlockSnowBlock(80, 66)).c(0.2F).a(k);
-        aV = (new BlockCactus(81, 70)).c(0.4F).a(k);
-        aW = (new BlockClay(82, 72)).c(0.6F).a(f);
-        aX = (new BlockReed(83, 73)).c(0.0F).a(g);
-        aY = (new BlockJukeBox(84, 74)).c(2.0F).b(10F).a(h);
-        aZ = (new BlockFence(85, 4)).c(2.0F).b(5F).a(e);
-        ba = (new BlockPumpkin(86, 102, false)).c(1.0F).a(e);
-        bb = (new BlockBloodStone(87, 103)).c(0.4F).a(h);
-        bc = (new BlockSlowSand(88, 104)).c(0.5F).a(l);
-        bd = (new BlockLightStone(89, 105, Material.o)).c(0.3F).a(j).a(1.0F);
-        be = (BlockPortal) (new BlockPortal(90, 14)).c(-1F).a(j).a(0.75F);
-        bf = (new BlockPumpkin(91, 102, true)).c(1.0F).a(e).a(1.0F);
+        t = (new BlockStone(1, 1)).c(1.5F).b(10F).a(h).a("stone");
+        u = (BlockGrass) (new BlockGrass(2)).c(0.6F).a(g).a("grass");
+        v = (new BlockDirt(3, 2)).c(0.5F).a(f).a("dirt");
+        w = (new Block(4, 16, Material.d)).c(2.0F).b(10F).a(h).a("stonebrick");
+        x = (new Block(5, 4, Material.c)).c(2.0F).b(5F).a(e).a("wood");
+        y = (new BlockSapling(6, 15)).c(0.0F).a(g).a("sapling");
+        z = (new Block(7, 17, Material.d)).c(-1F).b(6000000F).a(h).a("bedrock");
+        A = (new BlockFlowing(8, Material.f)).c(100F).c(3).a("water");
+        B = (new BlockStationary(9, Material.f)).c(100F).c(3).a("water");
+        C = (new BlockFlowing(10, Material.g)).c(0.0F).a(1.0F).c(255).a("lava");
+        D = (new BlockStationary(11, Material.g)).c(100F).a(1.0F).c(255).a("lava");
+        E = (new BlockSand(12, 18)).c(0.5F).a(l).a("sand");
+        F = (new BlockGravel(13, 19)).c(0.6F).a(f).a("gravel");
+        G = (new BlockOre(14, 32)).c(3F).b(5F).a(h).a("oreGold");
+        H = (new BlockOre(15, 33)).c(3F).b(5F).a(h).a("oreIron");
+        I = (new BlockOre(16, 34)).c(3F).b(5F).a(h).a("oreCoal");
+        J = (new BlockLog(17)).c(2.0F).a(e).a("log");
+        K = (BlockLeaves) (new BlockLeaves(18, 52)).c(0.2F).c(1).a(g).a("leaves");
+        L = (new BlockSponge(19)).c(0.6F).a(g).a("sponge");
+        M = (new BlockGlass(20, 49, Material.o, false)).c(0.3F).a(j).a("glass");
+        ab = (new Block(35, 64, Material.k)).c(0.8F).a(k).a("cloth");
+        ad = (BlockFlower) (new BlockFlower(37, 13)).c(0.0F).a(g).a("flower");
+        ae = (BlockFlower) (new BlockFlower(38, 12)).c(0.0F).a(g).a("rose");
+        af = (BlockFlower) (new BlockMushroom(39, 29)).c(0.0F).a(g).a(0.125F).a("mushroom");
+        ag = (BlockFlower) (new BlockMushroom(40, 28)).c(0.0F).a(g).a("mushroom");
+        ah = (new BlockOreBlock(41, 39)).c(3F).b(10F).a(i).a("blockGold");
+        ai = (new BlockOreBlock(42, 38)).c(5F).b(10F).a(i).a("blockIron");
+        aj = (new BlockStep(43, true)).c(2.0F).b(10F).a(h).a("stoneSlab");
+        ak = (new BlockStep(44, false)).c(2.0F).b(10F).a(h).a("stoneSlab");
+        al = (new Block(45, 7, Material.d)).c(2.0F).b(10F).a(h).a("brick");
+        am = (new BlockTNT(46, 8)).c(0.0F).a(g).a("tnt");
+        an = (new BlockBookshelf(47, 35)).c(1.5F).a(e).a("bookshelf");
+        ao = (new Block(48, 36, Material.d)).c(2.0F).b(10F).a(h).a("stoneMoss");
+        ap = (new BlockObsidian(49, 37)).c(10F).b(2000F).a(h).a("obsidian");
+        aq = (new BlockTorch(50, 80)).c(0.0F).a(0.9375F).a(e).a("torch");
+        ar = (BlockFire) (new BlockFire(51, 31)).c(0.0F).a(1.0F).a(e).a("fire");
+        as = (new BlockMobSpawner(52, 65)).c(5F).a(i).a("mobSpawner");
+        at = (new BlockStairs(53, x)).a("stairsWood");
+        au = (new BlockChest(54)).c(2.5F).a(e).a("chest");
+        av = (new BlockRedstoneWire(55, 84)).c(0.0F).a(d).a("redstoneDust");
+        aw = (new BlockOre(56, 50)).c(3F).b(5F).a(h).a("oreDiamond");
+        ax = (new BlockOreBlock(57, 40)).c(5F).b(10F).a(i).a("blockDiamond");
+        ay = (new BlockWorkbench(58)).c(2.5F).a(e).a("workbench");
+        az = (new BlockCrops(59, 88)).c(0.0F).a(g).a("crops");
+        aA = (new BlockSoil(60)).c(0.6F).a(f).a("farmland");
+        aB = (new BlockFurnace(61, false)).c(3.5F).a(h).a("furnace");
+        aC = (new BlockFurnace(62, true)).c(3.5F).a(h).a(0.875F).a("furnace");
+        aD = (new BlockSign(63, net.minecraft.server.TileEntitySign.class, true)).c(1.0F).a(e).a("sign");
+        aE = (new BlockDoor(64, Material.c)).c(3F).a(e).a("doorWood");
+        aF = (new BlockLadder(65, 83)).c(0.4F).a(e).a("ladder");
+        aG = (new BlockMinecartTrack(66, 128)).c(0.7F).a(i).a("rail");
+        aH = (new BlockStairs(67, w)).a("stairsStone");
+        aI = (new BlockSign(68, net.minecraft.server.TileEntitySign.class, false)).c(1.0F).a(e).a("sign");
+        aJ = (new BlockLever(69, 96)).c(0.5F).a(e).a("lever");
+        aK = (new BlockPressurePlate(70, t.bg, EnumMobType.b)).c(0.5F).a(h).a("pressurePlate");
+        aL = (new BlockDoor(71, Material.e)).c(5F).a(i).a("doorIron");
+        aM = (new BlockPressurePlate(72, x.bg, EnumMobType.a)).c(0.5F).a(e).a("pressurePlate");
+        aN = (new BlockRedstoneOre(73, 51, false)).c(3F).b(5F).a(h).a("oreRedstone");
+        aO = (new BlockRedstoneOre(74, 51, true)).a(0.625F).c(3F).b(5F).a(h).a("oreRedstone");
+        aP = (new BlockRedstoneTorch(75, 115, false)).c(0.0F).a(e).a("notGate");
+        aQ = (new BlockRedstoneTorch(76, 99, true)).c(0.0F).a(0.5F).a(e).a("notGate");
+        aR = (new BlockButton(77, t.bg)).c(0.5F).a(h).a("button");
+        aS = (new BlockSnow(78, 66)).c(0.1F).a(k).a("snow");
+        aT = (new BlockIce(79, 67)).c(0.5F).c(3).a(j).a("ice");
+        aU = (new BlockSnowBlock(80, 66)).c(0.2F).a(k).a("snow");
+        aV = (new BlockCactus(81, 70)).c(0.4F).a(k).a("cactus");
+        aW = (new BlockClay(82, 72)).c(0.6F).a(f).a("clay");
+        aX = (new BlockReed(83, 73)).c(0.0F).a(g).a("reeds");
+        aY = (new BlockJukeBox(84, 74)).c(2.0F).b(10F).a(h).a("jukebox");
+        aZ = (new BlockFence(85, 4)).c(2.0F).b(5F).a(e).a("fence");
+        ba = (new BlockPumpkin(86, 102, false)).c(1.0F).a(e).a("pumpkin");
+        bb = (new BlockBloodStone(87, 103)).c(0.4F).a(h).a("hellrock");
+        bc = (new BlockSlowSand(88, 104)).c(0.5F).a(l).a("hellsand");
+        bd = (new BlockLightStone(89, 105, Material.o)).c(0.3F).a(j).a(1.0F).a("lightgem");
+        be = (BlockPortal) (new BlockPortal(90, 14)).c(-1F).a(j).a(0.75F).a("portal");
+        bf = (new BlockPumpkin(91, 102, true)).c(1.0F).a(e).a(1.0F).a("pumpkin");
         for (int i1 = 0; i1 < 256; i1++) {
             if (m[i1] != null) {
                 Item.c[i1] = new ItemBlock(i1 - 256);

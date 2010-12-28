@@ -1,6 +1,7 @@
 package net.minecraft.server;
 
 
+import java.io.PrintStream;
 import java.util.*;
 
 
@@ -125,7 +126,7 @@ class PlayerInstance {
 
             a(((Packet) (new Packet53BlockChange(i1, l1, k2, PlayerManager.a(a).e))));
             if (Block.p[PlayerManager.a(a).e.a(i1, l1, k2)]) {
-                a(((Packet) (new Packet59ComplexEntity(i1, l1, k2, PlayerManager.a(a).e.k(i1, l1, k2)))));
+                a(PlayerManager.a(a).e.l(i1, l1, k2));
             }
         } else if (g == 10) {
             j = (j / 2) * 2;
@@ -141,9 +142,7 @@ class PlayerInstance {
             List list = PlayerManager.a(a).e.d(j1, i2, l2, j1 + j3, i2 + l3, l2 + i4);
 
             for (int j4 = 0; j4 < list.size(); j4++) {
-                TileEntity tileentity = (TileEntity) list.get(j4);
-
-                a(((Packet) (new Packet59ComplexEntity(tileentity.b, tileentity.c, tileentity.d, tileentity))));
+                a((TileEntity) list.get(j4));
             }
 
         } else {
@@ -154,12 +153,23 @@ class PlayerInstance {
                 int k3 = d * 16 + (g >> 8 & 0xf);
 
                 if (Block.p[PlayerManager.a(a).e.a(j2, i3, k3)]) {
-                    a(((Packet) (new Packet59ComplexEntity(j2, i3, k3, PlayerManager.a(a).e.k(j2, i3, k3)))));
+                    System.out.println("Sending!");
+                    a(PlayerManager.a(a).e.l(j2, i3, k3));
                 }
             }
 
         }
         g = 0;
+    }
+
+    private void a(TileEntity tileentity) {
+        if (tileentity != null) {
+            Packet packet = tileentity.f();
+
+            if (packet != null) {
+                a(packet);
+            }
+        }
     }
 }
 

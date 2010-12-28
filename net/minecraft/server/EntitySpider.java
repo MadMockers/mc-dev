@@ -8,9 +8,9 @@ public class EntitySpider extends EntityMobs {
 
     public EntitySpider(World world) {
         super(world);
-        aH = "/mob/spider.png";
+        aQ = "/mob/spider.png";
         a(1.4F, 0.9F);
-        bu = 0.8F;
+        bD = 0.8F;
     }
 
     public double j() {

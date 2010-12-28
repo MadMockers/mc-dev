@@ -40,6 +40,8 @@ public class EntityTracker {
             a(entity, 64, 5, true);
         } else if (entity instanceof EntitySnowball) {
             a(entity, 64, 5, true);
+        } else if (entity instanceof EntityEgg) {
+            a(entity, 64, 5, true);
         } else if (entity instanceof EntityItem) {
             a(entity, 64, 20, true);
         } else if (entity instanceof EntityMinecart) {
@@ -50,6 +52,8 @@ public class EntityTracker {
             a(entity, 160, 3);
         } else if (entity instanceof EntityTNTPrimed) {
             a(entity, 160, 10, true);
+        } else if (entity instanceof EntityFallingSand) {
+            a(entity, 160, 20, true);
         }
     }
 

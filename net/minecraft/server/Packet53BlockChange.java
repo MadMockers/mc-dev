@@ -14,11 +14,11 @@ public class Packet53BlockChange extends Packet {
     public int e;
 
     public Packet53BlockChange() {
-        j = true;
+        k = true;
     }
 
     public Packet53BlockChange(int i, int j, int k, World world) {
-        this.j = true;
+        this.k = true;
         a = i;
         b = j;
         c = k;

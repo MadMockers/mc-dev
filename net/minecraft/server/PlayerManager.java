@@ -38,16 +38,6 @@ public class PlayerManager {
         return playerinstance;
     }
 
-    public void a(Packet packet, int i, int j, int k) {
-        int l = i >> 4;
-        int i1 = k >> 4;
-        PlayerInstance playerinstance = a(l, i1, false);
-
-        if (playerinstance != null) {
-            playerinstance.a(packet);
-        }
-    }
-
     public void a(int i, int j, int k) {
         int l = i >> 4;
         int i1 = k >> 4;

@@ -14,7 +14,7 @@ public class WorldGenReed extends WorldGenerator {
             int j1 = j;
             int k1 = (k + random.nextInt(4)) - random.nextInt(4);
 
-            if (world.a(i1, j1, k1) != 0
+            if (!world.e(i1, j1, k1)
                     || world.c(i1 - 1, j1 - 1, k1) != Material.f && world.c(i1 + 1, j1 - 1, k1) != Material.f && world.c(i1, j1 - 1, k1 - 1) != Material.f && world.c(i1, j1 - 1, k1 + 1) != Material.f) {
                 continue;
             }

@@ -32,30 +32,6 @@ public class CompressedStreamTools {
         }
     }
 
-    public static NBTTagCompound a(byte abyte0[]) {
-        DataInputStream datainputstream = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(abyte0)));
-
-        try {
-            NBTTagCompound nbttagcompound = a(((DataInput) (datainputstream)));
-
-            return nbttagcompound;
-        } finally {
-            datainputstream.close();
-        }
-    }
-
-    public static byte[] a(NBTTagCompound nbttagcompound) {
-        ByteArrayOutputStream bytearrayoutputstream = new ByteArrayOutputStream();
-        DataOutputStream dataoutputstream = new DataOutputStream(new GZIPOutputStream(bytearrayoutputstream));
-
-        try {
-            a(nbttagcompound, ((DataOutput) (dataoutputstream)));
-        } finally {
-            dataoutputstream.close();
-        }
-        return bytearrayoutputstream.toByteArray();
-    }
-
     public static NBTTagCompound a(DataInput datainput) {
         NBTBase nbtbase = NBTBase.b(datainput);
 

@@ -31,7 +31,7 @@ public class BlockRedstoneWire extends Block {
         int i1 = 0;
 
         a = false;
-        boolean flag = world.n(i, j, k);
+        boolean flag = world.o(i, j, k);
 
         a = true;
         if (flag) {

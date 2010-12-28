@@ -76,7 +76,7 @@ public class ItemBucket extends Item {
                 if (movingobjectposition.e == 5) {
                     i++;
                 }
-                if (world.a(i, j, k) == 0 || !world.c(i, j, k).a()) {
+                if (world.e(i, j, k) || !world.c(i, j, k).a()) {
                     if (world.q.d && a == Block.A.bh) {
                         world.a(d + 0.5D, d1 + 0.5D, d2 + 0.5D, "random.fizz", 0.5F, 2.6F + (world.l.nextFloat() - world.l.nextFloat()) * 0.8F);
                         for (int l = 0; l < 8; l++) {

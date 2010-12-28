@@ -4,57 +4,87 @@ package net.minecraft.server;
 public class TileEntityFurnace extends TileEntity
         implements IInventory {
 
-    private ItemStack e[];
-    private int f;
-    private int g;
-    private int h;
+    private ItemStack h[];
+    public int e;
+    public int f;
+    public int g;
 
     public TileEntityFurnace() {
-        e = new ItemStack[3];
+        h = new ItemStack[3];
+        e = 0;
         f = 0;
         g = 0;
-        h = 0;
     }
 
     public int a() {
-        return e.length;
+        return h.length;
     }
 
-    public ItemStack a(int i) {
-        return e[i];
+    public ItemStack a(int j) {
+        return h[j];
+    }
+
+    public ItemStack a(int j, int k) {
+        if (h[j] != null) {
+            if (h[j].a <= k) {
+                ItemStack itemstack = h[j];
+
+                h[j] = null;
+                return itemstack;
+            }
+            ItemStack itemstack1 = h[j].a(k);
+
+            if (h[j].a == 0) {
+                h[j] = null;
+            }
+            return itemstack1;
+        } else {
+            return null;
+        }
+    }
+
+    public void a(int j, ItemStack itemstack) {
+        h[j] = itemstack;
+        if (itemstack != null && itemstack.a > c()) {
+            itemstack.a = c();
+        }
+    }
+
+    public String b() {
+        return "Furnace";
     }
 
     public void a(NBTTagCompound nbttagcompound) {
         super.a(nbttagcompound);
         NBTTagList nbttaglist = nbttagcompound.k("Items");
 
-        e = new ItemStack[a()];
-        for (int i = 0; i < nbttaglist.b(); i++) {
-            NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.a(i);
+        h = new ItemStack[a()];
+        for (int j = 0; j < nbttaglist.b(); j++) {
+            NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.a(j);
             byte byte0 = nbttagcompound1.b("Slot");
 
-            if (byte0 >= 0 && byte0 < e.length) {
-                e[byte0] = new ItemStack(nbttagcompound1);
+            if (byte0 >= 0 && byte0 < h.length) {
+                h[byte0] = new ItemStack(nbttagcompound1);
             }
         }
 
-        f = nbttagcompound.c("BurnTime");
-        h = nbttagcompound.c("CookTime");
-        g = a(e[1]);
+        e = nbttagcompound.c("BurnTime");
+        g = nbttagcompound.c("CookTime");
+        f = a(h[1]);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
         super.b(nbttagcompound);
-        nbttagcompound.a("BurnTime", (short) f);
-        nbttagcompound.a("CookTime", (short) h);
+        nbttagcompound.a("BurnTime", (short) e);
+        nbttagcompound.a("CookTime", (short) g);
         NBTTagList nbttaglist = new NBTTagList();
 
-        for (int i = 0; i < e.length; i++) {
-            if (e[i] != null) {
+        for (int j = 0; j < h.length; j++) {
+            if (h[j] != null) {
                 NBTTagCompound nbttagcompound1 = new NBTTagCompound();
 
-                nbttagcompound1.a("Slot", (byte) i);
-                e[i].a(nbttagcompound1);
+                nbttagcompound1.a("Slot", (byte) j);
+                h[j].a(nbttagcompound1);
                 nbttaglist.a(nbttagcompound1);
             }
         }
@@ -62,115 +92,115 @@ public class TileEntityFurnace extends TileEntity
         nbttagcompound.a("Items", nbttaglist);
     }
 
-    public int d() {
+    public int c() {
         return 64;
     }
 
-    public boolean e() {
-        return f > 0;
+    public boolean g() {
+        return e > 0;
     }
 
-    public void b() {
-        boolean flag = f > 0;
+    public void e() {
+        boolean flag = e > 0;
         boolean flag1 = false;
 
-        if (f > 0) {
-            f--;
+        if (e > 0) {
+            e--;
         }
         if (!a.z) {
-            if (f == 0 && g()) {
-                g = f = a(e[1]);
-                if (f > 0) {
+            if (e == 0 && i()) {
+                f = e = a(h[1]);
+                if (e > 0) {
                     flag1 = true;
-                    if (e[1] != null) {
-                        e[1].a--;
-                        if (e[1].a == 0) {
-                            e[1] = null;
+                    if (h[1] != null) {
+                        h[1].a--;
+                        if (h[1].a == 0) {
+                            h[1] = null;
                         }
                     }
                 }
             }
-            if (e() && g()) {
-                h++;
-                if (h == 200) {
-                    h = 0;
-                    f();
+            if (g() && i()) {
+                g++;
+                if (g == 200) {
+                    g = 0;
+                    h();
                     flag1 = true;
                 }
             } else {
-                h = 0;
+                g = 0;
             }
-            if (flag != (f > 0)) {
+            if (flag != (e > 0)) {
                 flag1 = true;
-                BlockFurnace.a(f > 0, a, b, c, d);
+                BlockFurnace.a(e > 0, a, b, c, d);
             }
         }
         if (flag1) {
-            c();
+            d();
         }
     }
 
-    private boolean g() {
-        if (e[0] == null) {
+    private boolean i() {
+        if (h[0] == null) {
             return false;
         }
-        int i = b(e[0].a().aW);
+        int j = b(h[0].a().aW);
 
-        if (i < 0) {
+        if (j < 0) {
             return false;
         }
-        if (e[2] == null) {
+        if (h[2] == null) {
             return true;
         }
-        if (e[2].c != i) {
+        if (h[2].c != j) {
             return false;
         }
-        if (e[2].a < d() && e[2].a < e[2].b()) {
+        if (h[2].a < c() && h[2].a < h[2].b()) {
             return true;
         }
-        return e[2].a < Item.c[i].a();
+        return h[2].a < Item.c[j].b();
     }
 
-    public void f() {
-        if (!g()) {
+    public void h() {
+        if (!i()) {
             return;
         }
-        int i = b(e[0].a().aW);
+        int j = b(h[0].a().aW);
 
-        if (e[2] == null) {
-            e[2] = new ItemStack(i, 1);
-        } else if (e[2].c == i) {
-            e[2].a++;
+        if (h[2] == null) {
+            h[2] = new ItemStack(j, 1);
+        } else if (h[2].c == j) {
+            h[2].a++;
         }
-        e[0].a--;
-        if (e[0].a <= 0) {
-            e[0] = null;
+        h[0].a--;
+        if (h[0].a <= 0) {
+            h[0] = null;
         }
     }
 
-    private int b(int i) {
-        if (i == Block.H.bh) {
+    private int b(int j) {
+        if (j == Block.H.bh) {
             return Item.m.aW;
         }
-        if (i == Block.G.bh) {
+        if (j == Block.G.bh) {
             return Item.n.aW;
         }
-        if (i == Block.aw.bh) {
+        if (j == Block.aw.bh) {
             return Item.l.aW;
         }
-        if (i == Block.E.bh) {
+        if (j == Block.E.bh) {
             return Block.M.bh;
         }
-        if (i == Item.ao.aW) {
+        if (j == Item.ao.aW) {
             return Item.ap.aW;
         }
-        if (i == Item.aS.aW) {
+        if (j == Item.aS.aW) {
             return Item.aT.aW;
         }
-        if (i == Block.w.bh) {
+        if (j == Block.w.bh) {
             return Block.t.bh;
         }
-        if (i == Item.aG.aW) {
+        if (j == Item.aG.aW) {
             return Item.aF.aW;
         } else {
             return -1;
@@ -181,18 +211,25 @@ public class TileEntityFurnace extends TileEntity
         if (itemstack == null) {
             return 0;
         }
-        int i = itemstack.a().aW;
+        int j = itemstack.a().aW;
 
-        if (i < 256 && Block.m[i].bs == Material.c) {
+        if (j < 256 && Block.m[j].bs == Material.c) {
             return 300;
         }
-        if (i == Item.B.aW) {
+        if (j == Item.B.aW) {
             return 100;
         }
-        if (i == Item.k.aW) {
+        if (j == Item.k.aW) {
             return 1600;
         }
-        return i != Item.aw.aW ? 0 : 20000;
+        return j != Item.aw.aW ? 0 : 20000;
+    }
+
+    public boolean a_(EntityPlayer entityplayer) {
+        if (a.l(b, c, d) != this) {
+            return false;
+        }
+        return entityplayer.d((double) b + 0.5D, (double) c + 0.5D, (double) d + 0.5D) <= 64D;
     }
 }
 

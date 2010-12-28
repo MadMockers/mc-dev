@@ -16,17 +16,17 @@ public class EntitySlime extends EntityLiving
         super(world);
         d = 0;
         c = 1;
-        aH = "/mob/slime.png";
+        aQ = "/mob/slime.png";
         c = 1 << W.nextInt(3);
         H = 0.0F;
         d = W.nextInt(20) + 10;
-        d(c);
+        a(c);
     }
 
-    public void d(int i) {
+    public void a(int i) {
         c = i;
         a(0.6F * (float) i, 0.6F * (float) i);
-        aR = i * i;
+        ba = i * i;
         a(p, q, r);
     }
 
@@ -74,29 +74,29 @@ public class EntitySlime extends EntityLiving
             if (entityplayer != null) {
                 d /= 3;
             }
-            bs = true;
+            bB = true;
             if (c > 1) {
                 l.a(this, "mob.slime", h(), ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) * 0.8F);
             }
             a = 1.0F;
-            bp = 1.0F - W.nextFloat() * 2.0F;
-            bq = 1 * c;
+            by = 1.0F - W.nextFloat() * 2.0F;
+            bz = 1 * c;
         } else {
-            bs = false;
+            bB = false;
             if (A) {
-                bp = bq = 0.0F;
+                by = bz = 0.0F;
             }
         }
     }
 
     public void l() {
-        if (c > 1 && aR == 0) {
+        if (c > 1 && ba == 0) {
             for (int i = 0; i < 4; i++) {
                 float f1 = (((float) (i % 2) - 0.5F) * (float) c) / 4F;
                 float f2 = (((float) (i / 2) - 0.5F) * (float) c) / 4F;
                 EntitySlime entityslime = new EntitySlime(l);
 
-                entityslime.d(c / 2);
+                entityslime.a(c / 2);
                 entityslime.c(p + (double) f1, q + 0.5D, r + (double) f2, W.nextFloat() * 360F, 0.0F);
                 l.a(entityslime);
             }

@@ -22,7 +22,7 @@ public class BlockFlowing extends BlockFluids {
 
         world.a(i1, j1, k1, bh + 1, l1);
         world.b(i1, j1, k1, i1, j1, k1);
-        world.f(i1, j1, k1);
+        world.g(i1, j1, k1);
     }
 
     public void a(World world, int i1, int j1, int k1, Random random) {

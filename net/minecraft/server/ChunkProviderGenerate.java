@@ -130,7 +130,7 @@ public class ChunkProviderGenerate
         t = o.a(t, i1 * 16, j1 * 16, 0.0D, 16, 16, 1, d1 * 2D, d1 * 2D, d1 * 2D);
         for (int k1 = 0; k1 < 16; k1++) {
             for (int l1 = 0; l1 < 16; l1++) {
-                MobSpawnerBase mobspawnerbase = amobspawnerbase[k1 * 16 + l1];
+                MobSpawnerBase mobspawnerbase = amobspawnerbase[k1 + l1 * 16];
                 boolean flag = r[k1 + l1 * 16] + j.nextDouble() * 0.20000000000000001D > 0.0D;
                 boolean flag1 = s[k1 + l1 * 16] + j.nextDouble() * 0.20000000000000001D > 3D;
                 int i2 = (int) (t[k1 + l1 * 16] / 3D + 3D + j.nextDouble() * 0.25D);
@@ -541,7 +541,7 @@ public class ChunkProviderGenerate
                 int k23 = p.e(i18, l20);
                 double d2 = w[j22 * 16 + j23] - ((double) (k23 - 64) / 64D) * 0.29999999999999999D;
 
-                if (d2 < 0.5D && k23 > 0 && k23 < 128 && p.a(i18, k23, l20) == 0 && p.c(i18, k23 - 1, l20).c() && p.c(i18, k23 - 1, l20) != Material.r) {
+                if (d2 < 0.5D && k23 > 0 && k23 < 128 && p.e(i18, k23, l20) && p.c(i18, k23 - 1, l20).c() && p.c(i18, k23 - 1, l20) != Material.r) {
                     p.d(i18, k23, l20, Block.aS.bh);
                 }
             }

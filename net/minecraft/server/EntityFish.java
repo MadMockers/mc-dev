@@ -51,7 +51,7 @@ public class EntityFish extends Entity {
         an = 0;
         c = null;
         b = entityplayer;
-        b.av = this;
+        b.aE = this;
         a(0.25F, 0.25F);
         c(entityplayer.p, (entityplayer.q + 1.6200000000000001D) - (double) entityplayer.H, entityplayer.r, entityplayer.v, entityplayer.w);
         p -= MathHelper.b((v / 180F) * 3.141593F) * 0.16F;
@@ -112,11 +112,11 @@ public class EntityFish extends Entity {
             return;
         }
         if (!this.l.z) {
-            ItemStack itemstack = b.H();
+            ItemStack itemstack = b.M();
 
             if (b.G || !b.x() || itemstack == null || itemstack.a() != Item.aP || b(b) > 1024D) {
                 l();
-                b.av = null;
+                b.aE = null;
                 return;
             }
             if (c != null) {
@@ -329,7 +329,7 @@ public class EntityFish extends Entity {
             byte0 = 2;
         }
         l();
-        b.av = null;
+        b.aE = null;
         return byte0;
     }
 }

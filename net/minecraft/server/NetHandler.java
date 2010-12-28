@@ -9,7 +9,7 @@ public class NetHandler {
 
     public void a(Packet packet) {}
 
-    public void a(String s) {}
+    public void a(String s, Object aobj[]) {}
 
     public void a(Packet255KickDisconnect packet255kickdisconnect) {
         a(((Packet) (packet255kickdisconnect)));
@@ -75,10 +75,6 @@ public class NetHandler {
         a(((Packet) (packet3chat)));
     }
 
-    public void a(Packet17AddToInventory packet17addtoinventory) {
-        a(((Packet) (packet17addtoinventory)));
-    }
-
     public void a(Packet23VehicleSpawn packet23vehiclespawn) {
         a(((Packet) (packet23vehiclespawn)));
     }
@@ -97,14 +93,6 @@ public class NetHandler {
 
     public void a(Packet4UpdateTime packet4updatetime) {
         a(((Packet) (packet4updatetime)));
-    }
-
-    public void a(Packet5PlayerInventory packet5playerinventory) {
-        a(((Packet) (packet5playerinventory)));
-    }
-
-    public void a(Packet59ComplexEntity packet59complexentity) {
-        a(((Packet) (packet59complexentity)));
     }
 
     public void a(Packet6SpawnPosition packet6spawnposition) {
@@ -137,6 +125,42 @@ public class NetHandler {
 
     public void a(Packet60 packet60) {
         a(((Packet) (packet60)));
+    }
+
+    public void a(Packet100 packet100) {
+        a(((Packet) (packet100)));
+    }
+
+    public void a(Packet101 packet101) {
+        a(((Packet) (packet101)));
+    }
+
+    public void a(Packet102 packet102) {
+        a(((Packet) (packet102)));
+    }
+
+    public void a(Packet103 packet103) {
+        a(((Packet) (packet103)));
+    }
+
+    public void a(Packet104 packet104) {
+        a(((Packet) (packet104)));
+    }
+
+    public void a(Packet130 packet130) {
+        a(((Packet) (packet130)));
+    }
+
+    public void a(Packet105 packet105) {
+        a(((Packet) (packet105)));
+    }
+
+    public void a(Packet5PlayerInventory packet5playerinventory) {
+        a(((Packet) (packet5playerinventory)));
+    }
+
+    public void a(Packet106 packet106) {
+        a(((Packet) (packet106)));
     }
 }
 

@@ -26,7 +26,7 @@ public class ItemRedstone extends Item {
         if (l == 5) {
             i++;
         }
-        if (world.a(i, j, k) != 0) {
+        if (!world.e(i, j, k)) {
             return false;
         }
         if (Block.av.a(world, i, j, k)) {

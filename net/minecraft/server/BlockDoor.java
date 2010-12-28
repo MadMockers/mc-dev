@@ -131,7 +131,7 @@ public class BlockDoor extends Block {
             if (flag) {
                 a_(world, i, j, k, i1);
             } else if (l > 0 && Block.m[l].c()) {
-                boolean flag1 = world.n(i, j, k) || world.n(i, j + 1, k);
+                boolean flag1 = world.o(i, j, k) || world.o(i, j + 1, k);
 
                 a(world, i, j, k, flag1);
             }

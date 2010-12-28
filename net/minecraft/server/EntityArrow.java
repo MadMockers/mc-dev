@@ -235,7 +235,7 @@ public class EntityArrow extends Entity {
         if (l.z) {
             return;
         }
-        if (aj && b == entityplayer && a <= 0 && entityplayer.am.a(new ItemStack(Item.j.aW, 1))) {
+        if (aj && b == entityplayer && a <= 0 && entityplayer.an.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);
             l();

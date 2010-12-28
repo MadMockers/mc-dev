@@ -20,14 +20,14 @@ public class EntityChicken extends EntityAnimals {
         b = 0.0F;
         c = 0.0F;
         f = 1.0F;
-        aH = "/mob/chicken.png";
+        aQ = "/mob/chicken.png";
         a(0.3F, 0.4F);
-        aR = 4;
+        ba = 4;
         al = W.nextInt(6000) + 6000;
     }
 
-    public void E() {
-        super.E();
+    public void G() {
+        super.G();
         e = b;
         d = c;
         c += (double) (A ? -1 : 4) * 0.29999999999999999D;
@@ -47,7 +47,7 @@ public class EntityChicken extends EntityAnimals {
         b += f * 2.0F;
         if (!l.z && --al <= 0) {
             l.a(this, "mob.chickenplop", 1.0F, (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
-            a(Item.aN.aW, 1);
+            b(Item.aN.aW, 1);
             al = W.nextInt(6000) + 6000;
         }
     }

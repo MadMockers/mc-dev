@@ -51,7 +51,7 @@ public class MinecraftServer
         threadcommandreader.setDaemon(true);
         threadcommandreader.start();
         ConsoleLogManager.a();
-        a.info("Starting minecraft server version 0.2.8");
+        a.info("Starting minecraft server version Beta 1.1_02");
         if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
             a.warning("**** NOT ENOUGH RAM!");
             a.warning("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
@@ -324,7 +324,7 @@ public class MinecraftServer
                 EntityPlayerMP entityplayermp = f.h(s6);
 
                 if (entityplayermp != null) {
-                    entityplayermp.a.c("Banned by admin");
+                    entityplayermp.a.a("Banned by admin");
                 }
             } else if (s.toLowerCase().startsWith("pardon ")) {
                 String s7 = s.substring(s.indexOf(" ")).trim();
@@ -338,14 +338,14 @@ public class MinecraftServer
                 for (int i1 = 0; i1 < f.b.size(); i1++) {
                     EntityPlayerMP entityplayermp5 = (EntityPlayerMP) f.b.get(i1);
 
-                    if (entityplayermp5.at.equalsIgnoreCase(s8)) {
+                    if (entityplayermp5.aw.equalsIgnoreCase(s8)) {
                         entityplayermp1 = entityplayermp5;
                     }
                 }
 
                 if (entityplayermp1 != null) {
-                    entityplayermp1.a.c("Kicked by admin");
-                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.at).toString());
+                    entityplayermp1.a.a("Kicked by admin");
+                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.aw).toString());
                 } else {
                     icommandlistener.b((new StringBuilder()).append("Can't find user ").append(s8).append(". No kick.").toString());
                 }
@@ -381,7 +381,7 @@ public class MinecraftServer
                         int j1 = Integer.parseInt(as1[2]);
 
                         if (Item.c[j1] != null) {
-                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.at).append(" some ").append(j1).toString());
+                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.aw).append(" some ").append(j1).toString());
                             int k1 = 1;
 
                             if (as1.length > 3) {
@@ -393,7 +393,7 @@ public class MinecraftServer
                             if (k1 > 64) {
                                 k1 = 64;
                             }
-                            entityplayermp4.a(new ItemStack(j1, k1));
+                            entityplayermp4.b(new ItemStack(j1, k1));
                         } else {
                             icommandlistener.b((new StringBuilder()).append("There's no item with id ").append(j1).toString());
                         }

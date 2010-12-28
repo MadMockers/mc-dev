@@ -47,7 +47,7 @@ public class TileEntity {
         }
     }
 
-    public void b() {}
+    public void e() {}
 
     public static TileEntity c(NBTTagCompound nbttagcompound) {
         TileEntity tileentity = null;
@@ -69,8 +69,14 @@ public class TileEntity {
         return tileentity;
     }
 
-    public void c() {
-        a.b(b, c, d, this);
+    public void d() {
+        if (a != null) {
+            a.b(b, c, d, this);
+        }
+    }
+
+    public Packet f() {
+        return null;
     }
 
     static Class _mthclass$(String s) {

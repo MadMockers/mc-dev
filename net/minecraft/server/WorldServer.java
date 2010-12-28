@@ -63,7 +63,7 @@ public class WorldServer extends World {
         if (l > i1) {
             i1 = l;
         }
-        return i1 > 16 || D.f.g(entityplayer.at);
+        return i1 > 16 || D.f.g(entityplayer.aw);
     }
 
     protected void b(Entity entity) {

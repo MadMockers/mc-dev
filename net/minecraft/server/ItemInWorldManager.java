@@ -83,13 +83,13 @@ public class ItemInWorldManager {
         int i1 = b.a(j, k, l);
         int j1 = b.b(j, k, l);
         boolean flag = b(j, k, l);
-        ItemStack itemstack = a.H();
+        ItemStack itemstack = a.M();
 
         if (itemstack != null) {
             itemstack.a(i1, j, k, l);
             if (itemstack.a == 0) {
                 itemstack.a(a);
-                a.I();
+                a.N();
             }
         }
         if (flag && a.b(Block.m[i1])) {
@@ -103,9 +103,9 @@ public class ItemInWorldManager {
         ItemStack itemstack1 = itemstack.a(world, entityplayer);
 
         if (itemstack1 != itemstack || itemstack1 != null && itemstack1.a != j) {
-            entityplayer.am.a[entityplayer.am.d] = itemstack1;
+            entityplayer.an.a[entityplayer.an.c] = itemstack1;
             if (itemstack1.a == 0) {
-                entityplayer.am.a[entityplayer.am.d] = null;
+                entityplayer.an.a[entityplayer.an.c] = null;
             }
             return true;
         } else {

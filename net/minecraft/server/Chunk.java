@@ -519,11 +519,14 @@ public class Chunk {
         if (p) {
             return false;
         }
-        if (r && d.e != s) {
+        if (flag) {
+            if (r && d.e != s) {
+                return true;
+            }
+        } else if (r && d.e >= s + 600L) {
             return true;
-        } else {
-            return o;
         }
+        return o;
     }
 
     public int a(byte abyte0[], int i1, int j1, int k1, int l1, int i2, int j2, 

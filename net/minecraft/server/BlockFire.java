@@ -132,7 +132,7 @@ public class BlockFire extends Block {
     private int h(World world, int i, int j, int k) {
         int l = 0;
 
-        if (world.a(i, j, k) != 0) {
+        if (!world.e(i, j, k)) {
             return 0;
         } else {
             l = f(world, i + 1, j, k, l);

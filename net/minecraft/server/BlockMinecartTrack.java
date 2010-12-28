@@ -83,7 +83,7 @@ public class BlockMinecartTrack extends Block {
         if (world.z) {
             return;
         } else {
-            (new MinecartTrackLogic(this, world, i, j, k)).a(world.n(i, j, k));
+            (new MinecartTrackLogic(this, world, i, j, k)).a(world.o(i, j, k));
             return;
         }
     }

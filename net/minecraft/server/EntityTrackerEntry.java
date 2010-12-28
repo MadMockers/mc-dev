@@ -195,6 +195,14 @@ public class EntityTrackerEntry {
                 if (v) {
                     entityplayermp.a.b(new Packet28(a.g, a.s, a.t, a.u));
                 }
+                int ai[] = a.E();
+
+                if (ai != null) {
+                    for (int i1 = 0; i1 < ai.length; i1++) {
+                        entityplayermp.a.b(new Packet5PlayerInventory(a.g, i1, ai[i1]));
+                    }
+
+                }
             }
         } else if (q.contains(entityplayermp)) {
             q.remove(entityplayermp);
@@ -250,11 +258,23 @@ public class EntityTrackerEntry {
         if (a instanceof EntitySnowball) {
             return new Packet23VehicleSpawn(a, 61);
         }
+        if (a instanceof EntityEgg) {
+            return new Packet23VehicleSpawn(a, 62);
+        }
         if (a instanceof EntityTNTPrimed) {
             return new Packet23VehicleSpawn(a, 50);
-        } else {
-            throw new IllegalArgumentException((new StringBuilder()).append("Don't know how to add ").append(a.getClass()).append("!").toString());
         }
+        if (a instanceof EntityFallingSand) {
+            EntityFallingSand entityfallingsand = (EntityFallingSand) a;
+
+            if (entityfallingsand.a == Block.E.bh) {
+                return new Packet23VehicleSpawn(a, 70);
+            }
+            if (entityfallingsand.a == Block.F.bh) {
+                return new Packet23VehicleSpawn(a, 71);
+            }
+        }
+        throw new IllegalArgumentException((new StringBuilder()).append("Don't know how to add ").append(a.getClass()).append("!").toString());
     }
 
     public void c(EntityPlayerMP entityplayermp) {
