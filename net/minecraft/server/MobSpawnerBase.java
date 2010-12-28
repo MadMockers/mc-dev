@@ -29,7 +29,7 @@ public class MobSpawnerBase {
         p = (byte) Block.v.bh;
         q = 0x4ee031;
         r = (new Class[] {
-            net.minecraft.server.EntityCreeper.class
+            net.minecraft.server.EntitySpider.class, net.minecraft.server.EntityZombie.class, net.minecraft.server.EntitySkeleton.class, net.minecraft.server.EntityCreeper.class
         });
         s = (new Class[] {
             net.minecraft.server.EntitySheep.class, net.minecraft.server.EntityPig.class, net.minecraft.server.EntityChicken.class, net.minecraft.server.EntityCow.class
