@@ -51,7 +51,7 @@ public class Explosion {
                         int i3 = world.a(j2, k2, l2);
 
                         if (i3 > 0) {
-                            f2 -= (Block.n[i3].a(entity) + 0.3F) * f3;
+                            f2 -= (Block.m[i3].a(entity) + 0.3F) * f3;
                         }
                         if (f2 > 0.0F) {
                             hashset.add(new ChunkPosition(j2, k2, l2));
@@ -136,9 +136,9 @@ public class Explosion {
             }
 
             if (l5 > 0) {
-                Block.n[l5].a(world, l1, l4, j5, world.b(l1, l4, j5), 0.3F);
+                Block.m[l5].a(world, l1, l4, j5, world.b(l1, l4, j5), 0.3F);
                 world.d(l1, l4, j5, 0);
-                Block.n[l5].c(world, l1, l4, j5);
+                Block.m[l5].c(world, l1, l4, j5);
             }
         }
 
@@ -151,8 +151,8 @@ public class Explosion {
                 int i6 = world.a(i2, i5, k5);
                 int k6 = world.a(i2, i5 - 1, k5);
 
-                if (i6 == 0 && Block.p[k6] && b.nextInt(3) == 0) {
-                    world.d(i2, i5, k5, Block.as.bi);
+                if (i6 == 0 && Block.o[k6] && b.nextInt(3) == 0) {
+                    world.d(i2, i5, k5, Block.ar.bh);
                 }
             }
 

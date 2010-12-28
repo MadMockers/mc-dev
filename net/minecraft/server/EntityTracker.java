@@ -35,26 +35,30 @@ public class EntityTracker {
                 }
             } while (true);
         } else if (entity instanceof EntityFish) {
-            a(entity, 64, 20);
+            a(entity, 64, 5, true);
         } else if (entity instanceof EntityItem) {
-            a(entity, 64, 20);
+            a(entity, 64, 20, true);
         } else if (entity instanceof EntityMinecart) {
-            a(entity, 160, 4);
+            a(entity, 160, 5, true);
         } else if (entity instanceof EntityBoat) {
-            a(entity, 160, 4);
+            a(entity, 160, 5, true);
         } else if (entity instanceof IAnimals) {
-            a(entity, 160, 2);
+            a(entity, 160, 3);
         }
     }
 
     public void a(Entity entity, int i, int j) {
+        a(entity, i, j, false);
+    }
+
+    public void a(Entity entity, int i, int j, boolean flag) {
         if (i > d) {
             i = d;
         }
         if (b.b(entity.g)) {
             throw new IllegalStateException("Entity is already tracked!");
         } else {
-            EntityTrackerEntry entitytrackerentry = new EntityTrackerEntry(entity, i, j);
+            EntityTrackerEntry entitytrackerentry = new EntityTrackerEntry(entity, i, j, flag);
 
             a.add(entitytrackerentry);
             b.a(entity.g, entitytrackerentry);
@@ -83,7 +87,7 @@ public class EntityTracker {
             EntityTrackerEntry entitytrackerentry = (EntityTrackerEntry) iterator.next();
 
             entitytrackerentry.a(c.e.d);
-            if (entitytrackerentry.j && (entitytrackerentry.a instanceof EntityPlayerMP)) {
+            if (entitytrackerentry.n && (entitytrackerentry.a instanceof EntityPlayerMP)) {
                 arraylist.add((EntityPlayerMP) entitytrackerentry.a);
             }
         } while (true);

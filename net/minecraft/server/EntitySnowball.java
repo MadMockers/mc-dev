@@ -29,6 +29,54 @@ public class EntitySnowball extends Entity {
         a(0.25F, 0.25F);
     }
 
+    public EntitySnowball(World world, EntityLiving entityliving) {
+        super(world);
+        b = -1;
+        c = -1;
+        d = -1;
+        e = 0;
+        f = false;
+        a = 0;
+        ak = 0;
+        ai = entityliving;
+        a(0.25F, 0.25F);
+        c(entityliving.p, entityliving.q, entityliving.r, entityliving.v, entityliving.w);
+        p -= MathHelper.b((v / 180F) * 3.141593F) * 0.16F;
+        q -= 0.10000000149011612D;
+        r -= MathHelper.a((v / 180F) * 3.141593F) * 0.16F;
+        a(p, q, r);
+        G = 0.0F;
+        float f1 = 0.4F;
+
+        s = -MathHelper.a((v / 180F) * 3.141593F) * MathHelper.b((w / 180F) * 3.141593F) * f1;
+        u = MathHelper.b((v / 180F) * 3.141593F) * MathHelper.b((w / 180F) * 3.141593F) * f1;
+        t = -MathHelper.a((w / 180F) * 3.141593F) * f1;
+        a(s, t, u, 1.5F, 1.0F);
+    }
+
+    public void a(double d1, double d2, double d3, float f1, 
+            float f2) {
+        float f3 = MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
+
+        d1 /= f3;
+        d2 /= f3;
+        d3 /= f3;
+        d1 += V.nextGaussian() * 0.0074999998323619366D * (double) f2;
+        d2 += V.nextGaussian() * 0.0074999998323619366D * (double) f2;
+        d3 += V.nextGaussian() * 0.0074999998323619366D * (double) f2;
+        d1 *= f1;
+        d2 *= f1;
+        d3 *= f1;
+        s = d1;
+        t = d2;
+        u = d3;
+        float f4 = MathHelper.a(d1 * d1 + d3 * d3);
+
+        x = v = (float) ((Math.atan2(d1, d3) * 180D) / 3.1415927410125732D);
+        y = w = (float) ((Math.atan2(d2, f4) * 180D) / 3.1415927410125732D);
+        aj = 0;
+    }
+
     public void b_() {
         super.b_();
         if (a > 0) {
@@ -160,7 +208,7 @@ public class EntitySnowball extends Entity {
         f = nbttagcompound.b("inGround") == 1;
     }
 
-    public void a(EntityPlayer entityplayer) {
+    public void b(EntityPlayer entityplayer) {
         if (f && ai == entityplayer && a <= 0 && entityplayer.ak.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((V.nextFloat() - V.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);

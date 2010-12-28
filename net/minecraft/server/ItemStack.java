@@ -13,7 +13,7 @@ public final class ItemStack {
     }
 
     public ItemStack(Block block, int i) {
-        this(block.bi, i);
+        this(block.bh, i);
     }
 
     public ItemStack(Item item) {
@@ -56,6 +56,10 @@ public final class ItemStack {
 
     public float a(Block block) {
         return a().a(this, block);
+    }
+
+    public ItemStack a(World world, EntityPlayer entityplayer) {
+        return a().a(this, world, entityplayer);
     }
 
     public NBTTagCompound a(NBTTagCompound nbttagcompound) {

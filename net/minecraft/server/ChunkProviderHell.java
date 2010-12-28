@@ -82,10 +82,10 @@ public class ChunkProviderHell
                                 int l3 = 0;
 
                                 if (k2 * 8 + l2 < byte1) {
-                                    l3 = Block.E.bi;
+                                    l3 = Block.D.bh;
                                 }
                                 if (d16 > 0.0D) {
-                                    l3 = Block.bc.bi;
+                                    l3 = Block.bb.bh;
                                 }
                                 abyte0[j3] = (byte) l3;
                                 j3 += c1;
@@ -123,18 +123,18 @@ public class ChunkProviderHell
                 boolean flag1 = q[k1 + l1 * 16] + h.nextDouble() * 0.20000000000000001D > 0.0D;
                 int i2 = (int) (r[k1 + l1 * 16] / 3D + 3D + h.nextDouble() * 0.25D);
                 int j2 = -1;
-                byte byte1 = (byte) Block.bc.bi;
-                byte byte2 = (byte) Block.bc.bi;
+                byte byte1 = (byte) Block.bb.bh;
+                byte byte2 = (byte) Block.bb.bh;
 
                 for (int k2 = 127; k2 >= 0; k2--) {
                     int l2 = (k1 * 16 + l1) * 128 + k2;
 
                     if (k2 >= 127 - h.nextInt(5)) {
-                        abyte0[l2] = (byte) Block.A.bi;
+                        abyte0[l2] = (byte) Block.z.bh;
                         continue;
                     }
                     if (k2 <= 0 + h.nextInt(5)) {
-                        abyte0[l2] = (byte) Block.A.bi;
+                        abyte0[l2] = (byte) Block.z.bh;
                         continue;
                     }
                     byte byte3 = abyte0[l2];
@@ -143,31 +143,31 @@ public class ChunkProviderHell
                         j2 = -1;
                         continue;
                     }
-                    if (byte3 != Block.bc.bi) {
+                    if (byte3 != Block.bb.bh) {
                         continue;
                     }
                     if (j2 == -1) {
                         if (i2 <= 0) {
                             byte1 = 0;
-                            byte2 = (byte) Block.bc.bi;
+                            byte2 = (byte) Block.bb.bh;
                         } else if (k2 >= byte0 - 4 && k2 <= byte0 + 1) {
-                            byte1 = (byte) Block.bc.bi;
-                            byte2 = (byte) Block.bc.bi;
+                            byte1 = (byte) Block.bb.bh;
+                            byte2 = (byte) Block.bb.bh;
                             if (flag1) {
-                                byte1 = (byte) Block.G.bi;
+                                byte1 = (byte) Block.F.bh;
                             }
                             if (flag1) {
-                                byte2 = (byte) Block.bc.bi;
+                                byte2 = (byte) Block.bb.bh;
                             }
                             if (flag) {
-                                byte1 = (byte) Block.bd.bi;
+                                byte1 = (byte) Block.bc.bh;
                             }
                             if (flag) {
-                                byte2 = (byte) Block.bd.bi;
+                                byte2 = (byte) Block.bc.bh;
                             }
                         }
                         if (k2 < byte0 && byte1 == 0) {
-                            byte1 = (byte) Block.E.bi;
+                            byte1 = (byte) Block.D.bh;
                         }
                         j2 = i2;
                         if (k2 >= byte0 - 1) {
@@ -319,7 +319,7 @@ public class ChunkProviderHell
             int i4 = h.nextInt(120) + 4;
             int k5 = l1 + h.nextInt(16) + 8;
 
-            (new WorldGenHellLava(Block.D.bi)).a(n, h, k2, i4, k5);
+            (new WorldGenHellLava(Block.C.bh)).a(n, h, k2, i4, k5);
         }
 
         int j2 = h.nextInt(h.nextInt(10) + 1) + 1;
@@ -354,14 +354,14 @@ public class ChunkProviderHell
             int i5 = h.nextInt(128);
             int k6 = l1 + h.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.ag.bi)).a(n, h, k3, i5, k6);
+            (new WorldGenFlowers(Block.af.bh)).a(n, h, k3, i5, k6);
         }
         if (h.nextInt(1) == 0) {
             int l3 = k1 + h.nextInt(16) + 8;
             int j5 = h.nextInt(128);
             int l6 = l1 + h.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.ah.bi)).a(n, h, l3, j5, l6);
+            (new WorldGenFlowers(Block.ag.bh)).a(n, h, l3, j5, l6);
         }
         BlockSand.a = false;
     }

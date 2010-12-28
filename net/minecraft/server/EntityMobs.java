@@ -19,7 +19,7 @@ public class EntityMobs extends EntityCreature
         float f = b(1.0F);
 
         if (f > 0.5F) {
-            bf += 2;
+            bl += 2;
         }
         super.D();
     }

@@ -136,6 +136,10 @@ public class Item {
         return 1.0F;
     }
 
+    public ItemStack a(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+        return itemstack;
+    }
+
     public int a() {
         return aX;
     }
@@ -156,12 +160,12 @@ public class Item {
     }
 
     static {
-        Q = (new ItemSeeds(39, Block.aA.bi)).a(9);
+        Q = (new ItemSeeds(39, Block.az.bh)).a(9);
         at = (new ItemDoor(68, Material.c)).a(43);
-        av = (new ItemBucket(70, Block.B.bi)).a(75);
-        aw = (new ItemBucket(71, Block.D.bi)).a(76);
+        av = (new ItemBucket(70, Block.A.bh)).a(75);
+        aw = (new ItemBucket(71, Block.C.bh)).a(76);
         az = (new ItemDoor(74, Material.e)).a(44);
-        aH = (new ItemReed(82, Block.aY)).a(27);
+        aH = (new ItemReed(82, Block.aX)).a(27);
     }
 }
 

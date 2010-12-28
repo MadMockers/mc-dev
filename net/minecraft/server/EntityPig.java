@@ -35,6 +35,15 @@ public class EntityPig extends EntityAnimals {
         return "mob.pigdeath";
     }
 
+    public boolean a(EntityPlayer entityplayer) {
+        if (a) {
+            entityplayer.e(this);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     protected int g() {
         return Item.ao.aW;
     }

@@ -17,8 +17,6 @@ public class EntityFlying extends EntityLiving {
             t *= 0.80000001192092896D;
             u *= 0.80000001192092896D;
         } else if (t()) {
-            double d = q;
-
             a(f, f1, 0.02F);
             c(s, t, u);
             s *= 0.5D;
@@ -32,7 +30,7 @@ public class EntityFlying extends EntityLiving {
                 int i = l.a(MathHelper.b(p), MathHelper.b(z.b) - 1, MathHelper.b(r));
 
                 if (i > 0) {
-                    f2 = Block.n[i].bu * 0.91F;
+                    f2 = Block.m[i].bt * 0.91F;
                 }
             }
             float f3 = 0.1627714F / (f2 * f2 * f2);
@@ -44,7 +42,7 @@ public class EntityFlying extends EntityLiving {
                 int j = l.a(MathHelper.b(p), MathHelper.b(z.b) - 1, MathHelper.b(r));
 
                 if (j > 0) {
-                    f2 = Block.n[j].bu * 0.91F;
+                    f2 = Block.m[j].bt * 0.91F;
                 }
             }
             c(s, t, u);
@@ -53,9 +51,9 @@ public class EntityFlying extends EntityLiving {
             u *= f2;
         }
         bb = bc;
-        double d1 = p - m;
-        double d2 = r - o;
-        float f4 = MathHelper.a(d1 * d1 + d2 * d2) * 4F;
+        double d = p - m;
+        double d1 = r - o;
+        float f4 = MathHelper.a(d * d + d1 * d1) * 4F;
 
         if (f4 > 1.0F) {
             f4 = 1.0F;

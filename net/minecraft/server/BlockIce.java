@@ -8,7 +8,7 @@ public class BlockIce extends BlockBreakable {
 
     public BlockIce(int i, int j) {
         super(i, j, Material.r, false);
-        bu = 0.98F;
+        bt = 0.98F;
         a(true);
     }
 
@@ -20,7 +20,7 @@ public class BlockIce extends BlockBreakable {
         Material material = world.c(i, j - 1, k);
 
         if (material.c() || material.d()) {
-            world.d(i, j, k, Block.B.bi);
+            world.d(i, j, k, Block.A.bh);
         }
     }
 
@@ -29,9 +29,9 @@ public class BlockIce extends BlockBreakable {
     }
 
     public void a(World world, int i, int j, int k, Random random) {
-        if (world.a(EnumSkyBlock.b, i, j, k) > 11 - Block.r[bi]) {
+        if (world.a(EnumSkyBlock.b, i, j, k) > 11 - Block.q[bh]) {
             a_(world, i, j, k, world.b(i, j, k));
-            world.d(i, j, k, Block.C.bi);
+            world.d(i, j, k, Block.B.bh);
         }
     }
 }

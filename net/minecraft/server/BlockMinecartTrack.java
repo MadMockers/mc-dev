@@ -74,7 +74,7 @@ public class BlockMinecartTrack extends Block {
         if (flag) {
             a_(world, i, j, k, world.b(i, j, k));
             world.d(i, j, k, 0);
-        } else if (l > 0 && Block.n[l].c() && MinecartTrackLogic.a(new MinecartTrackLogic(this, world, i, j, k)) == 3) {
+        } else if (l > 0 && Block.m[l].c() && MinecartTrackLogic.a(new MinecartTrackLogic(this, world, i, j, k)) == 3) {
             g(world, i, j, k);
         }
     }

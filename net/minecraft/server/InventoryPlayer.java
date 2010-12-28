@@ -24,7 +24,17 @@ public class InventoryPlayer
         return a[d];
     }
 
-    private int c(int i) {
+    private int d(int i) {
+        for (int j = 0; j < a.length; j++) {
+            if (a[j] != null && a[j].c == i) {
+                return j;
+            }
+        }
+
+        return -1;
+    }
+
+    private int e(int i) {
         for (int j = 0; j < a.length; j++) {
             if (a[j] != null && a[j].c == i && a[j].a < a[j].b() && a[j].a < d()) {
                 return j;
@@ -45,7 +55,7 @@ public class InventoryPlayer
     }
 
     private int a(int i, int j) {
-        int k = c(i);
+        int k = e(i);
 
         if (k < 0) {
             k = g();
@@ -81,6 +91,18 @@ public class InventoryPlayer
             }
         }
 
+    }
+
+    public boolean b(int i) {
+        int j = d(i);
+
+        if (j < 0) {
+            return false;
+        }
+        if (--a[j].a <= 0) {
+            a[j] = null;
+        }
+        return true;
     }
 
     public boolean a(ItemStack itemstack) {
@@ -202,7 +224,7 @@ public class InventoryPlayer
     }
 
     public boolean b(Block block) {
-        if (block.bt != Material.d && block.bt != Material.e && block.bt != Material.t && block.bt != Material.s) {
+        if (block.bs != Material.d && block.bs != Material.e && block.bs != Material.t && block.bs != Material.s) {
             return true;
         }
         ItemStack itemstack = a(d);
@@ -240,7 +262,7 @@ public class InventoryPlayer
         }
     }
 
-    public void b(int i) {
+    public void c(int i) {
         for (int j = 0; j < b.length; j++) {
             if (b[j] == null || !(b[j].a() instanceof ItemArmor)) {
                 continue;

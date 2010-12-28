@@ -15,7 +15,7 @@ public class BlockObsidian extends BlockStone {
     }
 
     public int a(int i, Random random) {
-        return Block.aq.bi;
+        return Block.ap.bh;
     }
 }
 

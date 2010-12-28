@@ -33,7 +33,7 @@ public class NetLoginHandler extends NetHandler {
             b(h);
             h = null;
         }
-        if (f++ == 100) {
+        if (f++ == 600) {
             b("Took too long to log in");
         } else {
             b.a();
@@ -58,7 +58,7 @@ public class NetLoginHandler extends NetHandler {
 
     public void a(Packet1Login packet1login) {
         g = packet1login.b;
-        if (packet1login.a != 3) {
+        if (packet1login.a != 4) {
             b("Outdated client!");
             return;
         }
@@ -73,10 +73,10 @@ public class NetLoginHandler extends NetHandler {
         EntityPlayerMP entityplayermp = e.f.a(this, packet1login.b, packet1login.c);
 
         if (entityplayermp != null) {
-            a.info((new StringBuilder()).append(b()).append(" logged in").toString());
+            a.info((new StringBuilder()).append(b()).append(" logged in with entity id ").append(entityplayermp.g).toString());
             NetServerHandler netserverhandler = new NetServerHandler(e, b, entityplayermp);
 
-            netserverhandler.b(new Packet1Login("", "", 0, e.e.u, (byte) e.e.q.e));
+            netserverhandler.b(new Packet1Login("", "", entityplayermp.g, e.e.u, (byte) e.e.q.g));
             netserverhandler.b(new Packet6SpawnPosition(e.e.m, e.e.n, e.e.o));
             e.f.a(entityplayermp);
             netserverhandler.a(entityplayermp.p, entityplayermp.q, entityplayermp.r, entityplayermp.v, entityplayermp.w);

@@ -42,7 +42,7 @@ public class MetadataChunkBlock {
                     int l1 = world.a(a, i1, k1, j1);
                     int i2 = 0;
                     int j2 = world.a(i1, k1, j1);
-                    int k2 = Block.r[j2];
+                    int k2 = Block.q[j2];
 
                     if (k2 == 0) {
                         k2 = 1;
@@ -54,7 +54,7 @@ public class MetadataChunkBlock {
                             l2 = 15;
                         }
                     } else if (a == EnumSkyBlock.b) {
-                        l2 = Block.t[j2];
+                        l2 = Block.s[j2];
                     }
                     if (k2 >= 15 && l2 == 0) {
                         i2 = 0;

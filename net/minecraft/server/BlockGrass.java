@@ -8,7 +8,7 @@ public class BlockGrass extends Block {
 
     protected BlockGrass(int i) {
         super(i, Material.b);
-        bh = 3;
+        bg = 3;
         a(true);
     }
 
@@ -17,20 +17,20 @@ public class BlockGrass extends Block {
             if (random.nextInt(4) != 0) {
                 return;
             }
-            world.d(i, j, k, Block.w.bi);
+            world.d(i, j, k, Block.v.bh);
         } else if (world.h(i, j + 1, k) >= 9) {
             int l = (i + random.nextInt(3)) - 1;
             int i1 = (j + random.nextInt(5)) - 3;
             int j1 = (k + random.nextInt(3)) - 1;
 
-            if (world.a(l, i1, j1) == Block.w.bi && world.h(l, i1 + 1, j1) >= 4 && !world.c(l, i1 + 1, j1).b()) {
-                world.d(l, i1, j1, Block.v.bi);
+            if (world.a(l, i1, j1) == Block.v.bh && world.h(l, i1 + 1, j1) >= 4 && !world.c(l, i1 + 1, j1).b()) {
+                world.d(l, i1, j1, Block.u.bh);
             }
         }
     }
 
     public int a(int i, Random random) {
-        return Block.w.a(0, random);
+        return Block.v.a(0, random);
     }
 }
 

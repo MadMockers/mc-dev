@@ -8,7 +8,7 @@ public class BlockFlower extends Block {
 
     protected BlockFlower(int i, int j) {
         super(i, Material.i);
-        bh = j;
+        bg = j;
         a(true);
         float f1 = 0.2F;
 
@@ -20,7 +20,7 @@ public class BlockFlower extends Block {
     }
 
     protected boolean b(int i) {
-        return i == Block.v.bi || i == Block.w.bi || i == Block.aB.bi;
+        return i == Block.u.bh || i == Block.v.bh || i == Block.aA.bh;
     }
 
     public void b(World world, int i, int j, int k, int l) {

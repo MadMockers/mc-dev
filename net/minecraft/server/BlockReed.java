@@ -8,7 +8,7 @@ public class BlockReed extends Block {
 
     protected BlockReed(int i, int j) {
         super(i, Material.i);
-        bh = j;
+        bg = j;
         float f1 = 0.375F;
 
         a(0.5F - f1, 0.0F, 0.5F - f1, 0.5F + f1, 1.0F, 0.5F + f1);
@@ -19,14 +19,14 @@ public class BlockReed extends Block {
         if (world.a(i, j + 1, k) == 0) {
             int l;
 
-            for (l = 1; world.a(i, j - l, k) == bi; l++) {
+            for (l = 1; world.a(i, j - l, k) == bh; l++) {
                 ;
             }
             if (l < 3) {
                 int i1 = world.b(i, j, k);
 
                 if (i1 == 15) {
-                    world.d(i, j + 1, k, bi);
+                    world.d(i, j + 1, k, bh);
                     world.b(i, j, k, 0);
                 } else {
                     world.b(i, j, k, i1 + 1);
@@ -38,10 +38,10 @@ public class BlockReed extends Block {
     public boolean a(World world, int i, int j, int k) {
         int l = world.a(i, j - 1, k);
 
-        if (l == bi) {
+        if (l == bh) {
             return true;
         }
-        if (l != Block.v.bi && l != Block.w.bi) {
+        if (l != Block.u.bh && l != Block.v.bh) {
             return false;
         }
         if (world.c(i - 1, j - 1, k) == Material.f) {

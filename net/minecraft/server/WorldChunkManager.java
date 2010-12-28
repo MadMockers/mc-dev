@@ -13,8 +13,6 @@ public class WorldChunkManager {
     public double b[];
     public double c[];
     public MobSpawnerBase d[];
-    private static double h = 0.5D;
-    private static double i = 0.5D;
 
     protected WorldChunkManager() {}
 
@@ -28,29 +26,29 @@ public class WorldChunkManager {
         return a(chunkcoordintpair.a, chunkcoordintpair.b);
     }
 
-    public MobSpawnerBase a(int j, int k) {
-        return a(j, k, 1, 1)[0];
+    public MobSpawnerBase a(int i, int j) {
+        return a(i, j, 1, 1)[0];
     }
 
-    public MobSpawnerBase[] a(int j, int k, int l, int i1) {
-        d = a(d, j, k, l, i1);
+    public MobSpawnerBase[] a(int i, int j, int k, int l) {
+        d = a(d, i, j, k, l);
         return d;
     }
 
-    public double[] a(double ad[], int j, int k, int l, int i1) {
-        if (ad == null || ad.length < l * i1) {
-            ad = new double[l * i1];
+    public double[] a(double ad[], int i, int j, int k, int l) {
+        if (ad == null || ad.length < k * l) {
+            ad = new double[k * l];
         }
-        ad = e.a(ad, j, k, l, l, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
-        c = g.a(c, j, k, l, l, 0.25D, 0.25D, 0.58823529411764708D);
-        int j1 = 0;
+        ad = e.a(ad, i, j, k, k, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
+        c = g.a(c, i, j, k, k, 0.25D, 0.25D, 0.58823529411764708D);
+        int i1 = 0;
 
-        for (int k1 = 0; k1 < l; k1++) {
-            for (int l1 = 0; l1 < i1; l1++) {
-                double d1 = c[j1] * 1.1000000000000001D + 0.5D;
+        for (int j1 = 0; j1 < k; j1++) {
+            for (int k1 = 0; k1 < l; k1++) {
+                double d1 = c[i1] * 1.1000000000000001D + 0.5D;
                 double d2 = 0.01D;
                 double d3 = 1.0D - d2;
-                double d4 = (ad[j1] * 0.14999999999999999D + 0.69999999999999996D) * d3 + d1 * d2;
+                double d4 = (ad[i1] * 0.14999999999999999D + 0.69999999999999996D) * d3 + d1 * d2;
 
                 d4 = 1.0D - (1.0D - d4) * (1.0D - d4);
                 if (d4 < 0.0D) {
@@ -59,8 +57,8 @@ public class WorldChunkManager {
                 if (d4 > 1.0D) {
                     d4 = 1.0D;
                 }
-                ad[j1] = d4;
-                j1++;
+                ad[i1] = d4;
+                i1++;
             }
 
         }
@@ -68,25 +66,25 @@ public class WorldChunkManager {
         return ad;
     }
 
-    public MobSpawnerBase[] a(MobSpawnerBase amobspawnerbase[], int j, int k, int l, int i1) {
-        if (amobspawnerbase == null || amobspawnerbase.length < l * i1) {
-            amobspawnerbase = new MobSpawnerBase[l * i1];
+    public MobSpawnerBase[] a(MobSpawnerBase amobspawnerbase[], int i, int j, int k, int l) {
+        if (amobspawnerbase == null || amobspawnerbase.length < k * l) {
+            amobspawnerbase = new MobSpawnerBase[k * l];
         }
-        a = e.a(a, j, k, l, l, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
-        b = f.a(b, j, k, l, l, 0.05000000074505806D, 0.05000000074505806D, 0.33333333333333331D);
-        c = g.a(c, j, k, l, l, 0.25D, 0.25D, 0.58823529411764708D);
-        int j1 = 0;
+        a = e.a(a, i, j, k, k, 0.02500000037252903D, 0.02500000037252903D, 0.25D);
+        b = f.a(b, i, j, k, k, 0.05000000074505806D, 0.05000000074505806D, 0.33333333333333331D);
+        c = g.a(c, i, j, k, k, 0.25D, 0.25D, 0.58823529411764708D);
+        int i1 = 0;
 
-        for (int k1 = 0; k1 < l; k1++) {
-            for (int l1 = 0; l1 < i1; l1++) {
-                double d1 = c[j1] * 1.1000000000000001D + 0.5D;
+        for (int j1 = 0; j1 < k; j1++) {
+            for (int k1 = 0; k1 < l; k1++) {
+                double d1 = c[i1] * 1.1000000000000001D + 0.5D;
                 double d2 = 0.01D;
                 double d3 = 1.0D - d2;
-                double d4 = (a[j1] * 0.14999999999999999D + 0.69999999999999996D) * d3 + d1 * d2;
+                double d4 = (a[i1] * 0.14999999999999999D + 0.69999999999999996D) * d3 + d1 * d2;
 
                 d2 = 0.002D;
                 d3 = 1.0D - d2;
-                double d5 = (b[j1] * 0.14999999999999999D + 0.5D) * d3 + d1 * d2;
+                double d5 = (b[i1] * 0.14999999999999999D + 0.5D) * d3 + d1 * d2;
 
                 d4 = 1.0D - (1.0D - d4) * (1.0D - d4);
                 if (d4 < 0.0D) {
@@ -101,15 +99,14 @@ public class WorldChunkManager {
                 if (d5 > 1.0D) {
                     d5 = 1.0D;
                 }
-                a[j1] = d4;
-                b[j1] = d5;
-                amobspawnerbase[j1++] = MobSpawnerBase.a(d4, d5);
+                a[i1] = d4;
+                b[i1] = d5;
+                amobspawnerbase[i1++] = MobSpawnerBase.a(d4, d5);
             }
 
         }
 
         return amobspawnerbase;
     }
-
 }
 

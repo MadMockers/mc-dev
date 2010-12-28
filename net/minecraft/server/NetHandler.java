@@ -111,8 +111,16 @@ public class NetHandler {
         a(((Packet) (packet6spawnposition)));
     }
 
-    public void a(PacketUnusedFishing packetunusedfishing) {
-        a(((Packet) (packetunusedfishing)));
+    public void a(Packet28 packet28) {
+        a(((Packet) (packet28)));
+    }
+
+    public void a(Packet39 packet39) {
+        a(((Packet) (packet39)));
+    }
+
+    public void a(Packet7 packet7) {
+        a(((Packet) (packet7)));
     }
 }
 

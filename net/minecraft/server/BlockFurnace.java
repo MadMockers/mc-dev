@@ -11,11 +11,11 @@ public class BlockFurnace extends BlockContainer {
     protected BlockFurnace(int i, boolean flag) {
         super(i, Material.d);
         a = flag;
-        bh = 45;
+        bg = 45;
     }
 
     public int a(int i, Random random) {
-        return Block.aC.bi;
+        return Block.aB.bh;
     }
 
     public void e(World world, int i, int j, int k) {
@@ -30,16 +30,16 @@ public class BlockFurnace extends BlockContainer {
         int k1 = world.a(i + 1, j, k);
         byte byte0 = 3;
 
-        if (Block.p[l] && !Block.p[i1]) {
+        if (Block.o[l] && !Block.o[i1]) {
             byte0 = 3;
         }
-        if (Block.p[i1] && !Block.p[l]) {
+        if (Block.o[i1] && !Block.o[l]) {
             byte0 = 2;
         }
-        if (Block.p[j1] && !Block.p[k1]) {
+        if (Block.o[j1] && !Block.o[k1]) {
             byte0 = 5;
         }
-        if (Block.p[k1] && !Block.p[j1]) {
+        if (Block.o[k1] && !Block.o[j1]) {
             byte0 = 4;
         }
         world.b(i, j, k, byte0);
@@ -47,15 +47,15 @@ public class BlockFurnace extends BlockContainer {
 
     public int a(int i) {
         if (i == 1) {
-            return Block.u.bi;
+            return Block.t.bh;
         }
         if (i == 0) {
-            return Block.u.bi;
+            return Block.t.bh;
         }
         if (i == 3) {
-            return bh - 1;
+            return bg - 1;
         } else {
-            return bh;
+            return bg;
         }
     }
 
@@ -71,9 +71,9 @@ public class BlockFurnace extends BlockContainer {
         TileEntity tileentity = world.k(i, j, k);
 
         if (flag) {
-            world.d(i, j, k, Block.aD.bi);
+            world.d(i, j, k, Block.aC.bh);
         } else {
-            world.d(i, j, k, Block.aC.bi);
+            world.d(i, j, k, Block.aB.bh);
         }
         world.b(i, j, k, l);
         world.a(i, j, k, tileentity);

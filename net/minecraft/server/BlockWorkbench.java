@@ -5,20 +5,20 @@ public class BlockWorkbench extends Block {
 
     protected BlockWorkbench(int i) {
         super(i, Material.c);
-        bh = 59;
+        bg = 59;
     }
 
     public int a(int i) {
         if (i == 1) {
-            return bh - 16;
+            return bg - 16;
         }
         if (i == 0) {
-            return Block.y.a(0);
+            return Block.x.a(0);
         }
         if (i == 2 || i == 4) {
-            return bh + 1;
+            return bg + 1;
         } else {
-            return bh;
+            return bg;
         }
     }
 

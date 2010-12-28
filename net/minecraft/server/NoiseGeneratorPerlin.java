@@ -105,49 +105,43 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
             boolean flag1 = false;
             boolean flag2 = false;
             boolean flag3 = false;
-            boolean flag4 = false;
-            boolean flag6 = false;
             double d8 = 0.0D;
             double d10 = 0.0D;
-            double d11 = 0.0D;
-            double d14 = 0.0D;
-            int j3 = 0;
-            double d16 = 1.0D / d7;
+            int j2 = 0;
+            double d12 = 1.0D / d7;
 
-            for (int k3 = 0; k3 < i; k3++) {
-                double d17 = (d1 + (double) k3) * d4 + a;
-                int l3 = (int) d17;
+            for (int l2 = 0; l2 < i; l2++) {
+                double d13 = (d1 + (double) l2) * d4 + a;
+                int i3 = (int) d13;
 
-                if (d17 < (double) l3) {
-                    l3--;
+                if (d13 < (double) i3) {
+                    i3--;
                 }
-                int i4 = l3 & 0xff;
+                int j3 = i3 & 0xff;
 
-                d17 -= l3;
-                double d18 = d17 * d17 * d17 * (d17 * (d17 * 6D - 15D) + 10D);
+                d13 -= i3;
+                double d15 = d13 * d13 * d13 * (d13 * (d13 * 6D - 15D) + 10D);
 
-                for (int k4 = 0; k4 < k; k4++) {
-                    double d19 = (d3 + (double) k4) * d6 + c;
-                    int l4 = (int) d19;
+                for (int k3 = 0; k3 < k; k3++) {
+                    double d17 = (d3 + (double) k3) * d6 + c;
+                    int i4 = (int) d17;
 
-                    if (d19 < (double) l4) {
-                        l4--;
+                    if (d17 < (double) i4) {
+                        i4--;
                     }
-                    int i5 = l4 & 0xff;
+                    int k4 = i4 & 0xff;
 
-                    d19 -= l4;
-                    double d20 = d19 * d19 * d19 * (d19 * (d19 * 6D - 15D) + 10D);
-                    int l = d[i4] + 0;
-                    int j1 = d[l] + i5;
-                    int k1 = d[l + 1] + i5;
-                    int l1 = d[i4 + 1] + 0;
-                    int j2 = d[l1] + i5;
-                    int l2 = d[l1 + 1] + i5;
-                    double d9 = b(d18, a(d[j1], d17, d19), a(d[j2], d17 - 1.0D, 0.0D, d19));
-                    double d12 = b(d18, a(d[j1 + 1], d17, 0.0D, d19 - 1.0D), a(d[j2 + 1], d17 - 1.0D, 0.0D, d19 - 1.0D));
-                    double d21 = b(d20, d9, d12);
+                    d17 -= i4;
+                    double d19 = d17 * d17 * d17 * (d17 * (d17 * 6D - 15D) + 10D);
+                    int l = d[j3] + 0;
+                    int j1 = d[l] + k4;
+                    int k1 = d[j3 + 1] + 0;
+                    int l1 = d[k1] + k4;
+                    double d9 = b(d15, a(d[j1], d13, d17), a(d[l1], d13 - 1.0D, 0.0D, d17));
+                    double d11 = b(d15, a(d[j1 + 1], d13, 0.0D, d17 - 1.0D), a(d[l1 + 1], d13 - 1.0D, 0.0D, d17 - 1.0D));
+                    double d21 = b(d19, d9, d11);
 
-                    ad[j3++] += d21 * d16;
+                    ad[j2++] += d21 * d12;
                 }
 
             }
@@ -158,71 +152,71 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
         double d22 = 1.0D / d7;
         int i2 = -1;
         boolean flag5 = false;
+        boolean flag6 = false;
         boolean flag7 = false;
         boolean flag8 = false;
+        boolean flag4 = false;
         boolean flag9 = false;
-        boolean flag10 = false;
-        boolean flag11 = false;
-        double d13 = 0.0D;
-        double d15 = 0.0D;
         double d23 = 0.0D;
+        double d14 = 0.0D;
         double d24 = 0.0D;
+        double d16 = 0.0D;
 
-        for (int k6 = 0; k6 < i; k6++) {
-            double d25 = (d1 + (double) k6) * d4 + a;
-            int j4 = (int) d25;
+        for (int l3 = 0; l3 < i; l3++) {
+            double d18 = (d1 + (double) l3) * d4 + a;
+            int j4 = (int) d18;
 
-            if (d25 < (double) j4) {
+            if (d18 < (double) j4) {
                 j4--;
             }
-            int l6 = j4 & 0xff;
+            int l4 = j4 & 0xff;
 
-            d25 -= j4;
-            double d26 = d25 * d25 * d25 * (d25 * (d25 * 6D - 15D) + 10D);
+            d18 -= j4;
+            double d20 = d18 * d18 * d18 * (d18 * (d18 * 6D - 15D) + 10D);
 
-            for (int i7 = 0; i7 < k; i7++) {
-                double d27 = (d3 + (double) i7) * d6 + c;
-                int j5 = (int) d27;
+            for (int j6 = 0; j6 < k; j6++) {
+                double d25 = (d3 + (double) j6) * d6 + c;
+                int k6 = (int) d25;
 
-                if (d27 < (double) j5) {
-                    j5--;
+                if (d25 < (double) k6) {
+                    k6--;
                 }
-                int j7 = j5 & 0xff;
+                int l6 = k6 & 0xff;
 
-                d27 -= j5;
-                double d28 = d27 * d27 * d27 * (d27 * (d27 * 6D - 15D) + 10D);
+                d25 -= k6;
+                double d26 = d25 * d25 * d25 * (d25 * (d25 * 6D - 15D) + 10D);
 
-                for (int k7 = 0; k7 < j; k7++) {
-                    double d29 = (d2 + (double) k7) * d5 + b;
-                    int l7 = (int) d29;
+                for (int i7 = 0; i7 < j; i7++) {
+                    double d27 = (d2 + (double) i7) * d5 + b;
+                    int j7 = (int) d27;
 
-                    if (d29 < (double) l7) {
-                        l7--;
+                    if (d27 < (double) j7) {
+                        j7--;
                     }
-                    int i8 = l7 & 0xff;
+                    int k7 = j7 & 0xff;
 
-                    d29 -= l7;
-                    double d30 = d29 * d29 * d29 * (d29 * (d29 * 6D - 15D) + 10D);
+                    d27 -= j7;
+                    double d28 = d27 * d27 * d27 * (d27 * (d27 * 6D - 15D) + 10D);
 
-                    if (k7 == 0 || i8 != i2) {
-                        i2 = i8;
-                        int k2 = d[l6] + i8;
-                        int i3 = d[k2] + j7;
-                        int k5 = d[k2 + 1] + j7;
-                        int l5 = d[l6 + 1] + i8;
-                        int i6 = d[l5] + j7;
-                        int j6 = d[l5 + 1] + j7;
+                    if (i7 == 0 || k7 != i2) {
+                        i2 = k7;
+                        int i5 = d[l4] + k7;
+                        int j5 = d[i5] + l6;
+                        int k5 = d[i5 + 1] + l6;
+                        int l5 = d[l4 + 1] + k7;
+                        int k2 = d[l5] + l6;
+                        int i6 = d[l5 + 1] + l6;
 
-                        d13 = b(d26, a(d[i3], d25, d29, d27), a(d[i6], d25 - 1.0D, d29, d27));
-                        d15 = b(d26, a(d[k5], d25, d29 - 1.0D, d27), a(d[j6], d25 - 1.0D, d29 - 1.0D, d27));
-                        d23 = b(d26, a(d[i3 + 1], d25, d29, d27 - 1.0D), a(d[i6 + 1], d25 - 1.0D, d29, d27 - 1.0D));
-                        d24 = b(d26, a(d[k5 + 1], d25, d29 - 1.0D, d27 - 1.0D), a(d[j6 + 1], d25 - 1.0D, d29 - 1.0D, d27 - 1.0D));
+                        d23 = b(d20, a(d[j5], d18, d27, d25), a(d[k2], d18 - 1.0D, d27, d25));
+                        d14 = b(d20, a(d[k5], d18, d27 - 1.0D, d25), a(d[i6], d18 - 1.0D, d27 - 1.0D, d25));
+                        d24 = b(d20, a(d[j5 + 1], d18, d27, d25 - 1.0D), a(d[k2 + 1], d18 - 1.0D, d27, d25 - 1.0D));
+                        d16 = b(d20, a(d[k5 + 1], d18, d27 - 1.0D, d25 - 1.0D), a(d[i6 + 1], d18 - 1.0D, d27 - 1.0D, d25 - 1.0D));
                     }
-                    double d31 = b(d30, d13, d15);
-                    double d32 = b(d30, d23, d24);
-                    double d33 = b(d28, d31, d32);
+                    double d29 = b(d28, d23, d14);
+                    double d30 = b(d28, d24, d16);
+                    double d31 = b(d26, d29, d30);
 
-                    ad[i1++] += d33 * d22;
+                    ad[i1++] += d31 * d22;
                 }
 
             }

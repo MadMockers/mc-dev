@@ -13,27 +13,27 @@ public class WorldGenHellLava extends WorldGenerator {
     }
 
     public boolean a(World world, Random random, int i, int j, int k) {
-        if (world.a(i, j + 1, k) != Block.bc.bi) {
+        if (world.a(i, j + 1, k) != Block.bb.bh) {
             return false;
         }
-        if (world.a(i, j, k) != 0 && world.a(i, j, k) != Block.bc.bi) {
+        if (world.a(i, j, k) != 0 && world.a(i, j, k) != Block.bb.bh) {
             return false;
         }
         int l = 0;
 
-        if (world.a(i - 1, j, k) == Block.bc.bi) {
+        if (world.a(i - 1, j, k) == Block.bb.bh) {
             l++;
         }
-        if (world.a(i + 1, j, k) == Block.bc.bi) {
+        if (world.a(i + 1, j, k) == Block.bb.bh) {
             l++;
         }
-        if (world.a(i, j, k - 1) == Block.bc.bi) {
+        if (world.a(i, j, k - 1) == Block.bb.bh) {
             l++;
         }
-        if (world.a(i, j, k + 1) == Block.bc.bi) {
+        if (world.a(i, j, k + 1) == Block.bb.bh) {
             l++;
         }
-        if (world.a(i, j - 1, k) == Block.bc.bi) {
+        if (world.a(i, j - 1, k) == Block.bb.bh) {
             l++;
         }
         int i1 = 0;
@@ -56,7 +56,7 @@ public class WorldGenHellLava extends WorldGenerator {
         if (l == 4 && i1 == 1) {
             world.d(i, j, k, a);
             world.a = true;
-            Block.n[a].a(world, i, j, k, random);
+            Block.m[a].a(world, i, j, k, random);
             world.a = false;
         }
         return true;

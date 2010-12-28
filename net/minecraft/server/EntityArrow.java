@@ -225,7 +225,7 @@ public class EntityArrow extends Entity {
         f = nbttagcompound.b("inGround") == 1;
     }
 
-    public void a(EntityPlayer entityplayer) {
+    public void b(EntityPlayer entityplayer) {
         if (f && ai == entityplayer && a <= 0 && entityplayer.ak.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((V.nextFloat() - V.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);

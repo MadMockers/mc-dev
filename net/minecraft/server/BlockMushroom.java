@@ -11,7 +11,7 @@ public class BlockMushroom extends BlockFlower {
     }
 
     protected boolean b(int i) {
-        return Block.p[i];
+        return Block.o[i];
     }
 
     public boolean f(World world, int i, int j, int k) {

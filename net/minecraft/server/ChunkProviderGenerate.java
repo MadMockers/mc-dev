@@ -90,13 +90,13 @@ public class ChunkProviderGenerate
 
                                 if (k2 * 8 + l2 < byte1) {
                                     if (d18 < 0.5D && k2 * 8 + l2 >= byte1 - 1) {
-                                        l3 = Block.aU.bi;
+                                        l3 = Block.aT.bh;
                                     } else {
-                                        l3 = Block.C.bi;
+                                        l3 = Block.B.bh;
                                     }
                                 }
                                 if (d16 > 0.0D) {
-                                    l3 = Block.u.bi;
+                                    l3 = Block.t.bh;
                                 }
                                 abyte0[j3] = (byte) l3;
                                 j3 += c1;
@@ -142,7 +142,7 @@ public class ChunkProviderGenerate
                     int l2 = (k1 * 16 + l1) * 128 + k2;
 
                     if (k2 <= 0 + j.nextInt(5)) {
-                        abyte0[l2] = (byte) Block.A.bi;
+                        abyte0[l2] = (byte) Block.z.bh;
                         continue;
                     }
                     byte byte3 = abyte0[l2];
@@ -151,13 +151,13 @@ public class ChunkProviderGenerate
                         j2 = -1;
                         continue;
                     }
-                    if (byte3 != Block.u.bi) {
+                    if (byte3 != Block.t.bh) {
                         continue;
                     }
                     if (j2 == -1) {
                         if (i2 <= 0) {
                             byte1 = 0;
-                            byte2 = (byte) Block.u.bi;
+                            byte2 = (byte) Block.t.bh;
                         } else if (k2 >= byte0 - 4 && k2 <= byte0 + 1) {
                             byte1 = mobspawnerbase.o;
                             byte2 = mobspawnerbase.p;
@@ -165,17 +165,17 @@ public class ChunkProviderGenerate
                                 byte1 = 0;
                             }
                             if (flag1) {
-                                byte2 = (byte) Block.G.bi;
+                                byte2 = (byte) Block.F.bh;
                             }
                             if (flag) {
-                                byte1 = (byte) Block.F.bi;
+                                byte1 = (byte) Block.E.bh;
                             }
                             if (flag) {
-                                byte2 = (byte) Block.F.bi;
+                                byte2 = (byte) Block.E.bh;
                             }
                         }
                         if (k2 < byte0 && byte1 == 0) {
-                            byte1 = (byte) Block.C.bi;
+                            byte1 = (byte) Block.B.bh;
                         }
                         j2 = i2;
                         if (k2 >= byte0 - 1) {
@@ -349,7 +349,7 @@ public class ChunkProviderGenerate
             int i8 = j.nextInt(128);
             int j10 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.w.bi, 32)).a(p, j, k5, i8, j10);
+            (new WorldGenMinable(Block.v.bh, 32)).a(p, j, k5, i8, j10);
         }
 
         for (int i3 = 0; i3 < 10; i3++) {
@@ -357,7 +357,7 @@ public class ChunkProviderGenerate
             int j8 = j.nextInt(128);
             int k10 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.G.bi, 32)).a(p, j, l5, j8, k10);
+            (new WorldGenMinable(Block.F.bh, 32)).a(p, j, l5, j8, k10);
         }
 
         for (int j3 = 0; j3 < 20; j3++) {
@@ -365,7 +365,7 @@ public class ChunkProviderGenerate
             int k8 = j.nextInt(128);
             int l10 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.J.bi, 16)).a(p, j, i6, k8, l10);
+            (new WorldGenMinable(Block.I.bh, 16)).a(p, j, i6, k8, l10);
         }
 
         for (int k3 = 0; k3 < 20; k3++) {
@@ -373,7 +373,7 @@ public class ChunkProviderGenerate
             int l8 = j.nextInt(64);
             int i11 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.I.bi, 8)).a(p, j, j6, l8, i11);
+            (new WorldGenMinable(Block.H.bh, 8)).a(p, j, j6, l8, i11);
         }
 
         for (int i4 = 0; i4 < 2; i4++) {
@@ -381,7 +381,7 @@ public class ChunkProviderGenerate
             int i9 = j.nextInt(32);
             int j11 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.H.bi, 8)).a(p, j, k6, i9, j11);
+            (new WorldGenMinable(Block.G.bh, 8)).a(p, j, k6, i9, j11);
         }
 
         for (int j4 = 0; j4 < 8; j4++) {
@@ -389,7 +389,7 @@ public class ChunkProviderGenerate
             int j9 = j.nextInt(16);
             int k11 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.aO.bi, 7)).a(p, j, l6, j9, k11);
+            (new WorldGenMinable(Block.aN.bh, 7)).a(p, j, l6, j9, k11);
         }
 
         for (int k4 = 0; k4 < 1; k4++) {
@@ -397,7 +397,7 @@ public class ChunkProviderGenerate
             int k9 = j.nextInt(16);
             int l11 = l1 + j.nextInt(16);
 
-            (new WorldGenMinable(Block.ax.bi, 7)).a(p, j, i7, k9, l11);
+            (new WorldGenMinable(Block.aw.bh, 7)).a(p, j, i7, k9, l11);
         }
 
         d1 = 0.5D;
@@ -449,7 +449,7 @@ public class ChunkProviderGenerate
             int i17 = j.nextInt(128);
             int k19 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.ae.bi)).a(p, j, j14, i17, k19);
+            (new WorldGenFlowers(Block.ad.bh)).a(p, j, j14, i17, k19);
         }
 
         if (j.nextInt(2) == 0) {
@@ -457,21 +457,21 @@ public class ChunkProviderGenerate
             int k14 = j.nextInt(128);
             int j17 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.af.bi)).a(p, j, k12, k14, j17);
+            (new WorldGenFlowers(Block.ae.bh)).a(p, j, k12, k14, j17);
         }
         if (j.nextInt(4) == 0) {
             int l12 = k1 + j.nextInt(16) + 8;
             int l14 = j.nextInt(128);
             int k17 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.ag.bi)).a(p, j, l12, l14, k17);
+            (new WorldGenFlowers(Block.af.bh)).a(p, j, l12, l14, k17);
         }
         if (j.nextInt(8) == 0) {
             int i13 = k1 + j.nextInt(16) + 8;
             int i15 = j.nextInt(128);
             int l17 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenFlowers(Block.ah.bi)).a(p, j, i13, i15, l17);
+            (new WorldGenFlowers(Block.ag.bh)).a(p, j, i13, i15, l17);
         }
         for (int j13 = 0; j13 < 10; j13++) {
             int j15 = k1 + j.nextInt(16) + 8;
@@ -506,7 +506,7 @@ public class ChunkProviderGenerate
             int j20 = j.nextInt(j.nextInt(120) + 8);
             int j21 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenLiquids(Block.B.bi)).a(p, j, l18, j20, j21);
+            (new WorldGenLiquids(Block.A.bh)).a(p, j, l18, j20, j21);
         }
 
         for (int j16 = 0; j16 < 20; j16++) {
@@ -514,7 +514,7 @@ public class ChunkProviderGenerate
             int k20 = j.nextInt(j.nextInt(j.nextInt(112) + 8) + 8);
             int k21 = l1 + j.nextInt(16) + 8;
 
-            (new WorldGenLiquids(Block.D.bi)).a(p, j, i19, k20, k21);
+            (new WorldGenLiquids(Block.C.bh)).a(p, j, i19, k20, k21);
         }
 
         w = p.a().a(w, k1 + 8, l1 + 8, 16, 16);
@@ -526,7 +526,7 @@ public class ChunkProviderGenerate
                 double d2 = w[l20 * 16 + l21] - ((double) (i22 - 64) / 64D) * 0.29999999999999999D;
 
                 if (d2 < 0.5D && i22 > 0 && i22 < 128 && p.a(k16, i22, j19) == 0 && p.c(k16, i22 - 1, j19).c() && p.c(k16, i22 - 1, j19) != Material.r) {
-                    p.d(k16, i22, j19, Block.aT.bi);
+                    p.d(k16, i22, j19, Block.aS.bh);
                 }
             }
 

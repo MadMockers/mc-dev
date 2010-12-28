@@ -10,18 +10,31 @@ public class WorldServer extends World {
     public ChunkProviderServer A;
     public boolean B;
     public boolean C;
+    private MinecraftServer D;
+    private MCHashTable E;
 
-    public WorldServer(File file, String s, int i) {
+    public WorldServer(MinecraftServer minecraftserver, File file, String s, int i) {
         super(file, s, (new Random()).nextLong(), WorldProvider.a(i));
         B = false;
+        E = new MCHashTable();
+        D = minecraftserver;
     }
 
     public void f() {
         super.f();
     }
 
+    public void a(Entity entity, boolean flag) {
+        if (D.m && (entity instanceof EntityAnimals)) {
+            entity.l();
+        }
+        if (entity.j == null || !(entity.j instanceof EntityPlayer)) {
+            super.a(entity, flag);
+        }
+    }
+
     protected IChunkProvider a(File file) {
-        A = new ChunkProviderServer(this, new ChunkLoader(file, true), q.c());
+        A = new ChunkProviderServer(this, q.a(file), q.c());
         return A;
     }
 
@@ -37,6 +50,30 @@ public class WorldServer extends World {
         }
 
         return arraylist;
+    }
+
+    public boolean a(EntityPlayer entityplayer, int i, int j, int k) {
+        int l = (int) MathHelper.e(i - m);
+        int i1 = (int) MathHelper.e(k - o);
+
+        if (l > i1) {
+            i1 = l;
+        }
+        return i1 > 16 || D.f.g(entityplayer.ar);
+    }
+
+    protected void b(Entity entity) {
+        super.b(entity);
+        E.a(entity.g, entity);
+    }
+
+    protected void c(Entity entity) {
+        super.c(entity);
+        E.d(entity.g);
+    }
+
+    public Entity a(int i) {
+        return (Entity) E.a(i);
     }
 }
 

@@ -11,13 +11,13 @@ public class BlockOre extends Block {
     }
 
     public int a(int i, Random random) {
-        if (bi == Block.J.bi) {
+        if (bh == Block.I.bh) {
             return Item.k.aW;
         }
-        if (bi == Block.ax.bi) {
+        if (bh == Block.aw.bh) {
             return Item.l.aW;
         } else {
-            return bi;
+            return bh;
         }
     }
 

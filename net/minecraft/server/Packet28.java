@@ -14,13 +14,9 @@ public class Packet28 extends Packet {
 
     public Packet28() {}
 
-    public Packet28(Entity entity) {
-        this(entity.g, entity.s, entity.t, entity.u);
-    }
-
     public Packet28(int i, double d1, double d2, double d3) {
         a = i;
-        double d4 = 3.8999999999999999D;
+        double d4 = 0.90000000000000002D;
 
         if (d1 < -d4) {
             d1 = -d4;
@@ -40,9 +36,9 @@ public class Packet28 extends Packet {
         if (d3 > d4) {
             d3 = d4;
         }
-        b = (int) (d1 * 8000D);
-        c = (int) (d2 * 8000D);
-        d = (int) (d3 * 8000D);
+        b = (int) (d1 * 32000D);
+        c = (int) (d2 * 32000D);
+        d = (int) (d3 * 32000D);
     }
 
     public void a(DataInputStream datainputstream) {

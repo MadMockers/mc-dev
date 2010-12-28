@@ -8,7 +8,7 @@ public class BlockCrops extends BlockFlower {
 
     protected BlockCrops(int i, int j) {
         super(i, j);
-        bh = j;
+        bg = j;
         a(true);
         float f = 0.5F;
 
@@ -16,7 +16,7 @@ public class BlockCrops extends BlockFlower {
     }
 
     protected boolean b(int i) {
-        return i == Block.aB.bi;
+        return i == Block.aA.bh;
     }
 
     public void a(World world, int i, int j, int k, Random random) {
@@ -45,16 +45,16 @@ public class BlockCrops extends BlockFlower {
         int i2 = world.a(i + 1, j, k - 1);
         int j2 = world.a(i + 1, j, k + 1);
         int k2 = world.a(i - 1, j, k + 1);
-        boolean flag = j1 == bi || k1 == bi;
-        boolean flag1 = l == bi || i1 == bi;
-        boolean flag2 = l1 == bi || i2 == bi || j2 == bi || k2 == bi;
+        boolean flag = j1 == bh || k1 == bh;
+        boolean flag1 = l == bh || i1 == bh;
+        boolean flag2 = l1 == bh || i2 == bh || j2 == bh || k2 == bh;
 
         for (int l2 = i - 1; l2 <= i + 1; l2++) {
             for (int i3 = k - 1; i3 <= k + 1; i3++) {
                 int j3 = world.a(l2, j - 1, i3);
                 float f1 = 0.0F;
 
-                if (j3 == Block.aB.bi) {
+                if (j3 == Block.aA.bh) {
                     f1 = 1.0F;
                     if (world.b(l2, j - 1, i3) > 0) {
                         f1 = 3F;

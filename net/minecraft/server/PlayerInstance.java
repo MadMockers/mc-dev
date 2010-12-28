@@ -124,7 +124,7 @@ class PlayerInstance {
             int k2 = d * 16 + l;
 
             a(((Packet) (new Packet53BlockChange(i1, l1, k2, PlayerManager.a(a).e))));
-            if (Block.q[PlayerManager.a(a).e.a(i1, l1, k2)]) {
+            if (Block.p[PlayerManager.a(a).e.a(i1, l1, k2)]) {
                 a(((Packet) (new Packet59ComplexEntity(i1, l1, k2, PlayerManager.a(a).e.k(i1, l1, k2)))));
             }
         } else if (g == 10) {
@@ -153,7 +153,7 @@ class PlayerInstance {
                 int i3 = g & 0xff;
                 int k3 = d * 16 + (g >> 8 & 0xf);
 
-                if (Block.q[PlayerManager.a(a).e.a(j2, i3, k3)]) {
+                if (Block.p[PlayerManager.a(a).e.a(j2, i3, k3)]) {
                     a(((Packet) (new Packet59ComplexEntity(j2, i3, k3, PlayerManager.a(a).e.k(j2, i3, k3)))));
                 }
             }

@@ -55,59 +55,88 @@ public class NetServerHandler extends NetHandler
             }
         }
         if (j) {
+            if (e.k != null) {
+                float f1 = e.v;
+                float f2 = e.w;
+
+                e.k.z();
+                double d3 = e.p;
+                double d5 = e.q;
+                double d7 = e.r;
+                double d8 = 0.0D;
+                double d11 = 0.0D;
+
+                if (packet10flying.i) {
+                    f1 = packet10flying.e;
+                    f2 = packet10flying.f;
+                }
+                if (packet10flying.h && packet10flying.b == -999D && packet10flying.d == -999D) {
+                    d8 = packet10flying.a;
+                    d11 = packet10flying.c;
+                }
+                e.k();
+                e.b(d3, d5, d7, f1, f2);
+                e.s = d8;
+                e.u = d11;
+                e.k.b_();
+                return;
+            }
             g = e.p;
             h = e.q;
             i = e.r;
             double d2 = e.p;
-            double d3 = e.q;
-            double d4 = e.r;
-            float f1 = e.v;
-            float f2 = e.w;
+            double d4 = e.q;
+            double d6 = e.r;
+            float f3 = e.v;
+            float f4 = e.w;
 
+            if (packet10flying.h && packet10flying.b == -999D && packet10flying.d == -999D) {
+                packet10flying.h = false;
+            }
             if (packet10flying.h) {
                 d2 = packet10flying.a;
-                d3 = packet10flying.b;
-                d4 = packet10flying.c;
-                double d5 = packet10flying.d - packet10flying.b;
+                d4 = packet10flying.b;
+                d6 = packet10flying.c;
+                double d9 = packet10flying.d - packet10flying.b;
 
-                if (d5 > 1.6499999999999999D || d5 < 0.10000000000000001D) {
+                if (d9 > 1.6499999999999999D || d9 < 0.10000000000000001D) {
                     c("Illegal stance");
-                    a.warning((new StringBuilder()).append(e.ar).append(" had an illegal stance: ").append(d5).toString());
+                    a.warning((new StringBuilder()).append(e.ar).append(" had an illegal stance: ").append(d9).toString());
                 }
                 e.aj = packet10flying.d;
             }
             if (packet10flying.i) {
-                f1 = packet10flying.e;
-                f2 = packet10flying.f;
+                f3 = packet10flying.e;
+                f4 = packet10flying.f;
             }
             e.k();
             e.Q = 0.0F;
-            e.b(g, h, i, f1, f2);
-            double d6 = d2 - e.p;
-            double d7 = d3 - e.q;
-            double d8 = d4 - e.r;
-            float f3 = 0.0625F;
-            boolean flag = d.e.a(e, e.z.b().e(f3, f3, f3)).size() == 0;
+            e.b(g, h, i, f3, f4);
+            double d10 = d2 - e.p;
+            double d12 = d4 - e.q;
+            double d13 = d6 - e.r;
+            float f5 = 0.0625F;
+            boolean flag = d.e.a(e, e.z.b().e(f5, f5, f5)).size() == 0;
 
-            e.c(d6, d7, d8);
-            d6 = d2 - e.p;
-            d7 = d3 - e.q;
-            if (d7 > -0.5D || d7 < 0.5D) {
-                d7 = 0.0D;
+            e.c(d10, d12, d13);
+            d10 = d2 - e.p;
+            d12 = d4 - e.q;
+            if (d12 > -0.5D || d12 < 0.5D) {
+                d12 = 0.0D;
             }
-            d8 = d4 - e.r;
-            double d9 = d6 * d6 + d7 * d7 + d8 * d8;
+            d13 = d6 - e.r;
+            double d14 = d10 * d10 + d12 * d12 + d13 * d13;
             boolean flag1 = false;
 
-            if (d9 > 0.0625D) {
+            if (d14 > 0.0625D) {
                 flag1 = true;
                 a.warning((new StringBuilder()).append(e.ar).append(" moved wrongly!").toString());
             }
-            e.b(d2, d3, d4, f1, f2);
-            boolean flag2 = d.e.a(e, e.z.b().e(f3, f3, f3)).size() == 0;
+            e.b(d2, d4, d6, f3, f4);
+            boolean flag2 = d.e.a(e, e.z.b().e(f5, f5, f5)).size() == 0;
 
             if (flag && (flag1 || !flag2)) {
-                a(g, h, i, f1, f2);
+                a(g, h, i, f3, f4);
                 return;
             }
             e.A = packet10flying.g;
@@ -186,22 +215,48 @@ public class NetServerHandler extends NetHandler
 
     public void a(Packet15Place packet15place) {
         boolean flag = d.e.B = d.f.g(e.ar);
-        int l = packet15place.b;
-        int i1 = packet15place.c;
-        int j1 = packet15place.d;
-        int k1 = packet15place.e;
-        int l1 = (int) MathHelper.e(l - d.e.m);
-        int i2 = (int) MathHelper.e(j1 - d.e.o);
 
-        if (l1 > i2) {
-            i2 = l1;
-        }
-        if (i2 > 16 || flag) {
+        if (packet15place.e == 255) {
             ItemStack itemstack = packet15place.a < 0 ? null : new ItemStack(packet15place.a);
 
-            e.c.a(e, d.e, itemstack, l, i1, j1, k1);
+            e.c.a(e, d.e, itemstack);
+        } else {
+            int l = packet15place.b;
+            int i1 = packet15place.c;
+            int j1 = packet15place.d;
+            int k1 = packet15place.e;
+            int l1 = (int) MathHelper.e(l - d.e.m);
+            int i2 = (int) MathHelper.e(j1 - d.e.o);
+
+            if (l1 > i2) {
+                i2 = l1;
+            }
+            if (i2 > 16 || flag) {
+                ItemStack itemstack1 = packet15place.a < 0 ? null : new ItemStack(packet15place.a);
+
+                e.c.a(e, d.e, itemstack1, l, i1, j1, k1);
+            }
+            e.a.b(new Packet53BlockChange(l, i1, j1, d.e));
+            if (k1 == 0) {
+                i1--;
+            }
+            if (k1 == 1) {
+                i1++;
+            }
+            if (k1 == 2) {
+                j1--;
+            }
+            if (k1 == 3) {
+                j1++;
+            }
+            if (k1 == 4) {
+                l--;
+            }
+            if (k1 == 5) {
+                l++;
+            }
+            e.a.b(new Packet53BlockChange(l, i1, j1, d.e));
         }
-        e.a.b(new Packet53BlockChange(l, i1, j1, d.e));
         d.e.B = false;
     }
 
@@ -363,6 +418,14 @@ public class NetServerHandler extends NetHandler
                 tileentity.a(packet59complexentity.e);
             } catch (Exception exception) {}
             tileentity.c();
+        }
+    }
+
+    public void a(Packet7 packet7) {
+        Entity entity = d.e.a(packet7.b);
+
+        if (entity != null && e.g(entity)) {
+            entity.a(e);
         }
     }
 

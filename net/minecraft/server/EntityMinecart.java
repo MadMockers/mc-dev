@@ -105,7 +105,7 @@ public class EntityMinecart extends Entity
     }
 
     public AxisAlignedBB q() {
-        return z;
+        return null;
     }
 
     public boolean u() {
@@ -130,15 +130,18 @@ public class EntityMinecart extends Entity
     }
 
     public boolean a(Entity entity, int i) {
+        if (l.z) {
+            return true;
+        }
         c = -c;
         b = 10;
         a += i * 10;
         if (a > 40) {
             a(Item.ax.aW, 1, 0.0F);
             if (d == 1) {
-                a(Block.av.bi, 1, 0.0F);
+                a(Block.au.bh, 1, 0.0F);
             } else if (d == 2) {
-                a(Block.aC.bi, 1, 0.0F);
+                a(Block.aB.bh, 1, 0.0F);
             }
             l();
         }
@@ -185,7 +188,7 @@ public class EntityMinecart extends Entity
     }
 
     public void b_() {
-        if (l.z) {
+        if (l.z && am > 0) {
             if (am > 0) {
                 double d1 = p + (an - p) / (double) am;
                 double d2 = q + (ao - q) / (double) am;
@@ -223,14 +226,14 @@ public class EntityMinecart extends Entity
         int k = MathHelper.b(q);
         int i1 = MathHelper.b(r);
 
-        if (l.a(i, k - 1, i1) == Block.aH.bi) {
+        if (l.a(i, k - 1, i1) == Block.aG.bh) {
             k--;
         }
         double d6 = 0.40000000000000002D;
         boolean flag = false;
         double d5 = 0.0078125D;
 
-        if (l.a(i, k, i1) == Block.aH.bi) {
+        if (l.a(i, k, i1) == Block.aG.bh) {
             Vec3D vec3d = g(p, q, r);
             int j1 = l.b(i, k, i1);
 
@@ -455,10 +458,10 @@ public class EntityMinecart extends Entity
         int k = MathHelper.b(d2);
         int i1 = MathHelper.b(d3);
 
-        if (l.a(i, k - 1, i1) == Block.aH.bi) {
+        if (l.a(i, k - 1, i1) == Block.aG.bh) {
             k--;
         }
-        if (l.a(i, k, i1) == Block.aH.bi) {
+        if (l.a(i, k, i1) == Block.aG.bh) {
             int j1 = l.b(i, k, i1);
 
             d2 = k;
@@ -551,6 +554,9 @@ public class EntityMinecart extends Entity
     }
 
     public void c(Entity entity) {
+        if (l.z) {
+            return;
+        }
         if (entity == j) {
             return;
         }
@@ -617,6 +623,31 @@ public class EntityMinecart extends Entity
 
     public ItemStack a(int i) {
         return aj[i];
+    }
+
+    public boolean a(EntityPlayer entityplayer) {
+        if (d == 0) {
+            if (j != null && (j instanceof EntityPlayer) && j != entityplayer) {
+                return true;
+            }
+            if (!l.z) {
+                entityplayer.e(this);
+            }
+        } else if (d == 1) {
+            entityplayer.a(this);
+        } else if (d == 2) {
+            ItemStack itemstack = entityplayer.ak.b();
+
+            if (itemstack != null && itemstack.c == Item.k.aW) {
+                if (--itemstack.a == 0) {
+                    entityplayer.ak.a(entityplayer.ak.d, null);
+                }
+                e += 1200;
+            }
+            f = p - entityplayer.p;
+            ai = r - entityplayer.r;
+        }
+        return true;
     }
 
 }

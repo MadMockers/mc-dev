@@ -10,7 +10,7 @@ public class EntitySpider extends EntityMobs {
         super(world);
         aF = "/mob/spider.png";
         a(1.4F, 0.9F);
-        bl = 0.8F;
+        br = 0.8F;
     }
 
     public double j() {

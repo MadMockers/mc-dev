@@ -6,17 +6,11 @@ import java.util.Random;
 
 public abstract class BlockFluids extends Block {
 
-    protected int d;
-
     protected BlockFluids(int j, Material material) {
         super(j, (material != Material.g ? 12 : 14) * 16 + 13, material);
-        d = 1;
         float f = 0.0F;
         float f1 = 0.0F;
 
-        if (material == Material.g) {
-            d = 2;
-        }
         a(0.0F + f1, 0.0F + f, 0.0F + f1, 1.0F + f1, 1.0F + f, 1.0F + f1);
         a(true);
     }
@@ -32,14 +26,14 @@ public abstract class BlockFluids extends Block {
 
     public int a(int j) {
         if (j == 0 || j == 1) {
-            return bh;
+            return bg;
         } else {
-            return bh + 1;
+            return bg + 1;
         }
     }
 
     protected int g(World world, int j, int k, int l) {
-        if (world.c(j, k, l) != bt) {
+        if (world.c(j, k, l) != bs) {
             return -1;
         } else {
             return world.b(j, k, l);
@@ -47,7 +41,7 @@ public abstract class BlockFluids extends Block {
     }
 
     protected int b(IBlockAccess iblockaccess, int j, int k, int l) {
-        if (iblockaccess.c(j, k, l) != bt) {
+        if (iblockaccess.c(j, k, l) != bs) {
             return -1;
         }
         int i1 = iblockaccess.b(j, k, l);
@@ -69,7 +63,7 @@ public abstract class BlockFluids extends Block {
     public boolean a(IBlockAccess iblockaccess, int j, int k, int l, int i1) {
         Material material = iblockaccess.c(j, k, l);
 
-        if (material == bt) {
+        if (material == bs) {
             return false;
         }
         if (material == Material.r) {
@@ -180,10 +174,10 @@ public abstract class BlockFluids extends Block {
     }
 
     public int b() {
-        if (bt == Material.f) {
+        if (bs == Material.f) {
             return 5;
         }
-        return bt != Material.g ? 0 : 30;
+        return bs != Material.g ? 0 : 30;
     }
 
     public void a(World world, int j, int k, int l, Random random) {
@@ -199,10 +193,10 @@ public abstract class BlockFluids extends Block {
     }
 
     private void i(World world, int j, int k, int l) {
-        if (world.a(j, k, l) != bi) {
+        if (world.a(j, k, l) != bh) {
             return;
         }
-        if (bt == Material.g) {
+        if (bs == Material.g) {
             boolean flag = false;
 
             if (flag || world.c(j, k, l - 1) == Material.f) {
@@ -224,9 +218,9 @@ public abstract class BlockFluids extends Block {
                 int i1 = world.b(j, k, l);
 
                 if (i1 == 0) {
-                    world.d(j, k, l, Block.aq.bi);
+                    world.d(j, k, l, Block.ap.bh);
                 } else if (i1 <= 4) {
-                    world.d(j, k, l, Block.x.bi);
+                    world.d(j, k, l, Block.w.bh);
                 }
                 h(world, j, k, l);
             }

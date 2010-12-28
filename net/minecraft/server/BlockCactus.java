@@ -15,14 +15,14 @@ public class BlockCactus extends Block {
         if (world.a(i, j + 1, k) == 0) {
             int l;
 
-            for (l = 1; world.a(i, j - l, k) == bi; l++) {
+            for (l = 1; world.a(i, j - l, k) == bh; l++) {
                 ;
             }
             if (l < 3) {
                 int i1 = world.b(i, j, k);
 
                 if (i1 == 15) {
-                    world.d(i, j + 1, k, bi);
+                    world.d(i, j + 1, k, bh);
                     world.b(i, j, k, 0);
                 } else {
                     world.b(i, j, k, i1 + 1);
@@ -39,12 +39,12 @@ public class BlockCactus extends Block {
 
     public int a(int i) {
         if (i == 1) {
-            return bh - 1;
+            return bg - 1;
         }
         if (i == 0) {
-            return bh + 1;
+            return bg + 1;
         } else {
-            return bh;
+            return bg;
         }
     }
 
@@ -82,7 +82,7 @@ public class BlockCactus extends Block {
         } else {
             int l = world.a(i, j - 1, k);
 
-            return l == Block.aW.bi || l == Block.F.bi;
+            return l == Block.aV.bh || l == Block.E.bh;
         }
     }
 

@@ -20,13 +20,18 @@ public class BlockFlowing extends BlockFluids {
     private void i(World world, int i1, int j1, int k1) {
         int l1 = world.b(i1, j1, k1);
 
-        world.a(i1, j1, k1, bi + 1, l1);
+        world.a(i1, j1, k1, bh + 1, l1);
         world.b(i1, j1, k1, i1, j1, k1);
         world.f(i1, j1, k1);
     }
 
     public void a(World world, int i1, int j1, int k1, Random random) {
         int l1 = g(world, i1, j1, k1);
+        byte byte0 = 1;
+
+        if (bs == Material.g && !world.q.d) {
+            byte0 = 2;
+        }
         boolean flag = true;
 
         if (l1 > 0) {
@@ -37,7 +42,7 @@ public class BlockFlowing extends BlockFluids {
             i2 = e(world, i1 + 1, j1, k1, i2);
             i2 = e(world, i1, j1, k1 - 1, i2);
             i2 = e(world, i1, j1, k1 + 1, i2);
-            int j2 = i2 + d;
+            int j2 = i2 + byte0;
 
             if (j2 >= 8 || i2 < 0) {
                 j2 = -1;
@@ -51,14 +56,14 @@ public class BlockFlowing extends BlockFluids {
                     j2 = l2 + 8;
                 }
             }
-            if (a >= 2 && bt == Material.f) {
+            if (a >= 2 && bs == Material.f) {
                 if (world.d(i1, j1 - 1, k1)) {
                     j2 = 0;
-                } else if (world.c(i1, j1 - 1, k1) == bt && world.b(i1, j1, k1) == 0) {
+                } else if (world.c(i1, j1 - 1, k1) == bs && world.b(i1, j1, k1) == 0) {
                     j2 = 0;
                 }
             }
-            if (bt == Material.g && l1 < 8 && j2 < 8 && j2 > l1 && random.nextInt(4) != 0) {
+            if (bs == Material.g && l1 < 8 && j2 < 8 && j2 > l1 && random.nextInt(4) != 0) {
                 j2 = l1;
                 flag = false;
             }
@@ -68,8 +73,8 @@ public class BlockFlowing extends BlockFluids {
                     world.d(i1, j1, k1, 0);
                 } else {
                     world.b(i1, j1, k1, l1);
-                    world.h(i1, j1, k1, bi);
-                    world.g(i1, j1, k1, bi);
+                    world.h(i1, j1, k1, bh);
+                    world.g(i1, j1, k1, bh);
                 }
             } else if (flag) {
                 i(world, i1, j1, k1);
@@ -79,13 +84,13 @@ public class BlockFlowing extends BlockFluids {
         }
         if (l(world, i1, j1 - 1, k1)) {
             if (l1 >= 8) {
-                world.b(i1, j1 - 1, k1, bi, l1);
+                world.b(i1, j1 - 1, k1, bh, l1);
             } else {
-                world.b(i1, j1 - 1, k1, bi, l1 + 8);
+                world.b(i1, j1 - 1, k1, bh, l1 + 8);
             }
         } else if (l1 >= 0 && (l1 == 0 || k(world, i1, j1 - 1, k1))) {
             boolean aflag[] = j(world, i1, j1, k1);
-            int k2 = l1 + d;
+            int k2 = l1 + byte0;
 
             if (l1 >= 8) {
                 k2 = 1;
@@ -113,13 +118,13 @@ public class BlockFlowing extends BlockFluids {
             int i2 = world.a(i1, j1, k1);
 
             if (i2 > 0) {
-                if (bt == Material.g) {
+                if (bs == Material.g) {
                     h(world, i1, j1, k1);
                 } else {
-                    Block.n[i2].a_(world, i1, j1, k1, world.b(i1, j1, k1));
+                    Block.m[i2].a_(world, i1, j1, k1, world.b(i1, j1, k1));
                 }
             }
-            world.b(i1, j1, k1, bi, l1);
+            world.b(i1, j1, k1, bh, l1);
         }
     }
 
@@ -146,7 +151,7 @@ public class BlockFlowing extends BlockFluids {
             if (k2 == 3) {
                 j3++;
             }
-            if (k(world, l2, i3, j3) || world.c(l2, i3, j3) == bt && world.b(l2, i3, j3) == 0) {
+            if (k(world, l2, i3, j3) || world.c(l2, i3, j3) == bs && world.b(l2, i3, j3) == 0) {
                 continue;
             }
             if (!k(world, l2, i3 - 1, j3)) {
@@ -184,7 +189,7 @@ public class BlockFlowing extends BlockFluids {
             if (l1 == 3) {
                 j3++;
             }
-            if (k(world, j2, i3, j3) || world.c(j2, i3, j3) == bt && world.b(j2, i3, j3) == 0) {
+            if (k(world, j2, i3, j3) || world.c(j2, i3, j3) == bs && world.b(j2, i3, j3) == 0) {
                 continue;
             }
             if (!k(world, j2, i3 - 1, j3)) {
@@ -212,13 +217,13 @@ public class BlockFlowing extends BlockFluids {
     private boolean k(World world, int i1, int j1, int k1) {
         int l1 = world.a(i1, j1, k1);
 
-        if (l1 == Block.aF.bi || l1 == Block.aM.bi || l1 == Block.aE.bi || l1 == Block.aG.bi || l1 == Block.aY.bi) {
+        if (l1 == Block.aE.bh || l1 == Block.aL.bh || l1 == Block.aD.bh || l1 == Block.aF.bh || l1 == Block.aX.bh) {
             return true;
         }
         if (l1 == 0) {
             return false;
         }
-        Material material = Block.n[l1].bt;
+        Material material = Block.m[l1].bs;
 
         return material.a();
     }
@@ -241,7 +246,7 @@ public class BlockFlowing extends BlockFluids {
     private boolean l(World world, int i1, int j1, int k1) {
         Material material = world.c(i1, j1, k1);
 
-        if (material == bt) {
+        if (material == bs) {
             return false;
         }
         if (material == Material.g) {
@@ -253,8 +258,8 @@ public class BlockFlowing extends BlockFluids {
 
     public void e(World world, int i1, int j1, int k1) {
         super.e(world, i1, j1, k1);
-        if (world.a(i1, j1, k1) == bi) {
-            world.h(i1, j1, k1, bi);
+        if (world.a(i1, j1, k1) == bh) {
+            world.h(i1, j1, k1, bh);
         }
     }
 }

@@ -29,7 +29,7 @@ public class WorldGenTrees extends WorldGenerator {
                     if (i1 >= 0 && i1 < 128) {
                         int j3 = world.a(i2, i1, l2);
 
-                        if (j3 != 0 && j3 != Block.L.bi) {
+                        if (j3 != 0 && j3 != Block.K.bh) {
                             flag = false;
                         }
                     } else {
@@ -46,10 +46,10 @@ public class WorldGenTrees extends WorldGenerator {
         }
         int j1 = world.a(i, j - 1, k);
 
-        if (j1 != Block.v.bi && j1 != Block.w.bi || j >= 128 - l - 1) {
+        if (j1 != Block.u.bh && j1 != Block.v.bh || j >= 128 - l - 1) {
             return false;
         }
-        world.a(i, j - 1, k, Block.w.bi);
+        world.a(i, j - 1, k, Block.v.bh);
         for (int k1 = (j - 3) + l; k1 <= j + l; k1++) {
             int j2 = k1 - (j + l);
             int i3 = 1 - j2 / 2;
@@ -60,8 +60,8 @@ public class WorldGenTrees extends WorldGenerator {
                 for (int i4 = k - i3; i4 <= k + i3; i4++) {
                     int j4 = i4 - k;
 
-                    if ((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !Block.p[world.a(k3, k1, i4)]) {
-                        world.a(k3, k1, i4, Block.L.bi);
+                    if ((Math.abs(l3) != i3 || Math.abs(j4) != i3 || random.nextInt(2) != 0 && j2 != 0) && !Block.o[world.a(k3, k1, i4)]) {
+                        world.a(k3, k1, i4, Block.K.bh);
                     }
                 }
 
@@ -72,8 +72,8 @@ public class WorldGenTrees extends WorldGenerator {
         for (int l1 = 0; l1 < l; l1++) {
             int k2 = world.a(i, j + l1, k);
 
-            if (k2 == 0 || k2 == Block.L.bi) {
-                world.a(i, j + l1, k, Block.K.bi);
+            if (k2 == 0 || k2 == Block.K.bh) {
+                world.a(i, j + l1, k, Block.J.bh);
             }
         }
 

@@ -10,15 +10,15 @@ public class ItemSpade extends ItemTool {
     }
 
     public boolean a(Block block) {
-        if (block == Block.aT) {
+        if (block == Block.aS) {
             return true;
         }
-        return block == Block.aV;
+        return block == Block.aU;
     }
 
     static {
         bb = (new Block[] {
-            Block.v, Block.w, Block.F, Block.G, Block.aT, Block.aV, Block.aX
+            Block.u, Block.v, Block.E, Block.F, Block.aS, Block.aU, Block.aW
         });
     }
 }

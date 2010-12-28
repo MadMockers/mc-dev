@@ -64,7 +64,7 @@ public class EntityItem extends Entity {
             int i = l.a(MathHelper.b(p), MathHelper.b(z.b) - 1, MathHelper.b(r));
 
             if (i > 0) {
-                f1 = Block.n[i].bu * 0.98F;
+                f1 = Block.m[i].bt * 0.98F;
             }
         }
         s *= f1;
@@ -92,13 +92,13 @@ public class EntityItem extends Entity {
         double d5 = d2 - (double) j;
         double d6 = d3 - (double) k;
 
-        if (Block.p[l.a(i, j, k)]) {
-            boolean flag = !Block.p[l.a(i - 1, j, k)];
-            boolean flag1 = !Block.p[l.a(i + 1, j, k)];
-            boolean flag2 = !Block.p[l.a(i, j - 1, k)];
-            boolean flag3 = !Block.p[l.a(i, j + 1, k)];
-            boolean flag4 = !Block.p[l.a(i, j, k - 1)];
-            boolean flag5 = !Block.p[l.a(i, j, k + 1)];
+        if (Block.o[l.a(i, j, k)]) {
+            boolean flag = !Block.o[l.a(i - 1, j, k)];
+            boolean flag1 = !Block.o[l.a(i + 1, j, k)];
+            boolean flag2 = !Block.o[l.a(i, j - 1, k)];
+            boolean flag3 = !Block.o[l.a(i, j + 1, k)];
+            boolean flag4 = !Block.o[l.a(i, j, k - 1)];
+            boolean flag5 = !Block.o[l.a(i, j, k + 1)];
             byte byte0 = -1;
             double d7 = 9999D;
 
@@ -177,7 +177,7 @@ public class EntityItem extends Entity {
         a = new ItemStack(nbttagcompound1);
     }
 
-    public void a(EntityPlayer entityplayer) {
+    public void b(EntityPlayer entityplayer) {
         if (l.z) {
             return;
         }

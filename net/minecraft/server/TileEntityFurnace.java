@@ -149,17 +149,17 @@ public class TileEntityFurnace extends TileEntity
     }
 
     private int b(int i) {
-        if (i == Block.I.bi) {
+        if (i == Block.H.bh) {
             return Item.m.aW;
         }
-        if (i == Block.H.bi) {
+        if (i == Block.G.bh) {
             return Item.n.aW;
         }
-        if (i == Block.ax.bi) {
+        if (i == Block.aw.bh) {
             return Item.l.aW;
         }
-        if (i == Block.F.bi) {
-            return Block.N.bi;
+        if (i == Block.E.bh) {
+            return Block.M.bh;
         }
         if (i == Item.ao.aW) {
             return Item.ap.aW;
@@ -167,8 +167,8 @@ public class TileEntityFurnace extends TileEntity
         if (i == Item.aS.aW) {
             return Item.aT.aW;
         }
-        if (i == Block.x.bi) {
-            return Block.u.bi;
+        if (i == Block.w.bh) {
+            return Block.t.bh;
         }
         if (i == Item.aG.aW) {
             return Item.aF.aW;
@@ -183,7 +183,7 @@ public class TileEntityFurnace extends TileEntity
         }
         int i = itemstack.a().aW;
 
-        if (i < 256 && Block.n[i].bt == Material.c) {
+        if (i < 256 && Block.m[i].bs == Material.c) {
             return 300;
         }
         if (i == Item.B.aW) {

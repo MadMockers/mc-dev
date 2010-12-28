@@ -12,30 +12,30 @@ public class ItemPickaxe extends ItemTool {
     }
 
     public boolean a(Block block) {
-        if (block == Block.aq) {
+        if (block == Block.ap) {
             return bc == 3;
         }
-        if (block == Block.ay || block == Block.ax) {
+        if (block == Block.ax || block == Block.aw) {
+            return bc >= 2;
+        }
+        if (block == Block.ah || block == Block.G) {
             return bc >= 2;
         }
         if (block == Block.ai || block == Block.H) {
-            return bc >= 2;
-        }
-        if (block == Block.aj || block == Block.I) {
             return bc >= 1;
         }
-        if (block == Block.aO || block == Block.aP) {
+        if (block == Block.aN || block == Block.aO) {
             return bc >= 2;
         }
-        if (block.bt == Material.d) {
+        if (block.bs == Material.d) {
             return true;
         }
-        return block.bt == Material.e;
+        return block.bs == Material.e;
     }
 
     static {
         bb = (new Block[] {
-            Block.x, Block.ak, Block.al, Block.u, Block.ap, Block.I, Block.aj, Block.J, Block.ai, Block.H, Block.ax, Block.ay, Block.aU, Block.bc
+            Block.w, Block.aj, Block.ak, Block.t, Block.ao, Block.H, Block.ai, Block.I, Block.ah, Block.G, Block.aw, Block.ax, Block.aT, Block.bb
         });
     }
 }

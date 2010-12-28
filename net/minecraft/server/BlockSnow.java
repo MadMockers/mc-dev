@@ -23,7 +23,7 @@ public class BlockSnow extends Block {
     public boolean a(World world, int i, int j, int k) {
         int l = world.a(i, j - 1, k);
 
-        if (l == 0 || !Block.n[l].a()) {
+        if (l == 0 || !Block.m[l].a()) {
             return false;
         } else {
             return world.c(i, j - 1, k).c();
@@ -65,7 +65,7 @@ public class BlockSnow extends Block {
         if (l == 1) {
             return true;
         }
-        if (material == bt) {
+        if (material == bs) {
             return false;
         } else {
             return super.a(iblockaccess, i, j, k, l);

@@ -15,7 +15,7 @@ public class BlockFence extends Block {
     }
 
     public boolean a(World world, int i, int j, int k) {
-        if (world.a(i, j - 1, k) == bi) {
+        if (world.a(i, j - 1, k) == bh) {
             return false;
         }
         if (!world.c(i, j - 1, k).a()) {

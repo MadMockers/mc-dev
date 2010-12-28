@@ -7,22 +7,22 @@ import java.util.Random;
 
 public class EntityPigZombie extends EntityZombie {
 
-    private boolean a;
+    private int a;
     private int b;
     private static final ItemStack c;
 
     public EntityPigZombie(World world) {
         super(world);
-        a = false;
+        a = 0;
         b = 0;
         aF = "/mob/pigzombie.png";
-        bl = 0.5F;
+        br = 0.5F;
         e = 5;
         ad = true;
     }
 
     public void b_() {
-        bl = f == null ? 0.5F : 0.95F;
+        br = f == null ? 0.5F : 0.95F;
         if (b > 0 && --b == 0) {
             l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F) * 1.8F);
         }
@@ -35,16 +35,16 @@ public class EntityPigZombie extends EntityZombie {
 
     public void a(NBTTagCompound nbttagcompound) {
         super.a(nbttagcompound);
-        nbttagcompound.a("Angry", a);
+        nbttagcompound.a("Anger", (short) a);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
         super.b(nbttagcompound);
-        a = nbttagcompound.l("Angry");
+        a = nbttagcompound.c("Anger");
     }
 
     protected Entity k() {
-        if (!a) {
+        if (a == 0) {
             return null;
         } else {
             return super.k();
@@ -76,7 +76,7 @@ public class EntityPigZombie extends EntityZombie {
 
     private void h(Entity entity) {
         f = entity;
-        a = true;
+        a = 400 + V.nextInt(400);
         b = V.nextInt(40);
     }
 

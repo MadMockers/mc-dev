@@ -9,20 +9,17 @@ public class Packet7 extends Packet {
 
     public int a;
     public int b;
-    public int c;
 
     public Packet7() {}
 
     public void a(DataInputStream datainputstream) {
         a = datainputstream.readInt();
         b = datainputstream.readInt();
-        c = datainputstream.readByte();
     }
 
     public void a(DataOutputStream dataoutputstream) {
         dataoutputstream.writeInt(a);
         dataoutputstream.writeInt(b);
-        dataoutputstream.writeByte(c);
     }
 
     public void a(NetHandler nethandler) {
@@ -30,7 +27,7 @@ public class Packet7 extends Packet {
     }
 
     public int a() {
-        return 9;
+        return 8;
     }
 }
 

@@ -31,13 +31,13 @@ public class ItemSign extends Item {
         if (l == 5) {
             i++;
         }
-        if (!Block.aE.a(world, i, j, k)) {
+        if (!Block.aD.a(world, i, j, k)) {
             return false;
         }
         if (l == 1) {
-            world.b(i, j, k, Block.aE.bi, MathHelper.b((double) (((entityplayer.v + 180F) * 16F) / 360F) + 0.5D) & 0xf);
+            world.b(i, j, k, Block.aD.bh, MathHelper.b((double) (((entityplayer.v + 180F) * 16F) / 360F) + 0.5D) & 0xf);
         } else {
-            world.b(i, j, k, Block.aJ.bi, l);
+            world.b(i, j, k, Block.aI.bh, l);
         }
         itemstack.a--;
         TileEntitySign tileentitysign = (TileEntitySign) world.k(i, j, k);

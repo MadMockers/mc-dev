@@ -96,7 +96,7 @@ public class Chunk {
                 int k1 = i1 << 11 | j1 << 7;
 
                 for (int l1 = 0; l1 < 128; l1++) {
-                    int j2 = Block.t[b[k1 + l1]];
+                    int j2 = Block.s[b[k1 + l1]];
 
                     if (j2 > 0) {
                         g.a(i1, l1, j1, j2);
@@ -108,8 +108,8 @@ public class Chunk {
                 for (int k2 = byte0 - 2; k2 < 128 && i2 > 0;) {
                     k2++;
                     byte byte1 = b[k1 + k2];
-                    int l2 = Block.r[byte1];
-                    int i3 = Block.t[byte1];
+                    int l2 = Block.q[byte1];
+                    int i3 = Block.s[byte1];
 
                     if (l2 == 0) {
                         l2 = 1;
@@ -161,7 +161,7 @@ public class Chunk {
         if (j1 > l1) {
             i2 = j1;
         }
-        for (int j2 = i1 << 11 | k1 << 7; i2 > 0 && Block.r[b[(j2 + i2) - 1]] == 0; i2--) {
+        for (int j2 = i1 << 11 | k1 << 7; i2 > 0 && Block.q[b[(j2 + i2) - 1]] == 0; i2--) {
             ;
         }
         if (i2 == l1) {
@@ -205,7 +205,7 @@ public class Chunk {
 
         while (i2 > 0 && j4 > 0) {
             i2--;
-            int l4 = Block.r[a(i1, i2, k1)];
+            int l4 = Block.q[a(i1, i2, k1)];
 
             if (l4 == 0) {
                 l4 = 1;
@@ -216,7 +216,7 @@ public class Chunk {
             }
             f.a(i1, i2, k1, j4);
         }
-        for (; i2 > 0 && Block.r[a(i1, i2 - 1, k1)] == 0; i2--) {
+        for (; i2 > 0 && Block.q[a(i1, i2 - 1, k1)] == 0; i2--) {
             ;
         }
         if (i2 != k4) {
@@ -242,11 +242,11 @@ public class Chunk {
 
         b[i1 << 11 | k1 << 7 | j1] = byte0;
         if (k2 != 0 && !d.z) {
-            Block.n[k2].b(d, l2, j1, i3);
+            Block.m[k2].b(d, l2, j1, i3);
         }
         e.a(i1, j1, k1, i2);
-        if (!d.q.c) {
-            if (Block.r[byte0] != 0) {
+        if (!d.q.e) {
+            if (Block.q[byte0] != 0) {
                 if (j1 >= j2) {
                     g(i1, j1 + 1, k1);
                 }
@@ -258,7 +258,7 @@ public class Chunk {
         d.a(EnumSkyBlock.b, l2, j1, i3, l2, j1, i3);
         c(i1, k1);
         if (l1 != 0) {
-            Block.n[l1].e(d, l2, j1, i3);
+            Block.m[l1].e(d, l2, j1, i3);
         }
         o = true;
         return true;
@@ -277,10 +277,10 @@ public class Chunk {
 
         b[i1 << 11 | k1 << 7 | j1] = byte0;
         if (j2 != 0) {
-            Block.n[j2].b(d, k2, j1, l2);
+            Block.m[j2].b(d, k2, j1, l2);
         }
         e.a(i1, j1, k1, 0);
-        if (Block.r[byte0] != 0) {
+        if (Block.q[byte0] != 0) {
             if (j1 >= i2) {
                 g(i1, j1 + 1, k1);
             }
@@ -291,7 +291,7 @@ public class Chunk {
         d.a(EnumSkyBlock.b, k2, j1, l2, k2, j1, l2);
         c(i1, k1);
         if (l1 != 0 && !d.z) {
-            Block.n[l1].e(d, k2, j1, l2);
+            Block.m[l1].e(d, k2, j1, l2);
         }
         o = true;
         return true;
@@ -394,10 +394,10 @@ public class Chunk {
         if (tileentity == null) {
             int l1 = a(i1, j1, k1);
 
-            if (!Block.q[l1]) {
+            if (!Block.p[l1]) {
                 return null;
             }
-            BlockContainer blockcontainer = (BlockContainer) Block.n[l1];
+            BlockContainer blockcontainer = (BlockContainer) Block.m[l1];
 
             blockcontainer.e(d, j * 16 + i1, j1, k * 16 + k1);
             tileentity = (TileEntity) l.get(chunkposition);
@@ -420,7 +420,7 @@ public class Chunk {
         tileentity.b = j * 16 + i1;
         tileentity.c = j1;
         tileentity.d = k * 16 + k1;
-        if (a(i1, j1, k1) == 0 || !(Block.n[a(i1, j1, k1)] instanceof BlockContainer)) {
+        if (a(i1, j1, k1) == 0 || !(Block.m[a(i1, j1, k1)] instanceof BlockContainer)) {
             System.out.println("Attempted to place a tile entity where there was no entity tile!");
             return;
         }

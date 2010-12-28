@@ -21,7 +21,7 @@ public class EntitySheep extends EntityAnimals {
             int j = 1 + V.nextInt(3);
 
             for (int k = 0; k < j; k++) {
-                EntityItem entityitem = a(Block.ac.bi, 1, 1.0F);
+                EntityItem entityitem = a(Block.ab.bh, 1, 1.0F);
 
                 entityitem.t += V.nextFloat() * 0.05F;
                 entityitem.s += (V.nextFloat() - V.nextFloat()) * 0.1F;

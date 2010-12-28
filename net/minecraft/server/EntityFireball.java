@@ -153,13 +153,12 @@ public class EntityFireball extends Entity {
         w = y + (w - y) * 0.2F;
         v = x + (v - x) * 0.2F;
         float f2 = 0.95F;
-        float f4 = 0.006F;
 
         if (r()) {
             for (int k = 0; k < 4; k++) {
-                float f5 = 0.25F;
+                float f4 = 0.25F;
 
-                l.a("bubble", p - s * (double) f5, q - t * (double) f5, r - u * (double) f5, s, t, u);
+                l.a("bubble", p - s * (double) f4, q - t * (double) f4, r - u * (double) f4, s, t, u);
             }
 
             f2 = 0.8F;

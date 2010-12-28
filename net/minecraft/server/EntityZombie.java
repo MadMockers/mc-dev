@@ -9,7 +9,7 @@ public class EntityZombie extends EntityMobs {
     public EntityZombie(World world) {
         super(world);
         aF = "/mob/zombie.png";
-        bl = 0.5F;
+        br = 0.5F;
         e = 5;
     }
 

@@ -10,5 +10,11 @@ public class ItemFood extends Item {
         a = j;
         aX = 1;
     }
+
+    public ItemStack a(ItemStack itemstack, World world, EntityPlayer entityplayer) {
+        itemstack.a--;
+        entityplayer.a(a);
+        return itemstack;
+    }
 }
 
