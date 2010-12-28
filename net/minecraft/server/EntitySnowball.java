@@ -40,7 +40,7 @@ public class EntitySnowball extends Entity {
         al = 0;
         aj = entityliving;
         a(0.25F, 0.25F);
-        c(entityliving.p, entityliving.q, entityliving.r, entityliving.v, entityliving.w);
+        c(entityliving.p, entityliving.q + (double) entityliving.s(), entityliving.r, entityliving.v, entityliving.w);
         p -= MathHelper.b((v / 180F) * 3.141593F) * 0.16F;
         q -= 0.10000000149011612D;
         r -= MathHelper.a((v / 180F) * 3.141593F) * 0.16F;
@@ -78,6 +78,9 @@ public class EntitySnowball extends Entity {
     }
 
     public void b_() {
+        O = p;
+        P = q;
+        Q = r;
         super.b_();
         if (a > 0) {
             a--;
@@ -111,33 +114,35 @@ public class EntitySnowball extends Entity {
         if (movingobjectposition != null) {
             vec3d1 = Vec3D.b(movingobjectposition.f.a, movingobjectposition.f.b, movingobjectposition.f.c);
         }
-        Entity entity = null;
-        List list = this.l.b(this, z.a(s, t, u).b(1.0D, 1.0D, 1.0D));
-        double d1 = 0.0D;
+        if (!this.l.z) {
+            Entity entity = null;
+            List list = this.l.b(this, z.a(s, t, u).b(1.0D, 1.0D, 1.0D));
+            double d1 = 0.0D;
 
-        for (int j = 0; j < list.size(); j++) {
-            Entity entity1 = (Entity) list.get(j);
+            for (int k = 0; k < list.size(); k++) {
+                Entity entity1 = (Entity) list.get(k);
 
-            if (!entity1.c_() || entity1 == aj && al < 5) {
-                continue;
+                if (!entity1.c_() || entity1 == aj && al < 5) {
+                    continue;
+                }
+                float f4 = 0.3F;
+                AxisAlignedBB axisalignedbb = entity1.z.b(f4, f4, f4);
+                MovingObjectPosition movingobjectposition1 = axisalignedbb.a(vec3d, vec3d1);
+
+                if (movingobjectposition1 == null) {
+                    continue;
+                }
+                double d2 = vec3d.a(movingobjectposition1.f);
+
+                if (d2 < d1 || d1 == 0.0D) {
+                    entity = entity1;
+                    d1 = d2;
+                }
             }
-            float f3 = 0.3F;
-            AxisAlignedBB axisalignedbb = entity1.z.b(f3, f3, f3);
-            MovingObjectPosition movingobjectposition1 = axisalignedbb.a(vec3d, vec3d1);
 
-            if (movingobjectposition1 == null) {
-                continue;
+            if (entity != null) {
+                movingobjectposition = new MovingObjectPosition(entity);
             }
-            double d2 = vec3d.a(movingobjectposition1.f);
-
-            if (d2 < d1 || d1 == 0.0D) {
-                entity = entity1;
-                d1 = d2;
-            }
-        }
-
-        if (entity != null) {
-            movingobjectposition = new MovingObjectPosition(entity);
         }
         if (movingobjectposition != null) {
             if (movingobjectposition.g != null) {
@@ -145,7 +150,7 @@ public class EntitySnowball extends Entity {
                     ;
                 }
             }
-            for (int k = 0; k < 8; k++) {
+            for (int j = 0; j < 8; j++) {
                 this.l.a("snowballpoof", p, q, r, 0.0D, 0.0D, 0.0D);
             }
 
@@ -172,13 +177,13 @@ public class EntitySnowball extends Entity {
         w = y + (w - y) * 0.2F;
         v = x + (v - x) * 0.2F;
         float f2 = 0.99F;
-        float f4 = 0.03F;
+        float f5 = 0.03F;
 
         if (r()) {
             for (int l = 0; l < 4; l++) {
-                float f5 = 0.25F;
+                float f3 = 0.25F;
 
-                this.l.a("bubble", p - s * (double) f5, q - t * (double) f5, r - u * (double) f5, s, t, u);
+                this.l.a("bubble", p - s * (double) f3, q - t * (double) f3, r - u * (double) f3, s, t, u);
             }
 
             f2 = 0.8F;
@@ -186,7 +191,7 @@ public class EntitySnowball extends Entity {
         s *= f2;
         t *= f2;
         u *= f2;
-        t -= f4;
+        t -= f5;
         a(p, q, r);
     }
 
@@ -209,7 +214,7 @@ public class EntitySnowball extends Entity {
     }
 
     public void b(EntityPlayer entityplayer) {
-        if (f && aj == entityplayer && a <= 0 && entityplayer.al.a(new ItemStack(Item.j.aW, 1))) {
+        if (f && aj == entityplayer && a <= 0 && entityplayer.am.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);
             l();

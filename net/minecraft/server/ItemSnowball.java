@@ -14,7 +14,9 @@ public class ItemSnowball extends Item {
     public ItemStack a(ItemStack itemstack, World world, EntityPlayer entityplayer) {
         itemstack.a--;
         world.a(entityplayer, "random.bow", 0.5F, 0.4F / (b.nextFloat() * 0.4F + 0.8F));
-        world.a(new EntitySnowball(world, entityplayer));
+        if (!world.z) {
+            world.a(new EntitySnowball(world, entityplayer));
+        }
         return itemstack;
     }
 }

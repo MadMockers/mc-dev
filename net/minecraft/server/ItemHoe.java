@@ -20,6 +20,9 @@ public class ItemHoe extends Item {
             Block block = Block.aA;
 
             world.a((float) i + 0.5F, (float) j + 0.5F, (float) k + 0.5F, block.bq.c(), (block.bq.a() + 1.0F) / 2.0F, block.bq.b() * 0.8F);
+            if (world.z) {
+                return true;
+            }
             world.d(i, j, k, block.bh);
             itemstack.a(1);
             if (world.l.nextInt(8) == 0 && i1 == Block.u.bh) {

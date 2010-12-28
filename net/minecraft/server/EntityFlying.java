@@ -50,7 +50,7 @@ public class EntityFlying extends EntityLiving {
             t *= f2;
             u *= f2;
         }
-        bc = bd;
+        bd = be;
         double d = p - m;
         double d1 = r - o;
         float f4 = MathHelper.a(d * d + d1 * d1) * 4F;
@@ -58,8 +58,8 @@ public class EntityFlying extends EntityLiving {
         if (f4 > 1.0F) {
             f4 = 1.0F;
         }
-        bd += (f4 - bd) * 0.4F;
-        be += bd;
+        be += (f4 - be) * 0.4F;
+        bf += be;
     }
 
     public boolean d_() {

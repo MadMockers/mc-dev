@@ -40,7 +40,7 @@ public class EntityArrow extends Entity {
         al = 0;
         b = entityliving;
         a(0.5F, 0.5F);
-        c(entityliving.p, entityliving.q, entityliving.r, entityliving.v, entityliving.w);
+        c(entityliving.p, entityliving.q + (double) entityliving.s(), entityliving.r, entityliving.v, entityliving.w);
         p -= MathHelper.b((v / 180F) * 3.141593F) * 0.16F;
         q -= 0.10000000149011612D;
         r -= MathHelper.a((v / 180F) * 3.141593F) * 0.16F;
@@ -77,6 +77,12 @@ public class EntityArrow extends Entity {
 
     public void b_() {
         super.b_();
+        if (y == 0.0F && x == 0.0F) {
+            float f1 = MathHelper.a(s * s + u * u);
+
+            x = v = (float) ((Math.atan2(s, u) * 180D) / 3.1415927410125732D);
+            y = w = (float) ((Math.atan2(t, f1) * 180D) / 3.1415927410125732D);
+        }
         if (a > 0) {
             a--;
         }
@@ -119,8 +125,8 @@ public class EntityArrow extends Entity {
             if (!entity1.c_() || entity1 == b && al < 5) {
                 continue;
             }
-            float f4 = 0.3F;
-            AxisAlignedBB axisalignedbb = entity1.z.b(f4, f4, f4);
+            float f5 = 0.3F;
+            AxisAlignedBB axisalignedbb = entity1.z.b(f5, f5, f5);
             MovingObjectPosition movingobjectposition1 = axisalignedbb.a(vec3d, vec3d1);
 
             if (movingobjectposition1 == null) {
@@ -158,11 +164,11 @@ public class EntityArrow extends Entity {
                 s = (float) (movingobjectposition.f.a - p);
                 t = (float) (movingobjectposition.f.b - q);
                 u = (float) (movingobjectposition.f.c - r);
-                float f1 = MathHelper.a(s * s + t * t + u * u);
+                float f2 = MathHelper.a(s * s + t * t + u * u);
 
-                p -= (s / (double) f1) * 0.05000000074505806D;
-                q -= (t / (double) f1) * 0.05000000074505806D;
-                r -= (u / (double) f1) * 0.05000000074505806D;
+                p -= (s / (double) f2) * 0.05000000074505806D;
+                q -= (t / (double) f2) * 0.05000000074505806D;
+                r -= (u / (double) f2) * 0.05000000074505806D;
                 l.a(this, "random.drr", 1.0F, 1.2F / (W.nextFloat() * 0.2F + 0.9F));
                 aj = true;
                 a = 7;
@@ -171,10 +177,10 @@ public class EntityArrow extends Entity {
         p += s;
         q += t;
         r += u;
-        float f2 = MathHelper.a(s * s + u * u);
+        float f3 = MathHelper.a(s * s + u * u);
 
         v = (float) ((Math.atan2(s, u) * 180D) / 3.1415927410125732D);
-        for (w = (float) ((Math.atan2(t, f2) * 180D) / 3.1415927410125732D); w - y < -180F; y -= 360F) {
+        for (w = (float) ((Math.atan2(t, f3) * 180D) / 3.1415927410125732D); w - y < -180F; y -= 360F) {
             ;
         }
         for (; w - y >= 180F; y += 360F) {
@@ -188,22 +194,22 @@ public class EntityArrow extends Entity {
         }
         w = y + (w - y) * 0.2F;
         v = x + (v - x) * 0.2F;
-        float f3 = 0.99F;
-        float f5 = 0.03F;
+        float f4 = 0.99F;
+        float f6 = 0.03F;
 
         if (r()) {
             for (int k = 0; k < 4; k++) {
-                float f6 = 0.25F;
+                float f7 = 0.25F;
 
-                l.a("bubble", p - s * (double) f6, q - t * (double) f6, r - u * (double) f6, s, t, u);
+                l.a("bubble", p - s * (double) f7, q - t * (double) f7, r - u * (double) f7, s, t, u);
             }
 
-            f3 = 0.8F;
+            f4 = 0.8F;
         }
-        s *= f3;
-        t *= f3;
-        u *= f3;
-        t -= f5;
+        s *= f4;
+        t *= f4;
+        u *= f4;
+        t -= f6;
         a(p, q, r);
     }
 
@@ -226,7 +232,10 @@ public class EntityArrow extends Entity {
     }
 
     public void b(EntityPlayer entityplayer) {
-        if (aj && b == entityplayer && a <= 0 && entityplayer.al.a(new ItemStack(Item.j.aW, 1))) {
+        if (l.z) {
+            return;
+        }
+        if (aj && b == entityplayer && a <= 0 && entityplayer.am.a(new ItemStack(Item.j.aW, 1))) {
             l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, 1);
             l();

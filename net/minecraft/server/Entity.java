@@ -370,8 +370,8 @@ public abstract class Entity {
         double d11 = p - d4;
         double d13 = r - d5;
 
-        L += (double) MathHelper.a(d11 * d11 + d13 * d13) * 0.59999999999999998D;
         if (M && !flag) {
+            L += (double) MathHelper.a(d11 * d11 + d13 * d13) * 0.59999999999999998D;
             int k3 = MathHelper.b(p);
             int i4 = MathHelper.b(q - 0.20000000298023224D - (double) H);
             int l1 = MathHelper.b(r);

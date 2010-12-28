@@ -7,61 +7,61 @@ import java.util.Random;
 
 public class EntityPlayer extends EntityLiving {
 
-    public InventoryPlayer al;
-    public byte am;
-    public int an;
-    public float ao;
+    public InventoryPlayer am;
+    public byte an;
+    public int ao;
     public float ap;
-    public boolean aq;
-    public int ar;
-    public String as;
-    public int at;
+    public float aq;
+    public boolean ar;
+    public int as;
+    public String at;
+    public int au;
     private int a;
-    public EntityFish au;
+    public EntityFish av;
 
     public EntityPlayer(World world) {
         super(world);
-        al = new InventoryPlayer(this);
-        am = 0;
+        am = new InventoryPlayer(this);
         an = 0;
-        aq = false;
-        ar = 0;
+        ao = 0;
+        ar = false;
+        as = 0;
         a = 0;
-        au = null;
+        av = null;
         H = 1.62F;
         c((double) world.m + 0.5D, world.n + 1, (double) world.o + 0.5D, 0.0F, 0.0F);
-        aQ = 20;
-        aJ = "humanoid";
-        aI = 180F;
+        aR = 20;
+        aK = "humanoid";
+        aJ = 180F;
         Y = 20;
-        aG = "/mob/char.png";
+        aH = "/mob/char.png";
     }
 
     public void z() {
         super.z();
-        ao = ap;
-        ap = 0.0F;
+        ap = aq;
+        aq = 0.0F;
     }
 
     protected void c() {
-        if (aq) {
-            ar++;
-            if (ar == 8) {
-                ar = 0;
-                aq = false;
+        if (ar) {
+            as++;
+            if (as == 8) {
+                as = 0;
+                ar = false;
             }
         } else {
-            ar = 0;
+            as = 0;
         }
-        aP = (float) ar / 8F;
+        aQ = (float) as / 8F;
     }
 
     public void E() {
-        if (l.k == 0 && aQ < 20 && (X % 20) * 4 == 0) {
+        if (l.k == 0 && aR < 20 && (X % 20) * 4 == 0) {
             a(1);
         }
-        al.c();
-        ao = ap;
+        am.c();
+        ap = aq;
         super.E();
         float f1 = MathHelper.a(s * s + u * u);
         float f2 = (float) Math.atan(-t * 0.20000000298023224D) * 15F;
@@ -69,15 +69,15 @@ public class EntityPlayer extends EntityLiving {
         if (f1 > 0.1F) {
             f1 = 0.1F;
         }
-        if (!A || aQ <= 0) {
+        if (!A || aR <= 0) {
             f1 = 0.0F;
         }
-        if (A || aQ <= 0) {
+        if (A || aR <= 0) {
             f2 = 0.0F;
         }
-        ap += (f1 - ap) * 0.4F;
-        aY += (f2 - aY) * 0.8F;
-        if (aQ > 0) {
+        aq += (f1 - aq) * 0.4F;
+        aZ += (f2 - aZ) * 0.8F;
+        if (aR > 0) {
             List list = l.b(this, z.b(1.0D, 0.0D, 1.0D));
 
             if (list != null) {
@@ -98,13 +98,13 @@ public class EntityPlayer extends EntityLiving {
         a(0.2F, 0.2F);
         a(p, q, r);
         t = 0.10000000149011612D;
-        if (as.equals("Notch")) {
+        if (at.equals("Notch")) {
             a(new ItemStack(Item.h, 1), true);
         }
-        al.f();
+        am.f();
         if (entity != null) {
-            s = -MathHelper.b(((aU + v) * 3.141593F) / 180F) * 0.1F;
-            u = -MathHelper.a(((aU + v) * 3.141593F) / 180F) * 0.1F;
+            s = -MathHelper.b(((aV + v) * 3.141593F) / 180F) * 0.1F;
+            u = -MathHelper.a(((aV + v) * 3.141593F) / 180F) * 0.1F;
         } else {
             s = u = 0.0D;
         }
@@ -112,7 +112,7 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public void b(Entity entity, int i) {
-        an += i;
+        ao += i;
     }
 
     public void a(ItemStack itemstack) {
@@ -157,7 +157,7 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public float a(Block block) {
-        float f1 = al.a(block);
+        float f1 = am.a(block);
 
         if (a(Material.f)) {
             f1 /= 5F;
@@ -169,21 +169,21 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public boolean b(Block block) {
-        return al.b(block);
+        return am.b(block);
     }
 
     public void b(NBTTagCompound nbttagcompound) {
         super.b(nbttagcompound);
         NBTTagList nbttaglist = nbttagcompound.k("Inventory");
 
-        al.b(nbttaglist);
-        at = nbttagcompound.d("Dimension");
+        am.b(nbttaglist);
+        au = nbttagcompound.d("Dimension");
     }
 
     public void a(NBTTagCompound nbttagcompound) {
         super.a(nbttagcompound);
-        nbttagcompound.a("Inventory", al.a(new NBTTagList()));
-        nbttagcompound.a("Dimension", at);
+        nbttagcompound.a("Inventory", am.a(new NBTTagList()));
+        nbttagcompound.a("Dimension", au);
     }
 
     public void a(IInventory iinventory) {}
@@ -197,8 +197,8 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public boolean a(Entity entity, int i) {
-        bn = 0;
-        if (aQ <= 0) {
+        bo = 0;
+        if (aR <= 0) {
             return false;
         }
         if ((entity instanceof EntityMobs) || (entity instanceof EntityArrow)) {
@@ -220,10 +220,10 @@ public class EntityPlayer extends EntityLiving {
     }
 
     protected void c(int i) {
-        int k = 25 - al.e();
+        int k = 25 - am.e();
         int l = i * k + a;
 
-        al.c(i);
+        am.c(i);
         i = l / 25;
         a = l % 25;
         super.c(i);
@@ -238,11 +238,11 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public ItemStack H() {
-        return al.b();
+        return am.b();
     }
 
     public void I() {
-        al.a(al.d, null);
+        am.a(am.d, null);
     }
 
     public double B() {
@@ -250,12 +250,12 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public void F() {
-        ar = -1;
-        aq = true;
+        as = -1;
+        ar = true;
     }
 
     public void h(Entity entity) {
-        int i = al.a(entity);
+        int i = am.a(entity);
 
         if (i > 0) {
             entity.a(this, i);

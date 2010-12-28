@@ -637,11 +637,11 @@ public class EntityMinecart extends Entity
         } else if (d == 1) {
             entityplayer.a(this);
         } else if (d == 2) {
-            ItemStack itemstack = entityplayer.al.b();
+            ItemStack itemstack = entityplayer.am.b();
 
             if (itemstack != null && itemstack.c == Item.k.aW) {
                 if (--itemstack.a == 0) {
-                    entityplayer.al.a(entityplayer.al.d, null);
+                    entityplayer.am.a(entityplayer.am.d, null);
                 }
                 e += 1200;
             }

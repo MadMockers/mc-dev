@@ -9,41 +9,43 @@ public class EntityTrackerEntry {
     public Entity a;
     public boolean b;
     public boolean c;
-    public int d;
+    public boolean d;
     public int e;
     public int f;
     public int g;
     public int h;
     public int i;
     public int j;
-    public double k;
+    public int k;
     public double l;
     public double m;
-    public int n;
-    private double q;
+    public double n;
+    public int o;
     private double r;
     private double s;
-    private boolean t;
+    private double t;
     private boolean u;
-    public boolean o;
-    public Set p;
+    private boolean v;
+    public boolean p;
+    public Set q;
 
     public EntityTrackerEntry(Entity entity, int i1, int j1, boolean flag) {
         b = false;
         c = false;
-        n = 0;
-        t = false;
-        o = false;
-        p = new HashSet();
+        d = false;
+        o = 0;
+        u = false;
+        p = false;
+        q = new HashSet();
         a = entity;
-        d = i1;
-        e = j1;
-        u = flag;
-        f = MathHelper.b(entity.p * 32D);
-        g = MathHelper.b(entity.q * 32D);
-        h = MathHelper.b(entity.r * 32D);
-        i = MathHelper.d((entity.v * 256F) / 360F);
-        j = MathHelper.d((entity.w * 256F) / 360F);
+        e = i1;
+        f = j1;
+        v = flag;
+        g = MathHelper.b(entity.p * 32D);
+        h = MathHelper.b(entity.q * 32D);
+        i = MathHelper.b(entity.r * 32D);
+        j = MathHelper.d((entity.v * 256F) / 360F);
+        k = MathHelper.d((entity.w * 256F) / 360F);
     }
 
     public boolean equals(Object obj) {
@@ -59,30 +61,26 @@ public class EntityTrackerEntry {
     }
 
     public void a(List list) {
-        if (a.E) {
-            a(((Packet) (new Packet18ArmAnimation(a, 2))));
-            a.E = false;
-        }
-        o = false;
-        if (!t || a.d(q, r, s) > 16D) {
+        p = false;
+        if (!u || a.d(r, s, t) > 16D) {
             b(list);
-            q = a.p;
-            r = a.q;
-            s = a.r;
-            t = true;
-            o = true;
+            r = a.p;
+            s = a.q;
+            t = a.r;
+            u = true;
+            p = true;
         }
-        if (n++ % e == 0) {
+        if (o++ % f == 0) {
             int i1 = MathHelper.b(a.p * 32D);
             int j1 = MathHelper.b(a.q * 32D);
             int k1 = MathHelper.b(a.r * 32D);
             int l1 = MathHelper.d((a.v * 256F) / 360F);
             int i2 = MathHelper.d((a.w * 256F) / 360F);
-            boolean flag = i1 != f || j1 != g || k1 != h;
-            boolean flag1 = l1 != i || i2 != j;
-            int j2 = i1 - f;
-            int k2 = j1 - g;
-            int l2 = k1 - h;
+            boolean flag = i1 != g || j1 != h || k1 != i;
+            boolean flag1 = l1 != j || i2 != k;
+            int j2 = i1 - g;
+            int k2 = j1 - h;
+            int l2 = k1 - i;
             Object obj = null;
 
             if (j2 < -128 || j2 >= 128 || k2 < -128 || k2 >= 128 || l2 < -128 || l2 >= 128) {
@@ -96,18 +94,18 @@ public class EntityTrackerEntry {
             } else {
                 obj = new Packet30Entity(a.g);
             }
-            if (u) {
-                double d1 = a.s - k;
-                double d2 = a.t - l;
-                double d3 = a.u - m;
+            if (v) {
+                double d1 = a.s - l;
+                double d2 = a.t - m;
+                double d3 = a.u - n;
                 double d4 = 0.02D;
                 double d5 = d1 * d1 + d2 * d2 + d3 * d3;
 
                 if (d5 > d4 * d4 || d5 > 0.0D && a.s == 0.0D && a.t == 0.0D && a.u == 0.0D) {
-                    k = a.s;
-                    l = a.t;
-                    m = a.u;
-                    a(((Packet) (new Packet28(a.g, k, l, m))));
+                    l = a.s;
+                    m = a.t;
+                    n = a.u;
+                    a(((Packet) (new Packet28(a.g, l, m, n))));
                 }
             }
             if (obj != null) {
@@ -115,33 +113,53 @@ public class EntityTrackerEntry {
             }
             if (b && a.k == null) {
                 b = false;
-                a(((Packet) (new Packet18ArmAnimation(a, 101))));
+                b(new Packet18ArmAnimation(a, 101));
             } else if (!b && a.k != null) {
                 b = true;
-                a(((Packet) (new Packet18ArmAnimation(a, 100))));
+                b(new Packet18ArmAnimation(a, 100));
+            }
+            if (a instanceof EntityLiving) {
+                if (d && !a.p()) {
+                    d = false;
+                    b(new Packet18ArmAnimation(a, 105));
+                } else if (!d && a.p()) {
+                    d = true;
+                    b(new Packet18ArmAnimation(a, 104));
+                }
             }
             if (c && a.Z <= 0) {
                 c = false;
-                a(((Packet) (new Packet18ArmAnimation(a, 103))));
+                b(new Packet18ArmAnimation(a, 103));
             } else if (!c && a.Z > 0) {
                 c = true;
-                a(((Packet) (new Packet18ArmAnimation(a, 102))));
+                b(new Packet18ArmAnimation(a, 102));
             }
-            f = i1;
-            g = j1;
-            h = k1;
-            i = l1;
-            j = i2;
+            g = i1;
+            h = j1;
+            i = k1;
+            j = l1;
+            k = i2;
+        }
+        if (a.E) {
+            b(new Packet28(a));
+            a.E = false;
         }
     }
 
     public void a(Packet packet) {
         EntityPlayerMP entityplayermp;
 
-        for (Iterator iterator = p.iterator(); iterator.hasNext(); entityplayermp.a.b(packet)) {
+        for (Iterator iterator = q.iterator(); iterator.hasNext(); entityplayermp.a.b(packet)) {
             entityplayermp = (EntityPlayerMP) iterator.next();
         }
 
+    }
+
+    public void b(Packet packet) {
+        a(packet);
+        if (a instanceof EntityPlayerMP) {
+            ((EntityPlayerMP) a).a.b(packet);
+        }
     }
 
     public void a() {
@@ -152,25 +170,28 @@ public class EntityTrackerEntry {
         if (entityplayermp == a) {
             return;
         }
-        double d1 = entityplayermp.p - (double) (f / 32);
-        double d2 = entityplayermp.r - (double) (h / 32);
+        double d1 = entityplayermp.p - (double) (g / 32);
+        double d2 = entityplayermp.r - (double) (i / 32);
 
-        if (d1 >= (double) (-d) && d1 <= (double) d && d2 >= (double) (-d) && d2 <= (double) d) {
-            if (!p.contains(entityplayermp)) {
-                p.add(entityplayermp);
+        if (d1 >= (double) (-e) && d1 <= (double) e && d2 >= (double) (-e) && d2 <= (double) e) {
+            if (!q.contains(entityplayermp)) {
+                q.add(entityplayermp);
                 entityplayermp.a.b(b());
+                if (d) {
+                    entityplayermp.a.b(new Packet18ArmAnimation(a, 104));
+                }
                 if (b) {
                     entityplayermp.a.b(new Packet18ArmAnimation(a, 100));
                 }
                 if (c) {
                     entityplayermp.a.b(new Packet18ArmAnimation(a, 102));
                 }
-                if (u) {
+                if (v) {
                     entityplayermp.a.b(new Packet28(a.g, a.s, a.t, a.u));
                 }
             }
-        } else if (p.contains(entityplayermp)) {
-            p.remove(entityplayermp);
+        } else if (q.contains(entityplayermp)) {
+            q.remove(entityplayermp);
             entityplayermp.a.b(new Packet29DestroyEntity(a.g));
         }
     }
@@ -217,6 +238,12 @@ public class EntityTrackerEntry {
         if (a instanceof EntityFish) {
             return new Packet23VehicleSpawn(a, 90);
         }
+        if (a instanceof EntityArrow) {
+            return new Packet23VehicleSpawn(a, 60);
+        }
+        if (a instanceof EntitySnowball) {
+            return new Packet23VehicleSpawn(a, 61);
+        }
         if (a instanceof EntityTNTPrimed) {
             return new Packet23VehicleSpawn(a, 50);
         } else {
@@ -225,8 +252,8 @@ public class EntityTrackerEntry {
     }
 
     public void b(EntityPlayerMP entityplayermp) {
-        if (p.contains(entityplayermp)) {
-            p.remove(entityplayermp);
+        if (q.contains(entityplayermp)) {
+            q.remove(entityplayermp);
             entityplayermp.a.b(new Packet29DestroyEntity(a.g));
         }
     }

@@ -7,58 +7,70 @@ import java.util.*;
 public class Explosion {
 
     public boolean a;
-    private Random b;
+    private Random h;
+    private World i;
+    public double b;
+    public double c;
+    public double d;
+    public Entity e;
+    public float f;
+    public Set g;
 
-    public Explosion() {
+    public Explosion(World world, Entity entity, double d1, double d2, double d3, float f1) {
         a = false;
-        b = new Random();
+        h = new Random();
+        g = new HashSet();
+        i = world;
+        e = entity;
+        f = f1;
+        b = d1;
+        c = d2;
+        d = d3;
     }
 
-    public void a(World world, Entity entity, double d, double d1, double d2, float f) {
-        world.a(d, d1, d2, "random.explode", 4F, (1.0F + (world.l.nextFloat() - world.l.nextFloat()) * 0.2F) * 0.7F);
-        HashSet hashset = new HashSet();
+    public void a() {
         float f1 = f;
-        int i = 16;
+        int j = 16;
 
-        for (int j = 0; j < i; j++) {
-            for (int l = 0; l < i; l++) {
+        for (int k = 0; k < j; k++) {
+            for (int i1 = 0; i1 < j; i1++) {
                 label0:
-                for (int j1 = 0; j1 < i; j1++) {
-                    if (j != 0 && j != i - 1 && l != 0 && l != i - 1 && j1 != 0 && j1 != i - 1) {
+                for (int k1 = 0; k1 < j; k1++) {
+                    if (k != 0 && k != j - 1 && i1 != 0 && i1 != j - 1 && k1 != 0 && k1 != j - 1) {
                         continue;
                     }
-                    double d3 = ((float) j / ((float) i - 1.0F)) * 2.0F - 1.0F;
-                    double d4 = ((float) l / ((float) i - 1.0F)) * 2.0F - 1.0F;
-                    double d5 = ((float) j1 / ((float) i - 1.0F)) * 2.0F - 1.0F;
-                    double d6 = Math.sqrt(d3 * d3 + d4 * d4 + d5 * d5);
+                    double d1 = ((float) k / ((float) j - 1.0F)) * 2.0F - 1.0F;
+                    double d2 = ((float) i1 / ((float) j - 1.0F)) * 2.0F - 1.0F;
+                    double d3 = ((float) k1 / ((float) j - 1.0F)) * 2.0F - 1.0F;
+                    double d4 = Math.sqrt(d1 * d1 + d2 * d2 + d3 * d3);
 
-                    d3 /= d6;
-                    d4 /= d6;
-                    d5 /= d6;
-                    float f2 = f * (0.7F + world.l.nextFloat() * 0.6F);
-                    double d7 = d;
-                    double d9 = d1;
-                    double d11 = d2;
+                    d1 /= d4;
+                    d2 /= d4;
+                    d3 /= d4;
+                    float f2 = f * (0.7F + i.l.nextFloat() * 0.6F);
+                    double d5 = b;
+                    double d7 = c;
+                    double d9 = d;
                     float f3 = 0.3F;
 
                     do {
                         if (f2 <= 0.0F) {
                             continue label0;
                         }
-                        int j2 = MathHelper.b(d7);
-                        int k2 = MathHelper.b(d9);
-                        int l2 = MathHelper.b(d11);
-                        int i3 = world.a(j2, k2, l2);
+                        int j2 = MathHelper.b(d5);
+                        int k2 = MathHelper.b(d7);
+                        int l2 = MathHelper.b(d9);
+                        int i3 = i.a(j2, k2, l2);
 
                         if (i3 > 0) {
-                            f2 -= (Block.m[i3].a(entity) + 0.3F) * f3;
+                            f2 -= (Block.m[i3].a(e) + 0.3F) * f3;
                         }
                         if (f2 > 0.0F) {
-                            hashset.add(new ChunkPosition(j2, k2, l2));
+                            g.add(new ChunkPosition(j2, k2, l2));
                         }
-                        d7 += d3 * (double) f3;
-                        d9 += d4 * (double) f3;
-                        d11 += d5 * (double) f3;
+                        d5 += d1 * (double) f3;
+                        d7 += d2 * (double) f3;
+                        d9 += d3 * (double) f3;
                         f2 -= f3 * 0.75F;
                     } while (true);
                 }
@@ -68,95 +80,102 @@ public class Explosion {
         }
 
         f *= 2.0F;
-        int k = MathHelper.b(d - (double) f - 1.0D);
-        int i1 = MathHelper.b(d + (double) f + 1.0D);
-        int k1 = MathHelper.b(d1 - (double) f - 1.0D);
-        int j3 = MathHelper.b(d1 + (double) f + 1.0D);
-        int k3 = MathHelper.b(d2 - (double) f - 1.0D);
-        int l3 = MathHelper.b(d2 + (double) f + 1.0D);
-        List list = world.b(entity, AxisAlignedBB.b(k, k1, k3, i1, j3, l3));
-        Vec3D vec3d = Vec3D.b(d, d1, d2);
+        int l = MathHelper.b(b - (double) f - 1.0D);
+        int j1 = MathHelper.b(b + (double) f + 1.0D);
+        int l1 = MathHelper.b(c - (double) f - 1.0D);
+        int j3 = MathHelper.b(c + (double) f + 1.0D);
+        int k3 = MathHelper.b(d - (double) f - 1.0D);
+        int l3 = MathHelper.b(d + (double) f + 1.0D);
+        List list = i.b(e, AxisAlignedBB.b(l, l1, k3, j1, j3, l3));
+        Vec3D vec3d = Vec3D.b(b, c, d);
 
         for (int i4 = 0; i4 < list.size(); i4++) {
-            Entity entity1 = (Entity) list.get(i4);
-            double d14 = entity1.e(d, d1, d2) / (double) f;
+            Entity entity = (Entity) list.get(i4);
+            double d11 = entity.e(b, c, d) / (double) f;
 
-            if (d14 <= 1.0D) {
-                double d8 = entity1.p - d;
-                double d10 = entity1.q - d1;
-                double d12 = entity1.r - d2;
-                double d15 = MathHelper.a(d8 * d8 + d10 * d10 + d12 * d12);
+            if (d11 <= 1.0D) {
+                double d6 = entity.p - b;
+                double d8 = entity.q - c;
+                double d10 = entity.r - d;
+                double d12 = MathHelper.a(d6 * d6 + d8 * d8 + d10 * d10);
 
-                d8 /= d15;
-                d10 /= d15;
-                d12 /= d15;
-                double d17 = world.a(vec3d, entity1.z);
-                double d19 = (1.0D - d14) * d17;
+                d6 /= d12;
+                d8 /= d12;
+                d10 /= d12;
+                double d13 = i.a(vec3d, entity.z);
+                double d14 = (1.0D - d11) * d13;
 
-                entity1.a(entity, (int) (((d19 * d19 + d19) / 2D) * 8D * (double) f + 1.0D));
-                double d21 = d19;
+                entity.a(e, (int) (((d14 * d14 + d14) / 2D) * 8D * (double) f + 1.0D));
+                double d15 = d14;
 
-                entity1.s += d8 * d21;
-                entity1.t += d10 * d21;
-                entity1.u += d12 * d21;
+                entity.s += d6 * d15;
+                entity.t += d8 * d15;
+                entity.u += d10 * d15;
             }
         }
 
         f = f1;
         ArrayList arraylist = new ArrayList();
 
-        arraylist.addAll(hashset);
-        for (int j4 = arraylist.size() - 1; j4 >= 0; j4--) {
-            ChunkPosition chunkposition = (ChunkPosition) arraylist.get(j4);
-            int l1 = chunkposition.a;
-            int l4 = chunkposition.b;
-            int j5 = chunkposition.c;
-            int l5 = world.a(l1, l4, j5);
-
-            for (int j6 = 0; j6 < 1; j6++) {
-                double d13 = (float) l1 + world.l.nextFloat();
-                double d16 = (float) l4 + world.l.nextFloat();
-                double d18 = (float) j5 + world.l.nextFloat();
-                double d20 = d13 - d;
-                double d22 = d16 - d1;
-                double d23 = d18 - d2;
-                double d24 = MathHelper.a(d20 * d20 + d22 * d22 + d23 * d23);
-
-                d20 /= d24;
-                d22 /= d24;
-                d23 /= d24;
-                double d25 = 0.5D / (d24 / (double) f + 0.10000000000000001D);
-
-                d25 *= world.l.nextFloat() * world.l.nextFloat() + 0.3F;
-                d20 *= d25;
-                d22 *= d25;
-                d23 *= d25;
-                world.a("explode", (d13 + d * 1.0D) / 2D, (d16 + d1 * 1.0D) / 2D, (d18 + d2 * 1.0D) / 2D, d20, d22, d23);
-                world.a("smoke", d13, d16, d18, d20, d22, d23);
-            }
-
-            if (l5 > 0) {
-                Block.m[l5].a(world, l1, l4, j5, world.b(l1, l4, j5), 0.3F);
-                world.d(l1, l4, j5, 0);
-                Block.m[l5].c(world, l1, l4, j5);
-            }
-        }
-
+        arraylist.addAll(g);
         if (a) {
-            for (int k4 = arraylist.size() - 1; k4 >= 0; k4--) {
-                ChunkPosition chunkposition1 = (ChunkPosition) arraylist.get(k4);
-                int i2 = chunkposition1.a;
-                int i5 = chunkposition1.b;
-                int k5 = chunkposition1.c;
-                int i6 = world.a(i2, i5, k5);
-                int k6 = world.a(i2, i5 - 1, k5);
+            for (int j4 = arraylist.size() - 1; j4 >= 0; j4--) {
+                ChunkPosition chunkposition = (ChunkPosition) arraylist.get(j4);
+                int i2 = chunkposition.a;
+                int k4 = chunkposition.b;
+                int l4 = chunkposition.c;
+                int i5 = i.a(i2, k4, l4);
+                int j5 = i.a(i2, k4 - 1, l4);
 
-                if (i6 == 0 && Block.o[k6] && b.nextInt(3) == 0) {
-                    world.d(i2, i5, k5, Block.ar.bh);
+                if (i5 == 0 && Block.o[j5] && h.nextInt(3) == 0) {
+                    i.d(i2, k4, l4, Block.ar.bh);
                 }
             }
 
         }
+    }
+
+    public void b() {
+        i.a(b, c, d, "random.explode", 4F, (1.0F + (i.l.nextFloat() - i.l.nextFloat()) * 0.2F) * 0.7F);
+        ArrayList arraylist = new ArrayList();
+
+        arraylist.addAll(g);
+        for (int j = arraylist.size() - 1; j >= 0; j--) {
+            ChunkPosition chunkposition = (ChunkPosition) arraylist.get(j);
+            int k = chunkposition.a;
+            int l = chunkposition.b;
+            int i1 = chunkposition.c;
+            int j1 = i.a(k, l, i1);
+
+            for (int k1 = 0; k1 < 1; k1++) {
+                double d1 = (float) k + i.l.nextFloat();
+                double d2 = (float) l + i.l.nextFloat();
+                double d3 = (float) i1 + i.l.nextFloat();
+                double d4 = d1 - b;
+                double d5 = d2 - c;
+                double d6 = d3 - d;
+                double d7 = MathHelper.a(d4 * d4 + d5 * d5 + d6 * d6);
+
+                d4 /= d7;
+                d5 /= d7;
+                d6 /= d7;
+                double d8 = 0.5D / (d7 / (double) f + 0.10000000000000001D);
+
+                d8 *= i.l.nextFloat() * i.l.nextFloat() + 0.3F;
+                d4 *= d8;
+                d5 *= d8;
+                d6 *= d8;
+                i.a("explode", (d1 + b * 1.0D) / 2D, (d2 + c * 1.0D) / 2D, (d3 + d * 1.0D) / 2D, d4, d5, d6);
+                i.a("smoke", d1, d2, d3, d4, d5, d6);
+            }
+
+            if (j1 > 0) {
+                Block.m[j1].a(i, k, l, i1, i.b(k, l, i1), 0.3F);
+                i.d(k, l, i1, 0);
+                Block.m[j1].c(i, k, l, i1);
+            }
+        }
+
     }
 }
 

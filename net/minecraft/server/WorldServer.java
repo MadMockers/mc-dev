@@ -59,7 +59,7 @@ public class WorldServer extends World {
         if (l > i1) {
             i1 = l;
         }
-        return i1 > 16 || D.f.g(entityplayer.as);
+        return i1 > 16 || D.f.g(entityplayer.at);
     }
 
     protected void b(Entity entity) {
@@ -77,7 +77,17 @@ public class WorldServer extends World {
     }
 
     public void a(Entity entity, byte byte0) {
-        D.k.a(entity, new Packet38(entity.g, byte0));
+        Packet38 packet38 = new Packet38(entity.g, byte0);
+
+        D.k.b(entity, packet38);
+    }
+
+    public Explosion a(Entity entity, double d1, double d2, double d3, 
+            float f1, boolean flag) {
+        Explosion explosion = super.a(entity, d1, d2, d3, f1, flag);
+
+        D.f.a(d1, d2, d3, 64D, new Packet60(d1, d2, d3, f1, explosion.g));
+        return explosion;
     }
 }
 

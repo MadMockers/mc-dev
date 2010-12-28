@@ -43,7 +43,7 @@ public class NetServerHandler extends NetHandler
     public void c(String s) {
         b.a(new Packet255KickDisconnect(s));
         b.c();
-        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.as).append(" left the game.").toString()));
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.at).append(" left the game.").toString()));
         d.f.c(e);
         c = true;
     }
@@ -107,7 +107,7 @@ public class NetServerHandler extends NetHandler
 
                 if (d11 > 1.6499999999999999D || d11 < 0.10000000000000001D) {
                     c("Illegal stance");
-                    a.warning((new StringBuilder()).append(e.as).append(" had an illegal stance: ").append(d11).toString());
+                    a.warning((new StringBuilder()).append(e.at).append(" had an illegal stance: ").append(d11).toString());
                 }
                 e.ak = packet10flying.d;
             }
@@ -136,7 +136,7 @@ public class NetServerHandler extends NetHandler
 
             if (d15 > 0.0625D) {
                 flag1 = true;
-                a.warning((new StringBuilder()).append(e.as).append(" moved wrongly!").toString());
+                a.warning((new StringBuilder()).append(e.at).append(" moved wrongly!").toString());
                 System.out.println((new StringBuilder()).append("Got position ").append(d4).append(", ").append(d6).append(", ").append(d8).toString());
                 System.out.println((new StringBuilder()).append("Expected ").append(e.p).append(", ").append(e.q).append(", ").append(e.r).toString());
             }
@@ -164,8 +164,8 @@ public class NetServerHandler extends NetHandler
     }
 
     public void a(Packet14BlockDig packet14blockdig) {
-        e.al.a[e.al.d] = k;
-        boolean flag = d.e.B = d.f.g(e.as);
+        e.am.a[e.am.d] = k;
+        boolean flag = d.e.B = d.f.g(e.at);
         boolean flag1 = false;
 
         if (packet14blockdig.e == 0) {
@@ -223,7 +223,7 @@ public class NetServerHandler extends NetHandler
     }
 
     public void a(Packet15Place packet15place) {
-        boolean flag = d.e.B = d.f.g(e.as);
+        boolean flag = d.e.B = d.f.g(e.at);
 
         if (packet15place.e == 255) {
             ItemStack itemstack = packet15place.a < 0 ? null : new ItemStack(packet15place.a);
@@ -270,8 +270,8 @@ public class NetServerHandler extends NetHandler
     }
 
     public void a(String s) {
-        a.info((new StringBuilder()).append(e.as).append(" lost connection: ").append(s).toString());
-        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.as).append(" left the game.").toString()));
+        a.info((new StringBuilder()).append(e.at).append(" lost connection: ").append(s).toString());
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.at).append(" left the game.").toString()));
         d.f.c(e);
         c = true;
     }
@@ -288,13 +288,13 @@ public class NetServerHandler extends NetHandler
     public void a(Packet16BlockItemSwitch packet16blockitemswitch) {
         int l = packet16blockitemswitch.b;
 
-        e.al.d = e.al.a.length - 1;
+        e.am.d = e.am.a.length - 1;
         if (l == 0) {
             k = null;
         } else {
             k = new ItemStack(l);
         }
-        e.al.a[e.al.d] = k;
+        e.am.a[e.am.d] = k;
         d.k.a(e, new Packet16BlockItemSwitch(e.g, l));
     }
 
@@ -331,7 +331,7 @@ public class NetServerHandler extends NetHandler
         if (s.startsWith("/")) {
             d(s);
         } else {
-            s = (new StringBuilder()).append("<").append(e.as).append("> ").append(s).toString();
+            s = (new StringBuilder()).append("<").append(e.at).append("> ").append(s).toString();
             a.info(s);
             d.f.a(new Packet3Chat(s));
         }
@@ -339,7 +339,7 @@ public class NetServerHandler extends NetHandler
 
     private void d(String s) {
         if (s.toLowerCase().startsWith("/me ")) {
-            s = (new StringBuilder()).append("* ").append(e.as).append(" ").append(s.substring(s.indexOf(" ")).trim()).toString();
+            s = (new StringBuilder()).append("* ").append(e.at).append(" ").append(s.substring(s.indexOf(" ")).trim()).toString();
             a.info(s);
             d.f.a(new Packet3Chat(s));
         } else if (s.toLowerCase().startsWith("/tell ")) {
@@ -348,32 +348,36 @@ public class NetServerHandler extends NetHandler
             if (as.length >= 3) {
                 s = s.substring(s.indexOf(" ")).trim();
                 s = s.substring(s.indexOf(" ")).trim();
-                s = (new StringBuilder()).append("\2477").append(e.as).append(" whispers ").append(s).toString();
+                s = (new StringBuilder()).append("\2477").append(e.at).append(" whispers ").append(s).toString();
                 a.info((new StringBuilder()).append(s).append(" to ").append(as[1]).toString());
                 if (!d.f.a(as[1], new Packet3Chat(s))) {
                     b(new Packet3Chat("\247cThere's no player by that name online."));
                 }
             }
         } else if (s.toLowerCase().equalsIgnoreCase("/home")) {
-            a.info((new StringBuilder()).append(e.as).append(" returned home").toString());
+            a.info((new StringBuilder()).append(e.at).append(" returned home").toString());
             int l = d.e.e(d.e.m, d.e.o);
 
             a((double) d.e.m + 0.5D, (double) l + 1.5D, (double) d.e.o + 0.5D, 0.0F, 0.0F);
-        } else if (d.f.g(e.as)) {
+        } else if (d.f.g(e.at)) {
             String s1 = s.substring(1);
 
-            a.info((new StringBuilder()).append(e.as).append(" issued server command: ").append(s1).toString());
+            a.info((new StringBuilder()).append(e.at).append(" issued server command: ").append(s1).toString());
             d.a(s1, this);
         } else {
             String s2 = s.substring(1);
 
-            a.info((new StringBuilder()).append(e.as).append(" tried command: ").append(s2).toString());
+            a.info((new StringBuilder()).append(e.at).append(" tried command: ").append(s2).toString());
         }
     }
 
     public void a(Packet18ArmAnimation packet18armanimation) {
         if (packet18armanimation.b == 1) {
             e.F();
+        } else if (packet18armanimation.b == 104) {
+            e.al = true;
+        } else if (packet18armanimation.b == 105) {
+            e.al = false;
         }
     }
 
@@ -390,25 +394,25 @@ public class NetServerHandler extends NetHandler
     }
 
     public String c() {
-        return e.as;
+        return e.at;
     }
 
     public void a(Packet5PlayerInventory packet5playerinventory) {
         if (packet5playerinventory.a == -1) {
-            e.al.a = packet5playerinventory.b;
+            e.am.a = packet5playerinventory.b;
         }
         if (packet5playerinventory.a == -2) {
-            e.al.c = packet5playerinventory.b;
+            e.am.c = packet5playerinventory.b;
         }
         if (packet5playerinventory.a == -3) {
-            e.al.b = packet5playerinventory.b;
+            e.am.b = packet5playerinventory.b;
         }
     }
 
     public void d() {
-        b.a(new Packet5PlayerInventory(-1, e.al.a));
-        b.a(new Packet5PlayerInventory(-2, e.al.c));
-        b.a(new Packet5PlayerInventory(-3, e.al.b));
+        b.a(new Packet5PlayerInventory(-1, e.am.a));
+        b.a(new Packet5PlayerInventory(-2, e.am.c));
+        b.a(new Packet5PlayerInventory(-3, e.am.b));
     }
 
     public void a(Packet59ComplexEntity packet59complexentity) {
@@ -434,6 +438,7 @@ public class NetServerHandler extends NetHandler
     public void a(Packet7 packet7) {
         Entity entity = d.e.a(packet7.b);
 
+        e.am.a[e.am.d] = k;
         if (entity != null && e.i(entity)) {
             if (packet7.c == 0) {
                 e.g(entity);
@@ -444,7 +449,7 @@ public class NetServerHandler extends NetHandler
     }
 
     public void a(Packet9 packet9) {
-        if (e.aQ > 0) {
+        if (e.aR > 0) {
             return;
         } else {
             e = d.f.d(e);

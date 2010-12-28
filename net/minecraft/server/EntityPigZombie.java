@@ -15,14 +15,14 @@ public class EntityPigZombie extends EntityZombie {
         super(world);
         a = 0;
         b = 0;
-        aG = "/mob/pigzombie.png";
-        bt = 0.5F;
-        e = 5;
+        aH = "/mob/pigzombie.png";
+        bu = 0.5F;
+        f = 5;
         ae = true;
     }
 
     public void b_() {
-        bt = f == null ? 0.5F : 0.95F;
+        bu = aj == null ? 0.5F : 0.95F;
         if (b > 0 && --b == 0) {
             l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) * 1.8F);
         }
@@ -75,7 +75,7 @@ public class EntityPigZombie extends EntityZombie {
     }
 
     private void g(Entity entity) {
-        f = entity;
+        aj = entity;
         a = 400 + W.nextInt(400);
         b = W.nextInt(40);
     }

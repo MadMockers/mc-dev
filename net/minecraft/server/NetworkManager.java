@@ -138,12 +138,15 @@ public class NetworkManager {
         h = false;
         try {
             f.close();
+            f = null;
         } catch (Throwable throwable) {}
         try {
             g.close();
+            g = null;
         } catch (Throwable throwable1) {}
         try {
             e.close();
+            e = null;
         } catch (Throwable throwable2) {}
     }
 

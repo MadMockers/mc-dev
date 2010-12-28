@@ -8,9 +8,9 @@ public class EntitySpider extends EntityMobs {
 
     public EntitySpider(World world) {
         super(world);
-        aG = "/mob/spider.png";
+        aH = "/mob/spider.png";
         a(1.4F, 0.9F);
-        bt = 0.8F;
+        bu = 0.8F;
     }
 
     public double j() {
@@ -45,7 +45,7 @@ public class EntitySpider extends EntityMobs {
         float f2 = b(1.0F);
 
         if (f2 > 0.5F && W.nextInt(100) == 0) {
-            f = null;
+            aj = null;
             return;
         }
         if (f1 > 2.0F && f1 < 6F && W.nextInt(10) == 0) {

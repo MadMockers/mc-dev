@@ -1204,9 +1204,19 @@ public class World
         return false;
     }
 
-    public void a(Entity entity, double d1, double d2, double d3, 
+    public Explosion a(Entity entity, double d1, double d2, double d3, 
             float f1) {
-        (new Explosion()).a(this, entity, d1, d2, d3, f1);
+        return a(entity, d1, d2, d3, f1, false);
+    }
+
+    public Explosion a(Entity entity, double d1, double d2, double d3, 
+            float f1, boolean flag) {
+        Explosion explosion = new Explosion(this, entity, d1, d2, d3, f1);
+
+        explosion.a = flag;
+        explosion.a();
+        explosion.b();
+        return explosion;
     }
 
     public float a(Vec3D vec3d, AxisAlignedBB axisalignedbb) {

@@ -11,7 +11,7 @@ public class EntitySheep extends EntityAnimals {
     public EntitySheep(World world) {
         super(world);
         a = false;
-        aG = "/mob/sheep.png";
+        aH = "/mob/sheep.png";
         a(0.9F, 1.3F);
     }
 

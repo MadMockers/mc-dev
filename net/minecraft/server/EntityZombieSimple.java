@@ -5,10 +5,10 @@ public class EntityZombieSimple extends EntityMobs {
 
     public EntityZombieSimple(World world) {
         super(world);
-        aG = "/mob/zombie.png";
-        bt = 0.5F;
-        e = 50;
-        aQ *= 10;
+        aH = "/mob/zombie.png";
+        bu = 0.5F;
+        f = 50;
+        aR *= 10;
         H *= 6F;
         a(I * 6F, J * 6F);
     }

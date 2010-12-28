@@ -14,13 +14,15 @@ public class EntityPlayerMP extends EntityPlayer {
     public List f;
     public Set aj;
     public double ak;
-    private int bu;
+    public boolean al;
+    private int bv;
 
     public EntityPlayerMP(MinecraftServer minecraftserver, World world, String s1, ItemInWorldManager iteminworldmanager) {
         super(world);
         f = new LinkedList();
         aj = new HashSet();
-        bu = -1;
+        al = false;
+        bv = 0xfa0a1f01;
         int i = world.m;
         int j = world.o;
         int l = world.n;
@@ -34,7 +36,7 @@ public class EntityPlayerMP extends EntityPlayer {
         b = minecraftserver;
         S = 0.0F;
         iteminworldmanager.a = this;
-        as = s1;
+        at = s1;
         c = iteminworldmanager;
         H = 0.0F;
     }
@@ -42,7 +44,7 @@ public class EntityPlayerMP extends EntityPlayer {
     public void b_() {}
 
     public void f(Entity entity) {
-        al.f();
+        am.f();
     }
 
     public boolean a(Entity entity, int i) {
@@ -102,30 +104,36 @@ public class EntityPlayerMP extends EntityPlayer {
 
             }
         }
-        if (aQ != bu) {
-            a.b(new Packet8(aQ));
-            bu = aQ;
+        if (aR != bv) {
+            a.b(new Packet8(aR));
+            bv = aR;
         }
     }
 
     public void E() {
         s = t = u = 0.0D;
-        br = false;
+        bs = false;
         super.E();
     }
 
     public void c(Entity entity, int i) {
-        if (!entity.G && (entity instanceof EntityItem)) {
-            a.b(new Packet17AddToInventory(((EntityItem) entity).a, i));
-            b.k.a(entity, new Packet22Collect(entity.g, g));
+        if (!entity.G) {
+            if (entity instanceof EntityItem) {
+                a.b(new Packet17AddToInventory(((EntityItem) entity).a, i));
+                b.k.a(entity, new Packet22Collect(entity.g, g));
+            }
+            if (entity instanceof EntityArrow) {
+                a.b(new Packet17AddToInventory(new ItemStack(Item.j), 1));
+                b.k.a(entity, new Packet22Collect(entity.g, g));
+            }
         }
         super.c(entity, i);
     }
 
     public void F() {
-        if (!aq) {
-            ar = -1;
-            aq = true;
+        if (!ar) {
+            as = -1;
+            ar = true;
             b.k.a(this, new Packet18ArmAnimation(this, 1));
         }
     }
@@ -144,6 +152,10 @@ public class EntityPlayerMP extends EntityPlayer {
 
     public void b(double d1, boolean flag) {
         super.a(d1, flag);
+    }
+
+    public boolean p() {
+        return al;
     }
 }
 

@@ -21,7 +21,7 @@ public class PlayerNBTManager {
 
             entityplayermp.d(nbttagcompound);
             File file = new File(b, "_tmp_.dat");
-            File file1 = new File(b, (new StringBuilder()).append(entityplayermp.as).append(".dat").toString());
+            File file1 = new File(b, (new StringBuilder()).append(entityplayermp.at).append(".dat").toString());
 
             CompressedStreamTools.a(nbttagcompound, new FileOutputStream(file));
             if (file1.exists()) {
@@ -29,13 +29,13 @@ public class PlayerNBTManager {
             }
             file.renameTo(file1);
         } catch (Exception exception) {
-            a.warning((new StringBuilder()).append("Failed to save player data for ").append(entityplayermp.as).toString());
+            a.warning((new StringBuilder()).append("Failed to save player data for ").append(entityplayermp.at).toString());
         }
     }
 
     public void b(EntityPlayerMP entityplayermp) {
         try {
-            File file = new File(b, (new StringBuilder()).append(entityplayermp.as).append(".dat").toString());
+            File file = new File(b, (new StringBuilder()).append(entityplayermp.at).append(".dat").toString());
 
             if (file.exists()) {
                 NBTTagCompound nbttagcompound = CompressedStreamTools.a(new FileInputStream(file));
@@ -45,7 +45,7 @@ public class PlayerNBTManager {
                 }
             }
         } catch (Exception exception) {
-            a.warning((new StringBuilder()).append("Failed to load player data for ").append(entityplayermp.as).toString());
+            a.warning((new StringBuilder()).append("Failed to load player data for ").append(entityplayermp.at).toString());
         }
     }
 

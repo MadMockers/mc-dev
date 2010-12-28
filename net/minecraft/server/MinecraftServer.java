@@ -51,7 +51,7 @@ public class MinecraftServer
         threadcommandreader.setDaemon(true);
         threadcommandreader.start();
         ConsoleLogManager.a();
-        a.info("Starting minecraft server version 0.2.5_02");
+        a.info("Starting minecraft server version 0.2.6");
         if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
             a.warning("**** NOT ENOUGH RAM!");
             a.warning("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
@@ -338,14 +338,14 @@ public class MinecraftServer
                 for (int i1 = 0; i1 < f.b.size(); i1++) {
                     EntityPlayerMP entityplayermp5 = (EntityPlayerMP) f.b.get(i1);
 
-                    if (entityplayermp5.as.equalsIgnoreCase(s8)) {
+                    if (entityplayermp5.at.equalsIgnoreCase(s8)) {
                         entityplayermp1 = entityplayermp5;
                     }
                 }
 
                 if (entityplayermp1 != null) {
                     entityplayermp1.a.c("Kicked by admin");
-                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.as).toString());
+                    a(s1, (new StringBuilder()).append("Kicking ").append(entityplayermp1.at).toString());
                 } else {
                     icommandlistener.b((new StringBuilder()).append("Can't find user ").append(s8).append(". No kick.").toString());
                 }
@@ -381,7 +381,7 @@ public class MinecraftServer
                         int j1 = Integer.parseInt(as1[2]);
 
                         if (Item.c[j1] != null) {
-                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.as).append(" some ").append(j1).toString());
+                            a(s1, (new StringBuilder()).append("Giving ").append(entityplayermp4.at).append(" some ").append(j1).toString());
                             int k1 = 1;
 
                             if (as1.length > 3) {

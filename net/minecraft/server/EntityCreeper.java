@@ -10,12 +10,14 @@ public class EntityCreeper extends EntityMobs {
     int b;
     int c;
     int d;
+    int e;
 
     public EntityCreeper(World world) {
         super(world);
         c = 30;
         d = -1;
-        aG = "/mob/creeper.png";
+        e = -1;
+        aH = "/mob/creeper.png";
     }
 
     public void a(NBTTagCompound nbttagcompound) {
@@ -26,17 +28,43 @@ public class EntityCreeper extends EntityMobs {
         super.b(nbttagcompound);
     }
 
-    protected void c() {
+    public void b_() {
         b = a;
-        if (a > 0 && d < 0) {
-            a--;
+        if (l.z) {
+            a += d;
+            if (a < 0) {
+                a = 0;
+            }
+            if (a >= c) {
+                a = c;
+            }
         }
-        if (d >= 0) {
-            d = 2;
+        super.b_();
+    }
+
+    protected void c() {
+        if (e != d) {
+            e = d;
+            if (d > 0) {
+                l.a(this, (byte) 4);
+            } else {
+                l.a(this, (byte) 5);
+            }
         }
-        super.c();
-        if (d != 1) {
-            d = -1;
+        b = a;
+        if (l.z) {
+            super.c();
+        } else {
+            if (a > 0 && d < 0) {
+                a--;
+            }
+            if (d >= 0) {
+                d = 2;
+            }
+            super.c();
+            if (d != 1) {
+                d = -1;
+            }
         }
     }
 
@@ -66,7 +94,7 @@ public class EntityCreeper extends EntityMobs {
                 l.a(this, p, q, r, 3F);
                 l();
             }
-            aj = true;
+            ak = true;
         }
     }
 

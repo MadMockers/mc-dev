@@ -49,6 +49,9 @@ public class BlockPressurePlate extends Block {
     }
 
     public void a(World world, int i, int j, int k, Random random) {
+        if (world.z) {
+            return;
+        }
         if (world.b(i, j, k) == 0) {
             return;
         } else {
@@ -58,6 +61,9 @@ public class BlockPressurePlate extends Block {
     }
 
     public void a(World world, int i, int j, int k, Entity entity) {
+        if (world.z) {
+            return;
+        }
         if (world.b(i, j, k) == 1) {
             return;
         } else {

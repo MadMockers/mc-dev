@@ -131,6 +131,9 @@ public class BlockButton extends Block {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
+        if (world.z) {
+            return true;
+        }
         int l = world.b(i, j, k);
         int i1 = l & 7;
         int j1 = 8 - (l & 8);
@@ -211,6 +214,9 @@ public class BlockButton extends Block {
     }
 
     public void a(World world, int i, int j, int k, Random random) {
+        if (world.z) {
+            return;
+        }
         int l = world.b(i, j, k);
 
         if ((l & 8) == 0) {

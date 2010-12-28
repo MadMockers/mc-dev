@@ -260,6 +260,7 @@ public class Chunk {
         if (l1 != 0) {
             Block.m[l1].e(d, l2, j1, i3);
         }
+        e.a(i1, j1, k1, i2);
         o = true;
         return true;
     }

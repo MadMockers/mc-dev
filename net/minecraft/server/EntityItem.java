@@ -184,7 +184,7 @@ public class EntityItem extends Entity {
         }
         int i = a.a;
 
-        if (c == 0 && entityplayer.al.a(a)) {
+        if (c == 0 && entityplayer.am.a(a)) {
             l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, i);
             l();

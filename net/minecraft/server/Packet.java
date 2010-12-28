@@ -125,6 +125,7 @@ public abstract class Packet {
         a(52, net.minecraft.server.Packet52MultiBlockChange.class);
         a(53, net.minecraft.server.Packet53BlockChange.class);
         a(59, net.minecraft.server.Packet59ComplexEntity.class);
+        a(60, net.minecraft.server.Packet60.class);
         a(255, net.minecraft.server.Packet255KickDisconnect.class);
     }
 }

@@ -8,7 +8,7 @@ public class EntityPig extends EntityAnimals {
     public EntityPig(World world) {
         super(world);
         a = false;
-        aG = "/mob/pig.png";
+        aH = "/mob/pig.png";
         a(0.9F, 0.9F);
         a = false;
     }

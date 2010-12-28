@@ -133,6 +133,9 @@ public class BlockLever extends Block {
     }
 
     public boolean a(World world, int i, int j, int k, EntityPlayer entityplayer) {
+        if (world.z) {
+            return true;
+        }
         int l = world.b(i, j, k);
         int i1 = l & 7;
         int j1 = 8 - (l & 8);
