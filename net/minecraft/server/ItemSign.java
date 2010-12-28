@@ -40,7 +40,11 @@ public class ItemSign extends Item {
             world.b(i, j, k, Block.aJ.bi, l);
         }
         itemstack.a--;
-        entityplayer.a((TileEntitySign) world.k(i, j, k));
+        TileEntitySign tileentitysign = (TileEntitySign) world.k(i, j, k);
+
+        if (tileentitysign != null) {
+            entityplayer.a(tileentitysign);
+        }
         return true;
     }
 }

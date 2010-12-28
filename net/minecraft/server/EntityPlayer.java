@@ -200,17 +200,6 @@ public class EntityPlayer extends EntityLiving {
         if (aP <= 0) {
             return false;
         }
-        if ((float) ab > (float) au / 2.0F) {
-            if (aQ - i >= aP) {
-                return false;
-            }
-            aP = aQ - i;
-        } else {
-            aQ = aP;
-            ab = au;
-            aP -= i;
-            aR = aS = 10;
-        }
         if ((entity instanceof EntityMobs) || (entity instanceof EntityArrow)) {
             if (l.k == 0) {
                 i = 0;
@@ -222,12 +211,14 @@ public class EntityPlayer extends EntityLiving {
                 i = (i * 3) / 2;
             }
         }
-        int j = 25 - ak.e();
-        int k = i * j + a;
+        if ((float) ab <= (float) au / 2.0F) {
+            int j = 25 - ak.e();
+            int k = i * j + a;
 
-        ak.b(i);
-        i = k / 25;
-        a = k % 25;
+            ak.b(i);
+            i = k / 25;
+            a = k % 25;
+        }
         if (i == 0) {
             return false;
         } else {

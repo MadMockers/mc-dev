@@ -81,14 +81,11 @@ public class EntityMobs extends EntityCreature
 
         if (this.l.a(EnumSkyBlock.a, i, j, l) > V.nextInt(32)) {
             return false;
-        }
-        int i1 = this.l.h(i, j, l);
-        int j1 = 16 - (j * 16) / 128;
+        } else {
+            int i1 = this.l.h(i, j, l);
 
-        if (j1 < 1) {
-            j1 = 1;
+            return i1 <= V.nextInt(8) && super.a();
         }
-        return i1 <= V.nextInt(j1) && super.a();
     }
 }
 
