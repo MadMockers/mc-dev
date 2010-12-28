@@ -167,7 +167,7 @@ public class EntityLiving extends Entity {
         if (aQ <= 0) {
             aV++;
             if (aV > 20) {
-                M();
+                L();
                 l();
                 for (int k = 0; k < 20; k++) {
                     double d1 = W.nextGaussian() * 0.02D;
@@ -185,7 +185,7 @@ public class EntityLiving extends Entity {
         y = w;
     }
 
-    public void K() {
+    public void J() {
         for (int j = 0; j < 20; j++) {
             double d1 = W.nextGaussian() * 0.02D;
             double d2 = W.nextGaussian() * 0.02D;
@@ -563,7 +563,7 @@ public class EntityLiving extends Entity {
             } else if (flag1) {
                 t += 0.039999999105930328D;
             } else if (A) {
-                L();
+                K();
             }
         }
         bo *= 0.98F;
@@ -584,7 +584,7 @@ public class EntityLiving extends Entity {
         }
     }
 
-    protected void L() {
+    protected void K() {
         t = 0.41999998688697815D;
     }
 
@@ -681,7 +681,7 @@ public class EntityLiving extends Entity {
         return f1 + f4;
     }
 
-    public void M() {}
+    public void L() {}
 
     public boolean a() {
         return l.a(z) && l.a(this, z).size() == 0 && !l.b(z);

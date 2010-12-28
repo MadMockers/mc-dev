@@ -188,7 +188,7 @@ public class EntityPlayer extends EntityLiving {
 
     public void a(IInventory iinventory) {}
 
-    public void H() {}
+    public void G() {}
 
     public void c(Entity entity, int i) {}
 
@@ -237,11 +237,11 @@ public class EntityPlayer extends EntityLiving {
         entity.a(this);
     }
 
-    public ItemStack I() {
+    public ItemStack H() {
         return al.b();
     }
 
-    public void J() {
+    public void I() {
         al.a(al.d, null);
     }
 
@@ -259,18 +259,16 @@ public class EntityPlayer extends EntityLiving {
 
         if (i > 0) {
             entity.a(this, i);
-            ItemStack itemstack = I();
+            ItemStack itemstack = H();
 
             if (itemstack != null && (entity instanceof EntityLiving)) {
                 itemstack.a((EntityLiving) entity);
                 if (itemstack.a <= 0) {
                     itemstack.a(this);
-                    J();
+                    I();
                 }
             }
         }
     }
-
-    public void G() {}
 }
 

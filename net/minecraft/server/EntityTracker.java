@@ -119,5 +119,14 @@ public class EntityTracker {
             entitytrackerentry.a(packet);
         }
     }
+
+    public void a(EntityPlayerMP entityplayermp) {
+        EntityTrackerEntry entitytrackerentry;
+
+        for (Iterator iterator = a.iterator(); iterator.hasNext(); entitytrackerentry.b(entityplayermp)) {
+            entitytrackerentry = (EntityTrackerEntry) iterator.next();
+        }
+
+    }
 }
 

@@ -787,8 +787,22 @@ public class World
         entity.l();
         if (entity instanceof EntityPlayer) {
             d.remove((EntityPlayer) entity);
-            System.out.println((new StringBuilder()).append("Player count: ").append(d.size()).toString());
         }
+    }
+
+    public void e(Entity entity) {
+        entity.l();
+        if (entity instanceof EntityPlayer) {
+            d.remove((EntityPlayer) entity);
+        }
+        int i1 = entity.ag;
+        int j1 = entity.ai;
+
+        if (entity.af && f(i1, j1)) {
+            c(i1, j1).b(entity);
+        }
+        b.remove(entity);
+        c(entity);
     }
 
     public void a(IWorldAccess iworldaccess) {
@@ -930,7 +944,7 @@ public class World
                 entity1.k = null;
             }
             if (!entity1.G) {
-                e(entity1);
+                f(entity1);
             }
             if (!entity1.G) {
                 continue;
@@ -953,7 +967,7 @@ public class World
 
     }
 
-    public void e(Entity entity) {
+    public void f(Entity entity) {
         a(entity, true);
     }
 
@@ -997,7 +1011,7 @@ public class World
                 entity.j.k = null;
                 entity.j = null;
             } else {
-                e(entity.j);
+                f(entity.j);
             }
         }
         if (Double.isNaN(entity.p) || Double.isInfinite(entity.p)) {

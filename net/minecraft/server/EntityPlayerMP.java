@@ -140,28 +140,6 @@ public class EntityPlayerMP extends EntityPlayer {
         a.a(p, q, r, v, w);
     }
 
-    public void G() {
-        aQ = 20;
-        int i = this.l.m;
-        int j = this.l.o;
-        int l = this.l.n;
-
-        if (!this.l.q.e) {
-            i += W.nextInt(20) - 10;
-            l = this.l.e(i, j);
-            j += W.nextInt(20) - 10;
-        }
-        a.a((double) i + 0.5D, l, (double) j + 0.5D, 0.0F, 0.0F);
-        a.b(new Packet6SpawnPosition(i, l, j));
-        bu = -1;
-        Z = 0;
-        A = true;
-        ad = 300;
-        aa = 300;
-        aZ = false;
-        G = false;
-    }
-
     protected void a(double d1, boolean flag) {}
 
     public void b(double d1, boolean flag) {

@@ -66,8 +66,8 @@ public class NetworkListenThread {
             try {
                 netserverhandler.a();
             } catch (Exception exception1) {
-                netserverhandler.c("Internal server error");
                 a.log(Level.WARNING, (new StringBuilder()).append("Failed to handle packet: ").append(exception1).toString(), exception1);
+                netserverhandler.c("Internal server error");
             }
             if (netserverhandler.c) {
                 h.remove(j--);

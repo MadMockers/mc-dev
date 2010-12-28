@@ -43,6 +43,7 @@ public class NetServerHandler extends NetHandler
     public void c(String s) {
         b.a(new Packet255KickDisconnect(s));
         b.c();
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.as).append(" left the game.").toString()));
         d.f.c(e);
         c = true;
     }
@@ -270,6 +271,7 @@ public class NetServerHandler extends NetHandler
 
     public void a(String s) {
         a.info((new StringBuilder()).append(e.as).append(" lost connection: ").append(s).toString());
+        d.f.a(new Packet3Chat((new StringBuilder()).append("\247e").append(e.as).append(" left the game.").toString()));
         d.f.c(e);
         c = true;
     }
@@ -442,8 +444,12 @@ public class NetServerHandler extends NetHandler
     }
 
     public void a(Packet9 packet9) {
-        e.G();
-        b(new Packet9());
+        if (e.aQ > 0) {
+            return;
+        } else {
+            e = d.f.e(e);
+            return;
+        }
     }
 
 }

@@ -83,13 +83,13 @@ public class ItemInWorldManager {
         int i1 = b.a(j, k, l);
         int j1 = b.b(j, k, l);
         boolean flag = b(j, k, l);
-        ItemStack itemstack = a.I();
+        ItemStack itemstack = a.H();
 
         if (itemstack != null) {
             itemstack.a(i1, j, k, l);
             if (itemstack.a == 0) {
                 itemstack.a(a);
-                a.J();
+                a.I();
             }
         }
         if (flag && a.b(Block.m[i1])) {
