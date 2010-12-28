@@ -51,7 +51,7 @@ public class MinecraftServer
         threadcommandreader.setDaemon(true);
         threadcommandreader.start();
         ConsoleLogManager.a();
-        a.info("Starting minecraft server version 0.2.5_01");
+        a.info("Starting minecraft server version 0.2.5_02");
         if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
             a.warning("**** NOT ENOUGH RAM!");
             a.warning("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
