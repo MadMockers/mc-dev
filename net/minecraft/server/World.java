@@ -991,6 +991,21 @@ public class World
                 entity.b_();
             }
         }
+        if (Double.isNaN(entity.p) || Double.isInfinite(entity.p)) {
+            entity.p = entity.O;
+        }
+        if (Double.isNaN(entity.q) || Double.isInfinite(entity.q)) {
+            entity.q = entity.P;
+        }
+        if (Double.isNaN(entity.r) || Double.isInfinite(entity.r)) {
+            entity.r = entity.Q;
+        }
+        if (Double.isNaN(entity.w) || Double.isInfinite(entity.w)) {
+            entity.w = entity.y;
+        }
+        if (Double.isNaN(entity.v) || Double.isInfinite(entity.v)) {
+            entity.v = entity.x;
+        }
         int k1 = MathHelper.b(entity.p / 16D);
         int l1 = MathHelper.b(entity.q / 16D);
         int i2 = MathHelper.b(entity.r / 16D);
@@ -1013,21 +1028,6 @@ public class World
             } else {
                 f(entity.j);
             }
-        }
-        if (Double.isNaN(entity.p) || Double.isInfinite(entity.p)) {
-            entity.p = entity.O;
-        }
-        if (Double.isNaN(entity.q) || Double.isInfinite(entity.q)) {
-            entity.q = entity.P;
-        }
-        if (Double.isNaN(entity.r) || Double.isInfinite(entity.r)) {
-            entity.r = entity.Q;
-        }
-        if (Double.isNaN(entity.w) || Double.isInfinite(entity.w)) {
-            entity.w = entity.y;
-        }
-        if (Double.isNaN(entity.v) || Double.isInfinite(entity.v)) {
-            entity.v = entity.x;
         }
     }
 

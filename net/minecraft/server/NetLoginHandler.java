@@ -41,10 +41,14 @@ public class NetLoginHandler extends NetHandler {
     }
 
     public void b(String s) {
-        a.info((new StringBuilder()).append("Disconnecting ").append(b()).append(": ").append(s).toString());
-        b.a(new Packet255KickDisconnect(s));
-        b.c();
-        c = true;
+        try {
+            a.info((new StringBuilder()).append("Disconnecting ").append(b()).append(": ").append(s).toString());
+            b.a(new Packet255KickDisconnect(s));
+            b.c();
+            c = true;
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void a(Packet2Handshake packet2handshake) {

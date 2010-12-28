@@ -76,19 +76,21 @@ public class BlockCrops extends BlockFlower {
 
     public void a(World world, int i, int j, int k, int l) {
         super.a(world, i, j, k, l);
-        for (int i1 = 0; i1 < 3; i1++) {
-            if (world.l.nextInt(15) <= l) {
-                float f = 0.7F;
-                float f1 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
-                float f2 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
-                float f3 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
-                EntityItem entityitem = new EntityItem(world, (float) i + f1, (float) j + f2, (float) k + f3, new ItemStack(Item.Q));
+        if (!world.z) {
+            for (int i1 = 0; i1 < 3; i1++) {
+                if (world.l.nextInt(15) <= l) {
+                    float f = 0.7F;
+                    float f1 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
+                    float f2 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
+                    float f3 = world.l.nextFloat() * f + (1.0F - f) * 0.5F;
+                    EntityItem entityitem = new EntityItem(world, (float) i + f1, (float) j + f2, (float) k + f3, new ItemStack(Item.Q));
 
-                entityitem.c = 10;
-                world.a(entityitem);
+                    entityitem.c = 10;
+                    world.a(entityitem);
+                }
             }
-        }
 
+        }
     }
 
     public int a(int i, Random random) {

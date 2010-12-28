@@ -31,7 +31,7 @@ public class EntityTracker {
                 EntityTrackerEntry entitytrackerentry = (EntityTrackerEntry) iterator.next();
 
                 if (entitytrackerentry.a != entityplayermp) {
-                    entitytrackerentry.a(entityplayermp);
+                    entitytrackerentry.b(entityplayermp);
                 }
             } while (true);
         } else if (entity instanceof EntityFish) {
@@ -74,6 +74,15 @@ public class EntityTracker {
     }
 
     public void b(Entity entity) {
+        if (entity instanceof EntityPlayerMP) {
+            EntityPlayerMP entityplayermp = (EntityPlayerMP) entity;
+            EntityTrackerEntry entitytrackerentry1;
+
+            for (Iterator iterator = a.iterator(); iterator.hasNext(); entitytrackerentry1.a(entityplayermp)) {
+                entitytrackerentry1 = (EntityTrackerEntry) iterator.next();
+            }
+
+        }
         EntityTrackerEntry entitytrackerentry = (EntityTrackerEntry) b.d(entity.g);
 
         if (entitytrackerentry != null) {
@@ -109,7 +118,7 @@ public class EntityTracker {
                 EntityTrackerEntry entitytrackerentry1 = (EntityTrackerEntry) iterator1.next();
 
                 if (entitytrackerentry1.a != entityplayermp) {
-                    entitytrackerentry1.a(entityplayermp);
+                    entitytrackerentry1.b(entityplayermp);
                 }
             } while (true);
         }
@@ -135,7 +144,7 @@ public class EntityTracker {
     public void a(EntityPlayerMP entityplayermp) {
         EntityTrackerEntry entitytrackerentry;
 
-        for (Iterator iterator = a.iterator(); iterator.hasNext(); entitytrackerentry.b(entityplayermp)) {
+        for (Iterator iterator = a.iterator(); iterator.hasNext(); entitytrackerentry.c(entityplayermp)) {
             entitytrackerentry = (EntityTrackerEntry) iterator.next();
         }
 

@@ -451,6 +451,10 @@ public class Block {
         return false;
     }
 
+    public void g(World world, int i1, int j1, int k1, int l1) {
+        a_(world, i1, j1, k1, l1);
+    }
+
     public boolean f(World world, int i1, int j1, int k1) {
         return true;
     }
