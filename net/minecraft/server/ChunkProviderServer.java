@@ -37,9 +37,9 @@ public class ChunkProviderServer
     public void c(int i, int j) {
         int k = (i * 16 + 8) - g.m;
         int l = (j * 16 + 8) - g.o;
-        byte byte0 = 20;
+        char c1 = '\200';
 
-        if (k < -byte0 || k > byte0 || l < -byte0 || l > byte0) {
+        if (k < -c1 || k > c1 || l < -c1 || l > c1) {
             a.add(new ChunkCoordinates(i, j));
         }
     }

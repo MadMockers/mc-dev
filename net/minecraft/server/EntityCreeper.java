@@ -15,7 +15,7 @@ public class EntityCreeper extends EntityMobs {
         super(world);
         c = 30;
         d = -1;
-        aF = "/mob/creeper.png";
+        aG = "/mob/creeper.png";
     }
 
     public void a(NBTTagCompound nbttagcompound) {
@@ -51,7 +51,7 @@ public class EntityCreeper extends EntityMobs {
     public void f(Entity entity) {
         super.f(entity);
         if (entity instanceof EntitySkeleton) {
-            a(Item.aU.aW + V.nextInt(2), 1);
+            a(Item.aU.aW + W.nextInt(2), 1);
         }
     }
 
@@ -66,7 +66,7 @@ public class EntityCreeper extends EntityMobs {
                 l.a(this, p, q, r, 3F);
                 l();
             }
-            ai = true;
+            aj = true;
         }
     }
 

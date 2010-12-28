@@ -5,12 +5,12 @@ public class EntityZombieSimple extends EntityMobs {
 
     public EntityZombieSimple(World world) {
         super(world);
-        aF = "/mob/zombie.png";
-        br = 0.5F;
+        aG = "/mob/zombie.png";
+        bt = 0.5F;
         e = 50;
-        aP *= 10;
-        G *= 6F;
-        a(H * 6F, I * 6F);
+        aQ *= 10;
+        H *= 6F;
+        a(I * 6F, J * 6F);
     }
 
     protected float a(int i, int j, int k) {

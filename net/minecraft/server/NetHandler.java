@@ -122,5 +122,17 @@ public class NetHandler {
     public void a(Packet7 packet7) {
         a(((Packet) (packet7)));
     }
+
+    public void a(Packet38 packet38) {
+        a(((Packet) (packet38)));
+    }
+
+    public void a(Packet8 packet8) {
+        a(((Packet) (packet8)));
+    }
+
+    public void a(Packet9 packet9) {
+        a(((Packet) (packet9)));
+    }
 }
 

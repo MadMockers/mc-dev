@@ -44,6 +44,8 @@ public class EntityTracker {
             a(entity, 160, 5, true);
         } else if (entity instanceof IAnimals) {
             a(entity, 160, 3);
+        } else if (entity instanceof EntityTNTPrimed) {
+            a(entity, 160, 10, true);
         }
     }
 
@@ -87,7 +89,7 @@ public class EntityTracker {
             EntityTrackerEntry entitytrackerentry = (EntityTrackerEntry) iterator.next();
 
             entitytrackerentry.a(c.e.d);
-            if (entitytrackerentry.n && (entitytrackerentry.a instanceof EntityPlayerMP)) {
+            if (entitytrackerentry.o && (entitytrackerentry.a instanceof EntityPlayerMP)) {
                 arraylist.add((EntityPlayerMP) entitytrackerentry.a);
             }
         } while (true);

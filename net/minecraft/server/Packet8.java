@@ -16,11 +16,11 @@ public class Packet8 extends Packet {
     }
 
     public void a(DataInputStream datainputstream) {
-        a = datainputstream.readShort();
+        a = datainputstream.readByte();
     }
 
     public void a(DataOutputStream dataoutputstream) {
-        dataoutputstream.writeShort(a);
+        dataoutputstream.writeByte(a);
     }
 
     public void a(NetHandler nethandler) {
@@ -28,7 +28,7 @@ public class Packet8 extends Packet {
     }
 
     public int a() {
-        return 2;
+        return 1;
     }
 }
 

@@ -138,7 +138,7 @@ public class BlockPortal extends BlockBreakable {
         if (world.z) {
             return;
         } else {
-            entity.C();
+            entity.D();
             return;
         }
     }

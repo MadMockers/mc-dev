@@ -20,14 +20,14 @@ public class EntityItem extends Entity {
         f = 5;
         d = (float) (Math.random() * 3.1415926535897931D * 2D);
         a(0.25F, 0.25F);
-        G = I / 2.0F;
+        H = J / 2.0F;
         a(d1, d2, d3);
         a = itemstack;
         v = (float) (Math.random() * 360D);
         s = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
         t = 0.20000000298023224D;
         u = (float) (Math.random() * 0.20000000298023224D - 0.10000000149011612D);
-        L = false;
+        M = false;
     }
 
     public EntityItem(World world) {
@@ -36,7 +36,7 @@ public class EntityItem extends Entity {
         f = 5;
         d = (float) (Math.random() * 3.1415926535897931D * 2D);
         a(0.25F, 0.25F);
-        G = I / 2.0F;
+        H = J / 2.0F;
     }
 
     public void b_() {
@@ -50,9 +50,9 @@ public class EntityItem extends Entity {
         t -= 0.039999999105930328D;
         if (l.c(MathHelper.b(p), MathHelper.b(q), MathHelper.b(r)) == Material.g) {
             t = 0.20000000298023224D;
-            s = (V.nextFloat() - V.nextFloat()) * 0.2F;
-            u = (V.nextFloat() - V.nextFloat()) * 0.2F;
-            l.a(this, "random.fizz", 0.4F, 2.0F + V.nextFloat() * 0.4F);
+            s = (W.nextFloat() - W.nextFloat()) * 0.2F;
+            u = (W.nextFloat() - W.nextFloat()) * 0.2F;
+            l.a(this, "random.fizz", 0.4F, 2.0F + W.nextFloat() * 0.4F);
         }
         g(p, q, r);
         r();
@@ -127,7 +127,7 @@ public class EntityItem extends Entity {
 
                 byte0 = 5;
             }
-            float f1 = V.nextFloat() * 0.2F + 0.1F;
+            float f1 = W.nextFloat() * 0.2F + 0.1F;
 
             if (byte0 == 0) {
                 s = -f1;
@@ -156,6 +156,7 @@ public class EntityItem extends Entity {
     }
 
     public boolean a(Entity entity, int i) {
+        u();
         f -= i;
         if (f <= 0) {
             l();
@@ -183,8 +184,8 @@ public class EntityItem extends Entity {
         }
         int i = a.a;
 
-        if (c == 0 && entityplayer.ak.a(a)) {
-            l.a(this, "random.pop", 0.2F, ((V.nextFloat() - V.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+        if (c == 0 && entityplayer.al.a(a)) {
+            l.a(this, "random.pop", 0.2F, ((W.nextFloat() - W.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.c(this, i);
             l();
         }

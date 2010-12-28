@@ -148,11 +148,19 @@ public class Item {
         return aY;
     }
 
+    public void a(ItemStack itemstack, EntityLiving entityliving) {}
+
     public void a(ItemStack itemstack, int i1, int j1, int k1, int l1) {}
+
+    public int a(Entity entity) {
+        return 1;
+    }
 
     public boolean a(Block block) {
         return false;
     }
+
+    public void b(ItemStack itemstack, EntityLiving entityliving) {}
 
     public Item c() {
         ba = true;

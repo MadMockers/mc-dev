@@ -13,9 +13,9 @@ public class EntityBoat extends Entity {
     private int d;
     private double e;
     private double f;
-    private double ai;
     private double aj;
     private double ak;
+    private double al;
 
     public EntityBoat(World world) {
         super(world);
@@ -24,8 +24,8 @@ public class EntityBoat extends Entity {
         c = 1;
         i = true;
         a(1.5F, 0.6F);
-        G = I / 2.0F;
-        L = false;
+        H = J / 2.0F;
+        M = false;
     }
 
     public AxisAlignedBB d(Entity entity) {
@@ -36,13 +36,13 @@ public class EntityBoat extends Entity {
         return z;
     }
 
-    public boolean u() {
+    public boolean v() {
         return true;
     }
 
     public EntityBoat(World world, double d1, double d2, double d3) {
         this(world);
-        a(d1, d2 + (double) G, d3);
+        a(d1, d2 + (double) H, d3);
         s = 0.0D;
         t = 0.0D;
         u = 0.0D;
@@ -52,7 +52,7 @@ public class EntityBoat extends Entity {
     }
 
     public double j() {
-        return (double) I * 0.0D - 0.30000001192092896D;
+        return (double) J * 0.0D - 0.30000001192092896D;
     }
 
     public boolean a(Entity entity, int i) {
@@ -62,6 +62,7 @@ public class EntityBoat extends Entity {
         c = -c;
         b = 10;
         a += i * 10;
+        u();
         if (a > 40) {
             for (int k = 0; k < 3; k++) {
                 a(Block.x.bh, 1, 0.0F);
@@ -77,7 +78,7 @@ public class EntityBoat extends Entity {
     }
 
     public boolean c_() {
-        return !F;
+        return !G;
     }
 
     public void b_() {
@@ -108,17 +109,17 @@ public class EntityBoat extends Entity {
             if (d > 0) {
                 double d4 = p + (e - p) / (double) d;
                 double d7 = q + (f - q) / (double) d;
-                double d10 = r + (ai - r) / (double) d;
+                double d10 = r + (aj - r) / (double) d;
                 double d13;
 
-                for (d13 = aj - (double) v; d13 < -180D; d13 += 360D) {
+                for (d13 = ak - (double) v; d13 < -180D; d13 += 360D) {
                     ;
                 }
                 for (; d13 >= 180D; d13 -= 360D) {
                     ;
                 }
                 v += d13 / (double) d;
-                w += (ak - (double) w) / (double) d;
+                w += (al - (double) w) / (double) d;
                 d--;
                 a(d4, d7, d10);
                 b(v, w);
@@ -173,10 +174,10 @@ public class EntityBoat extends Entity {
             double d16 = Math.sin(((double) v * 3.1415926535897931D) / 180D);
 
             for (int l = 0; (double) l < 1.0D + d12 * 60D; l++) {
-                double d18 = V.nextFloat() * 2.0F - 1.0F;
-                double d19 = (double) (V.nextInt(2) * 2 - 1) * 0.69999999999999996D;
+                double d18 = W.nextFloat() * 2.0F - 1.0F;
+                double d19 = (double) (W.nextInt(2) * 2 - 1) * 0.69999999999999996D;
 
-                if (V.nextBoolean()) {
+                if (W.nextBoolean()) {
                     double d20 = (p - d14 * d18 * 0.80000000000000004D) + d16 * d19;
                     double d22 = r - d16 * d18 * 0.80000000000000004D - d14 * d19;
 
@@ -237,22 +238,27 @@ public class EntityBoat extends Entity {
             for (int k1 = 0; k1 < list.size(); k1++) {
                 Entity entity = (Entity) list.get(k1);
 
-                if (entity != j && entity.u() && (entity instanceof EntityBoat)) {
+                if (entity != j && entity.v() && (entity instanceof EntityBoat)) {
                     entity.c(this);
                 }
             }
 
         }
-        if (j != null && j.F) {
+        if (j != null && j.G) {
             j = null;
         }
     }
 
-    public void z() {
-        double d1 = Math.cos(((double) v * 3.1415926535897931D) / 180D) * 0.40000000000000002D;
-        double d2 = Math.sin(((double) v * 3.1415926535897931D) / 180D) * 0.40000000000000002D;
+    public void A() {
+        if (j == null) {
+            return;
+        } else {
+            double d1 = Math.cos(((double) v * 3.1415926535897931D) / 180D) * 0.40000000000000002D;
+            double d2 = Math.sin(((double) v * 3.1415926535897931D) / 180D) * 0.40000000000000002D;
 
-        j.a(p + d1, q + j() + j.A(), r + d2);
+            j.a(p + d1, q + j() + j.B(), r + d2);
+            return;
+        }
     }
 
     protected void a(NBTTagCompound nbttagcompound) {}

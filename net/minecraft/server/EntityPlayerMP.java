@@ -12,40 +12,58 @@ public class EntityPlayerMP extends EntityPlayer {
     public double d;
     public double e;
     public List f;
-    public Set ai;
-    public double aj;
+    public Set aj;
+    public double ak;
+    private int bu;
 
     public EntityPlayerMP(MinecraftServer minecraftserver, World world, String s1, ItemInWorldManager iteminworldmanager) {
         super(world);
         f = new LinkedList();
-        ai = new HashSet();
+        aj = new HashSet();
+        bu = -1;
         int i = world.m;
         int j = world.o;
         int l = world.n;
 
         if (!world.q.e) {
-            i += V.nextInt(20) - 10;
+            i += W.nextInt(20) - 10;
             l = world.e(i, j);
-            j += V.nextInt(20) - 10;
+            j += W.nextInt(20) - 10;
         }
         c((double) i + 0.5D, l, (double) j + 0.5D, 0.0F, 0.0F);
         b = minecraftserver;
-        R = 0.0F;
+        S = 0.0F;
         iteminworldmanager.a = this;
-        ar = s1;
+        as = s1;
         c = iteminworldmanager;
-        G = 0.0F;
+        H = 0.0F;
     }
 
     public void b_() {}
 
-    public void f(Entity entity) {}
-
-    public boolean a(Entity entity, int i) {
-        return false;
+    public void f(Entity entity) {
+        al.f();
     }
 
-    public void a(int i) {}
+    public boolean a(Entity entity, int i) {
+        if (!b.n) {
+            if (entity instanceof EntityPlayer) {
+                return false;
+            }
+            if (entity instanceof EntityArrow) {
+                EntityArrow entityarrow = (EntityArrow) entity;
+
+                if (entityarrow.b instanceof EntityPlayer) {
+                    return false;
+                }
+            }
+        }
+        return super.a(entity, i);
+    }
+
+    public void a(int i) {
+        super.a(i);
+    }
 
     public void k() {
         super.b_();
@@ -84,26 +102,30 @@ public class EntityPlayerMP extends EntityPlayer {
 
             }
         }
+        if (aQ != bu) {
+            a.b(new Packet8(aQ));
+            bu = aQ;
+        }
     }
 
-    public void D() {
+    public void E() {
         s = t = u = 0.0D;
-        bp = false;
-        super.D();
+        br = false;
+        super.E();
     }
 
     public void c(Entity entity, int i) {
-        if (!entity.F && (entity instanceof EntityItem)) {
+        if (!entity.G && (entity instanceof EntityItem)) {
             a.b(new Packet17AddToInventory(((EntityItem) entity).a, i));
             b.k.a(entity, new Packet22Collect(entity.g, g));
         }
         super.c(entity, i);
     }
 
-    public void E() {
-        if (!ap) {
-            aq = -1;
-            ap = true;
+    public void F() {
+        if (!aq) {
+            ar = -1;
+            aq = true;
             b.k.a(this, new Packet18ArmAnimation(this, 1));
         }
     }
@@ -116,6 +138,34 @@ public class EntityPlayerMP extends EntityPlayer {
         super.e(entity);
         a.b(new Packet39(this, k));
         a.a(p, q, r, v, w);
+    }
+
+    public void G() {
+        aQ = 20;
+        int i = this.l.m;
+        int j = this.l.o;
+        int l = this.l.n;
+
+        if (!this.l.q.e) {
+            i += W.nextInt(20) - 10;
+            l = this.l.e(i, j);
+            j += W.nextInt(20) - 10;
+        }
+        a.a((double) i + 0.5D, l, (double) j + 0.5D, 0.0F, 0.0F);
+        a.b(new Packet6SpawnPosition(i, l, j));
+        bu = -1;
+        Z = 0;
+        A = true;
+        ad = 300;
+        aa = 300;
+        aZ = false;
+        G = false;
+    }
+
+    protected void a(double d1, boolean flag) {}
+
+    public void b(double d1, boolean flag) {
+        super.a(d1, flag);
     }
 }
 

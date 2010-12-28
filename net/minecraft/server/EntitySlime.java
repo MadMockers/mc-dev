@@ -16,17 +16,17 @@ public class EntitySlime extends EntityLiving
         super(world);
         d = 0;
         c = 1;
-        aF = "/mob/slime.png";
-        c = 1 << V.nextInt(3);
-        G = 0.0F;
-        d = V.nextInt(20) + 10;
+        aG = "/mob/slime.png";
+        c = 1 << W.nextInt(3);
+        H = 0.0F;
+        d = W.nextInt(20) + 10;
         d(c);
     }
 
     public void d(int i) {
         c = i;
         a(0.6F * (float) i, 0.6F * (float) i);
-        aP = i * i;
+        aQ = i * i;
         a(p, q, r);
     }
 
@@ -47,8 +47,8 @@ public class EntitySlime extends EntityLiving
         super.b_();
         if (A && !flag) {
             for (int i = 0; i < c * 8; i++) {
-                float f1 = V.nextFloat() * 3.141593F * 2.0F;
-                float f2 = V.nextFloat() * 0.5F + 0.5F;
+                float f1 = W.nextFloat() * 3.141593F * 2.0F;
+                float f2 = W.nextFloat() * 0.5F + 0.5F;
                 float f3 = MathHelper.a(f1) * (float) c * 0.5F * f2;
                 float f4 = MathHelper.b(f1) * (float) c * 0.5F * f2;
 
@@ -56,7 +56,7 @@ public class EntitySlime extends EntityLiving
             }
 
             if (c > 2) {
-                l.a(this, "mob.slime", h(), ((V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F) / 0.8F);
+                l.a(this, "mob.slime", h(), ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) / 0.8F);
             }
             a = -0.5F;
         }
@@ -70,34 +70,34 @@ public class EntitySlime extends EntityLiving
             b(entityplayer, 10F);
         }
         if (A && d-- <= 0) {
-            d = V.nextInt(20) + 10;
+            d = W.nextInt(20) + 10;
             if (entityplayer != null) {
                 d /= 3;
             }
-            bp = true;
+            br = true;
             if (c > 1) {
-                l.a(this, "mob.slime", h(), ((V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F) * 0.8F);
+                l.a(this, "mob.slime", h(), ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) * 0.8F);
             }
             a = 1.0F;
-            bm = 1.0F - V.nextFloat() * 2.0F;
-            bn = 1 * c;
+            bo = 1.0F - W.nextFloat() * 2.0F;
+            bp = 1 * c;
         } else {
-            bp = false;
+            br = false;
             if (A) {
-                bm = bn = 0.0F;
+                bo = bp = 0.0F;
             }
         }
     }
 
     public void l() {
-        if (c > 1 && aP == 0) {
+        if (c > 1 && aQ == 0) {
             for (int i = 0; i < 4; i++) {
                 float f1 = (((float) (i % 2) - 0.5F) * (float) c) / 4F;
                 float f2 = (((float) (i / 2) - 0.5F) * (float) c) / 4F;
                 EntitySlime entityslime = new EntitySlime(l);
 
                 entityslime.d(c / 2);
-                entityslime.c(p + (double) f1, q + 0.5D, r + (double) f2, V.nextFloat() * 360F, 0.0F);
+                entityslime.c(p + (double) f1, q + 0.5D, r + (double) f2, W.nextFloat() * 360F, 0.0F);
                 l.a(entityslime);
             }
 
@@ -106,8 +106,8 @@ public class EntitySlime extends EntityLiving
     }
 
     public void b(EntityPlayer entityplayer) {
-        if (c > 1 && g(entityplayer) && (double) a(entityplayer) < 0.59999999999999998D * (double) c && entityplayer.a(this, c)) {
-            l.a(this, "mob.slimeattack", 1.0F, (V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F);
+        if (c > 1 && i(entityplayer) && (double) a(entityplayer) < 0.59999999999999998D * (double) c && entityplayer.a(this, c)) {
+            l.a(this, "mob.slimeattack", 1.0F, (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
         }
     }
 
@@ -130,7 +130,7 @@ public class EntitySlime extends EntityLiving
     public boolean a() {
         Chunk chunk = l.b(MathHelper.b(p), MathHelper.b(r));
 
-        return (c == 1 || l.k > 0) && V.nextInt(10) == 0 && chunk.a(0x3ad8025fL).nextInt(10) == 0 && q < 16D;
+        return (c == 1 || l.k > 0) && W.nextInt(10) == 0 && chunk.a(0x3ad8025fL).nextInt(10) == 0 && q < 16D;
     }
 
     protected float h() {

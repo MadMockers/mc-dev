@@ -23,7 +23,7 @@ public class PlayerListBox extends JList
             Vector vector = new Vector();
 
             for (int i = 0; i < a.f.b.size(); i++) {
-                vector.add(((EntityPlayerMP) a.f.b.get(i)).ar);
+                vector.add(((EntityPlayerMP) a.f.b.get(i)).as);
             }
 
             setListData(vector);

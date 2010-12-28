@@ -11,23 +11,23 @@ public class EntityChicken extends EntityAnimals {
     public float c;
     public float d;
     public float e;
-    public float aj;
-    public int ak;
+    public float ak;
+    public int al;
 
     public EntityChicken(World world) {
         super(world);
         a = false;
         b = 0.0F;
         c = 0.0F;
-        aj = 1.0F;
-        aF = "/mob/chicken.png";
+        ak = 1.0F;
+        aG = "/mob/chicken.png";
         a(0.3F, 0.4F);
-        aP = 4;
-        ak = V.nextInt(6000) + 6000;
+        aQ = 4;
+        al = W.nextInt(6000) + 6000;
     }
 
-    public void D() {
-        super.D();
+    public void E() {
+        super.E();
         e = b;
         d = c;
         c += (double) (A ? -1 : 4) * 0.29999999999999999D;
@@ -37,18 +37,18 @@ public class EntityChicken extends EntityAnimals {
         if (c > 1.0F) {
             c = 1.0F;
         }
-        if (!A && aj < 1.0F) {
-            aj = 1.0F;
+        if (!A && ak < 1.0F) {
+            ak = 1.0F;
         }
-        aj *= 0.90000000000000002D;
+        ak *= 0.90000000000000002D;
         if (!A && t < 0.0D) {
             t *= 0.59999999999999998D;
         }
-        b += aj * 2.0F;
-        if (!l.z && --ak <= 0) {
-            l.a(this, "mob.chickenplop", 1.0F, (V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F);
+        b += ak * 2.0F;
+        if (!l.z && --al <= 0) {
+            l.a(this, "mob.chickenplop", 1.0F, (W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F);
             a(Item.aN.aW, 1);
-            ak = V.nextInt(6000) + 6000;
+            al = W.nextInt(6000) + 6000;
         }
     }
 

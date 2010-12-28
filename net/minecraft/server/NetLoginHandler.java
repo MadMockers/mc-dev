@@ -58,7 +58,7 @@ public class NetLoginHandler extends NetHandler {
 
     public void a(Packet1Login packet1login) {
         g = packet1login.b;
-        if (packet1login.a != 4) {
+        if (packet1login.a != 5) {
             b("Outdated client!");
             return;
         }

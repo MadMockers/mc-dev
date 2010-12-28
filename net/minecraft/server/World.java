@@ -719,7 +719,7 @@ public class World
 
     public void a(Entity entity, String s1, float f1, float f2) {
         for (int i1 = 0; i1 < r.size(); i1++) {
-            ((IWorldAccess) r.get(i1)).a(s1, entity.p, entity.q - (double) entity.G, entity.r, f1, f2);
+            ((IWorldAccess) r.get(i1)).a(s1, entity.p, entity.q - (double) entity.H, entity.r, f1, f2);
         }
 
     }
@@ -906,10 +906,10 @@ public class World
         b.removeAll(B);
         for (int i1 = 0; i1 < B.size(); i1++) {
             Entity entity = (Entity) B.get(i1);
-            int i2 = entity.af;
-            int k2 = entity.ah;
+            int i2 = entity.ag;
+            int k2 = entity.ai;
 
-            if (entity.ae && f(i2, k2)) {
+            if (entity.af && f(i2, k2)) {
                 c(i2, k2).b(entity);
             }
         }
@@ -923,22 +923,22 @@ public class World
             Entity entity1 = (Entity) b.get(k1);
 
             if (entity1.k != null) {
-                if (!entity1.k.F && entity1.k.j == entity1) {
+                if (!entity1.k.G && entity1.k.j == entity1) {
                     continue;
                 }
                 entity1.k.j = null;
                 entity1.k = null;
             }
-            if (!entity1.F) {
+            if (!entity1.G) {
                 e(entity1);
             }
-            if (!entity1.F) {
+            if (!entity1.G) {
                 continue;
             }
-            int j2 = entity1.af;
-            int l2 = entity1.ah;
+            int j2 = entity1.ag;
+            int l2 = entity1.ai;
 
-            if (entity1.ae && f(j2, l2)) {
+            if (entity1.af && f(j2, l2)) {
                 c(j2, l2).b(entity1);
             }
             b.remove(k1--);
@@ -965,14 +965,14 @@ public class World
         if (!flag && !a(i1 - byte0, 0, j1 - byte0, i1 + byte0, 128, j1 + byte0)) {
             return;
         }
-        entity.N = entity.p;
-        entity.O = entity.q;
-        entity.P = entity.r;
+        entity.O = entity.p;
+        entity.P = entity.q;
+        entity.Q = entity.r;
         entity.x = entity.v;
         entity.y = entity.w;
-        if (flag && entity.ae) {
+        if (flag && entity.af) {
             if (entity.k != null) {
-                entity.y();
+                entity.z();
             } else {
                 entity.b_();
             }
@@ -981,19 +981,19 @@ public class World
         int l1 = MathHelper.b(entity.q / 16D);
         int i2 = MathHelper.b(entity.r / 16D);
 
-        if (!entity.ae || entity.af != k1 || entity.ag != l1 || entity.ah != i2) {
-            if (entity.ae && f(entity.af, entity.ah)) {
-                c(entity.af, entity.ah).a(entity, entity.ag);
+        if (!entity.af || entity.ag != k1 || entity.ah != l1 || entity.ai != i2) {
+            if (entity.af && f(entity.ag, entity.ai)) {
+                c(entity.ag, entity.ai).a(entity, entity.ah);
             }
             if (f(k1, i2)) {
-                entity.ae = true;
+                entity.af = true;
                 c(k1, i2).a(entity);
             } else {
-                entity.ae = false;
+                entity.af = false;
             }
         }
-        if (flag && entity.ae && entity.j != null) {
-            if (entity.j.F || entity.j.k != entity) {
+        if (flag && entity.af && entity.j != null) {
+            if (entity.j.G || entity.j.k != entity) {
                 entity.j.k = null;
                 entity.j = null;
             } else {
@@ -1001,13 +1001,13 @@ public class World
             }
         }
         if (Double.isNaN(entity.p) || Double.isInfinite(entity.p)) {
-            entity.p = entity.N;
+            entity.p = entity.O;
         }
         if (Double.isNaN(entity.q) || Double.isInfinite(entity.q)) {
-            entity.q = entity.O;
+            entity.q = entity.P;
         }
         if (Double.isNaN(entity.r) || Double.isInfinite(entity.r)) {
-            entity.r = entity.P;
+            entity.r = entity.Q;
         }
         if (Double.isNaN(entity.w) || Double.isInfinite(entity.w)) {
             entity.w = entity.y;
@@ -1023,7 +1023,7 @@ public class World
         for (int i1 = 0; i1 < list.size(); i1++) {
             Entity entity = (Entity) list.get(i1);
 
-            if (!entity.F && entity.i) {
+            if (!entity.G && entity.i) {
                 return false;
             }
         }
@@ -1722,6 +1722,8 @@ public class World
     public boolean a(EntityPlayer entityplayer, int i1, int j1, int k1) {
         return true;
     }
+
+    public void a(Entity entity, byte byte0) {}
 
 }
 

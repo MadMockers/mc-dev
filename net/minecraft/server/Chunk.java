@@ -362,15 +362,15 @@ public class Chunk {
         if (k1 >= m.length) {
             k1 = m.length - 1;
         }
-        entity.ae = true;
-        entity.af = j;
-        entity.ag = k1;
-        entity.ah = k;
+        entity.af = true;
+        entity.ag = j;
+        entity.ah = k1;
+        entity.ai = k;
         m[k1].add(entity);
     }
 
     public void b(Entity entity) {
-        a(entity, entity.ag);
+        a(entity, entity.ah);
     }
 
     public void a(Entity entity, int i1) {

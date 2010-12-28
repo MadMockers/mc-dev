@@ -25,7 +25,7 @@ public class WorldServer extends World {
     }
 
     public void a(Entity entity, boolean flag) {
-        if (D.m && (entity instanceof EntityAnimals)) {
+        if (!D.m && (entity instanceof EntityAnimals)) {
             entity.l();
         }
         if (entity.j == null || !(entity.j instanceof EntityPlayer)) {
@@ -59,7 +59,7 @@ public class WorldServer extends World {
         if (l > i1) {
             i1 = l;
         }
-        return i1 > 16 || D.f.g(entityplayer.ar);
+        return i1 > 16 || D.f.g(entityplayer.as);
     }
 
     protected void b(Entity entity) {
@@ -74,6 +74,10 @@ public class WorldServer extends World {
 
     public Entity a(int i) {
         return (Entity) E.a(i);
+    }
+
+    public void a(Entity entity, byte byte0) {
+        D.k.a(entity, new Packet38(entity.g, byte0));
     }
 }
 

@@ -15,16 +15,16 @@ public class EntityPigZombie extends EntityZombie {
         super(world);
         a = 0;
         b = 0;
-        aF = "/mob/pigzombie.png";
-        br = 0.5F;
+        aG = "/mob/pigzombie.png";
+        bt = 0.5F;
         e = 5;
-        ad = true;
+        ae = true;
     }
 
     public void b_() {
-        br = f == null ? 0.5F : 0.95F;
+        bt = f == null ? 0.5F : 0.95F;
         if (b > 0 && --b == 0) {
-            l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((V.nextFloat() - V.nextFloat()) * 0.2F + 1.0F) * 1.8F);
+            l.a(this, "mob.zombiepig.zpigangry", h() * 2.0F, ((W.nextFloat() - W.nextFloat()) * 0.2F + 1.0F) * 1.8F);
         }
         super.b_();
     }
@@ -51,8 +51,8 @@ public class EntityPigZombie extends EntityZombie {
         }
     }
 
-    public void D() {
-        super.D();
+    public void E() {
+        super.E();
     }
 
     public boolean a(Entity entity, int i) {
@@ -65,19 +65,19 @@ public class EntityPigZombie extends EntityZombie {
                 if (entity1 instanceof EntityPigZombie) {
                     EntityPigZombie entitypigzombie = (EntityPigZombie) entity1;
 
-                    entitypigzombie.h(entity);
+                    entitypigzombie.g(entity);
                 }
             }
 
-            h(entity);
+            g(entity);
         }
         return super.a(entity, i);
     }
 
-    private void h(Entity entity) {
+    private void g(Entity entity) {
         f = entity;
-        a = 400 + V.nextInt(400);
-        b = V.nextInt(40);
+        a = 400 + W.nextInt(400);
+        b = W.nextInt(40);
     }
 
     protected String d() {

@@ -95,6 +95,8 @@ public abstract class Packet {
         a(5, net.minecraft.server.Packet5PlayerInventory.class);
         a(6, net.minecraft.server.Packet6SpawnPosition.class);
         a(7, net.minecraft.server.Packet7.class);
+        a(8, net.minecraft.server.Packet8.class);
+        a(9, net.minecraft.server.Packet9.class);
         a(10, net.minecraft.server.Packet10Flying.class);
         a(11, net.minecraft.server.Packet11PlayerPosition.class);
         a(12, net.minecraft.server.Packet12PlayerLook.class);
@@ -116,6 +118,7 @@ public abstract class Packet {
         a(32, net.minecraft.server.Packet32EntityLook.class);
         a(33, net.minecraft.server.Packet33RelEntityMoveLook.class);
         a(34, net.minecraft.server.Packet34EntityTeleport.class);
+        a(38, net.minecraft.server.Packet38.class);
         a(39, net.minecraft.server.Packet39.class);
         a(50, net.minecraft.server.Packet50PreChunk.class);
         a(51, net.minecraft.server.Packet51MapChunk.class);
